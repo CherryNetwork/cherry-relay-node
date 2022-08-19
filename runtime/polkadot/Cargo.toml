@@ -45,7 +45,7 @@ pallet-transaction-payment = { git = "https://github.com/paritytech/substrate", 
 pallet-transaction-payment-rpc-runtime-api = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
 pallet-collective = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
 pallet-democracy = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
-pallet-elections-phragmen = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
+pallet-elections-phragmen = { version = "5.0.0-dev", path = "../../cherry/elections-phragmen", default-features = false }
 pallet-election-provider-multi-phase = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
 frame-executive = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
 pallet-grandpa = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
@@ -67,7 +67,7 @@ frame-system-rpc-runtime-api = { git = "https://github.com/paritytech/substrate"
 polkadot-runtime-constants = { package = "polkadot-runtime-constants", path = "./constants", default-features = false }
 pallet-timestamp = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
 pallet-tips = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
-pallet-treasury = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
+pallet-treasury = { version = "4.0.0-dev", path = "../../cherry/treasury", default-features = false }
 pallet-vesting = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
 pallet-utility = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
 frame-election-provider-support = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }

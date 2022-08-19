@@ -28,6 +28,8 @@ polkadot-core-primitives = { path = "core-primitives" }
 [workspace]
 members = [
 	"cli",
+	"cherry/treasury",
+	"cherry/elections-phragmen",
 	"core-primitives",
 	"erasure-coding",
 	"primitives",

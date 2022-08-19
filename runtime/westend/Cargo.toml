@@ -46,7 +46,7 @@ pallet-bags-list = { git = "https://github.com/paritytech/substrate", default-fe
 pallet-balances = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
 pallet-collective = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
 pallet-democracy = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
-pallet-elections-phragmen = { package = "pallet-elections-phragmen", git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
+pallet-elections-phragmen = { version = "5.0.0-dev", path = "../../cherry/elections-phragmen", default-features = false }
 pallet-election-provider-multi-phase = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
 pallet-grandpa = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
 pallet-identity = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
@@ -69,7 +69,7 @@ pallet-timestamp = { git = "https://github.com/paritytech/substrate", default-fe
 pallet-transaction-payment = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
 pallet-transaction-payment-rpc-runtime-api = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
 pallet-nomination-pools-runtime-api = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
-pallet-treasury = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
+pallet-treasury = { version = "4.0.0-dev", path = "../../cherry/treasury", default-features = false }
 pallet-utility = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
 pallet-vesting = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
 pallet-xcm = { path = "../../xcm/pallet-xcm", default-features = false }
