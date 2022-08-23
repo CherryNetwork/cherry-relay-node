@@ -28,7 +28,7 @@ use polkadot_primitives::v2::{AccountId, AccountPublic, AssignmentId, ValidatorI
 #[cfg(feature = "polkadot-native")]
 use polkadot_runtime as polkadot;
 #[cfg(feature = "polkadot-native")]
-use polkadot_runtime_constants::currency::UNITS as DOT;
+use polkadot_runtime_constants::currency::DOLLARS as DOT;
 use sp_authority_discovery::AuthorityId as AuthorityDiscoveryId;
 use sp_consensus_babe::AuthorityId as BabeId;
 

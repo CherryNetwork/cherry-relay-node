@@ -90,7 +90,15 @@ pub use pallet_timestamp::Call as TimestampCall;
 pub use sp_runtime::BuildStorage;
 
 /// Constant values used within the runtime.
-use polkadot_runtime_constants::{currency::*, fee::*, time::*};
+use polkadot_runtime_constants::{currency::*, fee::*};
+
+/// Time constants for production
+#[cfg(not(feature = "dev"))]
+use polkadot_runtime_constants::time_prod::*;
+
+/// Time constants for development
+#[cfg(feature = "dev")]
+use polkadot_runtime_constants::time_dev::*;
 
 // Weights used in the runtime.
 mod weights;
@@ -450,7 +458,7 @@ parameter_types! {
 	// 0.01 DOT per KB of solution data.
 	pub const SignedDepositByte: Balance = deposit(0, 10) / 1024;
 	// Each good submission will get 1 DOT as reward
-	pub SignedRewardBase: Balance = 1 * UNITS;
+	pub SignedRewardBase: Balance = 1 * DOLLARS;
 	pub BetterUnsignedThreshold: Perbill = Perbill::from_rational(5u32, 10_000);
 
 	// 4 hour session, 1 hour unsigned phase, 32 offchain executions.
