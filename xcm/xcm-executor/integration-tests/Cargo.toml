@@ -6,20 +6,20 @@ description = "Integration tests for the XCM Executor"
 version = "0.9.27"
 
 [dependencies]
-frame-support = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
-frame-system = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
+frame-support = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
+frame-system = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
 futures = "0.3.21"
 pallet-xcm = { path = "../../pallet-xcm" }
 polkadot-test-client = { path = "../../../node/test/client" }
 polkadot-test-runtime = { path = "../../../runtime/test-runtime" }
 polkadot-test-service = { path = "../../../node/test/service" }
-sp-consensus = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-keyring = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-runtime = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
-sp-state-machine = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
+sp-consensus = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sp-keyring = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sp-runtime = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
+sp-state-machine = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
 xcm = { path = "../..", default-features = false }
 xcm-executor = { path = ".." }
-sp-tracing = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
+sp-tracing = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
 
 [features]
 default = ["std"]

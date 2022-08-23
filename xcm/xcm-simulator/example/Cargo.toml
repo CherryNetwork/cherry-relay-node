@@ -9,13 +9,13 @@ edition = "2021"
 codec = { package = "parity-scale-codec", version = "3.0.0" }
 scale-info = { version = "2.1.2", features = ["derive"] }
 
-frame-system = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-frame-support = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-pallet-balances = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-std = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-core = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-runtime = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-io = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
+frame-system = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+frame-support = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+pallet-balances = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sp-std = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sp-core = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sp-runtime = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sp-io = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
 
 xcm = { path = "../../" }
 xcm-simulator = { path = "../" }

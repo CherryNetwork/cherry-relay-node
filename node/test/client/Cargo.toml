@@ -14,20 +14,20 @@ polkadot-primitives = { path = "../../../primitives" }
 polkadot-node-subsystem = { path = "../../subsystem" }
 
 # Substrate dependencies
-substrate-test-client = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sc-service = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sc-block-builder = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sc-consensus = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-blockchain = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-runtime = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-inherents = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-core = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-api = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-timestamp = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-consensus = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-consensus-babe = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-state-machine = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
+substrate-test-client = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sc-service = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sc-block-builder = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sc-consensus = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sp-blockchain = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sp-runtime = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sp-inherents = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sp-core = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sp-api = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sp-timestamp = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sp-consensus = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sp-consensus-babe = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sp-state-machine = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
 
 [dev-dependencies]
-sp-keyring = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
+sp-keyring = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
 futures = "0.3.21"

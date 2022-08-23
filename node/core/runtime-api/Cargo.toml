@@ -10,7 +10,7 @@ gum = { package = "tracing-gum", path = "../../gum" }
 memory-lru = "0.1.0"
 parity-util-mem = { version = "0.11.0", default-features = false }
 
-sp-consensus-babe = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
+sp-consensus-babe = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
 
 polkadot-primitives = { path = "../../../primitives" }
 polkadot-node-subsystem = { path = "../../subsystem" }
@@ -18,10 +18,10 @@ polkadot-node-subsystem-types = { path = "../../subsystem-types" }
 polkadot-node-subsystem-util = { path = "../../subsystem-util" }
 
 [dev-dependencies]
-sp-api = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-authority-discovery = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-core = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-keyring = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
+sp-api = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sp-authority-discovery = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sp-core = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sp-keyring = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
 futures = { version = "0.3.21", features = ["thread-pool"] }
 polkadot-node-subsystem-test-helpers = { path = "../../subsystem-test-helpers" }
 polkadot-node-primitives = { path = "../../primitives" }

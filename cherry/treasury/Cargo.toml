@@ -20,16 +20,16 @@ codec = { package = "parity-scale-codec", version = "3.0.0", default-features = 
 impl-trait-for-tuples = "0.2.2"
 scale-info = { version = "2.1.1", default-features = false, features = ["derive"] }
 serde = { version = "1.0.136", features = ["derive"], optional = true }
-frame-benchmarking = { git = "https://github.com/paritytech/substrate", default-features = false, branch = "polkadot-v0.9.27", optional = true }
-frame-support = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
-frame-system = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
-pallet-balances = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
-sp-runtime = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
-sp-std = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
+frame-benchmarking = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp", optional = true }
+frame-support = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
+frame-system = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
+pallet-balances = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
+sp-runtime = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
+sp-std = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
 
 [dev-dependencies]
-sp-core = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-io = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
+sp-core = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sp-io = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
 
 [features]
 default = ["std"]

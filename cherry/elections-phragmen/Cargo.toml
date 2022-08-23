@@ -18,20 +18,20 @@ codec = { package = "parity-scale-codec", version = "3.0.0", default-features = 
 ] }
 log = { version = "0.4.14", default-features = false }
 scale-info = { version = "2.0.0", default-features = false, features = ["derive"] }
-frame-benchmarking = { git = "https://github.com/paritytech/substrate", default-features = false, branch = "polkadot-v0.9.27", optional = true }
-frame-support = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
-frame-system = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
-sp-core = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
-sp-io = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
-sp-npos-elections = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
-sp-runtime = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
-sp-std = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
+frame-benchmarking = { git = "https://github.com/zycon91/substrate", default-features = false, branch = "test-temp", optional = true }
+frame-support = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
+frame-system = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
+sp-core = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
+sp-io = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
+sp-npos-elections = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
+sp-runtime = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
+sp-std = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
 
 [dev-dependencies]
-pallet-balances = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-core = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-tracing = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-substrate-test-utils = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
+pallet-balances = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sp-core = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sp-tracing = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+substrate-test-utils = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
 
 [features]
 default = ["std"]

@@ -26,40 +26,40 @@ test-runtime-constants = { path = "../../../runtime/test-runtime/constants" }
 polkadot-runtime-parachains = { path = "../../../runtime/parachains" }
 
 # Substrate dependencies
-sp-authority-discovery = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sc-authority-discovery = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-babe = { package = "sc-consensus-babe", git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-babe-primitives = { package = "sp-consensus-babe", git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-consensus_common = { package = "sp-consensus", git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-frame-benchmarking = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-frame-system = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-grandpa = { package = "sc-finality-grandpa", git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-grandpa_primitives = { package = "sp-finality-grandpa", git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-inherents = { package = "sp-inherents", git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-pallet-staking = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-pallet-balances = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-pallet-transaction-payment = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sc-chain-spec = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sc-cli = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sc-client-api = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sc-consensus = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sc-executor = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sc-network = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sc-tracing = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sc-transaction-pool = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sc-service = { git = "https://github.com/paritytech/substrate", default-features = false, features = [ "wasmtime" ] , branch = "polkadot-v0.9.27" }
-sp-arithmetic = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-blockchain = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-core = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-keyring = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-runtime = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-state-machine = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-substrate-test-client = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
+sp-authority-discovery = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sc-authority-discovery = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+babe = { package = "sc-consensus-babe", git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+babe-primitives = { package = "sp-consensus-babe", git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+consensus_common = { package = "sp-consensus", git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+frame-benchmarking = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+frame-system = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+grandpa = { package = "sc-finality-grandpa", git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+grandpa_primitives = { package = "sp-finality-grandpa", git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+inherents = { package = "sp-inherents", git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+pallet-staking = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+pallet-balances = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+pallet-transaction-payment = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sc-chain-spec = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sc-cli = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sc-client-api = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sc-consensus = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sc-executor = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sc-network = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sc-tracing = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sc-transaction-pool = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sc-service = { git = "https://github.com/zycon91/substrate", default-features = false, features = [ "wasmtime" ] , branch = "test-temp" }
+sp-arithmetic = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sp-blockchain = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sp-core = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sp-keyring = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sp-runtime = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sp-state-machine = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+substrate-test-client = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
 
 [dev-dependencies]
-pallet-balances = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
+pallet-balances = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
 serde_json = "1.0.81"
-substrate-test-utils = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
+substrate-test-utils = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
 tokio = { version = "1.18.2", features = ["macros"] }
 
 [features]
