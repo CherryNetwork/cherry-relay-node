@@ -14,20 +14,20 @@ polkadot-primitives = { path = "../../../primitives" }
 polkadot-node-subsystem = { path = "../../subsystem" }
 
 # Substrate dependencies
-substrate-test-client = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sc-service = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sc-block-builder = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sc-consensus = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-blockchain = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-runtime = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-inherents = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-core = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-api = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-timestamp = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-consensus = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-consensus-babe = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-state-machine = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+substrate-test-client = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sc-service = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sc-block-builder = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sc-consensus = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-blockchain = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-runtime = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-inherents = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-core = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-api = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-timestamp = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-consensus = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-consensus-babe = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-state-machine = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
 
 [dev-dependencies]
-sp-keyring = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sp-keyring = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
 futures = "0.3.21"

@@ -14,29 +14,29 @@ serde = { version = "1.0.137", features = [ "derive" ], optional = true }
 derive_more = "0.99.17"
 bitflags = "1.3.2"
 
-sp-api = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
-inherents = { package = "sp-inherents", git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
-sp-std = { package = "sp-std", git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
-sp-io = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
-sp-runtime = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
-sp-session = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
-sp-staking = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
-sp-core = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
-sp-keystore = { git = "https://github.com/zycon91/substrate", optional = true , branch = "test-temp" }
-sp-application-crypto = { git = "https://github.com/zycon91/substrate", default-features = false, optional = true , branch = "test-temp" }
-sp-tracing = { git = "https://github.com/zycon91/substrate", default-features = false, optional = true , branch = "test-temp" }
+sp-api = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+inherents = { package = "sp-inherents", git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+sp-std = { package = "sp-std", git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+sp-io = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+sp-runtime = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+sp-session = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+sp-staking = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+sp-core = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+sp-keystore = { git = "https://github.com/zycon91/substrate", optional = true , branch = "temp-relay" }
+sp-application-crypto = { git = "https://github.com/zycon91/substrate", default-features = false, optional = true , branch = "temp-relay" }
+sp-tracing = { git = "https://github.com/zycon91/substrate", default-features = false, optional = true , branch = "temp-relay" }
 
-pallet-authority-discovery = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
-pallet-authorship = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
-pallet-balances = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
-pallet-babe = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
-pallet-session = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
-pallet-staking = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
-pallet-timestamp = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
-pallet-vesting = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
-frame-benchmarking = { git = "https://github.com/zycon91/substrate", default-features = false, optional = true , branch = "test-temp" }
-frame-support = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
-frame-system = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
+pallet-authority-discovery = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+pallet-authorship = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+pallet-balances = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+pallet-babe = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+pallet-session = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+pallet-staking = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+pallet-timestamp = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+pallet-vesting = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+frame-benchmarking = { git = "https://github.com/zycon91/substrate", default-features = false, optional = true , branch = "temp-relay" }
+frame-support = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+frame-system = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
 
 xcm = { package = "xcm", path = "../../xcm", default-features = false }
 xcm-executor = { package = "xcm-executor", path = "../../xcm/xcm-executor", default-features = false }
@@ -50,11 +50,11 @@ polkadot-runtime-metrics = { path = "../metrics", default-features = false}
 [dev-dependencies]
 futures = "0.3.21"
 hex-literal = "0.3.4"
-keyring = { package = "sp-keyring", git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-frame-support-test = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sc-keystore = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+keyring = { package = "sp-keyring", git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+frame-support-test = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sc-keystore = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
 test-helpers = { package = "polkadot-primitives-test-helpers", path = "../../primitives/test-helpers"}
-sp-tracing = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sp-tracing = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
 thousands = "0.2.0"
 assert_matches = "1"
 

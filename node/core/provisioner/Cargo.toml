@@ -18,8 +18,8 @@ rand = "0.8.5"
 fatality = "0.0.6"
 
 [dev-dependencies]
-sp-application-crypto = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-keystore = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sp-application-crypto = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-keystore = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
 polkadot-node-subsystem-test-helpers = { path = "../../subsystem-test-helpers" }
 test-helpers = { package = "polkadot-primitives-test-helpers", path = "../../../primitives/test-helpers" }
 

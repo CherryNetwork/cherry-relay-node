@@ -7,11 +7,11 @@ edition = "2021"
 [dependencies]
 smallvec = "1.8.0"
 
-frame-support = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
+frame-support = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
 primitives = { package = "polkadot-primitives", path = "../../../primitives", default-features = false }
 runtime-common = { package = "polkadot-runtime-common", path = "../../common", default-features = false }
-sp-runtime = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
-sp-staking = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
+sp-runtime = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+sp-staking = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
 
 [features]
 default = ["std"]

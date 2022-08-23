@@ -10,21 +10,21 @@ targets = ["x86_64-unknown-linux-gnu"]
 [dependencies]
 codec = { package = "parity-scale-codec", version = "3.0.0", default-features = false }
 scale-info = { version = "2.1.2", default-features = false, features = ["derive"] }
-frame-support = { default-features = false, git = "https://github.com/zycon91/substrate" , branch = "test-temp" }
-frame-system = { default-features = false, git = "https://github.com/zycon91/substrate" , branch = "test-temp" }
-sp-runtime = { default-features = false, git = "https://github.com/zycon91/substrate" , branch = "test-temp" }
-sp-std = { default-features = false, git = "https://github.com/zycon91/substrate" , branch = "test-temp" }
+frame-support = { default-features = false, git = "https://github.com/zycon91/substrate" , branch = "temp-relay" }
+frame-system = { default-features = false, git = "https://github.com/zycon91/substrate" , branch = "temp-relay" }
+sp-runtime = { default-features = false, git = "https://github.com/zycon91/substrate" , branch = "temp-relay" }
+sp-std = { default-features = false, git = "https://github.com/zycon91/substrate" , branch = "temp-relay" }
 xcm-executor = { path = "../xcm-executor", default-features = false, features = ["runtime-benchmarks"] }
-frame-benchmarking = { default-features = false, git = "https://github.com/zycon91/substrate" , branch = "test-temp" }
+frame-benchmarking = { default-features = false, git = "https://github.com/zycon91/substrate" , branch = "temp-relay" }
 xcm = { path = "..", default-features = false, features = ["runtime-benchmarks"] }
 log = "0.4.17"
 
 [dev-dependencies]
-pallet-balances = { git = "https://github.com/zycon91/substrate" , branch = "test-temp" }
-pallet-assets = { git = "https://github.com/zycon91/substrate" , branch = "test-temp" }
-sp-core = { git = "https://github.com/zycon91/substrate" , branch = "test-temp" }
-sp-io = { git = "https://github.com/zycon91/substrate" , branch = "test-temp" }
-sp-tracing = { git = "https://github.com/zycon91/substrate" , branch = "test-temp" }
+pallet-balances = { git = "https://github.com/zycon91/substrate" , branch = "temp-relay" }
+pallet-assets = { git = "https://github.com/zycon91/substrate" , branch = "temp-relay" }
+sp-core = { git = "https://github.com/zycon91/substrate" , branch = "temp-relay" }
+sp-io = { git = "https://github.com/zycon91/substrate" , branch = "temp-relay" }
+sp-tracing = { git = "https://github.com/zycon91/substrate" , branch = "temp-relay" }
 xcm-builder = { path = "../xcm-builder" }
 xcm = { path = ".." }
 # temp

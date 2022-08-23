@@ -6,59 +6,59 @@ edition = "2021"
 
 [dependencies]
 # Substrate Client
-sc-authority-discovery = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-babe = { package = "sc-consensus-babe", git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-beefy-primitives = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-beefy-gadget = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-grandpa = { package = "sc-finality-grandpa", git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sc-block-builder = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sc-chain-spec = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sc-client-api = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sc-client-db = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sc-consensus-uncles = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sc-consensus = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sc-consensus-slots = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sc-executor = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sc-network = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sc-transaction-pool = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sc-sync-state-rpc = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sc-keystore = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sc-basic-authorship = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sc-offchain = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sc-sysinfo = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-service = { package = "sc-service", git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
-telemetry = { package = "sc-telemetry", git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sc-authority-discovery = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+babe = { package = "sc-consensus-babe", git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+beefy-primitives = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+beefy-gadget = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+grandpa = { package = "sc-finality-grandpa", git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sc-block-builder = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sc-chain-spec = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sc-client-api = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sc-client-db = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sc-consensus-uncles = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sc-consensus = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sc-consensus-slots = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sc-executor = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sc-network = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sc-transaction-pool = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sc-sync-state-rpc = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sc-keystore = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sc-basic-authorship = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sc-offchain = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sc-sysinfo = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+service = { package = "sc-service", git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+telemetry = { package = "sc-telemetry", git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
 
 # Substrate Primitives
-sp-authority-discovery = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-consensus_common = { package = "sp-consensus", git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-grandpa_primitives = { package = "sp-finality-grandpa", git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-inherents = { package = "sp-inherents", git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-api = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-block-builder = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-blockchain = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-core = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-io = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-keystore = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-offchain = { package = "sp-offchain", git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-runtime = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-session = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-storage = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-transaction-pool = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-trie = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-timestamp = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-consensus-babe = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-state-machine = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sp-authority-discovery = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+consensus_common = { package = "sp-consensus", git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+grandpa_primitives = { package = "sp-finality-grandpa", git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+inherents = { package = "sp-inherents", git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-api = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-block-builder = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-blockchain = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-core = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-io = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-keystore = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-offchain = { package = "sp-offchain", git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-runtime = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-session = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-storage = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-transaction-pool = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-trie = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-timestamp = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-consensus-babe = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-state-machine = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
 
 # Substrate Pallets
-pallet-babe = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-pallet-im-online = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-pallet-staking = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-pallet-transaction-payment-rpc-runtime-api = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+pallet-babe = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+pallet-im-online = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+pallet-staking = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+pallet-transaction-payment-rpc-runtime-api = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
 
 # Substrate Other
-frame-system-rpc-runtime-api = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-prometheus-endpoint = { package = "substrate-prometheus-endpoint", git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+frame-system-rpc-runtime-api = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+prometheus-endpoint = { package = "substrate-prometheus-endpoint", git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
 
 # External Crates
 futures = "0.3.21"

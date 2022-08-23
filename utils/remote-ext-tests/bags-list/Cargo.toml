@@ -12,10 +12,10 @@ polkadot-runtime-constants = { path = "../../../runtime/polkadot/constants" }
 kusama-runtime-constants = { path = "../../../runtime/kusama/constants" }
 westend-runtime-constants = { path = "../../../runtime/westend/constants" }
 
-pallet-bags-list-remote-tests = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-tracing = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-frame-system = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-core = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+pallet-bags-list-remote-tests = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-tracing = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+frame-system = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-core = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
 
 clap = { version = "3.1", features = ["derive"] }
 log = "0.4.17"

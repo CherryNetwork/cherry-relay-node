@@ -12,11 +12,11 @@ parking_lot = "0.12.0"
 polkadot-node-subsystem = { path = "../subsystem" }
 polkadot-node-subsystem-util = { path = "../subsystem-util" }
 polkadot-primitives = { path = "../../primitives" }
-sp-core = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-keystore = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sc-keystore = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-keyring = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-application-crypto = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sp-core = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-keystore = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sc-keystore = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-keyring = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-application-crypto = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
 
 [dev-dependencies]
 polkadot-overseer = { path = "../overseer" }

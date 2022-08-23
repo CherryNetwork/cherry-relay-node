@@ -18,20 +18,20 @@ codec = { package = "parity-scale-codec", version = "3.0.0", default-features = 
 ] }
 log = { version = "0.4.14", default-features = false }
 scale-info = { version = "2.0.0", default-features = false, features = ["derive"] }
-frame-benchmarking = { git = "https://github.com/zycon91/substrate", default-features = false, branch = "test-temp", optional = true }
-frame-support = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
-frame-system = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
-sp-core = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
-sp-io = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
-sp-npos-elections = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
-sp-runtime = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
-sp-std = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
+frame-benchmarking = { git = "https://github.com/zycon91/substrate", default-features = false, branch = "temp-relay", optional = true }
+frame-support = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+frame-system = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+sp-core = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+sp-io = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+sp-npos-elections = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+sp-runtime = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+sp-std = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
 
 [dev-dependencies]
-pallet-balances = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-core = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-tracing = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-substrate-test-utils = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+pallet-balances = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-core = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-tracing = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+substrate-test-utils = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
 
 [features]
 default = ["std"]

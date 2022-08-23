@@ -6,20 +6,20 @@ description = "Integration tests for the XCM Executor"
 version = "0.9.27"
 
 [dependencies]
-frame-support = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
-frame-system = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+frame-support = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+frame-system = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
 futures = "0.3.21"
 pallet-xcm = { path = "../../pallet-xcm" }
 polkadot-test-client = { path = "../../../node/test/client" }
 polkadot-test-runtime = { path = "../../../runtime/test-runtime" }
 polkadot-test-service = { path = "../../../node/test/service" }
-sp-consensus = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-keyring = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-runtime = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
-sp-state-machine = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sp-consensus = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-keyring = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-runtime = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+sp-state-machine = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
 xcm = { path = "../..", default-features = false }
 xcm-executor = { path = ".." }
-sp-tracing = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sp-tracing = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
 
 [features]
 default = ["std"]

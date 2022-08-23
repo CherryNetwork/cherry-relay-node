@@ -5,37 +5,37 @@ authors = ["Parity Technologies <admin@parity.io>"]
 edition = "2021"
 
 [dependencies]
-frame-benchmarking = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-frame-benchmarking-cli = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-pallet-transaction-payment = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-pallet-transaction-payment-rpc-runtime-api = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-frame-system = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-frame-system-rpc-runtime-api = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+frame-benchmarking = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+frame-benchmarking-cli = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+pallet-transaction-payment = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+pallet-transaction-payment-rpc-runtime-api = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+frame-system = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+frame-system-rpc-runtime-api = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
 
-sp-consensus = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-storage = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-runtime = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-blockchain = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-api = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-core = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-keyring = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-inherents = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-timestamp = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-session = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-authority-discovery = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-finality-grandpa = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-consensus-babe = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-transaction-pool = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-offchain = { package = "sp-offchain", git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-block-builder = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-mmr-primitives = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
+sp-consensus = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-storage = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-runtime = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-blockchain = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-api = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-core = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-keyring = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-inherents = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-timestamp = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-session = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-authority-discovery = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-finality-grandpa = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-consensus-babe = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-transaction-pool = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-offchain = { package = "sp-offchain", git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-block-builder = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-mmr-primitives = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
 
-sc-consensus = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sc-executor = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sc-client-api = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sc-service = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
+sc-consensus = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sc-executor = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sc-client-api = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sc-service = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
 
-beefy-primitives = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+beefy-primitives = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
 
 # Polkadot Runtimes
 polkadot-runtime = { path = "../../runtime/polkadot", optional = true }

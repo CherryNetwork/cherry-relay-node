@@ -12,8 +12,8 @@ lazy_static = "1.4"
 parking_lot = "0.12.0"
 polkadot-primitives = { path = "../../primitives" }
 polkadot-node-primitives = { path = "../primitives" }
-sc-network = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-core = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sc-network = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-core = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
 thiserror = "1.0.31"
 log = "0.4.17"
 parity-scale-codec = { version = "3.1.5", default-features = false }

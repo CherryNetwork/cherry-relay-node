@@ -9,14 +9,14 @@ version = "0.9.27"
 impl-trait-for-tuples = "0.2.2"
 parity-scale-codec = { version = "3.1.5", default-features = false, features = ["derive"] }
 xcm = { path = "..", default-features = false }
-sp-std = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
-sp-io = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
-sp-arithmetic = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
-sp-core = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
-sp-runtime = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
-frame-support = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
+sp-std = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+sp-io = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+sp-arithmetic = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+sp-core = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+sp-runtime = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+frame-support = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
 log = { version = "0.4.17", default-features = false }
-frame-benchmarking = { git = "https://github.com/zycon91/substrate", default-features = false, optional = true , branch = "test-temp" }
+frame-benchmarking = { git = "https://github.com/zycon91/substrate", default-features = false, optional = true , branch = "temp-relay" }
 
 [features]
 default = ["std"]

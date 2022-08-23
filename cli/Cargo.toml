@@ -25,22 +25,22 @@ polkadot-client = { path = "../node/client", optional = true }
 polkadot-node-core-pvf = { path = "../node/core/pvf", optional = true }
 polkadot-performance-test = { path = "../node/test/performance-test", optional = true }
 
-sp-core = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-sp-keyring = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
-frame-benchmarking-cli = { git = "https://github.com/zycon91/substrate", optional = true , branch = "test-temp" }
-try-runtime-cli = { git = "https://github.com/zycon91/substrate", optional = true , branch = "test-temp" }
-sc-cli = { git = "https://github.com/zycon91/substrate", optional = true , branch = "test-temp" }
-sc-service = { git = "https://github.com/zycon91/substrate", optional = true , branch = "test-temp" }
+sp-core = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-keyring = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+frame-benchmarking-cli = { git = "https://github.com/zycon91/substrate", optional = true , branch = "temp-relay" }
+try-runtime-cli = { git = "https://github.com/zycon91/substrate", optional = true , branch = "temp-relay" }
+sc-cli = { git = "https://github.com/zycon91/substrate", optional = true , branch = "temp-relay" }
+sc-service = { git = "https://github.com/zycon91/substrate", optional = true , branch = "temp-relay" }
 polkadot-node-metrics = { path = "../node/metrics" }
-sc-tracing = { git = "https://github.com/zycon91/substrate", optional = true , branch = "test-temp" }
-sc-sysinfo = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+sc-tracing = { git = "https://github.com/zycon91/substrate", optional = true , branch = "temp-relay" }
+sc-sysinfo = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
 
 # this crate is used only to enable `trie-memory-tracker` feature
 # see https://github.com/paritytech/substrate/pull/6745
-sp-trie = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "test-temp" }
+sp-trie = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
 
 [build-dependencies]
-substrate-build-script-utils = { git = "https://github.com/zycon91/substrate", branch = "test-temp" }
+substrate-build-script-utils = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
 
 [features]
 default = ["wasmtime", "db", "cli", "hostperfcheck", "full-node", "trie-memory-tracker", "polkadot-native"]
