@@ -42,6 +42,7 @@ pallet-bags-list = { git = "https://github.com/zycon91/substrate", default-featu
 pallet-balances = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
 pallet-bounties = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
 pallet-child-bounties = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+pallet-council = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
 pallet-transaction-payment = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
 pallet-transaction-payment-rpc-runtime-api = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
 pallet-collective = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
@@ -130,6 +131,7 @@ std = [
 	"pallet-balances/std",
 	"pallet-bounties/std",
 	"pallet-child-bounties/std",
+	"pallet-council/std",
 	"pallet-transaction-payment/std",
 	"pallet-transaction-payment-rpc-runtime-api/std",
 	"pallet-collective/std",
