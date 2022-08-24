@@ -53,7 +53,7 @@ use frame_support::{
 	construct_runtime, parameter_types,
 	traits::{
 		ConstU32, Contains, EitherOfDiverse, InstanceFilter, KeyOwnerProofSystem, LockIdentifier,
-		PrivilegeCmp,
+		PrivilegeCmp, ConstU128,
 	},
 	weights::ConstantMultiplier,
 	PalletId, RuntimeDebug,
@@ -231,6 +231,31 @@ impl pallet_scheduler::Config for Runtime {
 	type OriginPrivilegeCmp = OriginPrivilegeCmp;
 	type PreimageProvider = Preimage;
 	type NoPreimagePostponement = NoPreimagePostponement;
+}
+
+parameter_types! {
+	pub const AssetDeposit: Balance = 100 * DOLLARS;
+	pub const ApprovalDeposit: Balance = 1 * DOLLARS;
+	pub const StringLimit: u32 = 50;
+	pub const MetadataDepositBase: Balance = 10 * DOLLARS;
+	pub const MetadataDepositPerByte: Balance = 1 * DOLLARS;
+}
+
+impl pallet_assets::Config for Runtime {
+	type Event = Event;
+	type Balance = u64;
+	type AssetId = u32;
+	type Currency = Balances;
+	type ForceOrigin = EnsureRoot<AccountId>;
+	type AssetDeposit = AssetDeposit;
+	type MetadataDepositBase = MetadataDepositBase;
+	type MetadataDepositPerByte = MetadataDepositPerByte;
+	type ApprovalDeposit = ApprovalDeposit;
+	type StringLimit = StringLimit;
+	type Freezer = ();
+	type Extra = ();
+	type WeightInfo = pallet_assets::weights::SubstrateWeight<Runtime>;
+	type AssetAccountDeposit = ConstU128<DOLLARS>;
 }
 
 parameter_types! {
@@ -777,7 +802,7 @@ parameter_types! {
 	pub const SpendPeriod: BlockNumber = 6 * DAYS;
 	pub const Burn: Permill = Permill::from_perthousand(2);
 	pub const TreasuryPalletId: PalletId = PalletId(*b"py/trsry");
-
+	pub const AllowedProposalPeriod: BlockNumber = 24 * DAYS;
 	pub const TipCountdown: BlockNumber = 1 * DAYS;
 	pub const TipFindersFee: Percent = Percent::from_percent(20);
 	pub const TipReportDepositBase: Balance = 100 * CENTS;
@@ -789,15 +814,13 @@ parameter_types! {
 	pub const MaxPeerDataEncodingSize: u32 = 1_000;
 }
 
-type ApproveOrigin = EitherOfDiverse<
-	EnsureRoot<AccountId>,
-	pallet_collective::EnsureProportionAtLeast<AccountId, CouncilCollective, 3, 5>,
->;
-
 impl pallet_treasury::Config for Runtime {
 	type PalletId = TreasuryPalletId;
 	type Currency = Balances;
-	type ApproveOrigin = ApproveOrigin;
+	type ApproveOrigin = EitherOfDiverse<
+		EnsureRoot<AccountId>,
+		pallet_collective::EnsureProportionAtLeast<AccountId, CouncilCollective, 3, 5>,
+	>;
 	type RejectOrigin = MoreThanHalfCouncil;
 	type Event = Event;
 	type OnSlash = Treasury;
@@ -810,7 +833,7 @@ impl pallet_treasury::Config for Runtime {
 	type MaxApprovals = MaxApprovals;
 	type WeightInfo = weights::pallet_treasury::WeightInfo<Runtime>;
 	type SpendFunds = Bounties;
-	type SpendOrigin = frame_support::traits::NeverEnsureOrigin<Balance>;
+	type AllowedProposalPeriod = AllowedProposalPeriod;
 }
 
 parameter_types! {
@@ -1569,6 +1592,7 @@ construct_runtime! {
 
 		// Pallet for sending XCM.
 		XcmPallet: pallet_xcm::{Pallet, Call, Storage, Event<T>, Origin, Config} = 99,
+		Assets: pallet_assets::{Pallet, Call, Storage, Event<T>} = 101,
 	}
 }
 

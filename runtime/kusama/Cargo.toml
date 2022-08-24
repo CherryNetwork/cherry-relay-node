@@ -36,6 +36,7 @@ tx-pool-api = { package = "sp-transaction-pool", git = "https://github.com/zycon
 block-builder-api = { package = "sp-block-builder", git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
 sp-npos-elections = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
 
+pallet-assets = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
 pallet-authority-discovery = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
 pallet-authorship = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
 pallet-babe = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
@@ -132,6 +133,7 @@ std = [
 	"pallet-authority-discovery/std",
 	"pallet-authorship/std",
 	"pallet-bags-list/std",
+	"pallet-assets/std",
 	"pallet-balances/std",
 	"pallet-bounties/std",
 	"pallet-child-bounties/std",
@@ -195,6 +197,7 @@ runtime-benchmarks = [
 	"frame-system/runtime-benchmarks",
 	"sp-runtime/runtime-benchmarks",
 	"pallet-babe/runtime-benchmarks",
+	"pallet-assets/runtime-benchmarks",
 	"pallet-balances/runtime-benchmarks",
 	"pallet-bounties/runtime-benchmarks",
 	"pallet-child-bounties/runtime-benchmarks",
@@ -240,6 +243,7 @@ try-runtime = [
 	"frame-system/try-runtime",
 	"pallet-authority-discovery/try-runtime",
 	"pallet-authorship/try-runtime",
+	"pallet-assets/try-runtime",
 	"pallet-balances/try-runtime",
 	"pallet-bags-list/try-runtime",
 	"pallet-bounties/try-runtime",

@@ -41,7 +41,7 @@ use frame_election_provider_support::{generate_solution_type, onchain, Sequentia
 use frame_support::{
 	construct_runtime, parameter_types,
 	traits::{
-		Contains, EitherOfDiverse, InstanceFilter, KeyOwnerProofSystem, LockIdentifier,
+		ConstU128, Contains, EitherOfDiverse, InstanceFilter, KeyOwnerProofSystem, LockIdentifier,
 		PrivilegeCmp,
 	},
 	weights::ConstantMultiplier,
@@ -148,50 +148,51 @@ impl Contains<Call> for BaseFilter {
 	fn contains(call: &Call) -> bool {
 		match call {
 			// These modules are all allowed to be called by transactions:
-			Call::Democracy(_) |
-			Call::Council(_) |
-			Call::TechnicalCommittee(_) |
-			Call::TechnicalMembership(_) |
-			Call::Treasury(_) |
-			Call::PhragmenElection(_) |
-			Call::System(_) |
-			Call::Scheduler(_) |
-			Call::Preimage(_) |
-			Call::Indices(_) |
-			Call::Babe(_) |
-			Call::Timestamp(_) |
-			Call::Balances(_) |
-			Call::Authorship(_) |
-			Call::Staking(_) |
-			Call::Session(_) |
-			Call::Grandpa(_) |
-			Call::ImOnline(_) |
-			Call::Utility(_) |
-			Call::Claims(_) |
-			Call::Vesting(_) |
-			Call::Identity(_) |
-			Call::Proxy(_) |
-			Call::Multisig(_) |
-			Call::Bounties(_) |
-			Call::ChildBounties(_) |
-			Call::Tips(_) |
-			Call::ElectionProviderMultiPhase(_) |
-			Call::Configuration(_) |
-			Call::ParasShared(_) |
-			Call::ParaInclusion(_) |
-			Call::Paras(_) |
-			Call::Initializer(_) |
-			Call::ParaInherent(_) |
-			Call::ParasDisputes(_) |
-			Call::Dmp(_) |
-			Call::Ump(_) |
-			Call::Hrmp(_) |
-			Call::Slots(_) |
-			Call::Registrar(_) |
-			Call::Auctions(_) |
-			Call::Crowdloan(_) |
-			Call::VoterList(_) |
-			Call::XcmPallet(_) => true,
+			Call::Democracy(_)
+			| Call::Council(_)
+			| Call::TechnicalCommittee(_)
+			| Call::TechnicalMembership(_)
+			| Call::Treasury(_)
+			| Call::PhragmenElection(_)
+			| Call::System(_)
+			| Call::Scheduler(_)
+			| Call::Preimage(_)
+			| Call::Indices(_)
+			| Call::Babe(_)
+			| Call::Timestamp(_)
+			| Call::Balances(_)
+			| Call::Authorship(_)
+			| Call::Staking(_)
+			| Call::Session(_)
+			| Call::Grandpa(_)
+			| Call::ImOnline(_)
+			| Call::Utility(_)
+			| Call::Claims(_)
+			| Call::Vesting(_)
+			| Call::Identity(_)
+			| Call::Proxy(_)
+			| Call::Multisig(_)
+			| Call::Bounties(_)
+			| Call::ChildBounties(_)
+			| Call::Tips(_)
+			| Call::ElectionProviderMultiPhase(_)
+			| Call::Configuration(_)
+			| Call::ParasShared(_)
+			| Call::ParaInclusion(_)
+			| Call::Paras(_)
+			| Call::Initializer(_)
+			| Call::ParaInherent(_)
+			| Call::ParasDisputes(_)
+			| Call::Dmp(_)
+			| Call::Ump(_)
+			| Call::Hrmp(_)
+			| Call::Slots(_)
+			| Call::Registrar(_)
+			| Call::Auctions(_)
+			| Call::Crowdloan(_)
+			| Call::VoterList(_)
+			| Call::Assets(_)
+			| Call::XcmPallet(_) => true,
 			// All pallets are allowed, but exhaustive match is defensive
 			// in the case of adding new pallets.
 		}
@@ -253,7 +254,7 @@ pub struct OriginPrivilegeCmp;
 impl PrivilegeCmp<OriginCaller> for OriginPrivilegeCmp {
 	fn cmp_privilege(left: &OriginCaller, right: &OriginCaller) -> Option<Ordering> {
 		if left == right {
-			return Some(Ordering::Equal)
+			return Some(Ordering::Equal);
 		}
 
 		match (left, right) {
@@ -809,13 +810,38 @@ impl pallet_membership::Config<pallet_membership::Instance1> for Runtime {
 }
 
 parameter_types! {
+	pub const AssetDeposit: Balance = 100 * DOLLARS;
+	pub const ApprovalDeposit: Balance = 1 * DOLLARS;
+	pub const StringLimit: u32 = 50;
+	pub const MetadataDepositBase: Balance = 10 * DOLLARS;
+	pub const MetadataDepositPerByte: Balance = 1 * DOLLARS;
+}
+
+impl pallet_assets::Config for Runtime {
+	type Event = Event;
+	type Balance = u64;
+	type AssetId = u32;
+	type Currency = Balances;
+	type ForceOrigin = EnsureRoot<AccountId>;
+	type AssetDeposit = AssetDeposit;
+	type MetadataDepositBase = MetadataDepositBase;
+	type MetadataDepositPerByte = MetadataDepositPerByte;
+	type ApprovalDeposit = ApprovalDeposit;
+	type StringLimit = StringLimit;
+	type Freezer = ();
+	type Extra = ();
+	type WeightInfo = pallet_assets::weights::SubstrateWeight<Runtime>;
+	type AssetAccountDeposit = ConstU128<DOLLARS>;
+}
+
+parameter_types! {
 	pub const ProposalBond: Permill = Permill::from_percent(5);
 	pub const ProposalBondMinimum: Balance = 100 * DOLLARS;
 	pub const ProposalBondMaximum: Balance = 500 * DOLLARS;
 	pub const SpendPeriod: BlockNumber = 24 * DAYS;
 	pub const Burn: Permill = Permill::from_percent(1);
 	pub const TreasuryPalletId: PalletId = PalletId(*b"py/trsry");
-
+	pub const AllowedProposalPeriod: BlockNumber = 24 * DAYS;
 	pub const TipCountdown: BlockNumber = 1 * DAYS;
 	pub const TipFindersFee: Percent = Percent::from_percent(20);
 	pub const TipReportDepositBase: Balance = 1 * DOLLARS;
@@ -827,15 +853,13 @@ parameter_types! {
 	pub const MaxPeerDataEncodingSize: u32 = 1_000;
 }
 
-type ApproveOrigin = EitherOfDiverse<
-	EnsureRoot<AccountId>,
-	pallet_collective::EnsureProportionAtLeast<AccountId, CouncilCollective, 3, 5>,
->;
-
 impl pallet_treasury::Config for Runtime {
 	type PalletId = TreasuryPalletId;
 	type Currency = Balances;
-	type ApproveOrigin = ApproveOrigin;
+	type ApproveOrigin = EitherOfDiverse<
+		EnsureRoot<AccountId>,
+		pallet_collective::EnsureProportionAtLeast<AccountId, CouncilCollective, 3, 5>,
+	>;
 	type RejectOrigin = MoreThanHalfCouncil;
 	type Event = Event;
 	type OnSlash = Treasury;
@@ -848,7 +872,7 @@ impl pallet_treasury::Config for Runtime {
 	type SpendFunds = Bounties;
 	type MaxApprovals = MaxApprovals;
 	type WeightInfo = weights::pallet_treasury::WeightInfo<Runtime>;
-	type SpendOrigin = frame_support::traits::NeverEnsureOrigin<Balance>;
+	type AllowedProposalPeriod = AllowedProposalPeriod;
 }
 
 parameter_types! {
@@ -1192,12 +1216,12 @@ impl InstanceFilter<Call> for ProxyType {
 			),
 			ProxyType::Governance => matches!(
 				c,
-				Call::Democracy(..) |
-					Call::Council(..) | Call::TechnicalCommittee(..) |
-					Call::PhragmenElection(..) |
-					Call::Treasury(..) | Call::Bounties(..) |
-					Call::Tips(..) | Call::Utility(..) |
-					Call::ChildBounties(..)
+				Call::Democracy(..)
+					| Call::Council(..) | Call::TechnicalCommittee(..)
+					| Call::PhragmenElection(..)
+					| Call::Treasury(..) | Call::Bounties(..)
+					| Call::Tips(..) | Call::Utility(..)
+					| Call::ChildBounties(..)
 			),
 			ProxyType::Staking => {
 				matches!(c, Call::Staking(..) | Call::Session(..) | Call::Utility(..))
@@ -1489,6 +1513,7 @@ construct_runtime! {
 
 		// Pallet for sending XCM.
 		XcmPallet: pallet_xcm::{Pallet, Call, Storage, Event<T>, Origin, Config} = 99,
+		Assets: pallet_assets::{Pallet, Call, Storage, Event<T>} = 101,
 	}
 }
 
@@ -2214,8 +2239,8 @@ mod multiplier_tests {
 	#[test]
 	fn multiplier_can_grow_from_zero() {
 		let minimum_multiplier = MinimumMultiplier::get();
-		let target = TargetBlockFullness::get() *
-			BlockWeights::get().get(DispatchClass::Normal).max_total.unwrap();
+		let target = TargetBlockFullness::get()
+			* BlockWeights::get().get(DispatchClass::Normal).max_total.unwrap();
 		// if the min is too small, then this will not change, and we are doomed forever.
 		// the weight is 1/100th bigger than target.
 		run_with_system_weight(target * 101 / 100, || {
