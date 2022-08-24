@@ -386,6 +386,11 @@ fn polkadot_staging_testnet_config_genesis(wasm_binary: &[u8]) -> polkadot::Gene
 		},
 		paras: Default::default(),
 		xcm_pallet: Default::default(),
+		assets: polkadot::AssetsConfig {
+			assets: vec![],
+			metadata: vec![],
+			accounts: vec![],
+		},
 	}
 }
 
@@ -768,6 +773,11 @@ fn kusama_staging_testnet_config_genesis(wasm_binary: &[u8]) -> kusama::GenesisC
 		paras: Default::default(),
 		xcm_pallet: Default::default(),
 		nomination_pools: Default::default(),
+		assets: kusama::AssetsConfig {
+			assets: vec![],
+			metadata: vec![],
+			accounts: vec![],
+		},
 	}
 }
 
@@ -1369,6 +1379,11 @@ pub fn polkadot_testnet_genesis(
 		},
 		paras: Default::default(),
 		xcm_pallet: Default::default(),
+		assets: polkadot::AssetsConfig {
+			assets: vec![],
+			metadata: vec![],
+			accounts: vec![],
+		},
 	}
 }
 
@@ -1457,6 +1472,11 @@ pub fn kusama_testnet_genesis(
 		paras: Default::default(),
 		xcm_pallet: Default::default(),
 		nomination_pools: Default::default(),
+		assets: kusama::AssetsConfig {
+			assets: vec![],
+			metadata: vec![],
+			accounts: vec![],
+		},
 	}
 }
 

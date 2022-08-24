@@ -1513,7 +1513,7 @@ construct_runtime! {
 
 		// Pallet for sending XCM.
 		XcmPallet: pallet_xcm::{Pallet, Call, Storage, Event<T>, Origin, Config} = 99,
-		Assets: pallet_assets::{Pallet, Call, Storage, Event<T>} = 101,
+		Assets: pallet_assets::{Pallet, Call, Storage, Event<T>, Config<T>} = 101,
 	}
 }
 
