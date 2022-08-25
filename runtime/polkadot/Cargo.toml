@@ -104,6 +104,7 @@ separator = "0.4.1"
 substrate-wasm-builder = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
 
 [features]
+dev = []
 default = ["std"]
 no_std = []
 only-staking = []

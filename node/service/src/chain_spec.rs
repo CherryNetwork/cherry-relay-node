@@ -1357,7 +1357,7 @@ pub fn polkadot_testnet_genesis(
 		},
 		phragmen_election: Default::default(),
 		// democracy: polkadot::DemocracyConfig::default(),
-		council: polkadot::CouncilConfig { members: vec![], phantom: Default::default() },
+		council: polkadot::CouncilConfig { members: endowed_accounts, phantom: Default::default() },
 		technical_committee: polkadot::TechnicalCommitteeConfig {
 			members: vec![],
 			phantom: Default::default(),

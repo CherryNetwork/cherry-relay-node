@@ -194,7 +194,8 @@ debug-assertions = true
 overflow-checks = true
 
 [features]
-runtime-benchmarks= [ "polkadot-cli/runtime-benchmarks" ]
+dev = []
+runtime-benchmarks = [ "polkadot-cli/runtime-benchmarks" ]
 try-runtime = [ "polkadot-cli/try-runtime" ]
 fast-runtime = [ "polkadot-cli/fast-runtime" ]
 runtime-metrics = [ "polkadot-cli/runtime-metrics" ]
