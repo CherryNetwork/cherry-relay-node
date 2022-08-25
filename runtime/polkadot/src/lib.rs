@@ -93,11 +93,11 @@ pub use sp_runtime::BuildStorage;
 use polkadot_runtime_constants::{currency::*, fee::*};
 
 /// Time constants for production
-#[cfg(not(feature = "dev"))]
+#[cfg(not(feature = "fast-runtime"))]
 use polkadot_runtime_constants::time_prod::*;
 
 /// Time constants for development
-#[cfg(feature = "dev")]
+#[cfg(feature = "fast-runtime")]
 use polkadot_runtime_constants::time_dev::*;
 
 // Weights used in the runtime.
@@ -751,7 +751,7 @@ parameter_types! {
 	// additional data per vote is 32 bytes (account id).
 	pub const VotingBondFactor: Balance = deposit(0, 32);
 	/// Weekly council elections; scaling up to monthly eventually.
-	pub TermDuration: BlockNumber = prod_or_fast!(7 * DAYS, 2 * MINUTES, "DOT_TERM_DURATION");
+	pub TermDuration: BlockNumber = TERM_DURATION;
 	/// 13 members initially, to be increased to 23 eventually.
 	pub const DesiredMembers: u32 = 13;
 	pub const DesiredRunnersUp: u32 = 20;
@@ -796,7 +796,7 @@ impl pallet_council::Config for Runtime {
 }
 
 parameter_types! {
-	pub const TechnicalMotionDuration: BlockNumber = 7 * DAYS;
+	pub const TechnicalMotionDuration: BlockNumber = TECHNICAL_MOTION_DURATION;
 	pub const TechnicalMaxProposals: u32 = 100;
 	pub const TechnicalMaxMembers: u32 = 100;
 }
@@ -853,13 +853,13 @@ impl pallet_assets::Config for Runtime {
 
 parameter_types! {
 	pub const ProposalBond: Permill = Permill::from_percent(5);
-	pub const ProposalBondMinimum: Balance = 100 * DOLLARS;
+	pub const ProposalBondMinimum: Balance = 1 * DOLLARS;
 	pub const ProposalBondMaximum: Balance = 500 * DOLLARS;
-	pub const SpendPeriod: BlockNumber = 24 * DAYS;
-	pub const Burn: Permill = Permill::from_percent(1);
+	pub const SpendPeriod: BlockNumber = SPEND_PERIOD;
+	pub const Burn: Permill = Permill::from_percent(50);
 	pub const TreasuryPalletId: PalletId = PalletId(*b"py/trsry");
-	pub const AllowedProposalPeriod: BlockNumber = 24 * DAYS;
-	pub const TipCountdown: BlockNumber = 1 * DAYS;
+	pub const AllowedProposalPeriod: BlockNumber = ALLOWED_PROPOSAL_PERIOD;
+	pub const TipCountdown: BlockNumber = TIP_COUNTDOWN;
 	pub const TipFindersFee: Percent = Percent::from_percent(20);
 	pub const TipReportDepositBase: Balance = 1 * DOLLARS;
 	pub const DataDepositPerByte: Balance = 1 * CENTS;
@@ -894,8 +894,8 @@ impl pallet_treasury::Config for Runtime {
 
 parameter_types! {
 	pub const BountyDepositBase: Balance = 1 * DOLLARS;
-	pub const BountyDepositPayoutDelay: BlockNumber = 8 * DAYS;
-	pub const BountyUpdatePeriod: BlockNumber = 90 * DAYS;
+	pub const BountyDepositPayoutDelay: BlockNumber = BOUNTY_DEPOSIT_PAYOUT_DELAY;
+	pub const BountyUpdatePeriod: BlockNumber = BOUNTY_UPDATE_PERIOD;
 	pub const MaximumReasonLength: u32 = 16384;
 	pub const CuratorDepositMultiplier: Permill = Permill::from_percent(50);
 	pub const CuratorDepositMin: Balance = 10 * DOLLARS;
