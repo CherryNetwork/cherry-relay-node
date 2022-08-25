@@ -363,7 +363,7 @@ fn polkadot_staging_testnet_config_genesis(wasm_binary: &[u8]) -> polkadot::Gene
 			..Default::default()
 		},
 		phragmen_election: Default::default(),
-		democracy: Default::default(),
+		// democracy: Default::default(),
 		council: polkadot::CouncilConfig { members: vec![], phantom: Default::default() },
 		technical_committee: polkadot::TechnicalCommitteeConfig {
 			members: vec![],
@@ -1356,7 +1356,7 @@ pub fn polkadot_testnet_genesis(
 			..Default::default()
 		},
 		phragmen_election: Default::default(),
-		democracy: polkadot::DemocracyConfig::default(),
+		// democracy: polkadot::DemocracyConfig::default(),
 		council: polkadot::CouncilConfig { members: vec![], phantom: Default::default() },
 		technical_committee: polkadot::TechnicalCommitteeConfig {
 			members: vec![],

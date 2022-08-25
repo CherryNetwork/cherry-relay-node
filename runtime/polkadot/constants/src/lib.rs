@@ -18,7 +18,7 @@
 
 pub mod weights;
 
-pub use self::currency::DOLLARS;
+// pub use self::currency::DOLLARS;
 
 /// Money matters.
 pub mod currency {
