@@ -41,7 +41,7 @@ pub mod currency {
 /// Time and blocks.
 pub mod time_dev {
 	use primitives::v2::{BlockNumber, Moment};
-	
+
 	pub const MILLISECS_PER_BLOCK: Moment = 6000;
 	pub const SECS_PER_BLOCK: Moment = MILLISECS_PER_BLOCK / 1000;
 	pub const SLOT_DURATION: Moment = MILLISECS_PER_BLOCK;

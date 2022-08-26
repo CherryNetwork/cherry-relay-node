@@ -386,11 +386,7 @@ fn polkadot_staging_testnet_config_genesis(wasm_binary: &[u8]) -> polkadot::Gene
 		},
 		paras: Default::default(),
 		xcm_pallet: Default::default(),
-		assets: polkadot::AssetsConfig {
-			assets: vec![],
-			metadata: vec![],
-			accounts: vec![],
-		},
+		assets: polkadot::AssetsConfig { assets: vec![], metadata: vec![], accounts: vec![] },
 	}
 }
 
@@ -773,11 +769,7 @@ fn kusama_staging_testnet_config_genesis(wasm_binary: &[u8]) -> kusama::GenesisC
 		paras: Default::default(),
 		xcm_pallet: Default::default(),
 		nomination_pools: Default::default(),
-		assets: kusama::AssetsConfig {
-			assets: vec![],
-			metadata: vec![],
-			accounts: vec![],
-		},
+		assets: kusama::AssetsConfig { assets: vec![], metadata: vec![], accounts: vec![] },
 	}
 }
 
@@ -1313,7 +1305,10 @@ pub fn polkadot_testnet_genesis(
 	_root_key: AccountId,
 	endowed_accounts: Option<Vec<AccountId>>,
 ) -> polkadot::GenesisConfig {
+	use sp_core::crypto::default_ss58_version;
+
 	let endowed_accounts: Vec<AccountId> = endowed_accounts.unwrap_or_else(testnet_accounts);
+	let num_endowed_accounts = endowed_accounts.len();
 
 	const ENDOWMENT: u128 = 1_000_000 * DOT;
 	const STASH: u128 = 100 * DOT;
@@ -1357,9 +1352,22 @@ pub fn polkadot_testnet_genesis(
 		},
 		phragmen_election: Default::default(),
 		// democracy: polkadot::DemocracyConfig::default(),
-		council: polkadot::CouncilConfig { members: endowed_accounts, phantom: Default::default() },
+		council: polkadot::CouncilConfig {
+			members: endowed_accounts
+				.iter()
+				.take((num_endowed_accounts + 1) / 2)
+				.cloned()
+				.map(|member| (member))
+				.collect(),
+			phantom: Default::default(),
+		},
 		technical_committee: polkadot::TechnicalCommitteeConfig {
-			members: vec![],
+			members: endowed_accounts
+				.iter()
+				.take((num_endowed_accounts + 1) / 2)
+				.cloned()
+				.map(|member| (member))
+				.collect(),
 			phantom: Default::default(),
 		},
 		technical_membership: Default::default(),
@@ -1379,11 +1387,7 @@ pub fn polkadot_testnet_genesis(
 		},
 		paras: Default::default(),
 		xcm_pallet: Default::default(),
-		assets: polkadot::AssetsConfig {
-			assets: vec![],
-			metadata: vec![],
-			accounts: vec![],
-		},
+		assets: polkadot::AssetsConfig { assets: vec![], metadata: vec![], accounts: vec![] },
 	}
 }
 
@@ -1472,11 +1476,7 @@ pub fn kusama_testnet_genesis(
 		paras: Default::default(),
 		xcm_pallet: Default::default(),
 		nomination_pools: Default::default(),
-		assets: kusama::AssetsConfig {
-			assets: vec![],
-			metadata: vec![],
-			accounts: vec![],
-		},
+		assets: kusama::AssetsConfig { assets: vec![], metadata: vec![], accounts: vec![] },
 	}
 }
 
