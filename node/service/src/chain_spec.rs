@@ -1302,7 +1302,7 @@ pub fn polkadot_testnet_genesis(
 		AssignmentId,
 		AuthorityDiscoveryId,
 	)>,
-	_root_key: AccountId,
+	root_key: AccountId,
 	endowed_accounts: Option<Vec<AccountId>>,
 ) -> polkadot::GenesisConfig {
 	use sp_core::crypto::default_ss58_version;
@@ -1387,7 +1387,9 @@ pub fn polkadot_testnet_genesis(
 		},
 		paras: Default::default(),
 		xcm_pallet: Default::default(),
-		assets: polkadot::AssetsConfig { assets: vec![], metadata: vec![], accounts: vec![] },
+		assets: polkadot::AssetsConfig { assets: vec![(999, root_key.clone(), true, 1)],
+			metadata: vec![(999, "Governance Token".into(), "tGov".into(), 0)],
+			accounts: vec![(999, root_key.clone(), 10)], },
 	}
 }
 

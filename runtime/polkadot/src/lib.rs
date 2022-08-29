@@ -350,7 +350,7 @@ impl pallet_indices::Config for Runtime {
 }
 
 parameter_types! {
-	pub const ExistentialDeposit: Balance = 1 * DOLLARS / 100;
+	pub const ExistentialDeposit: Balance = 1; // TODO: Change this to 1 CHER @zycon91
 	pub const MaxLocks: u32 = 50;
 	pub const MaxReserves: u32 = 50;
 }
