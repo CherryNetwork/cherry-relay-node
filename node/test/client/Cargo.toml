@@ -14,20 +14,20 @@ polkadot-primitives = { path = "../../../primitives" }
 polkadot-node-subsystem = { path = "../../subsystem" }
 
 # Substrate dependencies
-substrate-test-client = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sc-service = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sc-block-builder = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sc-consensus = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sp-blockchain = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sp-runtime = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sp-inherents = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sp-core = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sp-api = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sp-timestamp = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sp-consensus = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sp-consensus-babe = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sp-state-machine = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+substrate-test-client = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sc-service = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sc-block-builder = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sc-consensus = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-blockchain = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-runtime = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-inherents = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-api = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-timestamp = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-consensus = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-consensus-babe = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-state-machine = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 
 [dev-dependencies]
-sp-keyring = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 futures = "0.3.21"

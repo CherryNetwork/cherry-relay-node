@@ -7,26 +7,26 @@ edition = "2021"
 [dependencies]
 jsonrpsee = { version = "0.14.0", features = ["server"] }
 polkadot-primitives = { path = "../primitives" }
-sc-client-api = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sp-blockchain = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sp-keystore = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sp-runtime = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sp-api = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sp-consensus = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sp-consensus-babe = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sc-chain-spec = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sc-rpc = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sc-consensus-babe = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sc-consensus-babe-rpc = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sc-consensus-epochs = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sc-finality-grandpa = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sc-finality-grandpa-rpc = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sc-sync-state-rpc = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-txpool-api = { package = "sc-transaction-pool-api", git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-frame-rpc-system = { package = "substrate-frame-rpc-system", git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-pallet-mmr-rpc = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-pallet-transaction-payment-rpc = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sp-block-builder = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-beefy-gadget = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-beefy-gadget-rpc = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-substrate-state-trie-migration-rpc = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sc-client-api = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-blockchain = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-keystore = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-runtime = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-api = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-consensus = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-consensus-babe = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sc-chain-spec = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sc-rpc = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sc-consensus-babe = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sc-consensus-babe-rpc = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sc-consensus-epochs = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sc-finality-grandpa = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sc-finality-grandpa-rpc = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sc-sync-state-rpc = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+txpool-api = { package = "sc-transaction-pool-api", git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+frame-rpc-system = { package = "substrate-frame-rpc-system", git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+pallet-mmr-rpc = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+pallet-transaction-payment-rpc = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-block-builder = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+beefy-gadget = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+beefy-gadget-rpc = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+substrate-state-trie-migration-rpc = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }

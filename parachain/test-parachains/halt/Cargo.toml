@@ -9,7 +9,7 @@ build = "build.rs"
 [dependencies]
 
 [build-dependencies]
-substrate-wasm-builder = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+substrate-wasm-builder = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 
 [features]
 default = [ "std" ]

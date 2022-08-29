@@ -7,8 +7,8 @@ edition = "2021"
 [dependencies]
 clap = { version = "3.1", features = ["derive"] }
 
-generate-bags = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sp-io = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+generate-bags = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-io = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 
 westend-runtime = { path = "../../runtime/westend" }
 kusama-runtime = { path = "../../runtime/kusama" }

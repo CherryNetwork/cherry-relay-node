@@ -26,40 +26,40 @@ test-runtime-constants = { path = "../../../runtime/test-runtime/constants" }
 polkadot-runtime-parachains = { path = "../../../runtime/parachains" }
 
 # Substrate dependencies
-sp-authority-discovery = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sc-authority-discovery = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-babe = { package = "sc-consensus-babe", git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-babe-primitives = { package = "sp-consensus-babe", git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-consensus_common = { package = "sp-consensus", git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-frame-benchmarking = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-frame-system = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-grandpa = { package = "sc-finality-grandpa", git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-grandpa_primitives = { package = "sp-finality-grandpa", git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-inherents = { package = "sp-inherents", git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-pallet-staking = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-pallet-balances = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-pallet-transaction-payment = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sc-chain-spec = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sc-cli = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sc-client-api = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sc-consensus = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sc-executor = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sc-network = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sc-tracing = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sc-transaction-pool = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sc-service = { git = "https://github.com/zycon91/substrate", default-features = false, features = [ "wasmtime" ] , branch = "temp-relay" }
-sp-arithmetic = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sp-blockchain = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sp-core = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sp-keyring = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sp-runtime = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-sp-state-machine = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
-substrate-test-client = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+sp-authority-discovery = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sc-authority-discovery = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+babe = { package = "sc-consensus-babe", git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+babe-primitives = { package = "sp-consensus-babe", git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+consensus_common = { package = "sp-consensus", git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+frame-benchmarking = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+frame-system = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+grandpa = { package = "sc-finality-grandpa", git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+grandpa_primitives = { package = "sp-finality-grandpa", git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+inherents = { package = "sp-inherents", git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+pallet-staking = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+pallet-balances = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+pallet-transaction-payment = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sc-chain-spec = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sc-cli = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sc-client-api = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sc-consensus = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sc-executor = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sc-network = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sc-tracing = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sc-transaction-pool = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sc-service = { git = "https://github.com/CherryNetwork/substrate", default-features = false, features = [ "wasmtime" ] , branch = "cherry" }
+sp-arithmetic = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-blockchain = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-runtime = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-state-machine = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+substrate-test-client = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 
 [dev-dependencies]
-pallet-balances = { git = "https://github.com/zycon91/substrate", default-features = false , branch = "temp-relay" }
+pallet-balances = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 serde_json = "1.0.81"
-substrate-test-utils = { git = "https://github.com/zycon91/substrate", branch = "temp-relay" }
+substrate-test-utils = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 tokio = { version = "1.18.2", features = ["macros"] }
 
 [features]
