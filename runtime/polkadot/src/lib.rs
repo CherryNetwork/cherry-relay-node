@@ -780,22 +780,6 @@ impl pallet_elections_phragmen::Config for Runtime {
 
 
 parameter_types! {
-	pub const MaxIpfsOwned: u32 = 5;
-	pub const DefaultAssetLifetime: BlockNumber = DEFAULT_ASSET_LIFETIME;
-}
-
-impl pallet_ipfs::Config for Runtime {
-	type Event = Event;
-	type Currency = Balances;
-	type AuthorityId = pallet_ipfs::crypto::AuthorityId;
-	type Call = Call;
-	type MaxIpfsOwned = MaxIpfsOwned;
-	type DefaultAssetLifetime = DefaultAssetLifetime;
-	type WeightInfo = pallet_ipfs::weights::SubstrateWeight<Runtime>;
-}
-
-
-parameter_types! {
 	pub const CouncilMotionDuration: BlockNumber = COUNCIL_MOTION_DURATION;
 	pub const CouncilMaxProposals: u32 = 100;
 	pub const CouncilMaxMembers: u32 = 100;
@@ -811,6 +795,20 @@ impl pallet_council::Config for Runtime {
 	type DefaultVote = pallet_council::PrimeDefaultVote;
 	type WeightInfo = pallet_council::weights::SubstrateWeight<Runtime>;
 }
+
+parameter_types! {
+	pub const MaxIpfsOwned: u32 = 5;
+}
+
+impl pallet_ipfs::Config for Runtime {
+	type Event = Event;
+	type Currency = Balances;
+	type AuthorityId = pallet_ipfs::crypto::AuthorityId;
+	type Call = Call;
+	type MaxIpfsOwned = MaxIpfsOwned;
+	type WeightInfo = pallet_ipfs::weights::SubstrateWeight<Runtime>;
+}
+
 
 parameter_types! {
 	pub const TechnicalMotionDuration: BlockNumber = TECHNICAL_MOTION_DURATION;
@@ -1494,6 +1492,7 @@ construct_runtime! {
 		TechnicalMembership: pallet_membership::<Instance1>::{Pallet, Call, Storage, Event<T>, Config<T>} = 18,
 		Treasury: pallet_treasury::{Pallet, Call, Storage, Config, Event<T>} = 19,
 		Council: pallet_council::{Pallet, Call, Storage, Origin<T>, Event<T>, Config<T>} = 102,
+		Ipfs: pallet_ipfs::{Pallet, Storage, Event<T>} = 103,
 
 		// Claims. Usable initially.
 		Claims: claims::{Pallet, Call, Storage, Event<T>, Config<T>, ValidateUnsigned} = 24,
@@ -1548,7 +1547,6 @@ construct_runtime! {
 		// Pallet for sending XCM.
 		XcmPallet: pallet_xcm::{Pallet, Call, Storage, Event<T>, Origin, Config} = 99,
 		Assets: pallet_assets::{Pallet, Call, Storage, Event<T>, Config<T>} = 101,
-		Ipfs: pallet_ipfs::{Pallet, Call, Storage, Event<T>} = 102,
 	}
 }
 
