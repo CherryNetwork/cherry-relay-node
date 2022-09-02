@@ -778,6 +778,23 @@ impl pallet_elections_phragmen::Config for Runtime {
 	type WeightInfo = weights::pallet_elections_phragmen::WeightInfo<Runtime>;
 }
 
+
+parameter_types! {
+	pub const MaxIpfsOwned: u32 = 5;
+	pub const DefaultAssetLifetime: BlockNumber = DEFAULT_ASSET_LIFETIME;
+}
+
+impl pallet_ipfs::Config for Runtime {
+	type Event = Event;
+	type Currency = Balances;
+	type AuthorityId = pallet_ipfs::crypto::AuthorityId;
+	type Call = Call;
+	type MaxIpfsOwned = MaxIpfsOwned;
+	type DefaultAssetLifetime = DefaultAssetLifetime;
+	type WeightInfo = pallet_ipfs::weights::SubstrateWeight<Runtime>;
+}
+
+
 parameter_types! {
 	pub const CouncilMotionDuration: BlockNumber = COUNCIL_MOTION_DURATION;
 	pub const CouncilMaxProposals: u32 = 100;
@@ -1531,6 +1548,7 @@ construct_runtime! {
 		// Pallet for sending XCM.
 		XcmPallet: pallet_xcm::{Pallet, Call, Storage, Event<T>, Origin, Config} = 99,
 		Assets: pallet_assets::{Pallet, Call, Storage, Event<T>, Config<T>} = 101,
+		Ipfs: pallet_ipfs::{Pallet, Call, Storage, Event<T>} = 102,
 	}
 }
 
