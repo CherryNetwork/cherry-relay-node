@@ -192,6 +192,7 @@ impl Contains<Call> for BaseFilter {
 			Call::Crowdloan(_) |
 			Call::VoterList(_) |
 			Call::Assets(_) |
+			Call::Ipfs(_) |
 			Call::XcmPallet(_) => true,
 			// All pallets are allowed, but exhaustive match is defensive
 			// in the case of adding new pallets.
@@ -1490,7 +1491,7 @@ construct_runtime! {
 		TechnicalMembership: pallet_membership::<Instance1>::{Pallet, Call, Storage, Event<T>, Config<T>} = 18,
 		Treasury: pallet_treasury::{Pallet, Call, Storage, Config, Event<T>} = 19,
 		Council: pallet_council::{Pallet, Call, Storage, Origin<T>, Event<T>, Config<T>} = 102,
-		Ipfs: pallet_ipfs::{Pallet, Storage, Event<T>} = 103,
+		Ipfs: pallet_ipfs::{Pallet, Call, Storage, Event<T>} = 103,
 
 		// Claims. Usable initially.
 		Claims: claims::{Pallet, Call, Storage, Event<T>, Config<T>, ValidateUnsigned} = 24,
