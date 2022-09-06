@@ -778,7 +778,6 @@ impl pallet_elections_phragmen::Config for Runtime {
 	type WeightInfo = weights::pallet_elections_phragmen::WeightInfo<Runtime>;
 }
 
-
 parameter_types! {
 	pub const CouncilMotionDuration: BlockNumber = COUNCIL_MOTION_DURATION;
 	pub const CouncilMaxProposals: u32 = 100;
@@ -808,7 +807,6 @@ impl pallet_ipfs::Config for Runtime {
 	type MaxIpfsOwned = MaxIpfsOwned;
 	type WeightInfo = pallet_ipfs::weights::SubstrateWeight<Runtime>;
 }
-
 
 parameter_types! {
 	pub const TechnicalMotionDuration: BlockNumber = TECHNICAL_MOTION_DURATION;
