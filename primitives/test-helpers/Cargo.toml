@@ -5,8 +5,8 @@ authors = ["Parity Technologies <admin@parity.io>"]
 edition = "2021"
 
 [dependencies]
-sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
-sp-application-crypto = { package = "sp-application-crypto", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-sp-runtime = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-ipfs" }
+sp-application-crypto = { package = "sp-application-crypto", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-ipfs" }
+sp-runtime = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-ipfs" }
 polkadot-primitives = { path = "../" }
 rand = "0.8.5"

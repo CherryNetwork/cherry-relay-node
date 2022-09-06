@@ -15,14 +15,14 @@ polkadot-primitives = { path = "../../../primitives" }
 polkadot-node-subsystem-util = { path = "../../subsystem-util" }
 polkadot-overseer = { path = "../../overseer" }
 
-sp-keystore = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-keystore = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-ipfs" }
 
 [dev-dependencies]
-sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
-sp-runtime = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
-sc-keystore = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
-sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-ipfs" }
+sp-runtime = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-ipfs" }
+sc-keystore = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-ipfs" }
+sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-ipfs" }
 polkadot-node-subsystem-test-helpers = { path = "../../subsystem-test-helpers"}
 test-helpers = { package = "polkadot-primitives-test-helpers", path = "../../../primitives/test-helpers" }
-sp-application-crypto = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-application-crypto = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-ipfs" }
 futures-timer = "3.0.2"

@@ -9,14 +9,14 @@ version = "0.9.27"
 impl-trait-for-tuples = "0.2.2"
 parity-scale-codec = { version = "3.1.5", default-features = false, features = ["derive"] }
 xcm = { path = "..", default-features = false }
-sp-std = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-sp-io = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-sp-arithmetic = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-sp-core = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-sp-runtime = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-frame-support = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
+sp-std = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-ipfs" }
+sp-io = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-ipfs" }
+sp-arithmetic = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-ipfs" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-ipfs" }
+sp-runtime = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-ipfs" }
+frame-support = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-ipfs" }
 log = { version = "0.4.17", default-features = false }
-frame-benchmarking = { git = "https://github.com/CherryNetwork/substrate", default-features = false, optional = true , branch = "cherry" }
+frame-benchmarking = { git = "https://github.com/CherryNetwork/substrate", default-features = false, optional = true , branch = "cherry-ipfs" }
 
 [features]
 default = ["std"]

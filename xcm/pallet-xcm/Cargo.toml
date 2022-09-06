@@ -10,19 +10,19 @@ scale-info = { version = "2.1.2", default-features = false, features = ["derive"
 serde = { version = "1.0.137", optional = true, features = ["derive"] }
 log = { version = "0.4.17", default-features = false }
 
-sp-std = { git = "https://github.com/CherryNetwork/substrate", default-features = false, branch = "cherry" }
-sp-runtime = { git = "https://github.com/CherryNetwork/substrate", default-features = false, branch = "cherry" }
-sp-core = { git = "https://github.com/CherryNetwork/substrate", default-features = false, branch = "cherry" }
-frame-support = { git = "https://github.com/CherryNetwork/substrate", default-features = false, branch = "cherry" }
-frame-system = { git = "https://github.com/CherryNetwork/substrate", default-features = false, branch = "cherry" }
+sp-std = { git = "https://github.com/CherryNetwork/substrate", default-features = false, branch = "cherry-ipfs" }
+sp-runtime = { git = "https://github.com/CherryNetwork/substrate", default-features = false, branch = "cherry-ipfs" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", default-features = false, branch = "cherry-ipfs" }
+frame-support = { git = "https://github.com/CherryNetwork/substrate", default-features = false, branch = "cherry-ipfs" }
+frame-system = { git = "https://github.com/CherryNetwork/substrate", default-features = false, branch = "cherry-ipfs" }
 
 xcm = { path = "..", default-features = false }
 xcm-executor = { path = "../xcm-executor", default-features = false }
 
 [dev-dependencies]
-pallet-balances = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+pallet-balances = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-ipfs" }
 polkadot-runtime-parachains = { path = "../../runtime/parachains" }
-sp-io = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
+sp-io = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-ipfs" }
 xcm-builder = { path = "../xcm-builder" }
 polkadot-parachain = { path = "../../parachain" }
 

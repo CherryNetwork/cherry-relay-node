@@ -15,34 +15,34 @@ serde = { version = "1.0.137", default-features = false }
 serde_derive = { version = "1.0.117", optional = true }
 static_assertions = "1.1.0"
 
-beefy-primitives = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-sp-api = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-inherents = { package = "sp-inherents", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-sp-std = { package = "sp-std", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-sp-io = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-sp-runtime = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-sp-session = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-sp-staking = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-sp-core = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-sp-npos-elections = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-pallet-assets = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-pallet-authorship = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-pallet-balances = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-pallet-session = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-frame-support = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-pallet-staking = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-frame-system = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-pallet-timestamp = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-pallet-vesting = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-pallet-transaction-payment = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-pallet-treasury = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-pallet-election-provider-multi-phase = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-pallet-beefy-mmr = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-frame-election-provider-support = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-pallet-bags-list = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
+beefy-primitives = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-ipfs" }
+sp-api = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-ipfs" }
+inherents = { package = "sp-inherents", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-ipfs" }
+sp-std = { package = "sp-std", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-ipfs" }
+sp-io = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-ipfs" }
+sp-runtime = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-ipfs" }
+sp-session = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-ipfs" }
+sp-staking = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-ipfs" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-ipfs" }
+sp-npos-elections = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-ipfs" }
+pallet-assets = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-ipfs" }
+pallet-authorship = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-ipfs" }
+pallet-balances = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-ipfs" }
+pallet-session = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-ipfs" }
+frame-support = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-ipfs" }
+pallet-staking = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-ipfs" }
+frame-system = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-ipfs" }
+pallet-timestamp = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-ipfs" }
+pallet-vesting = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-ipfs" }
+pallet-transaction-payment = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-ipfs" }
+pallet-treasury = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-ipfs" }
+pallet-election-provider-multi-phase = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-ipfs" }
+pallet-beefy-mmr = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-ipfs" }
+frame-election-provider-support = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-ipfs" }
+pallet-bags-list = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-ipfs" }
 
-frame-benchmarking = { git = "https://github.com/CherryNetwork/substrate", default-features = false, optional = true , branch = "cherry" }
-pallet-babe = { git = "https://github.com/CherryNetwork/substrate", default-features = false, optional = true , branch = "cherry" }
+frame-benchmarking = { git = "https://github.com/CherryNetwork/substrate", default-features = false, optional = true , branch = "cherry-ipfs" }
+pallet-babe = { git = "https://github.com/CherryNetwork/substrate", default-features = false, optional = true , branch = "cherry-ipfs" }
 
 primitives = { package = "polkadot-primitives", path = "../../primitives", default-features = false }
 libsecp256k1 = { version = "0.7.0", default-features = false }
@@ -53,10 +53,10 @@ xcm = { path = "../../xcm", default-features = false }
 
 [dev-dependencies]
 hex-literal = "0.3.4"
-frame-support-test = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
-pallet-babe = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
-pallet-treasury = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
-sp-keystore = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+frame-support-test = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-ipfs" }
+pallet-babe = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-ipfs" }
+pallet-treasury = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-ipfs" }
+sp-keystore = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-ipfs" }
 trie-db = "0.23.1"
 serde_json = "1.0.81"
 libsecp256k1 = "0.7.0"

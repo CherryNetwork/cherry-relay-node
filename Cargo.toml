@@ -22,7 +22,7 @@ assert_cmd = "2.0.4"
 nix = "0.24.1"
 tempfile = "3.2.0"
 tokio = "1.18.2"
-remote-externalities = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+remote-externalities = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-ipfs" }
 polkadot-core-primitives = { path = "core-primitives" }
 
 [workspace]
