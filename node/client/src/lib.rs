@@ -47,24 +47,24 @@ pub type FullClient<RuntimeApi, ExecutorDispatch> =
 	feature = "rococo",
 	feature = "kusama",
 	feature = "westend",
-	feature = "polkadot"
+	feature = "cherry"
 )))]
 compile_error!("at least one runtime feature must be enabled");
 
 /// The native executor instance for Polkadot.
-#[cfg(feature = "polkadot")]
-pub struct PolkadotExecutorDispatch;
+#[cfg(feature = "cherry")]
+pub struct CherryExecutorDispatch;
 
-#[cfg(feature = "polkadot")]
-impl sc_executor::NativeExecutionDispatch for PolkadotExecutorDispatch {
+#[cfg(feature = "cherry")]
+impl sc_executor::NativeExecutionDispatch for CherryExecutorDispatch {
 	type ExtendHostFunctions = frame_benchmarking::benchmarking::HostFunctions;
 
 	fn dispatch(method: &str, data: &[u8]) -> Option<Vec<u8>> {
-		polkadot_runtime::api::dispatch(method, data)
+		cherry_runtime::api::dispatch(method, data)
 	}
 
 	fn native_version() -> sc_executor::NativeVersion {
-		polkadot_runtime::native_version()
+		cherry_runtime::native_version()
 	}
 }
 
@@ -251,10 +251,10 @@ macro_rules! with_client {
 		$code:expr
 	} => {
 		match $self {
-			#[cfg(feature = "polkadot")]
-			Client::Polkadot($client) => {
+			#[cfg(feature = "cherry")]
+			Client::Cherry($client) => {
 				#[allow(unused_imports)]
-				use polkadot_runtime as runtime;
+				use cherry_runtime as runtime;
 
 				$code
 			},
@@ -290,8 +290,8 @@ pub(crate) use with_client;
 /// See [`ExecuteWithClient`] for more information.
 #[derive(Clone)]
 pub enum Client {
-	#[cfg(feature = "polkadot")]
-	Polkadot(Arc<FullClient<polkadot_runtime::RuntimeApi, PolkadotExecutorDispatch>>),
+	#[cfg(feature = "cherry")]
+	Cherry(Arc<FullClient<cherry_runtime::RuntimeApi, CherryExecutorDispatch>>),
 	#[cfg(feature = "westend")]
 	Westend(Arc<FullClient<westend_runtime::RuntimeApi, WestendExecutorDispatch>>),
 	#[cfg(feature = "kusama")]

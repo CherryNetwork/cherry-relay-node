@@ -129,20 +129,20 @@ trait BenchmarkCallSigner<Call: Encode + Clone, Signer: Pair> {
 	) -> OpaqueExtrinsic;
 }
 
-#[cfg(feature = "polkadot")]
-impl BenchmarkCallSigner<polkadot_runtime::Call, sp_core::sr25519::Pair>
-	for FullClient<polkadot_runtime::RuntimeApi, PolkadotExecutorDispatch>
+#[cfg(feature = "cherry")]
+impl BenchmarkCallSigner<cherry_runtime::Call, sp_core::sr25519::Pair>
+	for FullClient<cherry_runtime::RuntimeApi, CherryExecutorDispatch>
 {
 	fn sign_call(
 		&self,
-		call: polkadot_runtime::Call,
+		call: cherry_runtime::Call,
 		nonce: u32,
 		current_block: u64,
 		period: u64,
 		genesis: H256,
 		acc: sp_core::sr25519::Pair,
 	) -> OpaqueExtrinsic {
-		use polkadot_runtime as runtime;
+		use cherry_runtime as runtime;
 
 		let extra: runtime::SignedExtra = (
 			frame_system::CheckNonZeroSender::<runtime::Runtime>::new(),

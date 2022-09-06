@@ -97,11 +97,11 @@ impl SubstrateCli for Cli {
 			name if name.starts_with("kusama-") && !name.ends_with(".json") =>
 				Err(format!("`{}` only supported with `kusama-native` feature enabled.", name))?,
 			"polkadot" => Box::new(service::chain_spec::polkadot_config()?),
-			#[cfg(feature = "polkadot-native")]
+			#[cfg(feature = "cherry-native")]
 			"polkadot-dev" | "dev" => Box::new(service::chain_spec::polkadot_development_config()?),
-			#[cfg(feature = "polkadot-native")]
+			#[cfg(feature = "cherry-native")]
 			"polkadot-local" => Box::new(service::chain_spec::polkadot_local_testnet_config()?),
-			#[cfg(feature = "polkadot-native")]
+			#[cfg(feature = "cherry-native")]
 			"polkadot-staging" => Box::new(service::chain_spec::polkadot_staging_testnet_config()?),
 			"rococo" => Box::new(service::chain_spec::rococo_config()?),
 			#[cfg(feature = "rococo-native")]
@@ -188,13 +188,13 @@ impl SubstrateCli for Cli {
 		)))]
 		let _ = spec;
 
-		#[cfg(feature = "polkadot-native")]
+		#[cfg(feature = "cherry-native")]
 		{
-			return &service::polkadot_runtime::VERSION
+			return &service::cherry_runtime::VERSION
 		}
 
-		#[cfg(not(feature = "polkadot-native"))]
-		panic!("No runtime feature (polkadot, kusama, westend, rococo) is enabled")
+		#[cfg(not(feature = "cherry-native"))]
+		panic!("No runtime feature (cherry, kusama, westend, rococo) is enabled")
 	}
 }
 
@@ -229,8 +229,8 @@ macro_rules! unwrap_client {
 		$code:expr
 	) => {
 		match $client.as_ref() {
-			#[cfg(feature = "polkadot-native")]
-			polkadot_client::Client::Polkadot($client) => $code,
+			#[cfg(feature = "cherry-native")]
+			polkadot_client::Client::Cherry($client) => $code,
 			#[cfg(feature = "westend-native")]
 			polkadot_client::Client::Westend($client) => $code,
 			#[cfg(feature = "kusama-native")]
@@ -586,15 +586,15 @@ pub fn run() -> Result<()> {
 					}
 
 					// else we assume it is polkadot.
-					#[cfg(feature = "polkadot-native")]
+					#[cfg(feature = "cherry-native")]
 					{
 						return Ok(runner.sync_run(|config| {
-							cmd.run::<service::polkadot_runtime::Block, service::PolkadotExecutorDispatch>(config)
+							cmd.run::<service::cherry_runtime::Block, service::CherryExecutorDispatch>(config)
 								.map_err(|e| Error::SubstrateCli(e))
 						})?)
 					}
 
-					#[cfg(not(feature = "polkadot-native"))]
+					#[cfg(not(feature = "cherry-native"))]
 					#[allow(unreachable_code)]
 					Err(service::Error::NoRuntime.into())
 				},
@@ -655,7 +655,7 @@ pub fn run() -> Result<()> {
 				})
 			}
 			// else we assume it is polkadot.
-			#[cfg(feature = "polkadot-native")]
+			#[cfg(feature = "cherry-native")]
 			{
 				return runner.async_run(|config| {
 					Ok((
@@ -667,8 +667,8 @@ pub fn run() -> Result<()> {
 					))
 				})
 			}
-			#[cfg(not(feature = "polkadot-native"))]
-			panic!("No runtime feature (polkadot, kusama, westend, rococo) is enabled")
+			#[cfg(not(feature = "cherry-native"))]
+			panic!("No runtime feature (cherry, kusama, westend, rococo) is enabled")
 		},
 		#[cfg(not(feature = "try-runtime"))]
 		Some(Subcommand::TryRuntime) => Err(Error::Other(

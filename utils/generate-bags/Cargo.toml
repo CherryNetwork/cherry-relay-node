@@ -12,4 +12,4 @@ sp-io = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" 
 
 westend-runtime = { path = "../../runtime/westend" }
 kusama-runtime = { path = "../../runtime/kusama" }
-polkadot-runtime = { path = "../../runtime/polkadot" }
+cherry-runtime = { path = "../../runtime/cherry" }

@@ -88,8 +88,8 @@ pub use polkadot_client::WestendExecutorDispatch;
 #[cfg(feature = "kusama-native")]
 pub use polkadot_client::KusamaExecutorDispatch;
 
-#[cfg(feature = "polkadot-native")]
-pub use polkadot_client::PolkadotExecutorDispatch;
+#[cfg(feature = "cherry-native")]
+pub use polkadot_client::CherryExecutorDispatch;
 
 pub use chain_spec::{KusamaChainSpec, PolkadotChainSpec, RococoChainSpec, WestendChainSpec};
 pub use consensus_common::{block_validation::Chain, Proposal, SelectChain};
@@ -118,8 +118,8 @@ pub use sp_runtime::{
 
 #[cfg(feature = "kusama-native")]
 pub use kusama_runtime;
-#[cfg(feature = "polkadot-native")]
-pub use polkadot_runtime;
+#[cfg(feature = "cherry-native")]
+pub use cherry_runtime;
 #[cfg(feature = "rococo-native")]
 pub use rococo_runtime;
 #[cfg(feature = "westend-native")]
@@ -1334,7 +1334,7 @@ pub fn new_chain_ops(
 
 	#[cfg(feature = "polkadot-native")]
 	{
-		return chain_ops!(config, jaeger_agent, telemetry_worker_handle; polkadot_runtime, PolkadotExecutorDispatch, Polkadot)
+		return chain_ops!(config, jaeger_agent, telemetry_worker_handle; cherry_runtime, PolkadotExecutorDispatch, Polkadot)
 	}
 	#[cfg(not(feature = "polkadot-native"))]
 	Err(Error::NoRuntime)
@@ -1424,7 +1424,7 @@ pub fn build_full(
 
 	#[cfg(feature = "polkadot-native")]
 	{
-		return new_full::<polkadot_runtime::RuntimeApi, PolkadotExecutorDispatch, _>(
+		return new_full::<cherry_runtime::RuntimeApi, PolkadotExecutorDispatch, _>(
 			config,
 			is_collator,
 			grandpa_pause,

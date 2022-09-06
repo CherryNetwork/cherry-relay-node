@@ -1,7 +1,6 @@
 [package]
-name = "polkadot-runtime-constants"
-version = "0.9.27"
-authors = ["Parity Technologies <admin@parity.io>"]
+name = "cherry-runtime-constants"
+version = "0.2.0-alpha"
 edition = "2021"
 
 [dependencies]

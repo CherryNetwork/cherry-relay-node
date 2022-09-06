@@ -90,15 +90,15 @@ pub use pallet_timestamp::Call as TimestampCall;
 pub use sp_runtime::BuildStorage;
 
 /// Constant values used within the runtime.
-use polkadot_runtime_constants::{currency::*, fee::*};
+use cherry_runtime_constants::{currency::*, fee::*};
 
 /// Time constants for production
 #[cfg(not(feature = "fast-runtime"))]
-use polkadot_runtime_constants::time_prod::*;
+use cherry_runtime_constants::time_prod::*;
 
 /// Time constants for development
 #[cfg(feature = "fast-runtime")]
-use polkadot_runtime_constants::time_dev::*;
+use cherry_runtime_constants::time_dev::*;
 
 // Weights used in the runtime.
 mod weights;
@@ -107,20 +107,20 @@ mod bag_thresholds;
 
 pub mod xcm_config;
 
-impl_runtime_weights!(polkadot_runtime_constants);
+impl_runtime_weights!(cherry_runtime_constants);
 
 // Make the WASM binary available.
 #[cfg(feature = "std")]
 include!(concat!(env!("OUT_DIR"), "/wasm_binary.rs"));
 
 // Polkadot version identifier;
-/// Runtime version (Polkadot).
+/// Runtime version (Cherry).
 #[sp_version::runtime_version]
 pub const VERSION: RuntimeVersion = RuntimeVersion {
-	spec_name: create_runtime_str!("polkadot"),
-	impl_name: create_runtime_str!("parity-polkadot"),
+	spec_name: create_runtime_str!("cherry"),
+	impl_name: create_runtime_str!("cherry"),
 	authoring_version: 0,
-	spec_version: 9270,
+	spec_version: 2,
 	impl_version: 0,
 	#[cfg(not(feature = "disable-runtime-api"))]
 	apis: RUNTIME_API_VERSIONS,
