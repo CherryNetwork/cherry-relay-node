@@ -20,10 +20,10 @@
 //! touched again. It can be reused to regenerate a wholly different
 //! quantity of bags, or if the existential deposit changes, etc.
 
+use cherry_runtime::Runtime as CherryRuntime;
 use clap::{ArgEnum, Parser};
 use generate_bags::generate_thresholds;
 use kusama_runtime::Runtime as KusamaRuntime;
-use polkadot_runtime::Runtime as PolkadotRuntime;
 use std::path::{Path, PathBuf};
 use westend_runtime::Runtime as WestendRuntime;
 
@@ -32,7 +32,7 @@ use westend_runtime::Runtime as WestendRuntime;
 enum Runtime {
 	Westend,
 	Kusama,
-	Polkadot,
+	Cherry,
 }
 
 impl Runtime {
@@ -42,7 +42,7 @@ impl Runtime {
 		match self {
 			Runtime::Westend => Box::new(generate_thresholds::<WestendRuntime>),
 			Runtime::Kusama => Box::new(generate_thresholds::<KusamaRuntime>),
-			Runtime::Polkadot => Box::new(generate_thresholds::<PolkadotRuntime>),
+			Runtime::Cherry => Box::new(generate_thresholds::<CherryRuntime>),
 		}
 	}
 }

@@ -17,6 +17,10 @@
 //! Polkadot chain configurations.
 
 use beefy_primitives::crypto::AuthorityId as BeefyId;
+#[cfg(feature = "cherry-native")]
+use cherry_runtime as cherry;
+#[cfg(feature = "cherry-native")]
+use cherry_runtime_constants::currency::DOLLARS as CHER;
 use grandpa::AuthorityId as GrandpaId;
 #[cfg(feature = "kusama-native")]
 use kusama_runtime as kusama;
@@ -25,10 +29,6 @@ use kusama_runtime_constants::currency::UNITS as KSM;
 use pallet_im_online::sr25519::AuthorityId as ImOnlineId;
 use pallet_staking::Forcing;
 use polkadot_primitives::v2::{AccountId, AccountPublic, AssignmentId, ValidatorId};
-#[cfg(feature = "cherry-native")]
-use cherry_runtime as cherry;
-#[cfg(feature = "cherry-native")]
-use cherry_runtime_constants::currency::DOLLARS as CHER;
 use sp_authority_discovery::AuthorityId as AuthorityDiscoveryId;
 use sp_consensus_babe::AuthorityId as BabeId;
 

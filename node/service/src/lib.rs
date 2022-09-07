@@ -116,10 +116,10 @@ pub use sp_runtime::{
 	},
 };
 
-#[cfg(feature = "kusama-native")]
-pub use kusama_runtime;
 #[cfg(feature = "cherry-native")]
 pub use cherry_runtime;
+#[cfg(feature = "kusama-native")]
+pub use kusama_runtime;
 #[cfg(feature = "rococo-native")]
 pub use rococo_runtime;
 #[cfg(feature = "westend-native")]
