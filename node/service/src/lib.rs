@@ -91,7 +91,7 @@ pub use polkadot_client::KusamaExecutorDispatch;
 #[cfg(feature = "cherry-native")]
 pub use polkadot_client::CherryExecutorDispatch;
 
-pub use chain_spec::{KusamaChainSpec, PolkadotChainSpec, RococoChainSpec, WestendChainSpec};
+pub use chain_spec::{KusamaChainSpec, CherryChainSpec, RococoChainSpec, WestendChainSpec};
 pub use consensus_common::{block_validation::Chain, Proposal, SelectChain};
 #[cfg(feature = "full-node")]
 pub use polkadot_client::{
@@ -244,7 +244,7 @@ pub enum Error {
 /// Can be called for a `Configuration` to identify which network the configuration targets.
 pub trait IdentifyVariant {
 	/// Returns if this is a configuration for the `Polkadot` network.
-	fn is_polkadot(&self) -> bool;
+	fn is_cherry(&self) -> bool;
 
 	/// Returns if this is a configuration for the `Kusama` network.
 	fn is_kusama(&self) -> bool;
@@ -266,8 +266,8 @@ pub trait IdentifyVariant {
 }
 
 impl IdentifyVariant for Box<dyn ChainSpec> {
-	fn is_polkadot(&self) -> bool {
-		self.id().starts_with("polkadot") || self.id().starts_with("dot")
+	fn is_cherry(&self) -> bool {
+		self.id().starts_with("cherry") || self.id().starts_with("cher")
 	}
 	fn is_kusama(&self) -> bool {
 		self.id().starts_with("kusama") || self.id().starts_with("ksm")
@@ -1332,11 +1332,11 @@ pub fn new_chain_ops(
 		return chain_ops!(config, jaeger_agent, telemetry_worker_handle; westend_runtime, WestendExecutorDispatch, Westend)
 	}
 
-	#[cfg(feature = "polkadot-native")]
+	#[cfg(feature = "cherry-native")]
 	{
-		return chain_ops!(config, jaeger_agent, telemetry_worker_handle; cherry_runtime, PolkadotExecutorDispatch, Polkadot)
+		return chain_ops!(config, jaeger_agent, telemetry_worker_handle; cherry_runtime, CherryExecutorDispatch, Cherry)
 	}
-	#[cfg(not(feature = "polkadot-native"))]
+	#[cfg(not(feature = "cherry-native"))]
 	Err(Error::NoRuntime)
 }
 
@@ -1422,9 +1422,9 @@ pub fn build_full(
 		.map(|full| full.with_client(Client::Westend))
 	}
 
-	#[cfg(feature = "polkadot-native")]
+	#[cfg(feature = "cherry-native")]
 	{
-		return new_full::<cherry_runtime::RuntimeApi, PolkadotExecutorDispatch, _>(
+		return new_full::<cherry_runtime::RuntimeApi, CherryExecutorDispatch, _>(
 			config,
 			is_collator,
 			grandpa_pause,
@@ -1435,16 +1435,16 @@ pub fn build_full(
 			overseer_enable_anyways,
 			overseer_gen,
 			overseer_message_channel_override.map(|capacity| {
-				gum::warn!("Channel capacity should _never_ be tampered with on polkadot!");
+				gum::warn!("Channel capacity should _never_ be tampered with on cherry!");
 				capacity
 			}),
 			malus_finality_delay,
 			hwbench,
 		)
-		.map(|full| full.with_client(Client::Polkadot))
+		.map(|full| full.with_client(Client::Cherry))
 	}
 
-	#[cfg(not(feature = "polkadot-native"))]
+	#[cfg(not(feature = "cherry-native"))]
 	Err(Error::NoRuntime)
 }
 

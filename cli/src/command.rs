@@ -77,11 +77,11 @@ impl SubstrateCli for Cli {
 	fn load_spec(&self, id: &str) -> std::result::Result<Box<dyn sc_service::ChainSpec>, String> {
 		let id = if id == "" {
 			let n = get_exec_name().unwrap_or_default();
-			["polkadot", "kusama", "westend", "rococo", "versi"]
+			["cherry", "kusama", "westend", "rococo", "versi"]
 				.iter()
 				.cloned()
 				.find(|&chain| n.starts_with(chain))
-				.unwrap_or("polkadot")
+				.unwrap_or("cherry")
 		} else {
 			id
 		};
@@ -96,13 +96,13 @@ impl SubstrateCli for Cli {
 			#[cfg(not(feature = "kusama-native"))]
 			name if name.starts_with("kusama-") && !name.ends_with(".json") =>
 				Err(format!("`{}` only supported with `kusama-native` feature enabled.", name))?,
-			"polkadot" => Box::new(service::chain_spec::polkadot_config()?),
+			"cherry" => Box::new(service::chain_spec::cherry_config()?),
 			#[cfg(feature = "cherry-native")]
-			"polkadot-dev" | "dev" => Box::new(service::chain_spec::polkadot_development_config()?),
+			"cherry-dev" | "dev" => Box::new(service::chain_spec::cherry_development_config()?),
 			#[cfg(feature = "cherry-native")]
-			"polkadot-local" => Box::new(service::chain_spec::polkadot_local_testnet_config()?),
+			"cherry-local" => Box::new(service::chain_spec::cherry_local_testnet_config()?),
 			#[cfg(feature = "cherry-native")]
-			"polkadot-staging" => Box::new(service::chain_spec::polkadot_staging_testnet_config()?),
+			"cherry-staging" => Box::new(service::chain_spec::cherry_staging_testnet_config()?),
 			"rococo" => Box::new(service::chain_spec::rococo_config()?),
 			#[cfg(feature = "rococo-native")]
 			"rococo-dev" => Box::new(service::chain_spec::rococo_development_config()?),
@@ -143,7 +143,7 @@ impl SubstrateCli for Cli {
 			path => {
 				let path = std::path::PathBuf::from(path);
 
-				let chain_spec = Box::new(service::PolkadotChainSpec::from_json_file(path.clone())?)
+				let chain_spec = Box::new(service::CherryChainSpec::from_json_file(path.clone())?)
 					as Box<dyn service::ChainSpec>;
 
 				// When `force_*` is given or the file name starts with the name of one of the known chains,
@@ -294,7 +294,7 @@ where
 
 	// Disallow BEEFY on production networks.
 	if cli.run.beefy &&
-		(chain_spec.is_polkadot() || chain_spec.is_kusama() || chain_spec.is_westend())
+		(chain_spec.is_cherry() || chain_spec.is_kusama() || chain_spec.is_westend())
 	{
 		return Err(Error::Other("BEEFY disallowed on production networks".to_string()))
 	}
@@ -659,7 +659,7 @@ pub fn run() -> Result<()> {
 			{
 				return runner.async_run(|config| {
 					Ok((
-						cmd.run::<service::polkadot_runtime::Block, service::PolkadotExecutorDispatch>(
+						cmd.run::<service::cherry_runtime::Block, service::CherryExecutorDispatch>(
 							config,
 						)
 						.map_err(Error::SubstrateCli),

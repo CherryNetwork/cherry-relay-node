@@ -77,14 +77,14 @@ pub struct Extensions {
 
 /// The `ChainSpec` parameterized for the polkadot runtime.
 #[cfg(feature = "cherry-native")]
-pub type PolkadotChainSpec = service::GenericChainSpec<cherry::GenesisConfig, Extensions>;
+pub type CherryChainSpec = service::GenericChainSpec<cherry::GenesisConfig, Extensions>;
 
 // Dummy chain spec, in case when we don't have the native runtime.
 pub type DummyChainSpec = service::GenericChainSpec<(), Extensions>;
 
 // Dummy chain spec, but that is fine when we don't have the native runtime.
 #[cfg(not(feature = "cherry-native"))]
-pub type PolkadotChainSpec = DummyChainSpec;
+pub type CherryChainSpec = DummyChainSpec;
 
 /// The `ChainSpec` parameterized for the kusama runtime.
 #[cfg(feature = "kusama-native")]
@@ -142,8 +142,8 @@ impl sp_runtime::BuildStorage for RococoGenesisExt {
 	}
 }
 
-pub fn polkadot_config() -> Result<PolkadotChainSpec, String> {
-	PolkadotChainSpec::from_json_bytes(&include_bytes!("../chain-specs/polkadot.json")[..])
+pub fn cherry_config() -> Result<CherryChainSpec, String> {
+	CherryChainSpec::from_json_bytes(&include_bytes!("../chain-specs/polkadot.json")[..])
 }
 
 pub fn kusama_config() -> Result<KusamaChainSpec, String> {
@@ -303,7 +303,7 @@ fn rococo_session_keys(
 }
 
 #[cfg(feature = "cherry-native")]
-fn polkadot_staging_testnet_config_genesis(wasm_binary: &[u8]) -> cherry::GenesisConfig {
+fn cherry_staging_testnet_config_genesis(wasm_binary: &[u8]) -> cherry::GenesisConfig {
 	// subkey inspect "$SECRET"
 	let endowed_accounts = vec![];
 
@@ -1072,7 +1072,7 @@ fn rococo_staging_testnet_config_genesis(wasm_binary: &[u8]) -> rococo_runtime::
 }
 
 /// Returns the properties for the [`PolkadotChainSpec`].
-pub fn polkadot_chain_spec_properties() -> serde_json::map::Map<String, serde_json::Value> {
+pub fn cherry_chain_spec_properties() -> serde_json::map::Map<String, serde_json::Value> {
 	serde_json::json!({
 		"tokenDecimals": 10,
 	})
@@ -1083,23 +1083,23 @@ pub fn polkadot_chain_spec_properties() -> serde_json::map::Map<String, serde_js
 
 /// Polkadot staging testnet config.
 #[cfg(feature = "cherry-native")]
-pub fn polkadot_staging_testnet_config() -> Result<PolkadotChainSpec, String> {
-	let wasm_binary = cherry::WASM_BINARY.ok_or("Polkadot development wasm not available")?;
+pub fn cherry_staging_testnet_config() -> Result<CherryChainSpec, String> {
+	let wasm_binary = cherry::WASM_BINARY.ok_or("Cherry development wasm not available")?;
 	let boot_nodes = vec![];
 
-	Ok(PolkadotChainSpec::from_genesis(
-		"Polkadot Staging Testnet",
-		"polkadot_staging_testnet",
+	Ok(CherryChainSpec::from_genesis(
+		"Cherry Staging Testnet",
+		"cherry_staging_testnet",
 		ChainType::Live,
-		move || polkadot_staging_testnet_config_genesis(wasm_binary),
+		move || cherry_staging_testnet_config_genesis(wasm_binary),
 		boot_nodes,
 		Some(
 			TelemetryEndpoints::new(vec![(POLKADOT_STAGING_TELEMETRY_URL.to_string(), 0)])
-				.expect("Polkadot Staging telemetry url is valid; qed"),
+				.expect("Cherry Staging telemetry url is valid; qed"),
 		),
 		Some(DEFAULT_PROTOCOL_ID),
 		None,
-		Some(polkadot_chain_spec_properties()),
+		Some(cherry_chain_spec_properties()),
 		Default::default(),
 	))
 }
@@ -1290,7 +1290,7 @@ fn testnet_accounts() -> Vec<AccountId> {
 
 /// Helper function to create polkadot `GenesisConfig` for testing
 #[cfg(feature = "cherry-native")]
-pub fn polkadot_testnet_genesis(
+pub fn cherry_testnet_genesis(
 	wasm_binary: &[u8],
 	initial_authorities: Vec<(
 		AccountId,
@@ -1639,8 +1639,8 @@ pub fn rococo_testnet_genesis(
 }
 
 #[cfg(feature = "cherry-native")]
-fn polkadot_development_config_genesis(wasm_binary: &[u8]) -> cherry::GenesisConfig {
-	polkadot_testnet_genesis(
+fn cherry_development_config_genesis(wasm_binary: &[u8]) -> cherry::GenesisConfig {
+	cherry_testnet_genesis(
 		wasm_binary,
 		vec![get_authority_keys_from_seed_no_beefy("Alice")],
 		get_account_id_from_seed::<sr25519::Public>("Alice"),
@@ -1680,19 +1680,19 @@ fn rococo_development_config_genesis(wasm_binary: &[u8]) -> rococo_runtime::Gene
 
 /// Polkadot development config (single validator Alice)
 #[cfg(feature = "cherry-native")]
-pub fn polkadot_development_config() -> Result<PolkadotChainSpec, String> {
-	let wasm_binary = cherry::WASM_BINARY.ok_or("Polkadot development wasm not available")?;
+pub fn cherry_development_config() -> Result<CherryChainSpec, String> {
+	let wasm_binary = cherry::WASM_BINARY.ok_or("Cherry development wasm not available")?;
 
-	Ok(PolkadotChainSpec::from_genesis(
+	Ok(CherryChainSpec::from_genesis(
 		"Development",
 		"dev",
 		ChainType::Development,
-		move || polkadot_development_config_genesis(wasm_binary),
+		move || cherry_development_config_genesis(wasm_binary),
 		vec![],
 		None,
 		Some(DEFAULT_PROTOCOL_ID),
 		None,
-		Some(polkadot_chain_spec_properties()),
+		Some(cherry_chain_spec_properties()),
 		Default::default(),
 	))
 }
@@ -1806,8 +1806,8 @@ pub fn wococo_development_config() -> Result<RococoChainSpec, String> {
 }
 
 #[cfg(feature = "cherry-native")]
-fn polkadot_local_testnet_genesis(wasm_binary: &[u8]) -> cherry::GenesisConfig {
-	polkadot_testnet_genesis(
+fn cherry_local_testnet_genesis(wasm_binary: &[u8]) -> cherry::GenesisConfig {
+	cherry_testnet_genesis(
 		wasm_binary,
 		vec![
 			get_authority_keys_from_seed_no_beefy("Alice"),
@@ -1820,19 +1820,19 @@ fn polkadot_local_testnet_genesis(wasm_binary: &[u8]) -> cherry::GenesisConfig {
 
 /// Polkadot local testnet config (multivalidator Alice + Bob)
 #[cfg(feature = "cherry-native")]
-pub fn polkadot_local_testnet_config() -> Result<PolkadotChainSpec, String> {
-	let wasm_binary = cherry::WASM_BINARY.ok_or("Polkadot development wasm not available")?;
+pub fn cherry_local_testnet_config() -> Result<CherryChainSpec, String> {
+	let wasm_binary = cherry::WASM_BINARY.ok_or("Cherry development wasm not available")?;
 
-	Ok(PolkadotChainSpec::from_genesis(
+	Ok(CherryChainSpec::from_genesis(
 		"Local Testnet",
 		"local_testnet",
 		ChainType::Local,
-		move || polkadot_local_testnet_genesis(wasm_binary),
+		move || cherry_local_testnet_genesis(wasm_binary),
 		vec![],
 		None,
 		Some(DEFAULT_PROTOCOL_ID),
 		None,
-		Some(polkadot_chain_spec_properties()),
+		Some(cherry_chain_spec_properties()),
 		Default::default(),
 	))
 }
