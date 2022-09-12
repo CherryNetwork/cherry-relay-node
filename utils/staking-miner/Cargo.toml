@@ -35,7 +35,7 @@ pallet-transaction-payment = { git = "https://github.com/CherryNetwork/substrate
 core-primitives = { package = "polkadot-core-primitives", path = "../../core-primitives" }
 
 runtime-common = { package = "polkadot-runtime-common", path = "../../runtime/common" }
-polkadot-runtime = { path = "../../runtime/polkadot" }
+cherry-runtime = { path = "../../runtime/cherry" }
 kusama-runtime = { path = "../../runtime/kusama" }
 westend-runtime = { path = "../../runtime/westend" }
 exitcode = "1.1"

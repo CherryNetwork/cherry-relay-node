@@ -61,12 +61,12 @@ use std::{ops::Deref, sync::Arc};
 use tracing_subscriber::{fmt, EnvFilter};
 
 pub(crate) enum AnyRuntime {
-	Polkadot,
+	Cherry,
 	Kusama,
 	Westend,
 }
 
-pub(crate) static mut RUNTIME: AnyRuntime = AnyRuntime::Polkadot;
+pub(crate) static mut RUNTIME: AnyRuntime = AnyRuntime::Cherry;
 
 macro_rules! construct_runtime_prelude {
 	($runtime:ident) => { paste::paste! {
@@ -120,12 +120,12 @@ macro_rules! construct_runtime_prelude {
 }
 
 // NOTE: we might be able to use some code from the bridges repo here.
-fn signed_ext_builder_polkadot(
+fn signed_ext_builder_cherry(
 	nonce: Index,
 	tip: Balance,
 	era: sp_runtime::generic::Era,
-) -> polkadot_runtime_exports::SignedExtra {
-	use polkadot_runtime_exports::Runtime;
+) -> cherry_runtime_exports::SignedExtra {
+	use cherry_runtime_exports::Runtime;
 	(
 		frame_system::CheckNonZeroSender::<Runtime>::new(),
 		frame_system::CheckSpecVersion::<Runtime>::new(),
@@ -175,7 +175,7 @@ fn signed_ext_builder_westend(
 	)
 }
 
-construct_runtime_prelude!(polkadot);
+construct_runtime_prelude!(cherry);
 construct_runtime_prelude!(kusama);
 construct_runtime_prelude!(westend);
 
@@ -190,9 +190,9 @@ macro_rules! any_runtime {
 	($($code:tt)*) => {
 		unsafe {
 			match $crate::RUNTIME {
-				$crate::AnyRuntime::Polkadot => {
+				$crate::AnyRuntime::Cherry => {
 					#[allow(unused)]
-					use $crate::polkadot_runtime_exports::*;
+					use $crate::cherry_runtime_exports::*;
 					$($code)*
 				},
 				$crate::AnyRuntime::Kusama => {
@@ -217,9 +217,9 @@ macro_rules! any_runtime_unit {
 	($($code:tt)*) => {
 		unsafe {
 			match $crate::RUNTIME {
-				$crate::AnyRuntime::Polkadot => {
+				$crate::AnyRuntime::Cherry => {
 					#[allow(unused)]
-					use $crate::polkadot_runtime_exports::*;
+					use $crate::cherry_runtime_exports::*;
 					let _ = $($code)*;
 				},
 				$crate::AnyRuntime::Kusama => {
@@ -517,7 +517,7 @@ async fn main() {
 			// safety: this program will always be single threaded, thus accessing global static is
 			// safe.
 			unsafe {
-				RUNTIME = AnyRuntime::Polkadot;
+				RUNTIME = AnyRuntime::Cherry;
 			}
 		},
 		"kusama" | "kusama-dev" => {
@@ -619,16 +619,16 @@ mod tests {
 	#[test]
 	fn any_runtime_works() {
 		unsafe {
-			RUNTIME = AnyRuntime::Polkadot;
+			RUNTIME = AnyRuntime::Cherry;
 		}
-		let polkadot_version = any_runtime! { get_version::<Runtime>() };
+		let cherry_version = any_runtime! { get_version::<Runtime>() };
 
 		unsafe {
 			RUNTIME = AnyRuntime::Kusama;
 		}
 		let kusama_version = any_runtime! { get_version::<Runtime>() };
 
-		assert_eq!(polkadot_version.spec_name, "polkadot".into());
+		assert_eq!(cherry_version.spec_name, "cherry".into());
 		assert_eq!(kusama_version.spec_name, "kusama".into());
 	}
 }

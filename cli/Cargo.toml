@@ -43,7 +43,7 @@ sp-trie = { git = "https://github.com/CherryNetwork/substrate", default-features
 substrate-build-script-utils = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 
 [features]
-default = ["wasmtime", "db", "cli", "hostperfcheck", "full-node", "trie-memory-tracker", "polkadot-native"]
+default = ["wasmtime", "db", "cli", "hostperfcheck", "full-node", "trie-memory-tracker", "cherry-native"]
 wasmtime = ["sc-cli/wasmtime"]
 db = ["service/db"]
 cli = [
@@ -67,7 +67,7 @@ hostperfcheck = ["polkadot-performance-test"]
 # Configure the native runtimes to use. Polkadot is enabled by default.
 #
 # Validators require the native runtime currently
-polkadot-native = ["service/polkadot-native"]
+cherry-native = ["service/cherry-native"]
 kusama-native = ["service/kusama-native"]
 westend-native = ["service/westend-native"]
 rococo-native = ["service/rococo-native"]

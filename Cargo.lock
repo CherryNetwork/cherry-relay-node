@@ -841,6 +841,110 @@ dependencies = [
 ]
 
 [[package]]
+name = "cherry-runtime"
+version = "0.2.0-alpha"
+dependencies = [
+ "beefy-primitives",
+ "bitvec",
+ "cherry-runtime-constants",
+ "frame-benchmarking",
+ "frame-election-provider-support",
+ "frame-executive",
+ "frame-support",
+ "frame-system",
+ "frame-system-benchmarking",
+ "frame-system-rpc-runtime-api",
+ "frame-try-runtime",
+ "hex-literal",
+ "log",
+ "pallet-assets",
+ "pallet-authority-discovery",
+ "pallet-authorship",
+ "pallet-babe",
+ "pallet-bags-list",
+ "pallet-balances",
+ "pallet-bounties",
+ "pallet-child-bounties",
+ "pallet-collective",
+ "pallet-council",
+ "pallet-democracy",
+ "pallet-election-provider-multi-phase",
+ "pallet-election-provider-support-benchmarking",
+ "pallet-elections-phragmen",
+ "pallet-grandpa",
+ "pallet-identity",
+ "pallet-im-online",
+ "pallet-indices",
+ "pallet-membership",
+ "pallet-multisig",
+ "pallet-offences",
+ "pallet-offences-benchmarking",
+ "pallet-preimage",
+ "pallet-proxy",
+ "pallet-scheduler",
+ "pallet-session",
+ "pallet-session-benchmarking",
+ "pallet-staking",
+ "pallet-staking-reward-curve",
+ "pallet-timestamp",
+ "pallet-tips",
+ "pallet-transaction-payment",
+ "pallet-transaction-payment-rpc-runtime-api",
+ "pallet-treasury",
+ "pallet-utility",
+ "pallet-vesting",
+ "pallet-xcm",
+ "parity-scale-codec",
+ "polkadot-primitives",
+ "polkadot-runtime-common",
+ "polkadot-runtime-parachains",
+ "rustc-hex",
+ "scale-info",
+ "separator",
+ "serde",
+ "serde_derive",
+ "serde_json",
+ "smallvec",
+ "sp-api",
+ "sp-authority-discovery",
+ "sp-block-builder",
+ "sp-consensus-babe",
+ "sp-core",
+ "sp-inherents",
+ "sp-io",
+ "sp-keyring",
+ "sp-mmr-primitives",
+ "sp-npos-elections",
+ "sp-offchain",
+ "sp-runtime",
+ "sp-session",
+ "sp-staking",
+ "sp-std",
+ "sp-transaction-pool",
+ "sp-trie",
+ "sp-version",
+ "static_assertions",
+ "substrate-wasm-builder",
+ "tiny-keccak",
+ "trie-db",
+ "xcm",
+ "xcm-builder",
+ "xcm-executor",
+]
+
+[[package]]
+name = "cherry-runtime-constants"
+version = "0.2.0-alpha"
+dependencies = [
+ "frame-support",
+ "polkadot-primitives",
+ "polkadot-runtime-common",
+ "smallvec",
+ "sp-runtime",
+ "sp-staking",
+]
+
+[[package]]
 name = "chrono"
 version = "0.4.22"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -6084,6 +6188,7 @@ name = "polkadot-client"
 version = "0.9.27"
 dependencies = [
  "beefy-primitives",
+ "cherry-runtime",
  "frame-benchmarking",
  "frame-benchmarking-cli",
  "frame-system",
@@ -6094,7 +6199,6 @@ dependencies = [
  "polkadot-core-primitives",
  "polkadot-node-core-parachains-inherent",
  "polkadot-primitives",
- "polkadot-runtime",
  "polkadot-runtime-common",
  "rococo-runtime",
  "sc-client-api",
@@ -6897,98 +7001,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "polkadot-runtime"
-version = "0.9.27"
-dependencies = [
- "beefy-primitives",
- "bitvec",
- "frame-benchmarking",
- "frame-election-provider-support",
- "frame-executive",
- "frame-support",
- "frame-system",
- "frame-system-benchmarking",
- "frame-system-rpc-runtime-api",
- "frame-try-runtime",
- "hex-literal",
- "log",
- "pallet-assets",
- "pallet-authority-discovery",
- "pallet-authorship",
- "pallet-babe",
- "pallet-bags-list",
- "pallet-balances",
- "pallet-bounties",
- "pallet-child-bounties",
- "pallet-collective",
- "pallet-council",
- "pallet-democracy",
- "pallet-election-provider-multi-phase",
- "pallet-election-provider-support-benchmarking",
- "pallet-elections-phragmen",
- "pallet-grandpa",
- "pallet-identity",
- "pallet-im-online",
- "pallet-indices",
- "pallet-membership",
- "pallet-multisig",
- "pallet-offences",
- "pallet-offences-benchmarking",
- "pallet-preimage",
- "pallet-proxy",
- "pallet-scheduler",
- "pallet-session",
- "pallet-session-benchmarking",
- "pallet-staking",
- "pallet-staking-reward-curve",
- "pallet-timestamp",
- "pallet-tips",
- "pallet-transaction-payment",
- "pallet-transaction-payment-rpc-runtime-api",
- "pallet-treasury",
- "pallet-utility",
- "pallet-vesting",
- "pallet-xcm",
- "parity-scale-codec",
- "polkadot-primitives",
- "polkadot-runtime-common",
- "polkadot-runtime-constants",
- "polkadot-runtime-parachains",
- "rustc-hex",
- "scale-info",
- "separator",
- "serde",
- "serde_derive",
- "serde_json",
- "smallvec",
- "sp-api",
- "sp-authority-discovery",
- "sp-block-builder",
- "sp-consensus-babe",
- "sp-core",
- "sp-inherents",
- "sp-io",
- "sp-keyring",
- "sp-mmr-primitives",
- "sp-npos-elections",
- "sp-offchain",
- "sp-runtime",
- "sp-session",
- "sp-staking",
- "sp-std",
- "sp-transaction-pool",
- "sp-trie",
- "sp-version",
- "static_assertions",
- "substrate-wasm-builder",
- "tiny-keccak",
- "trie-db",
- "xcm",
- "xcm-builder",
- "xcm-executor",
-]
-
-[[package]]
 name = "polkadot-runtime-common"
 version = "0.9.27"
 dependencies = [
@@ -7039,18 +7051,6 @@ dependencies = [
  "static_assertions",
  "trie-db",
  "xcm",
-]
-
-[[package]]
-name = "polkadot-runtime-constants"
-version = "0.9.27"
-dependencies = [
- "frame-support",
- "polkadot-primitives",
- "polkadot-runtime-common",
- "smallvec",
- "sp-runtime",
- "sp-staking",
 ]
 
 [[package]]
@@ -7123,6 +7123,8 @@ dependencies = [
  "async-trait",
  "beefy-gadget",
  "beefy-primitives",
+ "cherry-runtime",
+ "cherry-runtime-constants",
  "env_logger",
  "frame-system-rpc-runtime-api",
  "futures",
@@ -7170,8 +7172,6 @@ dependencies = [
  "polkadot-parachain",
  "polkadot-primitives",
  "polkadot-rpc",
- "polkadot-runtime",
- "polkadot-runtime-constants",
  "polkadot-runtime-parachains",
  "polkadot-statement-distribution",
  "polkadot-test-client",
@@ -7443,10 +7443,10 @@ dependencies = [
 name = "polkadot-voter-bags"
 version = "0.9.27"
 dependencies = [
+ "cherry-runtime",
  "clap",
  "generate-bags",
  "kusama-runtime",
- "polkadot-runtime",
  "sp-io",
  "westend-runtime",
 ]
@@ -8035,14 +8035,14 @@ dependencies = [
 name = "remote-ext-tests-bags-list"
 version = "0.9.27"
 dependencies = [
+ "cherry-runtime",
+ "cherry-runtime-constants",
  "clap",
  "frame-system",
  "kusama-runtime",
  "kusama-runtime-constants",
  "log",
  "pallet-bags-list-remote-tests",
- "polkadot-runtime",
- "polkadot-runtime-constants",
  "sp-core",
  "sp-tracing",
  "tokio",
@@ -10577,6 +10577,7 @@ name = "staking-miner"
 version = "0.9.27"
 dependencies = [
  "assert_cmd",
+ "cherry-runtime",
  "clap",
  "exitcode",
  "frame-election-provider-support",
@@ -10593,7 +10594,6 @@ dependencies = [
  "parity-scale-codec",
  "paste",
  "polkadot-core-primitives",
- "polkadot-runtime",
  "polkadot-runtime-common",
  "remote-externalities",
  "sc-transaction-pool-api",

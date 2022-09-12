@@ -5,10 +5,10 @@ authors = ["Parity Technologies <admin@parity.io>"]
 edition = "2021"
 
 [dependencies]
-polkadot-runtime = { path = "../../../runtime/polkadot" }
+cherry-runtime = { path = "../../../runtime/cherry" }
 kusama-runtime = { path = "../../../runtime/kusama" }
 westend-runtime = { path = "../../../runtime/westend" }
-polkadot-runtime-constants = { path = "../../../runtime/polkadot/constants" }
+cherry-runtime-constants = { path = "../../../runtime/cherry/constants" }
 kusama-runtime-constants = { path = "../../../runtime/kusama/constants" }
 westend-runtime-constants = { path = "../../../runtime/westend/constants" }
 
