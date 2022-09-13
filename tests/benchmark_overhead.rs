@@ -18,7 +18,7 @@ use assert_cmd::cargo::cargo_bin;
 use std::{process::Command, result::Result};
 use tempfile::tempdir;
 
-static RUNTIMES: [&'static str; 3] = ["polkadot", "westend", "rococo"];
+static RUNTIMES: [&'static str; 2] = ["polkadot", "rococo"];
 
 /// `benchmark overhead` works for all dev runtimes.
 #[test]

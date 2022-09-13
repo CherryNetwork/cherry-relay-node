@@ -6,9 +6,7 @@ edition = "2021"
 
 [dependencies]
 cherry-runtime = { path = "../../../runtime/cherry" }
-westend-runtime = { path = "../../../runtime/westend" }
 cherry-runtime-constants = { path = "../../../runtime/cherry/constants" }
-westend-runtime-constants = { path = "../../../runtime/westend/constants" }
 
 pallet-bags-list-remote-tests = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 sp-tracing = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }

@@ -43,7 +43,7 @@ pub type FullBackend = sc_service::TFullBackend<Block>;
 pub type FullClient<RuntimeApi, ExecutorDispatch> =
 	sc_service::TFullClient<Block, RuntimeApi, NativeElseWasmExecutor<ExecutorDispatch>>;
 
-#[cfg(not(any(feature = "rococo", feature = "westend", feature = "cherry")))]
+#[cfg(not(any(feature = "rococo", feature = "cherry")))]
 compile_error!("at least one runtime feature must be enabled");
 
 /// The native executor instance for Polkadot.
@@ -60,23 +60,6 @@ impl sc_executor::NativeExecutionDispatch for CherryExecutorDispatch {
 
 	fn native_version() -> sc_executor::NativeVersion {
 		cherry_runtime::native_version()
-	}
-}
-
-#[cfg(feature = "westend")]
-/// The native executor instance for Westend.
-pub struct WestendExecutorDispatch;
-
-#[cfg(feature = "westend")]
-impl sc_executor::NativeExecutionDispatch for WestendExecutorDispatch {
-	type ExtendHostFunctions = frame_benchmarking::benchmarking::HostFunctions;
-
-	fn dispatch(method: &str, data: &[u8]) -> Option<Vec<u8>> {
-		westend_runtime::api::dispatch(method, data)
-	}
-
-	fn native_version() -> sc_executor::NativeVersion {
-		westend_runtime::native_version()
 	}
 }
 
@@ -236,13 +219,6 @@ macro_rules! with_client {
 
 				$code
 			},
-			#[cfg(feature = "westend")]
-			Client::Westend($client) => {
-				#[allow(unused_imports)]
-				use westend_runtime as runtime;
-
-				$code
-			},
 			#[cfg(feature = "rococo")]
 			Client::Rococo($client) => {
 				#[allow(unused_imports)]
@@ -263,8 +239,6 @@ pub(crate) use with_client;
 pub enum Client {
 	#[cfg(feature = "cherry")]
 	Cherry(Arc<FullClient<cherry_runtime::RuntimeApi, CherryExecutorDispatch>>),
-	#[cfg(feature = "westend")]
-	Westend(Arc<FullClient<westend_runtime::RuntimeApi, WestendExecutorDispatch>>),
 	#[cfg(feature = "rococo")]
 	Rococo(Arc<FullClient<rococo_runtime::RuntimeApi, RococoExecutorDispatch>>),
 }

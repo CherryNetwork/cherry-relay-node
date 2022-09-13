@@ -62,7 +62,6 @@ use tracing_subscriber::{fmt, EnvFilter};
 
 pub(crate) enum AnyRuntime {
 	Cherry,
-	Westend,
 }
 
 pub(crate) static mut RUNTIME: AnyRuntime = AnyRuntime::Cherry;
@@ -138,26 +137,7 @@ fn signed_ext_builder_cherry(
 	)
 }
 
-fn signed_ext_builder_westend(
-	nonce: Index,
-	tip: Balance,
-	era: sp_runtime::generic::Era,
-) -> westend_runtime_exports::SignedExtra {
-	use westend_runtime_exports::Runtime;
-	(
-		frame_system::CheckNonZeroSender::<Runtime>::new(),
-		frame_system::CheckSpecVersion::<Runtime>::new(),
-		frame_system::CheckTxVersion::<Runtime>::new(),
-		frame_system::CheckGenesis::<Runtime>::new(),
-		frame_system::CheckMortality::<Runtime>::from(era),
-		frame_system::CheckNonce::<Runtime>::from(nonce),
-		frame_system::CheckWeight::<Runtime>::new(),
-		pallet_transaction_payment::ChargeTransactionPayment::<Runtime>::from(tip),
-	)
-}
-
 construct_runtime_prelude!(cherry);
-construct_runtime_prelude!(westend);
 
 // NOTE: this is no longer used extensively, most of the per-runtime stuff us delegated to
 // `construct_runtime_prelude` and macro's the import directly from it. A part of the code is also
@@ -175,11 +155,6 @@ macro_rules! any_runtime {
 					use $crate::cherry_runtime_exports::*;
 					$($code)*
 				},
-				$crate::AnyRuntime::Westend => {
-					#[allow(unused)]
-					use $crate::westend_runtime_exports::*;
-					$($code)*
-				}
 			}
 		}
 	}
@@ -197,11 +172,6 @@ macro_rules! any_runtime_unit {
 					use $crate::cherry_runtime_exports::*;
 					let _ = $($code)*;
 				},
-				$crate::AnyRuntime::Westend => {
-					#[allow(unused)]
-					use $crate::westend_runtime_exports::*;
-					let _ = $($code)*;
-				}
 			}
 		}
 	}
@@ -488,18 +458,6 @@ async fn main() {
 			// safe.
 			unsafe {
 				RUNTIME = AnyRuntime::Cherry;
-			}
-		},
-		"westend" => {
-			sp_core::crypto::set_default_ss58_version(
-				sp_core::crypto::Ss58AddressFormatRegistry::PolkadotAccount.into(),
-			);
-			sub_tokens::dynamic::set_name("WND");
-			sub_tokens::dynamic::set_decimal_points(1_000_000_000_000);
-			// safety: this program will always be single threaded, thus accessing global static is
-			// safe.
-			unsafe {
-				RUNTIME = AnyRuntime::Westend;
 			}
 		},
 		_ => {

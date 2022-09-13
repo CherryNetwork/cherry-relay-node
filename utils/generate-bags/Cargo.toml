@@ -10,5 +10,4 @@ clap = { version = "3.1", features = ["derive"] }
 generate-bags = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 sp-io = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 
-westend-runtime = { path = "../../runtime/westend" }
 cherry-runtime = { path = "../../runtime/cherry" }

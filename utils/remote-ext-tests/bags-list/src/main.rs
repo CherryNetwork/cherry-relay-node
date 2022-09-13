@@ -30,7 +30,6 @@ enum Command {
 #[clap(rename_all = "PascalCase")]
 enum Runtime {
 	Cherry,
-	Westend,
 }
 
 #[derive(Parser)]
@@ -64,35 +63,9 @@ async fn main() {
 				.try_into()
 				.unwrap(),
 		),
-		Runtime::Westend => sp_core::crypto::set_default_ss58_version(
-			<westend_runtime::Runtime as frame_system::Config>::SS58Prefix::get()
-				.try_into()
-				.unwrap(),
-		),
 	};
 
 	match (options.runtime, options.command) {
-		(Runtime::Westend, Command::CheckMigration) => {
-			use westend_runtime::{Block, Runtime};
-			use westend_runtime_constants::currency::UNITS;
-			migration::execute::<Runtime, Block>(UNITS as u64, "WND", options.uri.clone()).await;
-		},
-		(Runtime::Westend, Command::SanityCheck) => {
-			use westend_runtime::{Block, Runtime};
-			use westend_runtime_constants::currency::UNITS;
-			sanity_check::execute::<Runtime, Block>(UNITS as u64, "WND", options.uri.clone()).await;
-		},
-		(Runtime::Westend, Command::Snapshot) => {
-			use westend_runtime::{Block, Runtime};
-			use westend_runtime_constants::currency::UNITS;
-			snapshot::execute::<Runtime, Block>(
-				options.snapshot_limit,
-				UNITS.try_into().unwrap(),
-				options.uri.clone(),
-			)
-			.await;
-		},
-
 		(Runtime::Cherry, Command::CheckMigration) => {
 			use cherry_runtime::{Block, Runtime};
 			use cherry_runtime_constants::currency::UNITS;

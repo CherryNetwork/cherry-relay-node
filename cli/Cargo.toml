@@ -68,7 +68,6 @@ hostperfcheck = ["polkadot-performance-test"]
 #
 # Validators require the native runtime currently
 cherry-native = ["service/cherry-native"]
-westend-native = ["service/westend-native"]
 rococo-native = ["service/rococo-native"]
 
 malus = ["full-node", "service/malus"]

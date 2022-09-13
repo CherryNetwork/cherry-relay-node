@@ -24,12 +24,10 @@ use cherry_runtime::Runtime as CherryRuntime;
 use clap::{ArgEnum, Parser};
 use generate_bags::generate_thresholds;
 use std::path::{Path, PathBuf};
-use westend_runtime::Runtime as WestendRuntime;
 
 #[derive(Clone, Debug, ArgEnum)]
 #[clap(rename_all = "PascalCase")]
 enum Runtime {
-	Westend,
 	Cherry,
 }
 
@@ -38,7 +36,6 @@ impl Runtime {
 		&self,
 	) -> Box<dyn FnOnce(usize, &Path, u128, u128) -> Result<(), std::io::Error>> {
 		match self {
-			Runtime::Westend => Box::new(generate_thresholds::<WestendRuntime>),
 			Runtime::Cherry => Box::new(generate_thresholds::<CherryRuntime>),
 		}
 	}

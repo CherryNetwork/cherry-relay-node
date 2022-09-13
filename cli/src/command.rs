@@ -76,7 +76,7 @@ impl SubstrateCli for Cli {
 	fn load_spec(&self, id: &str) -> std::result::Result<Box<dyn sc_service::ChainSpec>, String> {
 		let id = if id == "" {
 			let n = get_exec_name().unwrap_or_default();
-			["cherry", "westend", "rococo", "versi"]
+			["cherry", "rococo", "versi"]
 				.iter()
 				.cloned()
 				.find(|&chain| n.starts_with(chain))
@@ -102,16 +102,6 @@ impl SubstrateCli for Cli {
 			#[cfg(not(feature = "rococo-native"))]
 			name if name.starts_with("rococo-") && !name.ends_with(".json") =>
 				Err(format!("`{}` only supported with `rococo-native` feature enabled.", name))?,
-			"westend" => Box::new(service::chain_spec::westend_config()?),
-			#[cfg(feature = "westend-native")]
-			"westend-dev" => Box::new(service::chain_spec::westend_development_config()?),
-			#[cfg(feature = "westend-native")]
-			"westend-local" => Box::new(service::chain_spec::westend_local_testnet_config()?),
-			#[cfg(feature = "westend-native")]
-			"westend-staging" => Box::new(service::chain_spec::westend_staging_testnet_config()?),
-			#[cfg(not(feature = "westend-native"))]
-			name if name.starts_with("westend-") && !name.ends_with(".json") =>
-				Err(format!("`{}` only supported with `westend-native` feature enabled.", name))?,
 			"wococo" => Box::new(service::chain_spec::wococo_config()?),
 			#[cfg(feature = "rococo-native")]
 			"wococo-dev" => Box::new(service::chain_spec::wococo_development_config()?),
@@ -143,8 +133,6 @@ impl SubstrateCli for Cli {
 					chain_spec.is_versi()
 				{
 					Box::new(service::RococoChainSpec::from_json_file(path)?)
-				} else if self.run.force_westend || chain_spec.is_westend() {
-					Box::new(service::WestendChainSpec::from_json_file(path)?)
 				} else {
 					chain_spec
 				}
@@ -153,21 +141,12 @@ impl SubstrateCli for Cli {
 	}
 
 	fn native_runtime_version(spec: &Box<dyn service::ChainSpec>) -> &'static RuntimeVersion {
-
-		#[cfg(feature = "westend-native")]
-		if spec.is_westend() {
-			return &service::westend_runtime::VERSION
-		}
-
 		#[cfg(feature = "rococo-native")]
 		if spec.is_rococo() || spec.is_wococo() || spec.is_versi() {
 			return &service::rococo_runtime::VERSION
 		}
 
-		#[cfg(not(all(
-			feature = "rococo-native",
-			feature = "westend-native",
-		)))]
+		#[cfg(not(all(feature = "rococo-native",)))]
 		let _ = spec;
 
 		#[cfg(feature = "cherry-native")]
@@ -176,23 +155,18 @@ impl SubstrateCli for Cli {
 		}
 
 		#[cfg(not(feature = "cherry-native"))]
-		panic!("No runtime feature (cherry, westend, rococo) is enabled")
+		panic!("No runtime feature (cherry, rococo) is enabled")
 	}
 }
 
-fn set_default_ss58_version(spec: &Box<dyn service::ChainSpec>) {
-	let ss58_version = if spec.is_westend() {
-		Ss58AddressFormatRegistry::SubstrateAccount
-	} else {
-		Ss58AddressFormatRegistry::PolkadotAccount
-	}
-	.into();
+fn set_default_ss58_version(_spec: &Box<dyn service::ChainSpec>) {
+	let ss58_version = Ss58AddressFormatRegistry::PolkadotAccount.into();
 
 	sp_core::crypto::set_default_ss58_version(ss58_version);
 }
 
 const DEV_ONLY_ERROR_PATTERN: &'static str =
-	"can only use subcommand with --chain [polkadot-dev, westend-dev, rococo-dev, wococo-dev], got ";
+	"can only use subcommand with --chain [polkadot-dev, rococo-dev, wococo-dev], got ";
 
 fn ensure_dev(spec: &Box<dyn service::ChainSpec>) -> std::result::Result<(), String> {
 	if spec.is_dev() {
@@ -211,8 +185,6 @@ macro_rules! unwrap_client {
 		match $client.as_ref() {
 			#[cfg(feature = "cherry-native")]
 			polkadot_client::Client::Cherry($client) => $code,
-			#[cfg(feature = "westend-native")]
-			polkadot_client::Client::Westend($client) => $code,
 			#[cfg(feature = "rococo-native")]
 			polkadot_client::Client::Rococo($client) => $code,
 			#[allow(unreachable_patterns)]
@@ -271,9 +243,7 @@ where
 	let chain_spec = &runner.config().chain_spec;
 
 	// Disallow BEEFY on production networks.
-	if cli.run.beefy &&
-		(chain_spec.is_cherry() || chain_spec.is_westend())
-	{
+	if cli.run.beefy && (chain_spec.is_cherry()) {
 		return Err(Error::Other("BEEFY disallowed on production networks".to_string()))
 	}
 
@@ -539,14 +509,6 @@ pub fn run() -> Result<()> {
 					set_default_ss58_version(chain_spec);
 					ensure_dev(chain_spec).map_err(Error::Other)?;
 
-					#[cfg(feature = "westend-native")]
-					if chain_spec.is_westend() {
-						return Ok(runner.sync_run(|config| {
-							cmd.run::<service::westend_runtime::Block, service::WestendExecutorDispatch>(config)
-								.map_err(|e| Error::SubstrateCli(e))
-						})?)
-					}
-
 					// else we assume it is polkadot.
 					#[cfg(feature = "cherry-native")]
 					{
@@ -591,18 +553,6 @@ pub fn run() -> Result<()> {
 
 			ensure_dev(chain_spec).map_err(Error::Other)?;
 
-			#[cfg(feature = "westend-native")]
-			if chain_spec.is_westend() {
-				return runner.async_run(|config| {
-					Ok((
-						cmd.run::<service::westend_runtime::Block, service::WestendExecutorDispatch>(
-							config,
-						)
-						.map_err(Error::SubstrateCli),
-						task_manager,
-					))
-				})
-			}
 			// else we assume it is polkadot.
 			#[cfg(feature = "cherry-native")]
 			{
@@ -617,7 +567,7 @@ pub fn run() -> Result<()> {
 				})
 			}
 			#[cfg(not(feature = "cherry-native"))]
-			panic!("No runtime feature (cherry, westend, rococo) is enabled")
+			panic!("No runtime feature (cherry, rococo) is enabled")
 		},
 		#[cfg(not(feature = "try-runtime"))]
 		Some(Subcommand::TryRuntime) => Err(Error::Other(
