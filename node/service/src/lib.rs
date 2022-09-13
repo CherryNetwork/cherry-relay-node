@@ -85,13 +85,10 @@ pub use polkadot_client::RococoExecutorDispatch;
 #[cfg(feature = "westend-native")]
 pub use polkadot_client::WestendExecutorDispatch;
 
-#[cfg(feature = "kusama-native")]
-pub use polkadot_client::KusamaExecutorDispatch;
-
 #[cfg(feature = "cherry-native")]
 pub use polkadot_client::CherryExecutorDispatch;
 
-pub use chain_spec::{KusamaChainSpec, CherryChainSpec, RococoChainSpec, WestendChainSpec};
+pub use chain_spec::{CherryChainSpec, RococoChainSpec, WestendChainSpec};
 pub use consensus_common::{block_validation::Chain, Proposal, SelectChain};
 #[cfg(feature = "full-node")]
 pub use polkadot_client::{
@@ -118,8 +115,6 @@ pub use sp_runtime::{
 
 #[cfg(feature = "cherry-native")]
 pub use cherry_runtime;
-#[cfg(feature = "kusama-native")]
-pub use kusama_runtime;
 #[cfg(feature = "rococo-native")]
 pub use rococo_runtime;
 #[cfg(feature = "westend-native")]
@@ -237,7 +232,7 @@ pub enum Error {
 	DatabasePathRequired,
 
 	#[cfg(feature = "full-node")]
-	#[error("Expected at least one of polkadot, kusama, westend or rococo runtime feature")]
+	#[error("Expected at least one of polkadot, westend or rococo runtime feature")]
 	NoRuntime,
 }
 
@@ -245,9 +240,6 @@ pub enum Error {
 pub trait IdentifyVariant {
 	/// Returns if this is a configuration for the `Polkadot` network.
 	fn is_cherry(&self) -> bool;
-
-	/// Returns if this is a configuration for the `Kusama` network.
-	fn is_kusama(&self) -> bool;
 
 	/// Returns if this is a configuration for the `Westend` network.
 	fn is_westend(&self) -> bool;
@@ -268,9 +260,6 @@ pub trait IdentifyVariant {
 impl IdentifyVariant for Box<dyn ChainSpec> {
 	fn is_cherry(&self) -> bool {
 		self.id().starts_with("cherry") || self.id().starts_with("cher")
-	}
-	fn is_kusama(&self) -> bool {
-		self.id().starts_with("kusama") || self.id().starts_with("ksm")
 	}
 	fn is_westend(&self) -> bool {
 		self.id().starts_with("westend") || self.id().starts_with("wnd")
@@ -485,11 +474,7 @@ where
 		client.clone(),
 	);
 
-	let grandpa_hard_forks = if config.chain_spec.is_kusama() {
-		grandpa_support::kusama_hard_forks()
-	} else {
-		Vec::new()
-	};
+	let grandpa_hard_forks = Vec::new();
 
 	let (grandpa_block_import, grandpa_link) = grandpa::block_import_with_authority_set_hard_forks(
 		client.clone(),
@@ -862,11 +847,7 @@ where
 	let (dispute_req_receiver, cfg) = IncomingRequest::get_config_receiver();
 	config.network.request_response_protocols.push(cfg);
 
-	let grandpa_hard_forks = if config.chain_spec.is_kusama() {
-		grandpa_support::kusama_hard_forks()
-	} else {
-		Vec::new()
-	};
+	let grandpa_hard_forks = Vec::new();
 
 	let warp_sync = Arc::new(grandpa::warp_proof::NetworkProvider::new(
 		backend.clone(),
@@ -1191,8 +1172,7 @@ where
 	// Kusama, see: https://github.com/paritytech/polkadot/issues/5464
 	let gossip_duration = if chain_spec.is_versi() ||
 		chain_spec.is_wococo() ||
-		chain_spec.is_rococo() ||
-		chain_spec.is_kusama()
+		chain_spec.is_rococo()
 	{
 		Duration::from_millis(2000)
 	} else {
@@ -1322,11 +1302,6 @@ pub fn new_chain_ops(
 		return chain_ops!(config, jaeger_agent, telemetry_worker_handle; rococo_runtime, RococoExecutorDispatch, Rococo)
 	}
 
-	#[cfg(feature = "kusama-native")]
-	if config.chain_spec.is_kusama() {
-		return chain_ops!(config, jaeger_agent, telemetry_worker_handle; kusama_runtime, KusamaExecutorDispatch, Kusama)
-	}
-
 	#[cfg(feature = "westend-native")]
 	if config.chain_spec.is_westend() {
 		return chain_ops!(config, jaeger_agent, telemetry_worker_handle; westend_runtime, WestendExecutorDispatch, Westend)
@@ -1382,25 +1357,6 @@ pub fn build_full(
 			hwbench,
 		)
 		.map(|full| full.with_client(Client::Rococo))
-	}
-
-	#[cfg(feature = "kusama-native")]
-	if config.chain_spec.is_kusama() {
-		return new_full::<kusama_runtime::RuntimeApi, KusamaExecutorDispatch, _>(
-			config,
-			is_collator,
-			grandpa_pause,
-			enable_beefy,
-			jaeger_agent,
-			telemetry_worker_handle,
-			None,
-			overseer_enable_anyways,
-			overseer_gen,
-			overseer_message_channel_override,
-			malus_finality_delay,
-			hwbench,
-		)
-		.map(|full| full.with_client(Client::Kusama))
 	}
 
 	#[cfg(feature = "westend-native")]

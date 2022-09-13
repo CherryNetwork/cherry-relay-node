@@ -418,5 +418,4 @@ macro_rules! monitor_cmd_for { ($runtime:tt) => { paste::paste! {
 }}}
 
 monitor_cmd_for!(cherry);
-monitor_cmd_for!(kusama);
 monitor_cmd_for!(westend);

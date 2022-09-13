@@ -43,7 +43,7 @@ pub type FullBackend = sc_service::TFullBackend<Block>;
 pub type FullClient<RuntimeApi, ExecutorDispatch> =
 	sc_service::TFullClient<Block, RuntimeApi, NativeElseWasmExecutor<ExecutorDispatch>>;
 
-#[cfg(not(any(feature = "rococo", feature = "kusama", feature = "westend", feature = "cherry")))]
+#[cfg(not(any(feature = "rococo", feature = "westend", feature = "cherry")))]
 compile_error!("at least one runtime feature must be enabled");
 
 /// The native executor instance for Polkadot.
@@ -60,23 +60,6 @@ impl sc_executor::NativeExecutionDispatch for CherryExecutorDispatch {
 
 	fn native_version() -> sc_executor::NativeVersion {
 		cherry_runtime::native_version()
-	}
-}
-
-#[cfg(feature = "kusama")]
-/// The native executor instance for Kusama.
-pub struct KusamaExecutorDispatch;
-
-#[cfg(feature = "kusama")]
-impl sc_executor::NativeExecutionDispatch for KusamaExecutorDispatch {
-	type ExtendHostFunctions = frame_benchmarking::benchmarking::HostFunctions;
-
-	fn dispatch(method: &str, data: &[u8]) -> Option<Vec<u8>> {
-		kusama_runtime::api::dispatch(method, data)
-	}
-
-	fn native_version() -> sc_executor::NativeVersion {
-		kusama_runtime::native_version()
 	}
 }
 
@@ -198,7 +181,7 @@ where
 
 /// Execute something with the client instance.
 ///
-/// As there exist multiple chains inside Polkadot, like Polkadot itself, Kusama, Westend etc,
+/// As there exist multiple chains inside Polkadot, like Polkadot itself, Westend etc,
 /// there can exist different kinds of client types. As these client types differ in the generics
 /// that are being used, we can not easily return them from a function. For returning them from a
 /// function there exists [`Client`]. However, the problem on how to use this client instance still
@@ -260,13 +243,6 @@ macro_rules! with_client {
 
 				$code
 			},
-			#[cfg(feature = "kusama")]
-			Client::Kusama($client) => {
-				#[allow(unused_imports)]
-				use kusama_runtime as runtime;
-
-				$code
-			},
 			#[cfg(feature = "rococo")]
 			Client::Rococo($client) => {
 				#[allow(unused_imports)]
@@ -289,8 +265,6 @@ pub enum Client {
 	Cherry(Arc<FullClient<cherry_runtime::RuntimeApi, CherryExecutorDispatch>>),
 	#[cfg(feature = "westend")]
 	Westend(Arc<FullClient<westend_runtime::RuntimeApi, WestendExecutorDispatch>>),
-	#[cfg(feature = "kusama")]
-	Kusama(Arc<FullClient<kusama_runtime::RuntimeApi, KusamaExecutorDispatch>>),
 	#[cfg(feature = "rococo")]
 	Rococo(Arc<FullClient<rococo_runtime::RuntimeApi, RococoExecutorDispatch>>),
 }

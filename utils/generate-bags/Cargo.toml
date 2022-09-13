@@ -11,5 +11,4 @@ generate-bags = { git = "https://github.com/CherryNetwork/substrate", branch = "
 sp-io = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 
 westend-runtime = { path = "../../runtime/westend" }
-kusama-runtime = { path = "../../runtime/kusama" }
 cherry-runtime = { path = "../../runtime/cherry" }

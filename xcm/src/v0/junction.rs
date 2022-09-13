@@ -27,10 +27,8 @@ pub enum NetworkId {
 	Any,
 	/// Some named network.
 	Named(WeakBoundedVec<u8, ConstU32<32>>),
-	/// The Polkadot Relay chain
-	Polkadot,
-	/// Kusama.
-	Kusama,
+	/// The Cherry Relay chain
+	Cherry,
 }
 
 /// An identifier of a pluralistic body.
