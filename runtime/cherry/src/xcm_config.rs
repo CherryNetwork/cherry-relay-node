@@ -41,7 +41,7 @@ parameter_types! {
 	/// the context".
 	pub const DotLocation: MultiLocation = Here.into();
 	/// The Polkadot network ID. This is named.
-	pub const PolkadotNetwork: NetworkId = NetworkId::Polkadot;
+	pub const PolkadotNetwork: NetworkId = NetworkId::Cherry;
 	/// Our XCM location ancestry - i.e. what, if anything, `Parent` means evaluated in our context. Since
 	/// Polkadot is a top-level relay-chain, there is no ancestry.
 	pub const Ancestry: MultiLocation = Here.into();

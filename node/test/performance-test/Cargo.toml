@@ -14,7 +14,7 @@ polkadot-node-core-pvf = { path = "../../core/pvf" }
 polkadot-erasure-coding = { path = "../../../erasure-coding" }
 polkadot-node-primitives = { path = "../../primitives" }
 
-kusama-runtime = { path = "../../../runtime/kusama" }
+cherry-runtime = { path = "../../../runtime/cherry" }
 
 [[bin]]
 name = "gen-ref-constants"

@@ -36,8 +36,6 @@ core-primitives = { package = "polkadot-core-primitives", path = "../../core-pri
 
 runtime-common = { package = "polkadot-runtime-common", path = "../../runtime/common" }
 cherry-runtime = { path = "../../runtime/cherry" }
-kusama-runtime = { path = "../../runtime/kusama" }
-westend-runtime = { path = "../../runtime/westend" }
 exitcode = "1.1"
 
 sub-tokens = { git = "https://github.com/paritytech/substrate-debug-kit", branch = "master" }

@@ -115,13 +115,13 @@ impl configuration::Config for Runtime {
 // aims to closely emulate the Kusama XcmConfig
 parameter_types! {
 	pub const KsmLocation: MultiLocation = MultiLocation::here();
-	pub const KusamaNetwork: NetworkId = NetworkId::Kusama;
+	pub const CherryNetwork: NetworkId = NetworkId::Cherry;
 	pub Ancestry: MultiLocation = Here.into();
 	pub CheckAccount: AccountId = XcmPallet::check_account();
 }
 
 pub type SovereignAccountOf =
-	(ChildParachainConvertsVia<ParaId, AccountId>, AccountId32Aliases<KusamaNetwork, AccountId>);
+	(ChildParachainConvertsVia<ParaId, AccountId>, AccountId32Aliases<CherryNetwork, AccountId>);
 
 pub type LocalCurrencyAdapter = XcmCurrencyAdapter<
 	Balances,
@@ -136,7 +136,7 @@ pub type LocalAssetTransactor = (LocalCurrencyAdapter,);
 type LocalOriginConverter = (
 	SovereignSignedViaLocation<SovereignAccountOf, Origin>,
 	ChildParachainAsNative<origin::Origin, Origin>,
-	SignedAccountId32AsNative<KusamaNetwork, Origin>,
+	SignedAccountId32AsNative<CherryNetwork, Origin>,
 	ChildSystemParachainAsSuperuser<ParaId, Origin>,
 );
 
@@ -177,7 +177,7 @@ impl xcm_executor::Config for XcmConfig {
 	type SubscriptionService = XcmPallet;
 }
 
-pub type LocalOriginToLocation = SignedToAccountId32<Origin, AccountId, KusamaNetwork>;
+pub type LocalOriginToLocation = SignedToAccountId32<Origin, AccountId, CherryNetwork>;
 
 impl pallet_xcm::Config for Runtime {
 	type Event = Event;

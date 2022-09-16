@@ -3259,115 +3259,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f9b7d56ba4a8344d6be9729995e6b06f928af29998cdf79fe390cbf6b1fee838"
 
 [[package]]
-name = "kusama-runtime"
-version = "0.9.27"
-dependencies = [
- "beefy-primitives",
- "bitvec",
- "frame-benchmarking",
- "frame-election-provider-support",
- "frame-executive",
- "frame-support",
- "frame-system",
- "frame-system-benchmarking",
- "frame-system-rpc-runtime-api",
- "frame-try-runtime",
- "hex-literal",
- "kusama-runtime-constants",
- "log",
- "pallet-assets",
- "pallet-authority-discovery",
- "pallet-authorship",
- "pallet-babe",
- "pallet-bags-list",
- "pallet-balances",
- "pallet-bounties",
- "pallet-child-bounties",
- "pallet-collective",
- "pallet-democracy",
- "pallet-election-provider-multi-phase",
- "pallet-election-provider-support-benchmarking",
- "pallet-elections-phragmen",
- "pallet-gilt",
- "pallet-grandpa",
- "pallet-identity",
- "pallet-im-online",
- "pallet-indices",
- "pallet-membership",
- "pallet-multisig",
- "pallet-nomination-pools",
- "pallet-nomination-pools-benchmarking",
- "pallet-nomination-pools-runtime-api",
- "pallet-offences",
- "pallet-offences-benchmarking",
- "pallet-preimage",
- "pallet-proxy",
- "pallet-recovery",
- "pallet-scheduler",
- "pallet-session",
- "pallet-session-benchmarking",
- "pallet-society",
- "pallet-staking",
- "pallet-staking-reward-fn",
- "pallet-timestamp",
- "pallet-tips",
- "pallet-transaction-payment",
- "pallet-transaction-payment-rpc-runtime-api",
- "pallet-treasury",
- "pallet-utility",
- "pallet-vesting",
- "pallet-xcm",
- "pallet-xcm-benchmarks",
- "parity-scale-codec",
- "polkadot-primitives",
- "polkadot-runtime-common",
- "polkadot-runtime-parachains",
- "rustc-hex",
- "scale-info",
- "separator",
- "serde",
- "serde_derive",
- "serde_json",
- "smallvec",
- "sp-api",
- "sp-arithmetic",
- "sp-authority-discovery",
- "sp-block-builder",
- "sp-consensus-babe",
- "sp-core",
- "sp-inherents",
- "sp-io",
- "sp-keyring",
- "sp-mmr-primitives",
- "sp-npos-elections",
- "sp-offchain",
- "sp-runtime",
- "sp-session",
- "sp-staking",
- "sp-std",
- "sp-transaction-pool",
- "sp-trie",
- "sp-version",
- "static_assertions",
- "substrate-wasm-builder",
- "tiny-keccak",
- "xcm",
- "xcm-builder",
- "xcm-executor",
-]
-
-[[package]]
-name = "kusama-runtime-constants"
-version = "0.9.27"
-dependencies = [
- "frame-support",
- "polkadot-primitives",
- "polkadot-runtime-common",
- "smallvec",
- "sp-runtime",
-]
-
-[[package]]
 name = "kv-log-macro"
 version = "1.0.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -5162,21 +5053,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "pallet-gilt"
-version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#4169dcf382d0c60814d66a5ebd2667da067f5d3c"
-dependencies = [
- "frame-benchmarking",
- "frame-support",
- "frame-system",
- "parity-scale-codec",
- "scale-info",
- "sp-arithmetic",
- "sp-runtime",
- "sp-std",
-]
-
-[[package]]
 name = "pallet-grandpa"
 version = "4.0.0-dev"
 source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#4169dcf382d0c60814d66a5ebd2667da067f5d3c"
@@ -5318,52 +5194,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "pallet-nomination-pools"
-version = "1.0.0"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#4169dcf382d0c60814d66a5ebd2667da067f5d3c"
-dependencies = [
- "frame-support",
- "frame-system",
- "log",
- "parity-scale-codec",
- "scale-info",
- "sp-core",
- "sp-io",
- "sp-runtime",
- "sp-staking",
- "sp-std",
-]
-
-[[package]]
-name = "pallet-nomination-pools-benchmarking"
-version = "1.0.0"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#4169dcf382d0c60814d66a5ebd2667da067f5d3c"
-dependencies = [
- "frame-benchmarking",
- "frame-election-provider-support",
- "frame-support",
- "frame-system",
- "pallet-bags-list",
- "pallet-nomination-pools",
- "pallet-staking",
- "parity-scale-codec",
- "scale-info",
- "sp-runtime",
- "sp-staking",
- "sp-std",
-]
-
-[[package]]
-name = "pallet-nomination-pools-runtime-api"
-version = "1.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#4169dcf382d0c60814d66a5ebd2667da067f5d3c"
-dependencies = [
- "parity-scale-codec",
- "sp-api",
- "sp-std",
-]
-
-[[package]]
 name = "pallet-offences"
 version = "4.0.0-dev"
 source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#4169dcf382d0c60814d66a5ebd2667da067f5d3c"
@@ -5435,21 +5265,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "pallet-recovery"
-version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#4169dcf382d0c60814d66a5ebd2667da067f5d3c"
-dependencies = [
- "frame-benchmarking",
- "frame-support",
- "frame-system",
- "parity-scale-codec",
- "scale-info",
- "sp-io",
- "sp-runtime",
- "sp-std",
-]
-
-[[package]]
 name = "pallet-scheduler"
 version = "4.0.0-dev"
 source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#4169dcf382d0c60814d66a5ebd2667da067f5d3c"
@@ -5503,20 +5318,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "pallet-society"
-version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#4169dcf382d0c60814d66a5ebd2667da067f5d3c"
-dependencies = [
- "frame-support",
- "frame-system",
- "parity-scale-codec",
- "rand_chacha 0.2.2",
- "scale-info",
- "sp-runtime",
- "sp-std",
-]
-
-[[package]]
 name = "pallet-staking"
 version = "4.0.0-dev"
 source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#4169dcf382d0c60814d66a5ebd2667da067f5d3c"
@@ -5548,15 +5349,6 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn",
-]
-
-[[package]]
-name = "pallet-staking-reward-fn"
-version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#4169dcf382d0c60814d66a5ebd2667da067f5d3c"
-dependencies = [
- "log",
- "sp-arithmetic",
 ]
 
 [[package]]
@@ -6193,7 +5985,6 @@ dependencies = [
  "frame-benchmarking-cli",
  "frame-system",
  "frame-system-rpc-runtime-api",
- "kusama-runtime",
  "pallet-transaction-payment",
  "pallet-transaction-payment-rpc-runtime-api",
  "polkadot-core-primitives",
@@ -6222,7 +6013,6 @@ dependencies = [
  "sp-storage",
  "sp-timestamp",
  "sp-transaction-pool",
- "westend-runtime",
 ]
 
 [[package]]
@@ -6919,8 +6709,8 @@ dependencies = [
 name = "polkadot-performance-test"
 version = "0.9.27"
 dependencies = [
+ "cherry-runtime",
  "env_logger",
- "kusama-runtime",
  "log",
  "polkadot-erasure-coding",
  "polkadot-node-core-pvf",
@@ -7129,8 +6919,6 @@ dependencies = [
  "frame-system-rpc-runtime-api",
  "futures",
  "hex-literal",
- "kusama-runtime",
- "kusama-runtime-constants",
  "kvdb",
  "kvdb-rocksdb",
  "log",
@@ -7222,8 +7010,6 @@ dependencies = [
  "tempfile",
  "thiserror",
  "tracing-gum",
- "westend-runtime",
- "westend-runtime-constants",
 ]
 
 [[package]]
@@ -7446,9 +7232,7 @@ dependencies = [
  "cherry-runtime",
  "clap",
  "generate-bags",
- "kusama-runtime",
  "sp-io",
- "westend-runtime",
 ]
 
 [[package]]
@@ -8039,15 +7823,11 @@ dependencies = [
  "cherry-runtime-constants",
  "clap",
  "frame-system",
- "kusama-runtime",
- "kusama-runtime-constants",
  "log",
  "pallet-bags-list-remote-tests",
  "sp-core",
  "sp-tracing",
  "tokio",
- "westend-runtime",
- "westend-runtime-constants",
 ]
 
 [[package]]
@@ -10585,7 +10365,6 @@ dependencies = [
  "frame-system",
  "futures-util",
  "jsonrpsee",
- "kusama-runtime",
  "log",
  "pallet-balances",
  "pallet-election-provider-multi-phase",
@@ -10610,7 +10389,6 @@ dependencies = [
  "thiserror",
  "tokio",
  "tracing-subscriber 0.3.15",
- "westend-runtime",
 ]
 
 [[package]]
@@ -12147,109 +11925,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d743fdedc5c64377b5fc2bc036b01c7fd642205a0d96356034ae3404d49eb7fb"
 dependencies = [
  "cc",
-]
-
-[[package]]
-name = "westend-runtime"
-version = "0.9.27"
-dependencies = [
- "beefy-primitives",
- "bitvec",
- "frame-benchmarking",
- "frame-election-provider-support",
- "frame-executive",
- "frame-support",
- "frame-system",
- "frame-system-benchmarking",
- "frame-system-rpc-runtime-api",
- "frame-try-runtime",
- "hex-literal",
- "log",
- "pallet-authority-discovery",
- "pallet-authorship",
- "pallet-babe",
- "pallet-bags-list",
- "pallet-balances",
- "pallet-collective",
- "pallet-democracy",
- "pallet-election-provider-multi-phase",
- "pallet-election-provider-support-benchmarking",
- "pallet-elections-phragmen",
- "pallet-grandpa",
- "pallet-identity",
- "pallet-im-online",
- "pallet-indices",
- "pallet-membership",
- "pallet-multisig",
- "pallet-nomination-pools",
- "pallet-nomination-pools-benchmarking",
- "pallet-nomination-pools-runtime-api",
- "pallet-offences",
- "pallet-offences-benchmarking",
- "pallet-preimage",
- "pallet-proxy",
- "pallet-recovery",
- "pallet-scheduler",
- "pallet-session",
- "pallet-session-benchmarking",
- "pallet-society",
- "pallet-staking",
- "pallet-staking-reward-curve",
- "pallet-sudo",
- "pallet-timestamp",
- "pallet-transaction-payment",
- "pallet-transaction-payment-rpc-runtime-api",
- "pallet-treasury",
- "pallet-utility",
- "pallet-vesting",
- "pallet-xcm",
- "pallet-xcm-benchmarks",
- "parity-scale-codec",
- "polkadot-parachain",
- "polkadot-primitives",
- "polkadot-runtime-common",
- "polkadot-runtime-parachains",
- "rustc-hex",
- "scale-info",
- "serde",
- "serde_derive",
- "serde_json",
- "smallvec",
- "sp-api",
- "sp-authority-discovery",
- "sp-block-builder",
- "sp-consensus-babe",
- "sp-core",
- "sp-inherents",
- "sp-io",
- "sp-keyring",
- "sp-mmr-primitives",
- "sp-npos-elections",
- "sp-offchain",
- "sp-runtime",
- "sp-session",
- "sp-staking",
- "sp-std",
- "sp-transaction-pool",
- "sp-trie",
- "sp-version",
- "substrate-wasm-builder",
- "tiny-keccak",
- "westend-runtime-constants",
- "xcm",
- "xcm-builder",
- "xcm-executor",
-]
-
-[[package]]
-name = "westend-runtime-constants"
-version = "0.9.27"
-dependencies = [
- "frame-support",
- "polkadot-primitives",
- "polkadot-runtime-common",
- "smallvec",
- "sp-runtime",
 ]
 
 [[package]]

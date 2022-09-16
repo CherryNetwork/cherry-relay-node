@@ -17,7 +17,6 @@
 use crate::cli::{Cli, Subcommand};
 use frame_benchmarking_cli::{BenchmarkCmd, ExtrinsicFactory, SUBSTRATE_REFERENCE_HARDWARE};
 use futures::future::TryFutureExt;
-use log::info;
 use polkadot_client::benchmarking::{
 	benchmark_inherent_data, ExistentialDepositProvider, RemarkBuilder, TransferKeepAliveBuilder,
 };
@@ -77,7 +76,7 @@ impl SubstrateCli for Cli {
 	fn load_spec(&self, id: &str) -> std::result::Result<Box<dyn sc_service::ChainSpec>, String> {
 		let id = if id == "" {
 			let n = get_exec_name().unwrap_or_default();
-			["cherry", "kusama", "westend", "rococo", "versi"]
+			["cherry", "rococo", "versi"]
 				.iter()
 				.cloned()
 				.find(|&chain| n.starts_with(chain))
@@ -86,16 +85,6 @@ impl SubstrateCli for Cli {
 			id
 		};
 		Ok(match id {
-			"kusama" => Box::new(service::chain_spec::kusama_config()?),
-			#[cfg(feature = "kusama-native")]
-			"kusama-dev" => Box::new(service::chain_spec::kusama_development_config()?),
-			#[cfg(feature = "kusama-native")]
-			"kusama-local" => Box::new(service::chain_spec::kusama_local_testnet_config()?),
-			#[cfg(feature = "kusama-native")]
-			"kusama-staging" => Box::new(service::chain_spec::kusama_staging_testnet_config()?),
-			#[cfg(not(feature = "kusama-native"))]
-			name if name.starts_with("kusama-") && !name.ends_with(".json") =>
-				Err(format!("`{}` only supported with `kusama-native` feature enabled.", name))?,
 			"cherry" => Box::new(service::chain_spec::cherry_config()?),
 			#[cfg(feature = "cherry-native")]
 			"cherry-dev" | "dev" => Box::new(service::chain_spec::cherry_development_config()?),
@@ -113,16 +102,6 @@ impl SubstrateCli for Cli {
 			#[cfg(not(feature = "rococo-native"))]
 			name if name.starts_with("rococo-") && !name.ends_with(".json") =>
 				Err(format!("`{}` only supported with `rococo-native` feature enabled.", name))?,
-			"westend" => Box::new(service::chain_spec::westend_config()?),
-			#[cfg(feature = "westend-native")]
-			"westend-dev" => Box::new(service::chain_spec::westend_development_config()?),
-			#[cfg(feature = "westend-native")]
-			"westend-local" => Box::new(service::chain_spec::westend_local_testnet_config()?),
-			#[cfg(feature = "westend-native")]
-			"westend-staging" => Box::new(service::chain_spec::westend_staging_testnet_config()?),
-			#[cfg(not(feature = "westend-native"))]
-			name if name.starts_with("westend-") && !name.ends_with(".json") =>
-				Err(format!("`{}` only supported with `westend-native` feature enabled.", name))?,
 			"wococo" => Box::new(service::chain_spec::wococo_config()?),
 			#[cfg(feature = "rococo-native")]
 			"wococo-dev" => Box::new(service::chain_spec::wococo_development_config()?),
@@ -154,10 +133,6 @@ impl SubstrateCli for Cli {
 					chain_spec.is_versi()
 				{
 					Box::new(service::RococoChainSpec::from_json_file(path)?)
-				} else if self.run.force_kusama || chain_spec.is_kusama() {
-					Box::new(service::KusamaChainSpec::from_json_file(path)?)
-				} else if self.run.force_westend || chain_spec.is_westend() {
-					Box::new(service::WestendChainSpec::from_json_file(path)?)
 				} else {
 					chain_spec
 				}
@@ -166,26 +141,12 @@ impl SubstrateCli for Cli {
 	}
 
 	fn native_runtime_version(spec: &Box<dyn service::ChainSpec>) -> &'static RuntimeVersion {
-		#[cfg(feature = "kusama-native")]
-		if spec.is_kusama() {
-			return &service::kusama_runtime::VERSION
-		}
-
-		#[cfg(feature = "westend-native")]
-		if spec.is_westend() {
-			return &service::westend_runtime::VERSION
-		}
-
 		#[cfg(feature = "rococo-native")]
 		if spec.is_rococo() || spec.is_wococo() || spec.is_versi() {
 			return &service::rococo_runtime::VERSION
 		}
 
-		#[cfg(not(all(
-			feature = "rococo-native",
-			feature = "westend-native",
-			feature = "kusama-native"
-		)))]
+		#[cfg(not(all(feature = "rococo-native",)))]
 		let _ = spec;
 
 		#[cfg(feature = "cherry-native")]
@@ -194,25 +155,18 @@ impl SubstrateCli for Cli {
 		}
 
 		#[cfg(not(feature = "cherry-native"))]
-		panic!("No runtime feature (cherry, kusama, westend, rococo) is enabled")
+		panic!("No runtime feature (cherry, rococo) is enabled")
 	}
 }
 
-fn set_default_ss58_version(spec: &Box<dyn service::ChainSpec>) {
-	let ss58_version = if spec.is_kusama() {
-		Ss58AddressFormatRegistry::KusamaAccount
-	} else if spec.is_westend() {
-		Ss58AddressFormatRegistry::SubstrateAccount
-	} else {
-		Ss58AddressFormatRegistry::PolkadotAccount
-	}
-	.into();
+fn set_default_ss58_version(_spec: &Box<dyn service::ChainSpec>) {
+	let ss58_version = Ss58AddressFormatRegistry::PolkadotAccount.into();
 
 	sp_core::crypto::set_default_ss58_version(ss58_version);
 }
 
 const DEV_ONLY_ERROR_PATTERN: &'static str =
-	"can only use subcommand with --chain [polkadot-dev, kusama-dev, westend-dev, rococo-dev, wococo-dev], got ";
+	"can only use subcommand with --chain [polkadot-dev, rococo-dev, wococo-dev], got ";
 
 fn ensure_dev(spec: &Box<dyn service::ChainSpec>) -> std::result::Result<(), String> {
 	if spec.is_dev() {
@@ -231,10 +185,6 @@ macro_rules! unwrap_client {
 		match $client.as_ref() {
 			#[cfg(feature = "cherry-native")]
 			polkadot_client::Client::Cherry($client) => $code,
-			#[cfg(feature = "westend-native")]
-			polkadot_client::Client::Westend($client) => $code,
-			#[cfg(feature = "kusama-native")]
-			polkadot_client::Client::Kusama($client) => $code,
 			#[cfg(feature = "rococo-native")]
 			polkadot_client::Client::Rococo($client) => $code,
 			#[allow(unreachable_patterns)]
@@ -293,9 +243,7 @@ where
 	let chain_spec = &runner.config().chain_spec;
 
 	// Disallow BEEFY on production networks.
-	if cli.run.beefy &&
-		(chain_spec.is_cherry() || chain_spec.is_kusama() || chain_spec.is_westend())
-	{
+	if cli.run.beefy && (chain_spec.is_cherry()) {
 		return Err(Error::Other("BEEFY disallowed on production networks".to_string()))
 	}
 
@@ -306,14 +254,6 @@ where
 	} else {
 		Some((cli.run.grandpa_pause[0], cli.run.grandpa_pause[1]))
 	};
-
-	if chain_spec.is_kusama() {
-		info!("----------------------------");
-		info!("This chain is not in any way");
-		info!("      endorsed by the       ");
-		info!("     KUSAMA FOUNDATION      ");
-		info!("----------------------------");
-	}
 
 	let jaeger_agent = if let Some(ref jaeger_agent) = cli.run.jaeger_agent {
 		Some(
@@ -569,22 +509,6 @@ pub fn run() -> Result<()> {
 					set_default_ss58_version(chain_spec);
 					ensure_dev(chain_spec).map_err(Error::Other)?;
 
-					#[cfg(feature = "kusama-native")]
-					if chain_spec.is_kusama() {
-						return Ok(runner.sync_run(|config| {
-							cmd.run::<service::kusama_runtime::Block, service::KusamaExecutorDispatch>(config)
-								.map_err(|e| Error::SubstrateCli(e))
-						})?)
-					}
-
-					#[cfg(feature = "westend-native")]
-					if chain_spec.is_westend() {
-						return Ok(runner.sync_run(|config| {
-							cmd.run::<service::westend_runtime::Block, service::WestendExecutorDispatch>(config)
-								.map_err(|e| Error::SubstrateCli(e))
-						})?)
-					}
-
 					// else we assume it is polkadot.
 					#[cfg(feature = "cherry-native")]
 					{
@@ -629,31 +553,6 @@ pub fn run() -> Result<()> {
 
 			ensure_dev(chain_spec).map_err(Error::Other)?;
 
-			#[cfg(feature = "kusama-native")]
-			if chain_spec.is_kusama() {
-				return runner.async_run(|config| {
-					Ok((
-						cmd.run::<service::kusama_runtime::Block, service::KusamaExecutorDispatch>(
-							config,
-						)
-						.map_err(Error::SubstrateCli),
-						task_manager,
-					))
-				})
-			}
-
-			#[cfg(feature = "westend-native")]
-			if chain_spec.is_westend() {
-				return runner.async_run(|config| {
-					Ok((
-						cmd.run::<service::westend_runtime::Block, service::WestendExecutorDispatch>(
-							config,
-						)
-						.map_err(Error::SubstrateCli),
-						task_manager,
-					))
-				})
-			}
 			// else we assume it is polkadot.
 			#[cfg(feature = "cherry-native")]
 			{
@@ -668,7 +567,7 @@ pub fn run() -> Result<()> {
 				})
 			}
 			#[cfg(not(feature = "cherry-native"))]
-			panic!("No runtime feature (cherry, kusama, westend, rococo) is enabled")
+			panic!("No runtime feature (cherry, rococo) is enabled")
 		},
 		#[cfg(not(feature = "try-runtime"))]
 		Some(Subcommand::TryRuntime) => Err(Error::Other(

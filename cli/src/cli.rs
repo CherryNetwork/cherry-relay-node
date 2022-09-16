@@ -90,14 +90,6 @@ pub struct RunCmd {
 	#[clap(flatten)]
 	pub base: sc_cli::RunCmd,
 
-	/// Force using Kusama native runtime.
-	#[clap(long = "force-kusama")]
-	pub force_kusama: bool,
-
-	/// Force using Westend native runtime.
-	#[clap(long = "force-westend")]
-	pub force_westend: bool,
-
 	/// Force using Rococo native runtime.
 	#[clap(long = "force-rococo")]
 	pub force_rococo: bool,
