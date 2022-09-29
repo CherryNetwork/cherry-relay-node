@@ -205,14 +205,35 @@ type MoreThanHalfCouncil = EitherOfDiverse<
 >;
 
 parameter_types! {
+	pub const BlockHashCount: BlockNumber = 2400;
 	pub const Version: RuntimeVersion = VERSION;
-	pub const SS58Prefix: u8 = 0;
+	pub RuntimeBlockLength: BlockLength =
+	BlockLength::max_with_normal_ratio(5 * 1024 * 1024, NORMAL_DISPATCH_RATIO);
+	pub RuntimeBlockWeights: BlockWeights = BlockWeights::builder()
+	.base_block(BlockExecutionWeight::get())
+	.for_class(DispatchClass::all(), |weights| {
+		weights.base_extrinsic = ExtrinsicBaseWeight::get();
+	})
+	.for_class(DispatchClass::Normal, |weights| {
+		weights.max_total = Some(NORMAL_DISPATCH_RATIO * MAXIMUM_BLOCK_WEIGHT);
+	})
+	.for_class(DispatchClass::Operational, |weights| {
+		weights.max_total = Some(MAXIMUM_BLOCK_WEIGHT);
+		// Operational transactions have some extra reserved space, so that they
+		// are included even if block reached `MAXIMUM_BLOCK_WEIGHT`.
+		weights.reserved = Some(
+			MAXIMUM_BLOCK_WEIGHT - NORMAL_DISPATCH_RATIO * MAXIMUM_BLOCK_WEIGHT
+		);
+	})
+	.avg_block_initialization(AVERAGE_ON_INITIALIZE_RATIO)
+	.build_or_panic();
+	pub const SS58Prefix: u8 = 42;
 }
 
 impl frame_system::Config for Runtime {
 	type BaseCallFilter = BaseFilter;
-	type BlockWeights = BlockWeights;
-	type BlockLength = BlockLength;
+	type BlockWeights = RuntimeBlockWeights;
+	type BlockLength = RuntimeBlockLength;
 	type Origin = Origin;
 	type Call = Call;
 	type Index = Nonce;
