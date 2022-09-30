@@ -27,10 +27,10 @@ pub mod currency {
 	/// The existential deposit.
 	pub const EXISTENTIAL_DEPOSIT: Balance = 100 * CENTS;
 
-	pub const UNITS: Balance = 1_000_000_000_000;
-	pub const MILLICENTS: Balance = 1_000_000_000;
+	pub const UNITS: Balance = 1_000_000_000_000_000_000;
+	pub const MILLICENTS: Balance = 1_000_000_000_000;
 	pub const CENTS: Balance = 1_000 * MILLICENTS; // assume this is worth about a cent.
-	pub const DOLLARS: Balance = 100 * CENTS;
+	pub const DOLLARS: Balance = 1_000 * CENTS;
 
 	pub const fn deposit(items: u32, bytes: u32) -> Balance {
 		items as Balance * 15 * CENTS + (bytes as Balance) * 6 * CENTS
@@ -97,25 +97,25 @@ pub mod time_prod {
 	// 1 in 4 blocks (on average, not counting collisions) will be primary babe blocks.
 	pub const PRIMARY_PROBABILITY: (u64, u64) = (1, 4);
 
-	pub const EPOCH_DURATION_IN_BLOCKS: BlockNumber = 10 * MINUTES;
+	pub const EPOCH_DURATION_IN_BLOCKS: BlockNumber = 40 * MINUTES;
 	pub const EPOCH_DURATION_IN_SLOTS: BlockNumber = EPOCH_DURATION_IN_BLOCKS;
 
 	// NOTE: Currently it is not possible to change the epoch duration after the chain has started.
 	//       Attempting to do so will brick block production.
 	pub const SESSIONS_PER_ERA: sp_staking::SessionIndex = 6;
-	pub const BONDING_DURATION: sp_staking::EraIndex = 24 * 28;
-	pub const SLASH_DEFER_DURATION: sp_staking::EraIndex = 24 * 27;
+	pub const BONDING_DURATION: sp_staking::EraIndex = 6 * 28;
+	pub const SLASH_DEFER_DURATION: sp_staking::EraIndex = 5 * 28;
 	pub const REPORT_LONGEVITY: u64 =
 		BONDING_DURATION as u64 * SESSIONS_PER_ERA as u64 * EPOCH_DURATION_IN_SLOTS as u64;
 
 	pub const TERM_DURATION: BlockNumber = 7 * DAYS;
 	pub const COUNCIL_MOTION_DURATION: BlockNumber = 5 * DAYS;
 	pub const TECHNICAL_MOTION_DURATION: BlockNumber = 5 * DAYS;
-	pub const ENACTMENT_PERIOD: BlockNumber = 30 * 24 * 60 * MINUTES;
-	pub const LAUNCH_PERIOD: BlockNumber = 28 * 24 * 60 * MINUTES;
-	pub const VOTING_PERIOD: BlockNumber = 28 * 24 * 60 * MINUTES;
-	pub const FAST_TRACK_VOTING_PERIOD: BlockNumber = 3 * 24 * 60 * MINUTES;
-	pub const COOLOFF_PERIOD: BlockNumber = 28 * 24 * 60 * MINUTES;
+	pub const ENACTMENT_PERIOD: BlockNumber = 30 * DAYS;
+	pub const LAUNCH_PERIOD: BlockNumber = 28 * DAYS;
+	pub const VOTING_PERIOD: BlockNumber = 28 * DAYS;
+	pub const FAST_TRACK_VOTING_PERIOD: BlockNumber = 3 * DAYS;
+	pub const COOLOFF_PERIOD: BlockNumber = 28 * DAYS;
 
 	pub const ALLOWED_PROPOSAL_PERIOD: BlockNumber = 24 * DAYS;
 	pub const SPEND_PERIOD: BlockNumber = 28 * DAYS;
