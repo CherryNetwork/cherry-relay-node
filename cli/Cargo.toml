@@ -25,25 +25,25 @@ polkadot-client = { path = "../node/client", optional = true }
 polkadot-node-core-pvf = { path = "../node/core/pvf", optional = true }
 polkadot-performance-test = { path = "../node/test/performance-test", optional = true }
 
-sp-core = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-keyring = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-frame-benchmarking-cli = { git = "https://github.com/paritytech/substrate", optional = true , branch = "polkadot-v0.9.27" }
-try-runtime-cli = { git = "https://github.com/paritytech/substrate", optional = true , branch = "polkadot-v0.9.27" }
-sc-cli = { git = "https://github.com/paritytech/substrate", optional = true , branch = "polkadot-v0.9.27" }
-sc-service = { git = "https://github.com/paritytech/substrate", optional = true , branch = "polkadot-v0.9.27" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+frame-benchmarking-cli = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "cherry" }
+try-runtime-cli = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "cherry" }
+sc-cli = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "cherry" }
+sc-service = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "cherry" }
 polkadot-node-metrics = { path = "../node/metrics" }
-sc-tracing = { git = "https://github.com/paritytech/substrate", optional = true , branch = "polkadot-v0.9.27" }
-sc-sysinfo = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
+sc-tracing = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "cherry" }
+sc-sysinfo = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 
 # this crate is used only to enable `trie-memory-tracker` feature
 # see https://github.com/paritytech/substrate/pull/6745
-sp-trie = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
+sp-trie = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 
 [build-dependencies]
-substrate-build-script-utils = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
+substrate-build-script-utils = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 
 [features]
-default = ["wasmtime", "db", "cli", "hostperfcheck", "full-node", "trie-memory-tracker", "polkadot-native"]
+default = ["wasmtime", "db", "cli", "hostperfcheck", "full-node", "trie-memory-tracker", "cherry-native"]
 wasmtime = ["sc-cli/wasmtime"]
 db = ["service/db"]
 cli = [
@@ -67,9 +67,7 @@ hostperfcheck = ["polkadot-performance-test"]
 # Configure the native runtimes to use. Polkadot is enabled by default.
 #
 # Validators require the native runtime currently
-polkadot-native = ["service/polkadot-native"]
-kusama-native = ["service/kusama-native"]
-westend-native = ["service/westend-native"]
+cherry-native = ["service/cherry-native"]
 rococo-native = ["service/rococo-native"]
 
 malus = ["full-node", "service/malus"]

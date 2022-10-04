@@ -28,7 +28,7 @@ pub use polkadot_node_primitives::VALIDATION_CODE_BOMB_LIMIT;
 /// Value used for reference benchmark of erasure-coding.
 pub const ERASURE_CODING_N_VALIDATORS: usize = 1024;
 
-pub use kusama_runtime::WASM_BINARY;
+pub use cherry_runtime::WASM_BINARY;
 
 #[allow(missing_docs)]
 #[derive(thiserror::Error, Debug)]

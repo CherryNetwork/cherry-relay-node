@@ -61,12 +61,10 @@ use std::{ops::Deref, sync::Arc};
 use tracing_subscriber::{fmt, EnvFilter};
 
 pub(crate) enum AnyRuntime {
-	Polkadot,
-	Kusama,
-	Westend,
+	Cherry,
 }
 
-pub(crate) static mut RUNTIME: AnyRuntime = AnyRuntime::Polkadot;
+pub(crate) static mut RUNTIME: AnyRuntime = AnyRuntime::Cherry;
 
 macro_rules! construct_runtime_prelude {
 	($runtime:ident) => { paste::paste! {
@@ -120,12 +118,12 @@ macro_rules! construct_runtime_prelude {
 }
 
 // NOTE: we might be able to use some code from the bridges repo here.
-fn signed_ext_builder_polkadot(
+fn signed_ext_builder_cherry(
 	nonce: Index,
 	tip: Balance,
 	era: sp_runtime::generic::Era,
-) -> polkadot_runtime_exports::SignedExtra {
-	use polkadot_runtime_exports::Runtime;
+) -> cherry_runtime_exports::SignedExtra {
+	use cherry_runtime_exports::Runtime;
 	(
 		frame_system::CheckNonZeroSender::<Runtime>::new(),
 		frame_system::CheckSpecVersion::<Runtime>::new(),
@@ -139,45 +137,7 @@ fn signed_ext_builder_polkadot(
 	)
 }
 
-fn signed_ext_builder_kusama(
-	nonce: Index,
-	tip: Balance,
-	era: sp_runtime::generic::Era,
-) -> kusama_runtime_exports::SignedExtra {
-	use kusama_runtime_exports::Runtime;
-	(
-		frame_system::CheckNonZeroSender::<Runtime>::new(),
-		frame_system::CheckSpecVersion::<Runtime>::new(),
-		frame_system::CheckTxVersion::<Runtime>::new(),
-		frame_system::CheckGenesis::<Runtime>::new(),
-		frame_system::CheckMortality::<Runtime>::from(era),
-		frame_system::CheckNonce::<Runtime>::from(nonce),
-		frame_system::CheckWeight::<Runtime>::new(),
-		pallet_transaction_payment::ChargeTransactionPayment::<Runtime>::from(tip),
-	)
-}
-
-fn signed_ext_builder_westend(
-	nonce: Index,
-	tip: Balance,
-	era: sp_runtime::generic::Era,
-) -> westend_runtime_exports::SignedExtra {
-	use westend_runtime_exports::Runtime;
-	(
-		frame_system::CheckNonZeroSender::<Runtime>::new(),
-		frame_system::CheckSpecVersion::<Runtime>::new(),
-		frame_system::CheckTxVersion::<Runtime>::new(),
-		frame_system::CheckGenesis::<Runtime>::new(),
-		frame_system::CheckMortality::<Runtime>::from(era),
-		frame_system::CheckNonce::<Runtime>::from(nonce),
-		frame_system::CheckWeight::<Runtime>::new(),
-		pallet_transaction_payment::ChargeTransactionPayment::<Runtime>::from(tip),
-	)
-}
-
-construct_runtime_prelude!(polkadot);
-construct_runtime_prelude!(kusama);
-construct_runtime_prelude!(westend);
+construct_runtime_prelude!(cherry);
 
 // NOTE: this is no longer used extensively, most of the per-runtime stuff us delegated to
 // `construct_runtime_prelude` and macro's the import directly from it. A part of the code is also
@@ -190,21 +150,11 @@ macro_rules! any_runtime {
 	($($code:tt)*) => {
 		unsafe {
 			match $crate::RUNTIME {
-				$crate::AnyRuntime::Polkadot => {
+				$crate::AnyRuntime::Cherry => {
 					#[allow(unused)]
-					use $crate::polkadot_runtime_exports::*;
+					use $crate::cherry_runtime_exports::*;
 					$($code)*
 				},
-				$crate::AnyRuntime::Kusama => {
-					#[allow(unused)]
-					use $crate::kusama_runtime_exports::*;
-					$($code)*
-				},
-				$crate::AnyRuntime::Westend => {
-					#[allow(unused)]
-					use $crate::westend_runtime_exports::*;
-					$($code)*
-				}
 			}
 		}
 	}
@@ -217,21 +167,11 @@ macro_rules! any_runtime_unit {
 	($($code:tt)*) => {
 		unsafe {
 			match $crate::RUNTIME {
-				$crate::AnyRuntime::Polkadot => {
+				$crate::AnyRuntime::Cherry => {
 					#[allow(unused)]
-					use $crate::polkadot_runtime_exports::*;
+					use $crate::cherry_runtime_exports::*;
 					let _ = $($code)*;
 				},
-				$crate::AnyRuntime::Kusama => {
-					#[allow(unused)]
-					use $crate::kusama_runtime_exports::*;
-					let _ = $($code)*;
-				},
-				$crate::AnyRuntime::Westend => {
-					#[allow(unused)]
-					use $crate::westend_runtime_exports::*;
-					let _ = $($code)*;
-				}
 			}
 		}
 	}
@@ -517,31 +457,7 @@ async fn main() {
 			// safety: this program will always be single threaded, thus accessing global static is
 			// safe.
 			unsafe {
-				RUNTIME = AnyRuntime::Polkadot;
-			}
-		},
-		"kusama" | "kusama-dev" => {
-			sp_core::crypto::set_default_ss58_version(
-				sp_core::crypto::Ss58AddressFormatRegistry::KusamaAccount.into(),
-			);
-			sub_tokens::dynamic::set_name("KSM");
-			sub_tokens::dynamic::set_decimal_points(1_000_000_000_000);
-			// safety: this program will always be single threaded, thus accessing global static is
-			// safe.
-			unsafe {
-				RUNTIME = AnyRuntime::Kusama;
-			}
-		},
-		"westend" => {
-			sp_core::crypto::set_default_ss58_version(
-				sp_core::crypto::Ss58AddressFormatRegistry::PolkadotAccount.into(),
-			);
-			sub_tokens::dynamic::set_name("WND");
-			sub_tokens::dynamic::set_decimal_points(1_000_000_000_000);
-			// safety: this program will always be single threaded, thus accessing global static is
-			// safe.
-			unsafe {
-				RUNTIME = AnyRuntime::Westend;
+				RUNTIME = AnyRuntime::Cherry;
 			}
 		},
 		_ => {
@@ -619,16 +535,10 @@ mod tests {
 	#[test]
 	fn any_runtime_works() {
 		unsafe {
-			RUNTIME = AnyRuntime::Polkadot;
+			RUNTIME = AnyRuntime::Cherry;
 		}
-		let polkadot_version = any_runtime! { get_version::<Runtime>() };
+		let cherry_version = any_runtime! { get_version::<Runtime>() };
 
-		unsafe {
-			RUNTIME = AnyRuntime::Kusama;
-		}
-		let kusama_version = any_runtime! { get_version::<Runtime>() };
-
-		assert_eq!(polkadot_version.spec_name, "polkadot".into());
-		assert_eq!(kusama_version.spec_name, "kusama".into());
+		assert_eq!(cherry_version.spec_name, "cherry".into());
 	}
 }

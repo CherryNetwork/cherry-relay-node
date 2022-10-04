@@ -10,27 +10,26 @@ targets = ["x86_64-unknown-linux-gnu"]
 [dependencies]
 codec = { package = "parity-scale-codec", version = "3.0.0", default-features = false }
 scale-info = { version = "2.1.2", default-features = false, features = ["derive"] }
-frame-support = { default-features = false, git = "https://github.com/paritytech/substrate" , branch = "polkadot-v0.9.27" }
-frame-system = { default-features = false, git = "https://github.com/paritytech/substrate" , branch = "polkadot-v0.9.27" }
-sp-runtime = { default-features = false, git = "https://github.com/paritytech/substrate" , branch = "polkadot-v0.9.27" }
-sp-std = { default-features = false, git = "https://github.com/paritytech/substrate" , branch = "polkadot-v0.9.27" }
+frame-support = { default-features = false, git = "https://github.com/CherryNetwork/substrate" , branch = "cherry" }
+frame-system = { default-features = false, git = "https://github.com/CherryNetwork/substrate" , branch = "cherry" }
+sp-runtime = { default-features = false, git = "https://github.com/CherryNetwork/substrate" , branch = "cherry" }
+sp-std = { default-features = false, git = "https://github.com/CherryNetwork/substrate" , branch = "cherry" }
 xcm-executor = { path = "../xcm-executor", default-features = false, features = ["runtime-benchmarks"] }
-frame-benchmarking = { default-features = false, git = "https://github.com/paritytech/substrate" , branch = "polkadot-v0.9.27" }
+frame-benchmarking = { default-features = false, git = "https://github.com/CherryNetwork/substrate" , branch = "cherry" }
 xcm = { path = "..", default-features = false, features = ["runtime-benchmarks"] }
 log = "0.4.17"
 
 [dev-dependencies]
-pallet-balances = { git = "https://github.com/paritytech/substrate" , branch = "polkadot-v0.9.27" }
-pallet-assets = { git = "https://github.com/paritytech/substrate" , branch = "polkadot-v0.9.27" }
-sp-core = { git = "https://github.com/paritytech/substrate" , branch = "polkadot-v0.9.27" }
-sp-io = { git = "https://github.com/paritytech/substrate" , branch = "polkadot-v0.9.27" }
-sp-tracing = { git = "https://github.com/paritytech/substrate" , branch = "polkadot-v0.9.27" }
+pallet-balances = { git = "https://github.com/CherryNetwork/substrate" , branch = "cherry" }
+pallet-assets = { git = "https://github.com/CherryNetwork/substrate" , branch = "cherry" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate" , branch = "cherry" }
+sp-io = { git = "https://github.com/CherryNetwork/substrate" , branch = "cherry" }
+sp-tracing = { git = "https://github.com/CherryNetwork/substrate" , branch = "cherry" }
 xcm-builder = { path = "../xcm-builder" }
 xcm = { path = ".." }
 # temp
 pallet-xcm = { path = "../pallet-xcm" }
 polkadot-runtime-common = { path = "../../runtime/common" }
-# westend-runtime = { path = "../../runtime/westend", features = ["runtime-benchmarks"] }
 polkadot-primitives = { path = "../../primitives" }
 
 [features]

@@ -58,6 +58,4 @@ macro_rules! emergency_solution_cmd_for { ($runtime:ident) => { paste::paste! {
 	}
 }}}
 
-emergency_solution_cmd_for!(polkadot);
-emergency_solution_cmd_for!(kusama);
-emergency_solution_cmd_for!(westend);
+emergency_solution_cmd_for!(cherry);

@@ -5,42 +5,40 @@ authors = ["Parity Technologies <admin@parity.io>"]
 edition = "2021"
 
 [dependencies]
-frame-benchmarking = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-frame-benchmarking-cli = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-pallet-transaction-payment = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-pallet-transaction-payment-rpc-runtime-api = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-frame-system = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-frame-system-rpc-runtime-api = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
+frame-benchmarking = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+frame-benchmarking-cli = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+pallet-transaction-payment = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+pallet-transaction-payment-rpc-runtime-api = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+frame-system = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+frame-system-rpc-runtime-api = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 
-sp-consensus = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-storage = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-runtime = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-blockchain = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-api = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-core = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-keyring = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-inherents = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-timestamp = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-session = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-authority-discovery = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-finality-grandpa = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-consensus-babe = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-transaction-pool = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-offchain = { package = "sp-offchain", git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-block-builder = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sp-mmr-primitives = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
+sp-consensus = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-storage = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-runtime = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-blockchain = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-api = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-inherents = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-timestamp = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-session = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-authority-discovery = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-finality-grandpa = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-consensus-babe = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-transaction-pool = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-offchain = { package = "sp-offchain", git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-block-builder = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-mmr-primitives = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 
-sc-consensus = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sc-executor = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sc-client-api = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-sc-service = { git = "https://github.com/paritytech/substrate", default-features = false , branch = "polkadot-v0.9.27" }
+sc-consensus = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sc-executor = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sc-client-api = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sc-service = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 
-beefy-primitives = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
+beefy-primitives = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 
 # Polkadot Runtimes
-polkadot-runtime = { path = "../../runtime/polkadot", optional = true }
-kusama-runtime = { path = "../../runtime/kusama", optional = true }
-westend-runtime = { path = "../../runtime/westend", optional = true }
+cherry-runtime = { path = "../../runtime/cherry", optional = true }
 rococo-runtime = { path = "../../runtime/rococo", optional = true }
 
 polkadot-core-primitives = { path = "../../core-primitives" }
@@ -49,14 +47,10 @@ polkadot-node-core-parachains-inherent = { path = "../core/parachains-inherent" 
 polkadot-runtime-common = { path = "../../runtime/common" }
 
 [features]
-default = ["polkadot"]
-polkadot = ["polkadot-runtime"]
-kusama = ["kusama-runtime"]
+default = ["cherry"]
+cherry = ["cherry-runtime"]
 rococo = ["rococo-runtime"]
-westend = ["westend-runtime"]
 runtime-metrics = [
     "rococo-runtime/runtime-metrics",
-    "kusama-runtime/runtime-metrics",
-    "westend-runtime/runtime-metrics",
-    "polkadot-runtime/runtime-metrics",
+    "cherry-runtime/runtime-metrics",
 ]

@@ -29,9 +29,7 @@ enum Command {
 #[derive(Clone, Debug, ArgEnum)]
 #[clap(rename_all = "PascalCase")]
 enum Runtime {
-	Polkadot,
-	Kusama,
-	Westend,
+	Cherry,
 }
 
 #[derive(Parser)]
@@ -60,79 +58,28 @@ async fn main() {
 
 	use pallet_bags_list_remote_tests::*;
 	match options.runtime {
-		Runtime::Polkadot => sp_core::crypto::set_default_ss58_version(
-			<polkadot_runtime::Runtime as frame_system::Config>::SS58Prefix::get()
-				.try_into()
-				.unwrap(),
-		),
-		Runtime::Kusama => sp_core::crypto::set_default_ss58_version(
-			<kusama_runtime::Runtime as frame_system::Config>::SS58Prefix::get()
-				.try_into()
-				.unwrap(),
-		),
-		Runtime::Westend => sp_core::crypto::set_default_ss58_version(
-			<westend_runtime::Runtime as frame_system::Config>::SS58Prefix::get()
+		Runtime::Cherry => sp_core::crypto::set_default_ss58_version(
+			<cherry_runtime::Runtime as frame_system::Config>::SS58Prefix::get()
 				.try_into()
 				.unwrap(),
 		),
 	};
 
 	match (options.runtime, options.command) {
-		(Runtime::Kusama, Command::CheckMigration) => {
-			use kusama_runtime::{Block, Runtime};
-			use kusama_runtime_constants::currency::UNITS;
-			migration::execute::<Runtime, Block>(UNITS as u64, "KSM", options.uri.clone()).await;
+		(Runtime::Cherry, Command::CheckMigration) => {
+			use cherry_runtime::{Block, Runtime};
+			use cherry_runtime_constants::currency::UNITS;
+			migration::execute::<Runtime, Block>(UNITS as u64, "CHER", options.uri.clone()).await;
 		},
-		(Runtime::Kusama, Command::SanityCheck) => {
-			use kusama_runtime::{Block, Runtime};
-			use kusama_runtime_constants::currency::UNITS;
-			sanity_check::execute::<Runtime, Block>(UNITS as u64, "KSM", options.uri.clone()).await;
+		(Runtime::Cherry, Command::SanityCheck) => {
+			use cherry_runtime::{Block, Runtime};
+			use cherry_runtime_constants::currency::UNITS;
+			sanity_check::execute::<Runtime, Block>(UNITS as u64, "CHER", options.uri.clone())
+				.await;
 		},
-		(Runtime::Kusama, Command::Snapshot) => {
-			use kusama_runtime::{Block, Runtime};
-			use kusama_runtime_constants::currency::UNITS;
-			snapshot::execute::<Runtime, Block>(
-				options.snapshot_limit,
-				UNITS.try_into().unwrap(),
-				options.uri.clone(),
-			)
-			.await;
-		},
-
-		(Runtime::Westend, Command::CheckMigration) => {
-			use westend_runtime::{Block, Runtime};
-			use westend_runtime_constants::currency::UNITS;
-			migration::execute::<Runtime, Block>(UNITS as u64, "WND", options.uri.clone()).await;
-		},
-		(Runtime::Westend, Command::SanityCheck) => {
-			use westend_runtime::{Block, Runtime};
-			use westend_runtime_constants::currency::UNITS;
-			sanity_check::execute::<Runtime, Block>(UNITS as u64, "WND", options.uri.clone()).await;
-		},
-		(Runtime::Westend, Command::Snapshot) => {
-			use westend_runtime::{Block, Runtime};
-			use westend_runtime_constants::currency::UNITS;
-			snapshot::execute::<Runtime, Block>(
-				options.snapshot_limit,
-				UNITS.try_into().unwrap(),
-				options.uri.clone(),
-			)
-			.await;
-		},
-
-		(Runtime::Polkadot, Command::CheckMigration) => {
-			use polkadot_runtime::{Block, Runtime};
-			use polkadot_runtime_constants::currency::UNITS;
-			migration::execute::<Runtime, Block>(UNITS as u64, "DOT", options.uri.clone()).await;
-		},
-		(Runtime::Polkadot, Command::SanityCheck) => {
-			use polkadot_runtime::{Block, Runtime};
-			use polkadot_runtime_constants::currency::UNITS;
-			sanity_check::execute::<Runtime, Block>(UNITS as u64, "DOT", options.uri.clone()).await;
-		},
-		(Runtime::Polkadot, Command::Snapshot) => {
-			use polkadot_runtime::{Block, Runtime};
-			use polkadot_runtime_constants::currency::UNITS;
+		(Runtime::Cherry, Command::Snapshot) => {
+			use cherry_runtime::{Block, Runtime};
+			use cherry_runtime_constants::currency::UNITS;
 			snapshot::execute::<Runtime, Block>(
 				options.snapshot_limit,
 				UNITS.try_into().unwrap(),
