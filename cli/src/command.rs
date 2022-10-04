@@ -92,6 +92,7 @@ impl SubstrateCli for Cli {
 			"cherry-local" => Box::new(service::chain_spec::cherry_local_testnet_config()?),
 			#[cfg(feature = "cherry-native")]
 			"cherry-staging" => Box::new(service::chain_spec::cherry_staging_testnet_config()?),
+			"cherry-testnet" => Box::new(service::chain_spec::cherry_testnet_config()?),
 			"rococo" => Box::new(service::chain_spec::rococo_config()?),
 			#[cfg(feature = "rococo-native")]
 			"rococo-dev" => Box::new(service::chain_spec::rococo_development_config()?),
