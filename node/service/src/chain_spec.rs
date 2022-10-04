@@ -224,9 +224,9 @@ fn cherry_staging_testnet_config_genesis(wasm_binary: &[u8]) -> cherry::GenesisC
 	// subkey inspect "$SECRET"
 	let endowed_accounts = vec![
 		//5DsokUQ2C7FaAGthmrfBdsNiBm3jaGgaiWgntjFVJZCrBscY
-		hex!["50289b0d26855646f29004dc3875abe75e97ed6cb185c3e6d896c4f9643ffc26"].into(),
+		hex!["e2e842322079eceea8b1e13b620230093eb75e4c4a9483c22bd681e50393dd42"].into(),
 		//5GKgU9MjnqX5L5hgYx9Rke3bvxCZDfJr4xbA1WCNTb7Ne9Ho
-		hex!["bc5cf0f9205eb8c16fe12db8140804a8281dad394a5c2d71434bd50aa87f1219"].into(),
+		hex!["349c797d90a548178d9d40c0fd10fbe73d27ed4ef2e2e01062e1bbe98158df70"].into(),
 	];
 
 	let initial_authorities: Vec<(
@@ -241,50 +241,50 @@ fn cherry_staging_testnet_config_genesis(wasm_binary: &[u8]) -> cherry::GenesisC
 	)> = vec![
 		(
 			//5DsokUQ2C7FaAGthmrfBdsNiBm3jaGgaiWgntjFVJZCrBscY
-			hex!["50289b0d26855646f29004dc3875abe75e97ed6cb185c3e6d896c4f9643ffc26"].into(),
+			hex!["e2e842322079eceea8b1e13b620230093eb75e4c4a9483c22bd681e50393dd42"].into(),
 			//5DAqsiJcKppwPB3myqzKy1UBtdTcFTxrq65N6JhWpWpqHyLc
-			hex!["30eab2670653a3d590f7c60c7416ffd001b7387c4261cc7fc1e0847eddb91929"].into(),
+			hex!["66a7d5c3189b24be2239a6284773995715d391d80fd2551e149a6871e710c769"].into(),
 			//5E8LmUjqWWREdW8T1bZwQBNsBdtQrnWhTNRthDu1ytA4qXz2
-			hex!["5b3e747bd1fe24ea90d71ee29c7a602030c978489932a641e67a1807553858b6"]
+			hex!["e2e842322079eceea8b1e13b620230093eb75e4c4a9483c22bd681e50393dd42"]
 				.unchecked_into(),
 			//5HTJdWSTTqfNeyuyD8YW1HzdfpB6RmH59DQXVRincBXJD5Es
-			hex!["ee699f72759ca9952e64560283b45fad14018552198539baefe922d49c85691e"]
+			hex!["0e199f15cf86601c54c30937bfbb00bef78da10e039a783821f13086db93cf08"]
 				.unchecked_into(),
 			//5FvMY5LtbB9xU3WzJthdyMGjoGFFkC2BgP6X2ZGXTY2RPGmC
-			hex!["aa9290c0bbb0f47aab33980df6beeb7f7f02fdf8df03cc54bc36756594a24332"]
+			hex!["e2e842322079eceea8b1e13b620230093eb75e4c4a9483c22bd681e50393dd42"]
 				.unchecked_into(),
 			//5H3AtRtBjgdWQjp2xpcGE8jTGhSoaZPvnWVr27WcuxcA3FcD
-			hex!["dc01ab3487fa1600920c6be880b5985eb078ed0cb590d6b34bd6f0403b63bd23"]
+			hex!["e2e842322079eceea8b1e13b620230093eb75e4c4a9483c22bd681e50393dd42"]
 				.unchecked_into(),
 			//5Gee8ozHizRgvtes3JHtWX3v6dQZ2WrRZjEmFrEyV5dmdZqr
-			hex!["cad2bfceb014d90b1bba1bd4cc8a87b3004c50ddb9cdd9820ab9a2b933ab5101"]
+			hex!["e2e842322079eceea8b1e13b620230093eb75e4c4a9483c22bd681e50393dd42"]
 				.unchecked_into(),
 			//5HGgVGs7etUBg3GSbsSwSzpTWfLnicS5EWUL9DXDm9PjvLbo
-			hex!["e64f810c359968710389e24f0c3f1a0bf92ecc233ec9647bab4a2b7e116e6454"]
+			hex!["e2e842322079eceea8b1e13b620230093eb75e4c4a9483c22bd681e50393dd42"]
 				.unchecked_into(),
 		),
 		(
 			//5GKgU9MjnqX5L5hgYx9Rke3bvxCZDfJr4xbA1WCNTb7Ne9Ho
-			hex!["bc5cf0f9205eb8c16fe12db8140804a8281dad394a5c2d71434bd50aa87f1219"].into(),
+			hex!["349c797d90a548178d9d40c0fd10fbe73d27ed4ef2e2e01062e1bbe98158df70"].into(),
 			//5HbtQdnamyzzUKkfR6a7pnmKZNpci8LqckBAFppYNydBjGi8
-			hex!["f4f54b09884df43454fc943002f90882f61d3a3aaffab8082c2382a1cc21dd53"].into(),
+			hex!["bc118c801753c4bbde9d256bd5b0f072ad33158af6271f832f56a834635e5874"].into(),
 			//5HGViLeoQMxyTKcYgztb7yu4ztKaWwUPrrLvPdidbdLh4QRf
-			hex!["e62b3bac47870c6b3a1f627015061bffa2b9897d06e5d9a681e284fb6f752daa"]
-				.unchecked_into(),			
+			hex!["349c797d90a548178d9d40c0fd10fbe73d27ed4ef2e2e01062e1bbe98158df70"]
+				.unchecked_into(),
 			//5H4SSdpRXcc2m9Cn4ZWWQov2Z1UjhMUaYaB7oazcsQn71NKc
-			hex!["dcf94723acbc199b85eaf164ca329efe38ae851bb066fe31d84a835bf0f70466"]
-				.unchecked_into(),			
+			hex!["d111bd1910077ec92353dd47da94e2afdebec2827ac5fee6516c6b363afaca8d"]
+				.unchecked_into(),
 			//5HKDSaUg2m5X6cNyH231i6cCfb8yXPmxeYRTFyPvRz5Z2Cn8
-			hex!["e83e3196f6557efc17ec25de04937df6dd1b2eae645d56c6a4e4349c24b41f2e"]
-				.unchecked_into(),			
+			hex!["349c797d90a548178d9d40c0fd10fbe73d27ed4ef2e2e01062e1bbe98158df70"]
+				.unchecked_into(),
 			//5F6yZNMnbxsDws4C18KdBQW9TtoBVXmXdkC9jZ94BE5RGfdq
-			hex!["86700c433cf439ac9e6b92d8810387859399cfe7e13d54aa9185f5b59b3f0d3e"]
-				.unchecked_into(),			
+			hex!["349c797d90a548178d9d40c0fd10fbe73d27ed4ef2e2e01062e1bbe98158df70"]
+				.unchecked_into(),
 			//5DCfJh5BLtBfUmZaY3oXZCEhYTqBL6745TpTdNoBHEfdWpPn
-			hex!["324d9bafcff886082281bc892cfd6682f74f2e17e67186c7db0f2ca721aa816b"]
+			hex!["349c797d90a548178d9d40c0fd10fbe73d27ed4ef2e2e01062e1bbe98158df70"]
 				.unchecked_into(),
 			//5DvwSvqiGoND9u2dSUU9T8a2hs23Btsga4YRfmcNRMFWCv5F
-			hex!["528c410821600f3f8e208ee53dba4ca7ee18a3618b84ef3933bbb0720dc6fa0f"]
+			hex!["349c797d90a548178d9d40c0fd10fbe73d27ed4ef2e2e01062e1bbe98158df70"]
 				.unchecked_into(),
 		),
 	];
