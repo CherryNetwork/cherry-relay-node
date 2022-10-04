@@ -116,6 +116,10 @@ pub fn cherry_config() -> Result<CherryChainSpec, String> {
 	CherryChainSpec::from_json_bytes(&include_bytes!("../chain-specs/polkadot.json")[..])
 }
 
+pub fn cherry_testnet_config() -> Result<CherryChainSpec, String> {
+	CherryChainSpec::from_json_bytes(&include_bytes!("../chain-specs/cherry-testnet.json")[..])
+}
+
 pub fn rococo_config() -> Result<RococoChainSpec, String> {
 	RococoChainSpec::from_json_bytes(&include_bytes!("../chain-specs/rococo.json")[..])
 }
