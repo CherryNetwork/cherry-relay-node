@@ -23,7 +23,7 @@
 use pallet_transaction_payment::CurrencyAdapter;
 use runtime_common::{
 	auctions, claims, crowdloan, impl_runtime_weights, impls::DealWithFees, paras_registrar,
-	prod_or_fast, slots, BlockLength, CurrencyToVote,
+	paras_sudo_wrapper, prod_or_fast, slots, BlockLength, CurrencyToVote,
 };
 
 use runtime_parachains::{
@@ -120,7 +120,7 @@ pub const VERSION: RuntimeVersion = RuntimeVersion {
 	spec_name: create_runtime_str!("cherry"),
 	impl_name: create_runtime_str!("cherry"),
 	authoring_version: 0,
-	spec_version: 2,
+	spec_version: 3,
 	impl_version: 0,
 	#[cfg(not(feature = "disable-runtime-api"))]
 	apis: RUNTIME_API_VERSIONS,
@@ -192,6 +192,7 @@ impl Contains<Call> for BaseFilter {
 			Call::Crowdloan(_) |
 			Call::VoterList(_) |
 			Call::Assets(_) |
+			Call::ParasSudoWrapper(_) |
 			Call::XcmPallet(_) => true,
 			// All pallets are allowed, but exhaustive match is defensive
 			// in the case of adding new pallets.
@@ -1346,6 +1347,8 @@ impl parachains_initializer::Config for Runtime {
 	type WeightInfo = weights::runtime_parachains_initializer::WeightInfo<Runtime>;
 }
 
+impl paras_sudo_wrapper::Config for Runtime {}
+
 impl parachains_disputes::Config for Runtime {
 	type Event = Event;
 	type RewardValidators = ();
@@ -1528,6 +1531,7 @@ construct_runtime! {
 		Slots: slots::{Pallet, Call, Storage, Event<T>} = 71,
 		Auctions: auctions::{Pallet, Call, Storage, Event<T>} = 72,
 		Crowdloan: crowdloan::{Pallet, Call, Storage, Event<T>} = 73,
+		ParasSudoWrapper: paras_sudo_wrapper::{Pallet, Call} = 74,
 
 		// Pallet for sending XCM.
 		XcmPallet: pallet_xcm::{Pallet, Call, Storage, Event<T>, Origin, Config} = 99,
