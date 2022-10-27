@@ -362,6 +362,7 @@ fn cherry_staging_testnet_config_genesis(wasm_binary: &[u8]) -> cherry::GenesisC
 		paras: Default::default(),
 		xcm_pallet: Default::default(),
 		assets: cherry::AssetsConfig { assets: vec![], metadata: vec![], accounts: vec![] },
+		gilt: Default::default(),
 	}
 }
 
@@ -936,6 +937,7 @@ pub fn cherry_testnet_genesis(
 			metadata: vec![(999, "Governance Token".into(), "tGov".into(), 0)],
 			accounts: vec![(999, root_key.clone(), 10)],
 		},
+		gilt: Default::default(),
 	}
 }
 

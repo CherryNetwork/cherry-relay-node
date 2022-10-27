@@ -192,6 +192,7 @@ impl Contains<Call> for BaseFilter {
 			Call::Crowdloan(_) |
 			Call::VoterList(_) |
 			Call::Assets(_) |
+			Call::Gilt(_) |
 			Call::ParasSudoWrapper(_) |
 			Call::XcmPallet(_) => true,
 			// All pallets are allowed, but exhaustive match is defensive
@@ -854,6 +855,35 @@ impl pallet_assets::Config for Runtime {
 }
 
 parameter_types! {
+	pub IgnoredIssuance: Balance = Treasury::pot();
+	pub const QueueCount: u32 = 300;
+	pub const MaxQueueLen: u32 = 1000;
+	pub const FifoQueueLen: u32 = 500;
+	pub const Period: BlockNumber = 30 * DAYS;
+	pub const MinFreeze: Balance = 100 * DOLLARS;
+	pub const IntakePeriod: BlockNumber = 10;
+	pub const MaxIntakeBids: u32 = 10;
+}
+
+impl pallet_gilt::Config for Runtime {
+	type Event = Event;
+	type Currency = Balances;
+	type CurrencyBalance = Balance;
+	type AdminOrigin = frame_system::EnsureRoot<AccountId>;
+	type Deficit = ();
+	type Surplus = ();
+	type IgnoredIssuance = IgnoredIssuance;
+	type QueueCount = QueueCount;
+	type MaxQueueLen = MaxQueueLen;
+	type FifoQueueLen = FifoQueueLen;
+	type Period = Period;
+	type MinFreeze = MinFreeze;
+	type IntakePeriod = IntakePeriod;
+	type MaxIntakeBids = MaxIntakeBids;
+	type WeightInfo = pallet_gilt::weights::SubstrateWeight<Runtime>;
+}
+
+parameter_types! {
 	pub const ProposalBond: Permill = Permill::from_percent(5);
 	pub const ProposalBondMinimum: Balance = 1 * DOLLARS;
 	pub const ProposalBondMaximum: Balance = 500 * DOLLARS;
@@ -1460,6 +1490,7 @@ construct_runtime! {
 		Indices: pallet_indices::{Pallet, Call, Storage, Config<T>, Event<T>} = 4,
 		Balances: pallet_balances::{Pallet, Call, Storage, Config<T>, Event<T>} = 5,
 		TransactionPayment: pallet_transaction_payment::{Pallet, Storage, Event<T>} = 32,
+		Gilt: pallet_gilt::{Pallet, Call, Storage, Config, Event<T> } = 103,
 
 		// Consensus support.
 		// Authorship must be before session in order to note author in the correct session and era
