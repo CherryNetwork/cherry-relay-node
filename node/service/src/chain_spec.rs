@@ -293,7 +293,7 @@ fn cherry_staging_testnet_config_genesis(wasm_binary: &[u8]) -> cherry::GenesisC
 		),
 	];
 
-	const ENDOWMENT: u128 = 10 * CHER;
+	const ENDOWMENT: u128 = 100 * CHER;
 	const STASH: u128 = 250_000 * CHER;
 
 	cherry::GenesisConfig {
@@ -607,7 +607,7 @@ fn rococo_staging_testnet_config_genesis(wasm_binary: &[u8]) -> rococo_runtime::
 	];
 
 	const ENDOWMENT: u128 = 1_000_000 * ROC;
-	const STASH: u128 = 100 * ROC;
+	const STASH: u128 = ENDOWMENT;
 
 	rococo_runtime::GenesisConfig {
 		system: rococo_runtime::SystemConfig { code: wasm_binary.to_vec() },
@@ -855,7 +855,7 @@ pub fn cherry_testnet_genesis(
 	let num_endowed_accounts = endowed_accounts.len();
 
 	const ENDOWMENT: u128 = 1_000_000 * CHER;
-	const STASH: u128 = 100 * CHER;
+	const STASH: u128 = ENDOWMENT;
 
 	cherry::GenesisConfig {
 		system: cherry::SystemConfig { code: wasm_binary.to_vec() },
