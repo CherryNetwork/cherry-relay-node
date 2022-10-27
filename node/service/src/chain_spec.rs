@@ -856,7 +856,7 @@ pub fn cherry_testnet_genesis(
 	let num_endowed_accounts = endowed_accounts.len();
 
 	const ENDOWMENT: u128 = 1_000_000 * CHER;
-	const STASH: u128 = 100 * CHER;
+	const STASH: u128 = ENDOWMENT;
 
 	cherry::GenesisConfig {
 		system: cherry::SystemConfig { code: wasm_binary.to_vec() },

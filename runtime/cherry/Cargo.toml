@@ -23,6 +23,7 @@ inherents = { package = "sp-inherents", git = "https://github.com/CherryNetwork/
 offchain-primitives = { package = "sp-offchain", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 tx-pool-api = { package = "sp-transaction-pool", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 sp-api = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
+sp-arithmetic = { package = "sp-arithmetic", git = "https://github.com/CherryNetwork/substrate", branch = "cherry", default-features = false }
 sp-std = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 sp-io = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 sp-mmr-primitives = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
@@ -63,7 +64,7 @@ pallet-scheduler = { git = "https://github.com/CherryNetwork/substrate", default
 pallet-session = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 frame-support = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-staking = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-pallet-staking-reward-curve = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+pallet-staking-reward-fn = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry", default-features = false }
 frame-system = {git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 frame-system-rpc-runtime-api = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 cherry-runtime-constants = { package = "cherry-runtime-constants", path = "./constants", default-features = false }
@@ -148,6 +149,7 @@ std = [
 	"pallet-offences/std",
 	"pallet-preimage/std",
 	"pallet-proxy/std",
+	"pallet-staking-reward-fn/std",
 	"pallet-scheduler/std",
 	"pallet-session/std",
 	"pallet-staking/std",

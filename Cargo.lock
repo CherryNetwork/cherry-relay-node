@@ -886,7 +886,7 @@ dependencies = [
  "pallet-session",
  "pallet-session-benchmarking",
  "pallet-staking",
- "pallet-staking-reward-curve",
+ "pallet-staking-reward-fn",
  "pallet-timestamp",
  "pallet-tips",
  "pallet-transaction-payment",
@@ -907,6 +907,7 @@ dependencies = [
  "serde_json",
  "smallvec",
  "sp-api",
+ "sp-arithmetic",
  "sp-authority-discovery",
  "sp-block-builder",
  "sp-consensus-babe",
@@ -5365,6 +5366,15 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn",
+]
+
+[[package]]
+name = "pallet-staking-reward-fn"
+version = "4.0.0-dev"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#7c724e8ac4a3b4b4a53b20b20edda661ab0a32bd"
+dependencies = [
+ "log",
+ "sp-arithmetic",
 ]
 
 [[package]]
