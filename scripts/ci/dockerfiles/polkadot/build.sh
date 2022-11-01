@@ -1,3 +1,4 @@
+#!/usr/bin/env sh
 #!/usr/bin/env bash
 set -e
 
@@ -9,7 +10,7 @@ cd $PROJECT_ROOT
 
 # Find the current version from Cargo.toml
 VERSION=`grep "^version" ./cli/Cargo.toml | egrep -o "([0-9\.]+-?[0-9]+)"`
-GITUSER=parity
+GITUSER=cherry-network
 GITREPO=polkadot
 
 # Build the image

@@ -13,7 +13,7 @@ LABEL description="Multistage Docker image for Cherry: a platform for web3" \
 	io.parity.image.type="builder" \
 	io.parity.image.authors="liompis@cherrylabs.org" \
 	io.parity.image.vendor="Cherry Network" \
-	io.parity.image.description="Cherry implementation" \
+	io.parity.image.description="Cherry Polkadot Node Implementation" \
 	io.parity.image.source="https://github.com/CherryNetwork/cherry/blob/${VCS_REF}/scripts/ci/dockerfiles/cherry/cherry_builder.Dockerfile" \
 	io.parity.image.documentation="https://github.com/CherryNetwork/cherry/"
 
