@@ -858,7 +858,7 @@ where
 	if config.offchain_worker.enabled {
 		let offchain_workers = Arc::new(sc_offchain::OffchainWorkers::new_with_options(
 			client.clone(),
-			sc_offchain::OffchainWorkerOptions { enable_http_requests: false },
+			sc_offchain::OffchainWorkerOptions { enable_http_requests: true },
 		));
 
 		// Start the offchain workers to have
