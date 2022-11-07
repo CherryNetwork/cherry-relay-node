@@ -63,11 +63,10 @@ use primitives::v2::{
 use sp_core::OpaqueMetadata;
 use sp_mmr_primitives as mmr;
 use sp_runtime::{
-	create_runtime_str,
-	generic, impl_opaque_keys,
+	create_runtime_str, generic, impl_opaque_keys,
 	traits::{
-		AccountIdLookup, BlakeTwo256, Block as BlockT, ConstU32, ConvertInto, Extrinsic as ExtrinsicT,
-		OpaqueKeys, SaturatedConversion, Verify,
+		AccountIdLookup, BlakeTwo256, Block as BlockT, ConstU32, ConvertInto,
+		Extrinsic as ExtrinsicT, OpaqueKeys, SaturatedConversion, Verify,
 	},
 	transaction_validity::{TransactionPriority, TransactionSource, TransactionValidity},
 	ApplyExtrinsicResult, KeyTypeId, Perbill, Percent, Permill,
@@ -193,6 +192,7 @@ impl Contains<Call> for BaseFilter {
 			Call::Assets(_) |
 			Call::Gilt(_) |
 			Call::ParasSudoWrapper(_) |
+			Call::Ipfs(_) |
 			Call::XcmPallet(_) => true,
 			// All pallets are allowed, but exhaustive match is defensive
 			// in the case of adding new pallets.
@@ -577,8 +577,8 @@ fn era_payout(
 	period_fraction: Perquintill,
 	auctioned_slots: u64,
 ) -> (Balance, Balance) {
-	use sp_arithmetic::traits::Saturating;
 	use pallet_staking_reward_fn::compute_inflation;
+	use sp_arithmetic::traits::Saturating;
 
 	let min_annual_inflation = Perquintill::from_rational(25u64, 1000u64);
 	let delta_annual_inflation = max_annual_inflation.saturating_sub(min_annual_inflation);
@@ -588,13 +588,13 @@ fn era_payout(
 
 	// Therefore the ideal amount at stake (as a percentage of total issuance) is 75% less the amount that we expect
 	// to be taken up with auctions.
-	let ideal_stake = Perquintill::from_percent(75)
-		.saturating_sub(auction_proportion);
+	let ideal_stake = Perquintill::from_percent(75).saturating_sub(auction_proportion);
 
 	let stake = Perquintill::from_rational(total_staked, non_gilt_issuance);
 	let falloff = Perquintill::from_percent(5);
 	let adjustment = compute_inflation(stake, ideal_stake, falloff);
-	let staking_inflation = min_annual_inflation.saturating_add(delta_annual_inflation * adjustment);
+	let staking_inflation =
+		min_annual_inflation.saturating_add(delta_annual_inflation * adjustment);
 
 	let max_payout = period_fraction * max_annual_inflation * non_gilt_issuance;
 	let staking_payout = (period_fraction * staking_inflation) * non_gilt_issuance;
@@ -970,6 +970,19 @@ impl pallet_treasury::Config for Runtime {
 	type MaxApprovals = MaxApprovals;
 	type WeightInfo = weights::pallet_treasury::WeightInfo<Runtime>;
 	type AllowedProposalPeriod = AllowedProposalPeriod;
+}
+
+parameter_types! {
+	pub const MaxIpfsOwned: u32 = 5;
+}
+
+impl pallet_ipfs::Config for Runtime {
+	type Event = Event;
+	type Currency = Balances;
+	type AuthorityId = pallet_ipfs::crypto::AuthorityId;
+	type Call = Call;
+	type MaxIpfsOwned = MaxIpfsOwned;
+	type WeightInfo = pallet_ipfs::weights::SubstrateWeight<Runtime>;
 }
 
 parameter_types! {
@@ -1560,6 +1573,7 @@ construct_runtime! {
 		TechnicalMembership: pallet_membership::<Instance1>::{Pallet, Call, Storage, Event<T>, Config<T>} = 18,
 		Treasury: pallet_treasury::{Pallet, Call, Storage, Config, Event<T>} = 19,
 		Council: pallet_council::{Pallet, Call, Storage, Origin<T>, Event<T>, Config<T>} = 102,
+		Ipfs: pallet_ipfs::{Pallet, Call, Storage, Event<T> } = 104,
 
 		// Claims. Usable initially.
 		Claims: claims::{Pallet, Call, Storage, Event<T>, Config<T>, ValidateUnsigned} = 24,
@@ -1613,6 +1627,7 @@ construct_runtime! {
 		ParasSudoWrapper: paras_sudo_wrapper::{Pallet, Call} = 74,
 
 		// Pallet for sending XCM.
+
 		XcmPallet: pallet_xcm::{Pallet, Call, Storage, Event<T>, Origin, Config} = 99,
 		Assets: pallet_assets::{Pallet, Call, Storage, Event<T>, Config<T>} = 101,
 	}
@@ -2032,6 +2047,16 @@ sp_api::impl_runtime_apis! {
 	impl frame_system_rpc_runtime_api::AccountNonceApi<Block, AccountId, Nonce> for Runtime {
 		fn account_nonce(account: AccountId) -> Nonce {
 			System::account_nonce(account)
+		}
+	}
+
+	impl pallet_ipfs_rpc_runtime_api::RpcIpfsApi<Block> for Runtime {
+		fn retrieve_bytes(
+			public_key: sp_core::Bytes,
+			signature:  sp_core::Bytes,
+			message: sp_core::Bytes,
+		) -> sp_core::Bytes {
+			Ipfs::retrieve_bytes(public_key, signature, message)
 		}
 	}
 
