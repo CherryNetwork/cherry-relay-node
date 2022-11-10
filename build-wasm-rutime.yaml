@@ -1,0 +1,24 @@
+name: Build cherry-runtime WASM
+
+on:
+  push:
+    branches:
+      - cherry
+
+jobs:
+  build_wasm:
+    name: Build WASM cherry-runtime
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: nightly
+      - run: |
+          rustup target add wasm32-unknown-unknown
+          sh scripts/build-only-wasm.sh cherry-runtime
+      - name: Archive wasm artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: WASM build
+          path: target/release/wbuild/cherry-runtime/*.wasm
