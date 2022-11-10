@@ -11,11 +11,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions-rs/toolchain@v1
+      - name: Install latest nightly
+        uses: actions-rs/toolchain@v1
         with:
-          toolchain: nightly
+            toolchain: nightly
+            override: false
+            components: rustfmt, clippy
+            target: wasm32-unknown-unknown
 
       - run: sh scripts/build-only-wasm.sh cherry-runtime
+
       - name: Archive wasm artifacts
         uses: actions/upload-artifact@v3
         with:
