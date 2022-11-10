@@ -20,6 +20,9 @@ else
 fi
 
 if [ -d $WASM_BUILDER_RUNNER ]; then
+  rustup install nightly
+  rustup target add wasm32-unknown-unknown
+
   export DEBUG=false
   export OUT_DIR="$PROJECT_ROOT/target/release/build"
   cargo run --release --manifest-path="$WASM_BUILDER_RUNNER/Cargo.toml" \
