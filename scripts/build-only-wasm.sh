@@ -20,6 +20,11 @@ else
 fi
 
 if [ -d $WASM_BUILDER_RUNNER ]; then
+  rustup component add rust-std --toolchain=stable
+  rustup component add rustfmt --toolchain=stable
+  rustup component add rust-std --toolchain=nightly
+  rustup component add rustfmt --toolchain=nightly
+
   rustup install nightly
   rustup target add wasm32-unknown-unknown
 
