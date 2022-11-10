@@ -20,13 +20,17 @@ else
 fi
 
 if [ -d $WASM_BUILDER_RUNNER ]; then
+  rustup install stable
+  rustup default stable
+  rustup target add wasm32-unknown-unknown --toolchain nightly
   rustup component add rust-std --toolchain=stable
   rustup component add rustfmt --toolchain=stable
   rustup component add rust-std --toolchain=nightly
   rustup component add rustfmt --toolchain=nightly
+  rustup component add rustc --toolchain=nightly
+  rustup component add rustc --toolchain=nightly
 
-  rustup install nightly
-  rustup target add wasm32-unknown-unknown
+
 
   export DEBUG=false
   export OUT_DIR="$PROJECT_ROOT/target/release/build"
