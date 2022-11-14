@@ -118,7 +118,7 @@ pub const VERSION: RuntimeVersion = RuntimeVersion {
 	spec_name: create_runtime_str!("cherry"),
 	impl_name: create_runtime_str!("cherry"),
 	authoring_version: 0,
-	spec_version: 7,
+	spec_version: 8,
 	impl_version: 0,
 	#[cfg(not(feature = "disable-runtime-api"))]
 	apis: RUNTIME_API_VERSIONS,
@@ -575,20 +575,16 @@ fn era_payout(
 	non_gilt_issuance: Balance,
 	max_annual_inflation: Perquintill,
 	period_fraction: Perquintill,
-	auctioned_slots: u64,
 ) -> (Balance, Balance) {
 	use pallet_staking_reward_fn::compute_inflation;
 	use sp_arithmetic::traits::Saturating;
 
-	let min_annual_inflation = Perquintill::from_rational(25u64, 1000u64);
+	let min_annual_inflation = Perquintill::from_rational(10u64, 1000u64);
 	let delta_annual_inflation = max_annual_inflation.saturating_sub(min_annual_inflation);
-
-	// 30% reserved for up to 60 slots.
-	let auction_proportion = Perquintill::from_rational(auctioned_slots.min(60), 200u64);
 
 	// Therefore the ideal amount at stake (as a percentage of total issuance) is 75% less the amount that we expect
 	// to be taken up with auctions.
-	let ideal_stake = Perquintill::from_percent(75).saturating_sub(auction_proportion);
+	let ideal_stake = Perquintill::from_percent(50);
 
 	let stake = Perquintill::from_rational(total_staked, non_gilt_issuance);
 	let falloff = Perquintill::from_percent(5);
@@ -617,8 +613,8 @@ impl pallet_staking::EraPayout<Balance> for EraPayout {
 		era_duration_millis: u64,
 	) -> (Balance, Balance) {
 		// TODO: #2999 Update with Auctions logic when auctions pallet added.
-		const AUCTIONED_SLOTS: u64 = 0;
-		const MAX_ANNUAL_INFLATION: Perquintill = Perquintill::from_percent(10);
+
+		const MAX_ANNUAL_INFLATION: Perquintill = Perquintill::from_percent(3);
 		const MILLISECONDS_PER_YEAR: u64 = 1000 * 3600 * 24 * 36525 / 100;
 
 		era_payout(
@@ -626,7 +622,6 @@ impl pallet_staking::EraPayout<Balance> for EraPayout {
 			Gilt::issuance().non_gilt,
 			MAX_ANNUAL_INFLATION,
 			Perquintill::from_rational(era_duration_millis, MILLISECONDS_PER_YEAR),
-			AUCTIONED_SLOTS,
 		)
 	}
 }
