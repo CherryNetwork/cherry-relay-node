@@ -575,7 +575,6 @@ fn era_payout(
 	non_gilt_issuance: Balance,
 	max_annual_inflation: Perquintill,
 	period_fraction: Perquintill,
-
 ) -> (Balance, Balance) {
 	use pallet_staking_reward_fn::compute_inflation;
 	use sp_arithmetic::traits::Saturating;
@@ -623,7 +622,6 @@ impl pallet_staking::EraPayout<Balance> for EraPayout {
 			Gilt::issuance().non_gilt,
 			MAX_ANNUAL_INFLATION,
 			Perquintill::from_rational(era_duration_millis, MILLISECONDS_PER_YEAR),
-
 		)
 	}
 }
