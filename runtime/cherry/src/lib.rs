@@ -928,8 +928,8 @@ impl pallet_gilt::Config for Runtime {
 
 parameter_types! {
 	pub const ProposalBond: Permill = Permill::from_percent(5);
-	pub const ProposalBondMinimum: Balance = 1 * DOLLARS;
-	pub const ProposalBondMaximum: Balance = 500 * DOLLARS;
+	pub const ProposalBondMinimum: Balance = 1000 * DOLLARS;
+	pub const ProposalBondMaximum: Balance = 5000 * DOLLARS;
 	pub const SpendPeriod: BlockNumber = SPEND_PERIOD;
 	pub const Burn: Permill = Permill::from_percent(50);
 	pub const TreasuryPalletId: PalletId = PalletId(*b"py/trsry");
