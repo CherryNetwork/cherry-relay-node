@@ -39,7 +39,6 @@ beefy-primitives = { git = "https://github.com/CherryNetwork/substrate", branch 
 
 # Polkadot Runtimes
 cherry-runtime = { path = "../../runtime/cherry", optional = true }
-rococo-runtime = { path = "../../runtime/rococo", optional = true }
 
 polkadot-core-primitives = { path = "../../core-primitives" }
 polkadot-primitives = { path = "../../primitives" }
@@ -49,8 +48,6 @@ polkadot-runtime-common = { path = "../../runtime/common" }
 [features]
 default = ["cherry"]
 cherry = ["cherry-runtime"]
-rococo = ["rococo-runtime"]
 runtime-metrics = [
-    "rococo-runtime/runtime-metrics",
     "cherry-runtime/runtime-metrics",
 ]

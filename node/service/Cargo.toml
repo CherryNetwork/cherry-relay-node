@@ -89,11 +89,9 @@ polkadot-node-network-protocol = { path = "../network/protocol" }
 
 # Polkadot Runtime Constants
 cherry-runtime-constants = { path = "../../runtime/cherry/constants", optional = true }
-rococo-runtime-constants = { path = "../../runtime/rococo/constants", optional = true }
 
 # Polkadot Runtimes
 cherry-runtime = { path = "../../runtime/cherry", optional = true }
-rococo-runtime = { path = "../../runtime/rococo", optional = true }
 
 # Polkadot Subsystems
 polkadot-approval-distribution = { path = "../network/approval-distribution", optional = true }
@@ -164,25 +162,20 @@ full-node = [
 #
 # Validators require the native runtime currently
 cherry-native = [ "cherry-runtime", "cherry-runtime-constants", "polkadot-client/cherry" ]
-rococo-native = [ "rococo-runtime", "rococo-runtime-constants", "polkadot-client/rococo" ]
 
 runtime-benchmarks = [
 	"cherry-runtime/runtime-benchmarks",
-	"rococo-runtime/runtime-benchmarks"
 ]
 try-runtime = [
 	"cherry-runtime/try-runtime",
-	"rococo-runtime/try-runtime",
 ]
 fast-runtime = [
 	"cherry-runtime/fast-runtime",
-	"rococo-runtime/fast-runtime",
 ]
 
 malus = ["full-node"]
 runtime-metrics = [
 	"polkadot-client/runtime-metrics",
-	"rococo-runtime/runtime-metrics",
 	"cherry-runtime/runtime-metrics",
 	"polkadot-runtime-parachains/runtime-metrics"
 ]
