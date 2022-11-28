@@ -694,7 +694,7 @@ where
 	let role = config.role.clone();
 	let force_authoring = config.force_authoring;
 	let backoff_authoring_blocks = {
-		let mut backoff = sc_consensus_slots::BackoffAuthoringOnFinalizedHeadLagging::default();
+		let backoff = sc_consensus_slots::BackoffAuthoringOnFinalizedHeadLagging::default();
 
 		Some(backoff)
 	};
