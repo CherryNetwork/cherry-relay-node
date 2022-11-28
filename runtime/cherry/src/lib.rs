@@ -352,7 +352,7 @@ impl pallet_indices::Config for Runtime {
 }
 
 parameter_types! {
-	pub const ExistentialDeposit: Balance = 1; // TODO: Change this to 1 CHER @zycon91
+	pub const ExistentialDeposit: Balance = 1 * DOLLARS;
 	pub const MaxLocks: u32 = 50;
 	pub const MaxReserves: u32 = 50;
 }
@@ -928,8 +928,8 @@ impl pallet_gilt::Config for Runtime {
 
 parameter_types! {
 	pub const ProposalBond: Permill = Permill::from_percent(5);
-	pub const ProposalBondMinimum: Balance = 1 * DOLLARS;
-	pub const ProposalBondMaximum: Balance = 500 * DOLLARS;
+	pub const ProposalBondMinimum: Balance = 1000 * DOLLARS;
+	pub const ProposalBondMaximum: Balance = 5000 * DOLLARS;
 	pub const SpendPeriod: BlockNumber = SPEND_PERIOD;
 	pub const Burn: Permill = Permill::from_percent(50);
 	pub const TreasuryPalletId: PalletId = PalletId(*b"py/trsry");
