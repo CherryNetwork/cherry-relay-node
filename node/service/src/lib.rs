@@ -82,7 +82,7 @@ use telemetry::{Telemetry, TelemetryWorkerHandle};
 #[cfg(feature = "cherry-native")]
 pub use polkadot_client::CherryExecutorDispatch;
 
-pub use chain_spec::{CherryChainSpec};
+pub use chain_spec::CherryChainSpec;
 pub use consensus_common::{block_validation::Chain, Proposal, SelectChain};
 #[cfg(feature = "full-node")]
 pub use polkadot_client::{
@@ -700,8 +700,7 @@ where
 	};
 
 	// If not on a known test network, warn the user that BEEFY is still experimental.
-	if enable_beefy && !config.chain_spec.is_dev()
-	{
+	if enable_beefy && !config.chain_spec.is_dev() {
 		gum::warn!("BEEFY is still experimental, usage on a production network is discouraged.");
 	}
 

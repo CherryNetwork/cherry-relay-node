@@ -99,9 +99,8 @@ impl SubstrateCli for Cli {
 				let chain_spec = Box::new(service::CherryChainSpec::from_json_file(path.clone())?)
 					as Box<dyn service::ChainSpec>;
 
-
-					chain_spec
-				}
+				chain_spec
+			},
 		})
 	}
 
