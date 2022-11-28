@@ -76,7 +76,7 @@ impl SubstrateCli for Cli {
 	fn load_spec(&self, id: &str) -> std::result::Result<Box<dyn sc_service::ChainSpec>, String> {
 		let id = if id == "" {
 			let n = get_exec_name().unwrap_or_default();
-			["cherry", "rococo", "versi"]
+			["cherry"]
 				.iter()
 				.cloned()
 				.find(|&chain| n.starts_with(chain))
@@ -93,70 +93,26 @@ impl SubstrateCli for Cli {
 			#[cfg(feature = "cherry-native")]
 			"cherry-staging" => Box::new(service::chain_spec::cherry_staging_testnet_config()?),
 			"cherry-testnet" => Box::new(service::chain_spec::cherry_testnet_config()?),
-			"rococo" => Box::new(service::chain_spec::rococo_config()?),
-			#[cfg(feature = "rococo-native")]
-			"rococo-dev" => Box::new(service::chain_spec::rococo_development_config()?),
-			#[cfg(feature = "rococo-native")]
-			"rococo-local" => Box::new(service::chain_spec::rococo_local_testnet_config()?),
-			#[cfg(feature = "rococo-native")]
-			"rococo-staging" => Box::new(service::chain_spec::rococo_staging_testnet_config()?),
-			#[cfg(not(feature = "rococo-native"))]
-			name if name.starts_with("rococo-") && !name.ends_with(".json") =>
-				Err(format!("`{}` only supported with `rococo-native` feature enabled.", name))?,
-			"wococo" => Box::new(service::chain_spec::wococo_config()?),
-			#[cfg(feature = "rococo-native")]
-			"wococo-dev" => Box::new(service::chain_spec::wococo_development_config()?),
-			#[cfg(feature = "rococo-native")]
-			"wococo-local" => Box::new(service::chain_spec::wococo_local_testnet_config()?),
-			#[cfg(not(feature = "rococo-native"))]
-			name if name.starts_with("wococo-") =>
-				Err(format!("`{}` only supported with `rococo-native` feature enabled.", name))?,
-			#[cfg(feature = "rococo-native")]
-			"versi-dev" => Box::new(service::chain_spec::versi_development_config()?),
-			#[cfg(feature = "rococo-native")]
-			"versi-local" => Box::new(service::chain_spec::versi_local_testnet_config()?),
-			#[cfg(feature = "rococo-native")]
-			"versi-staging" => Box::new(service::chain_spec::versi_staging_testnet_config()?),
-			#[cfg(not(feature = "rococo-native"))]
-			name if name.starts_with("versi-") =>
-				Err(format!("`{}` only supported with `rococo-native` feature enabled.", name))?,
 			path => {
 				let path = std::path::PathBuf::from(path);
 
 				let chain_spec = Box::new(service::CherryChainSpec::from_json_file(path.clone())?)
 					as Box<dyn service::ChainSpec>;
 
-				// When `force_*` is given or the file name starts with the name of one of the known chains,
-				// we use the chain spec for the specific chain.
-				if self.run.force_rococo ||
-					chain_spec.is_rococo() ||
-					chain_spec.is_wococo() ||
-					chain_spec.is_versi()
-				{
-					Box::new(service::RococoChainSpec::from_json_file(path)?)
-				} else {
+
 					chain_spec
 				}
-			},
 		})
 	}
 
-	fn native_runtime_version(spec: &Box<dyn service::ChainSpec>) -> &'static RuntimeVersion {
-		#[cfg(feature = "rococo-native")]
-		if spec.is_rococo() || spec.is_wococo() || spec.is_versi() {
-			return &service::rococo_runtime::VERSION
-		}
-
-		#[cfg(not(all(feature = "rococo-native",)))]
-		let _ = spec;
-
+	fn native_runtime_version(_spec: &Box<dyn service::ChainSpec>) -> &'static RuntimeVersion {
 		#[cfg(feature = "cherry-native")]
 		{
 			return &service::cherry_runtime::VERSION
 		}
 
 		#[cfg(not(feature = "cherry-native"))]
-		panic!("No runtime feature (cherry, rococo) is enabled")
+		panic!("No runtime feature (cherry) is enabled")
 	}
 }
 
@@ -167,7 +123,7 @@ fn set_default_ss58_version(_spec: &Box<dyn service::ChainSpec>) {
 }
 
 const DEV_ONLY_ERROR_PATTERN: &'static str =
-	"can only use subcommand with --chain [polkadot-dev, rococo-dev, wococo-dev], got ";
+	"can only use subcommand with --chain [cherry-dev], got ";
 
 fn ensure_dev(spec: &Box<dyn service::ChainSpec>) -> std::result::Result<(), String> {
 	if spec.is_dev() {
@@ -186,8 +142,6 @@ macro_rules! unwrap_client {
 		match $client.as_ref() {
 			#[cfg(feature = "cherry-native")]
 			polkadot_client::Client::Cherry($client) => $code,
-			#[cfg(feature = "rococo-native")]
-			polkadot_client::Client::Rococo($client) => $code,
 			#[allow(unreachable_patterns)]
 			_ => Err(Error::CommandNotImplemented),
 		}
@@ -568,7 +522,7 @@ pub fn run() -> Result<()> {
 				})
 			}
 			#[cfg(not(feature = "cherry-native"))]
-			panic!("No runtime feature (cherry, rococo) is enabled")
+			panic!("No runtime feature (cherry) is enabled")
 		},
 		#[cfg(not(feature = "try-runtime"))]
 		Some(Subcommand::TryRuntime) => Err(Error::Other(

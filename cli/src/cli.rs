@@ -90,10 +90,6 @@ pub struct RunCmd {
 	#[clap(flatten)]
 	pub base: sc_cli::RunCmd,
 
-	/// Force using Rococo native runtime.
-	#[clap(long = "force-rococo")]
-	pub force_rococo: bool,
-
 	/// Setup a GRANDPA scheduled voting pause.
 	///
 	/// This parameter takes two values, namely a block number and a delay (in
@@ -103,7 +99,7 @@ pub struct RunCmd {
 	#[clap(long = "grandpa-pause", number_of_values(2))]
 	pub grandpa_pause: Vec<u32>,
 
-	/// Enable the BEEFY gadget (only on Rococo or Wococo for now).
+	/// Enable the BEEFY gadget
 	#[clap(long)]
 	pub beefy: bool,
 

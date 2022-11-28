@@ -79,13 +79,10 @@ use telemetry::TelemetryWorker;
 #[cfg(feature = "full-node")]
 use telemetry::{Telemetry, TelemetryWorkerHandle};
 
-#[cfg(feature = "rococo-native")]
-pub use polkadot_client::RococoExecutorDispatch;
-
 #[cfg(feature = "cherry-native")]
 pub use polkadot_client::CherryExecutorDispatch;
 
-pub use chain_spec::{CherryChainSpec, RococoChainSpec};
+pub use chain_spec::{CherryChainSpec};
 pub use consensus_common::{block_validation::Chain, Proposal, SelectChain};
 #[cfg(feature = "full-node")]
 pub use polkadot_client::{
@@ -112,8 +109,6 @@ pub use sp_runtime::{
 
 #[cfg(feature = "cherry-native")]
 pub use cherry_runtime;
-#[cfg(feature = "rococo-native")]
-pub use rococo_runtime;
 
 /// The maximum number of active leaves we forward to the [`Overseer`] on startup.
 #[cfg(any(test, feature = "full-node"))]
@@ -227,7 +222,7 @@ pub enum Error {
 	DatabasePathRequired,
 
 	#[cfg(feature = "full-node")]
-	#[error("Expected at least one of polkadot or rococo runtime feature")]
+	#[error("Expected cherry runtime feature")]
 	NoRuntime,
 }
 
@@ -236,15 +231,6 @@ pub trait IdentifyVariant {
 	/// Returns if this is a configuration for the `Polkadot` network.
 	fn is_cherry(&self) -> bool;
 
-	/// Returns if this is a configuration for the `Rococo` network.
-	fn is_rococo(&self) -> bool;
-
-	/// Returns if this is a configuration for the `Wococo` test network.
-	fn is_wococo(&self) -> bool;
-
-	/// Returns if this is a configuration for the `Versi` test network.
-	fn is_versi(&self) -> bool;
-
 	/// Returns true if this configuration is for a development network.
 	fn is_dev(&self) -> bool;
 }
@@ -252,15 +238,6 @@ pub trait IdentifyVariant {
 impl IdentifyVariant for Box<dyn ChainSpec> {
 	fn is_cherry(&self) -> bool {
 		self.id().starts_with("cherry") || self.id().starts_with("cher")
-	}
-	fn is_rococo(&self) -> bool {
-		self.id().starts_with("rococo") || self.id().starts_with("rco")
-	}
-	fn is_wococo(&self) -> bool {
-		self.id().starts_with("wococo") || self.id().starts_with("wco")
-	}
-	fn is_versi(&self) -> bool {
-		self.id().starts_with("versi") || self.id().starts_with("vrs")
 	}
 	fn is_dev(&self) -> bool {
 		self.id().ends_with("dev")
@@ -719,24 +696,11 @@ where
 	let backoff_authoring_blocks = {
 		let mut backoff = sc_consensus_slots::BackoffAuthoringOnFinalizedHeadLagging::default();
 
-		if config.chain_spec.is_rococo() ||
-			config.chain_spec.is_wococo() ||
-			config.chain_spec.is_versi()
-		{
-			// it's a testnet that's in flux, finality has stalled sometimes due
-			// to operational issues and it's annoying to slow down block
-			// production to 1 block per hour.
-			backoff.max_interval = 10;
-		}
-
 		Some(backoff)
 	};
 
 	// If not on a known test network, warn the user that BEEFY is still experimental.
-	if enable_beefy &&
-		!config.chain_spec.is_rococo() &&
-		!config.chain_spec.is_wococo() &&
-		!config.chain_spec.is_versi()
+	if enable_beefy && !config.chain_spec.is_dev()
 	{
 		gum::warn!("BEEFY is still experimental, usage on a production network is discouraged.");
 	}
@@ -761,7 +725,7 @@ where
 	let auth_or_collator = role.is_authority() || is_collator.is_collator();
 	let requires_overseer_for_chain_sel = local_keystore.is_some() && auth_or_collator;
 
-	let pvf_checker_enabled = !is_collator.is_collator() && chain_spec.is_versi();
+	let pvf_checker_enabled = !is_collator.is_collator() && chain_spec.is_dev();
 
 	let select_chain = if requires_overseer_for_chain_sel {
 		let metrics =
@@ -1138,7 +1102,7 @@ where
 			network: network.clone(),
 			signed_commitment_sender: beefy_links.0,
 			beefy_best_block_sender: beefy_links.1,
-			min_block_delta: if chain_spec.is_wococo() { 4 } else { 8 },
+			min_block_delta: if chain_spec.is_dev() { 4 } else { 8 },
 			prometheus_registry: prometheus_registry.clone(),
 			protocol_name: beefy_protocol_name,
 		};
@@ -1147,7 +1111,7 @@ where
 
 		// Wococo's purpose is to be a testbed for BEEFY, so if it fails we'll
 		// bring the node down with it to make sure it is noticed.
-		if chain_spec.is_wococo() {
+		if chain_spec.is_dev() {
 			task_manager
 				.spawn_essential_handle()
 				.spawn_blocking("beefy-gadget", None, gadget);
@@ -1159,12 +1123,7 @@ where
 	// Reduce grandpa load on Kusama and test networks. This will slow down finality by
 	// approximately one slot duration, but will reduce load. We would like to see the impact on
 	// Kusama, see: https://github.com/paritytech/polkadot/issues/5464
-	let gossip_duration =
-		if chain_spec.is_versi() || chain_spec.is_wococo() || chain_spec.is_rococo() {
-			Duration::from_millis(2000)
-		} else {
-			Duration::from_millis(1000)
-		};
+	let gossip_duration = Duration::from_millis(1000);
 
 	let config = grandpa::Config {
 		// FIXME substrate#1578 make this available through chainspec
@@ -1281,14 +1240,6 @@ pub fn new_chain_ops(
 
 	let telemetry_worker_handle = None;
 
-	#[cfg(feature = "rococo-native")]
-	if config.chain_spec.is_rococo() ||
-		config.chain_spec.is_wococo() ||
-		config.chain_spec.is_versi()
-	{
-		return chain_ops!(config, jaeger_agent, telemetry_worker_handle; rococo_runtime, RococoExecutorDispatch, Rococo)
-	}
-
 	#[cfg(feature = "cherry-native")]
 	{
 		return chain_ops!(config, jaeger_agent, telemetry_worker_handle; cherry_runtime, CherryExecutorDispatch, Cherry)
@@ -1319,28 +1270,6 @@ pub fn build_full(
 	malus_finality_delay: Option<u32>,
 	hwbench: Option<sc_sysinfo::HwBench>,
 ) -> Result<NewFull<Client>, Error> {
-	#[cfg(feature = "rococo-native")]
-	if config.chain_spec.is_rococo() ||
-		config.chain_spec.is_wococo() ||
-		config.chain_spec.is_versi()
-	{
-		return new_full::<rococo_runtime::RuntimeApi, RococoExecutorDispatch, _>(
-			config,
-			is_collator,
-			grandpa_pause,
-			enable_beefy,
-			jaeger_agent,
-			telemetry_worker_handle,
-			None,
-			overseer_enable_anyways,
-			overseer_gen,
-			overseer_message_channel_override,
-			malus_finality_delay,
-			hwbench,
-		)
-		.map(|full| full.with_client(Client::Rococo))
-	}
-
 	#[cfg(feature = "cherry-native")]
 	{
 		return new_full::<cherry_runtime::RuntimeApi, CherryExecutorDispatch, _>(

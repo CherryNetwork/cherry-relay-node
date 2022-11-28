@@ -185,61 +185,7 @@ impl BenchmarkCallSigner<cherry_runtime::Call, sp_core::sr25519::Pair>
 	}
 }
 
-#[cfg(feature = "rococo")]
-impl BenchmarkCallSigner<rococo_runtime::Call, sp_core::sr25519::Pair>
-	for FullClient<rococo_runtime::RuntimeApi, RococoExecutorDispatch>
-{
-	fn sign_call(
-		&self,
-		call: rococo_runtime::Call,
-		nonce: u32,
-		current_block: u64,
-		period: u64,
-		genesis: H256,
-		acc: sp_core::sr25519::Pair,
-	) -> OpaqueExtrinsic {
-		use rococo_runtime as runtime;
-
-		let extra: runtime::SignedExtra = (
-			frame_system::CheckNonZeroSender::<runtime::Runtime>::new(),
-			frame_system::CheckSpecVersion::<runtime::Runtime>::new(),
-			frame_system::CheckTxVersion::<runtime::Runtime>::new(),
-			frame_system::CheckGenesis::<runtime::Runtime>::new(),
-			frame_system::CheckMortality::<runtime::Runtime>::from(
-				sp_runtime::generic::Era::mortal(period, current_block),
-			),
-			frame_system::CheckNonce::<runtime::Runtime>::from(nonce),
-			frame_system::CheckWeight::<runtime::Runtime>::new(),
-			pallet_transaction_payment::ChargeTransactionPayment::<runtime::Runtime>::from(0),
-		);
-
-		let payload = runtime::SignedPayload::from_raw(
-			call.clone(),
-			extra.clone(),
-			(
-				(),
-				runtime::VERSION.spec_version,
-				runtime::VERSION.transaction_version,
-				genesis.clone(),
-				genesis,
-				(),
-				(),
-				(),
-			),
-		);
-
-		let signature = payload.using_encoded(|p| acc.sign(p));
-		runtime::UncheckedExtrinsic::new_signed(
-			call,
-			sp_runtime::AccountId32::from(acc.public()).into(),
-			polkadot_core_primitives::Signature::Sr25519(signature.clone()),
-			extra,
-		)
-		.into()
-	}
-}
-
-/// Generates inherent data for benchmarking Polkadot, Westend and Rococo.
+/// Generates inherent data for benchmarking Cherry.
 ///
 /// Not to be used outside of benchmarking since it returns mocked values.
 pub fn benchmark_inherent_data(
