@@ -185,7 +185,7 @@ impl BenchmarkCallSigner<cherry_runtime::Call, sp_core::sr25519::Pair>
 	}
 }
 
-/// Generates inherent data for benchmarking Polkadot, Westend and Rococo.
+/// Generates inherent data for benchmarking Cherry.
 ///
 /// Not to be used outside of benchmarking since it returns mocked values.
 pub fn benchmark_inherent_data(
