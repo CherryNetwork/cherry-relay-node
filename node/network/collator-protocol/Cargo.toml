@@ -1,6 +1,6 @@
 [package]
 name = "polkadot-collator-protocol"
-version = "0.9.28"
+version = "0.9.29"
 authors = ["Parity Technologies <admin@parity.io>"]
 edition = "2021"
 
@@ -10,9 +10,9 @@ futures = "0.3.21"
 futures-timer = "3"
 gum = { package = "tracing-gum", path = "../../gum" }
 
-sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.28" }
-sp-runtime = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.28" }
-sp-keystore = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.28" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.29" }
+sp-runtime = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.29" }
+sp-keystore = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.29" }
 
 polkadot-primitives = { path = "../../../primitives" }
 polkadot-node-network-protocol = { path = "../../network/protocol" }
@@ -27,9 +27,9 @@ log = "0.4.17"
 env_logger = "0.9.0"
 assert_matches = "1.4.0"
 
-sp-core = { git = "https://github.com/CherryNetwork/substrate", features = ["std"] , branch = "cherry-v0.9.28" }
-sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.28" }
-sc-network = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.28" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", features = ["std"] , branch = "cherry-v0.9.29" }
+sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.29" }
+sc-network = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.29" }
 parity-scale-codec = { version = "3.1.5", features = ["std"] }
 
 polkadot-node-subsystem-test-helpers = { path = "../../subsystem-test-helpers" }

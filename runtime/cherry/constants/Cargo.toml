@@ -6,11 +6,11 @@ edition = "2021"
 [dependencies]
 smallvec = "1.8.0"
 
-frame-support = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-v0.9.28" }
+frame-support = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-v0.9.29" }
 primitives = { package = "polkadot-primitives", path = "../../../primitives", default-features = false }
 runtime-common = { package = "polkadot-runtime-common", path = "../../common", default-features = false }
-sp-runtime = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-v0.9.28" }
-sp-staking = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-v0.9.28" }
+sp-runtime = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-v0.9.29" }
+sp-staking = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-v0.9.29" }
 
 [features]
 default = ["std"]
