@@ -1,16 +1,16 @@
 [package]
 name = "rococo-runtime-constants"
-version = "0.9.27"
+version = "0.9.28"
 authors = ["Parity Technologies <admin@parity.io>"]
 edition = "2021"
 
 [dependencies]
 smallvec = "1.8.0"
 
-frame-support = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
+frame-support = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-v0.9.28" }
 primitives = { package = "polkadot-primitives", path = "../../../primitives", default-features = false }
 runtime-common = { package = "polkadot-runtime-common", path = "../../common", default-features = false }
-sp-runtime = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
+sp-runtime = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-v0.9.28" }
 
 [features]
 default = ["std"]
