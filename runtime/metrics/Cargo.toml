@@ -1,12 +1,12 @@
 [package]
 name = "polkadot-runtime-metrics"
-version = "0.9.27"
+version = "0.9.28"
 authors = ["Parity Technologies <admin@parity.io>"]
 edition = "2021"
 
 [dependencies]
-sp-std = { package = "sp-std", git = "https://github.com/CherryNetwork/substrate", default-features = false, branch = "cherry" }
-sp-tracing = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
+sp-std = { package = "sp-std", git = "https://github.com/CherryNetwork/substrate", default-features = false, branch = "cherry-v0.9.28" }
+sp-tracing = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-v0.9.28" }
 parity-scale-codec = { version = "3.1.5", default-features = false }
 primitives = { package = "polkadot-primitives", path = "../../primitives", default-features = false }
 

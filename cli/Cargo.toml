@@ -1,6 +1,6 @@
 [package]
 name = "polkadot-cli"
-version = "0.9.27"
+version = "0.9.28"
 authors = ["Parity Technologies <admin@parity.io>"]
 description = "Polkadot Relay-chain Client Node"
 edition = "2021"
@@ -25,22 +25,22 @@ polkadot-client = { path = "../node/client", optional = true }
 polkadot-node-core-pvf = { path = "../node/core/pvf", optional = true }
 polkadot-performance-test = { path = "../node/test/performance-test", optional = true }
 
-sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
-sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
-frame-benchmarking-cli = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "cherry" }
-try-runtime-cli = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "cherry" }
-sc-cli = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "cherry" }
-sc-service = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "cherry" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.28" }
+sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.28" }
+frame-benchmarking-cli = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "cherry-v0.9.28" }
+try-runtime-cli = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "cherry-v0.9.28" }
+sc-cli = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "cherry-v0.9.28" }
+sc-service = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "cherry-v0.9.28" }
 polkadot-node-metrics = { path = "../node/metrics" }
-sc-tracing = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "cherry" }
-sc-sysinfo = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sc-tracing = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "cherry-v0.9.28" }
+sc-sysinfo = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.28" }
 
 # this crate is used only to enable `trie-memory-tracker` feature
 # see https://github.com/paritytech/substrate/pull/6745
-sp-trie = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
+sp-trie = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-v0.9.28" }
 
 [build-dependencies]
-substrate-build-script-utils = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+substrate-build-script-utils = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.28" }
 
 [features]
 default = ["wasmtime", "db", "cli", "hostperfcheck", "full-node", "trie-memory-tracker", "cherry-native"]
