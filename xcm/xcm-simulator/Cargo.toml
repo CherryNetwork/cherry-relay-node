@@ -9,9 +9,9 @@ edition = "2021"
 codec = { package = "parity-scale-codec", version = "3.0.0" }
 paste = "1.0.7"
 
-frame-support = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.29" }
-sp-io = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.29" }
-sp-std = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.29" }
+frame-support = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-io = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-std = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 
 xcm = { path = "../" }
 xcm-executor = { path = "../xcm-executor" }
