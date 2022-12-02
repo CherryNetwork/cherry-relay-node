@@ -16,8 +16,8 @@ futures = "0.3.21"
 gum = { package = "tracing-gum", path = "../../gum" }
 
 [dev-dependencies]
-sp-authority-discovery = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.28" }
-sp-core = { git = "https://github.com/CherryNetwork/substrate", features = ["std"] , branch = "cherry-v0.9.28" }
+sp-authority-discovery = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", features = ["std"] , branch = "cherry" }
 
 polkadot-node-subsystem-util = { path = "../../subsystem-util" }
 polkadot-node-subsystem-test-helpers = { path = "../../subsystem-test-helpers" }
