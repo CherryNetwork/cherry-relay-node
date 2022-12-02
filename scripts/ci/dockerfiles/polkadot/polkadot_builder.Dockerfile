@@ -4,6 +4,7 @@ FROM docker.io/paritytech/ci-linux:production as builder
 WORKDIR /cherry
 COPY . /cherry
 
+RUN cargo update
 RUN cargo build --locked --release
 
 # This is the 2nd stage: a very small image where we copy the Cherry binary."
