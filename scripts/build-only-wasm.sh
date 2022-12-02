@@ -30,8 +30,7 @@ if [ -d $WASM_BUILDER_RUNNER ]; then
   rustup component add rustc --toolchain=nightly
   rustup component add rustc --toolchain=nightly
 
-
-
+  cargo update
   export DEBUG=false
   export OUT_DIR="$PROJECT_ROOT/target/release/build"
   cargo run --release --manifest-path="$WASM_BUILDER_RUNNER/Cargo.toml" \

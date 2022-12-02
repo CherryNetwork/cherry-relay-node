@@ -1320,8 +1320,7 @@ impl InstanceFilter<Call> for ProxyType {
 				Call::Crowdloan(..) |
 				Call::Slots(..) |
 				Call::Auctions(..) | // Specifically omitting the entire XCM Pallet
-				Call::VoterList(..)
-				// Call::NominationPools(..)
+				Call::VoterList(..) // Call::NominationPools(..)
 			),
 			ProxyType::Governance => matches!(
 				c,
