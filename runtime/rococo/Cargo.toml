@@ -1,6 +1,6 @@
 [package]
 name = "rococo-runtime"
-version = "0.9.30"
+version = "0.9.31"
 authors = ["Parity Technologies <admin@parity.io>"]
 edition = "2021"
 build = "build.rs"
@@ -89,11 +89,18 @@ xcm-builder = { package = "xcm-builder", path = "../../xcm/xcm-builder", default
 
 # Benchmarking Dependencies
 frame-benchmarking = { git = "https://github.com/CherryNetwork/substrate", default-features = false, optional = true , branch = "cherry" }
-hex-literal = { version = "0.3.4", optional = true }
 frame-system-benchmarking = { git = "https://github.com/CherryNetwork/substrate", default-features = false, optional = true , branch = "cherry" }
+hex-literal = { version = "0.3.4", optional = true }
 
 [build-dependencies]
 substrate-wasm-builder = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+[dev-dependencies]
+hex-literal = "0.3.4"
+tiny-keccak = { version = "2.0.2", features = ["keccak"] }
+keyring = { package = "sp-keyring", git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-trie = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+separator = "0.4.1"
+serde_json = "1.0.81"
 
 [features]
 default = ["std"]

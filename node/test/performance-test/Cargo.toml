@@ -1,6 +1,6 @@
 [package]
 name = "polkadot-performance-test"
-version = "0.9.30"
+version = "0.9.31"
 authors = ["Parity Technologies <admin@parity.io>"]
 edition = "2021"
 
@@ -19,3 +19,6 @@ cherry-runtime = { path = "../../../runtime/cherry" }
 [[bin]]
 name = "gen-ref-constants"
 path = "src/gen_ref_constants.rs"
+
+[features]
+runtime-benchmarks = ["cherry-runtime/runtime-benchmarks"]

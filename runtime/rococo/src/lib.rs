@@ -55,7 +55,7 @@ use frame_support::{
 	construct_runtime, parameter_types,
 	traits::{
 		Contains, EitherOfDiverse, InstanceFilter, KeyOwnerProofSystem, LockIdentifier,
-		PrivilegeCmp,
+		PrivilegeCmp, WithdrawReasons,
 	},
 	weights::ConstantMultiplier,
 	PalletId, RuntimeDebug,
@@ -70,8 +70,8 @@ use sp_mmr_primitives as mmr;
 use sp_runtime::{
 	create_runtime_str, generic, impl_opaque_keys,
 	traits::{
-		AccountIdLookup, BlakeTwo256, Block as BlockT, ConvertInto, Extrinsic as ExtrinsicT,
-		Keccak256, OpaqueKeys, SaturatedConversion, Verify,
+		AccountIdLookup, BlakeTwo256, Block as BlockT, ConstU32, ConvertInto,
+		Extrinsic as ExtrinsicT, Keccak256, OpaqueKeys, SaturatedConversion, Verify,
 	},
 	transaction_validity::{TransactionPriority, TransactionSource, TransactionValidity},
 	ApplyExtrinsicResult, KeyTypeId, Perbill, Percent, Permill,
@@ -109,13 +109,13 @@ pub const VERSION: RuntimeVersion = RuntimeVersion {
 	spec_name: create_runtime_str!("rococo"),
 	impl_name: create_runtime_str!("parity-rococo-v2.0"),
 	authoring_version: 0,
-	spec_version: 9300,
+	spec_version: 9310,
 	impl_version: 0,
 	#[cfg(not(feature = "disable-runtime-api"))]
 	apis: RUNTIME_API_VERSIONS,
 	#[cfg(feature = "disable-runtime-api")]
 	apis: sp_version::create_apis_vec![[]],
-	transaction_version: 14,
+	transaction_version: 15,
 	state_version: 0,
 };
 
@@ -217,12 +217,10 @@ impl pallet_scheduler::Config for Runtime {
 	type MaxScheduledPerBlock = MaxScheduledPerBlock;
 	type WeightInfo = weights::pallet_scheduler::WeightInfo<Runtime>;
 	type OriginPrivilegeCmp = OriginPrivilegeCmp;
-	type PreimageProvider = Preimage;
-	type NoPreimagePostponement = NoPreimagePostponement;
+	type Preimages = Preimage;
 }
 
 parameter_types! {
-	pub const PreimageMaxSize: u32 = 4096 * 1024;
 	pub const PreimageBaseDeposit: Balance = deposit(2, 64);
 	pub const PreimageByteDeposit: Balance = deposit(0, 1);
 }
@@ -232,7 +230,6 @@ impl pallet_preimage::Config for Runtime {
 	type RuntimeEvent = RuntimeEvent;
 	type Currency = Balances;
 	type ManagerOrigin = EnsureRoot<AccountId>;
-	type MaxSize = PreimageMaxSize;
 	type BaseDeposit = PreimageBaseDeposit;
 	type ByteDeposit = PreimageByteDeposit;
 }
@@ -400,7 +397,6 @@ parameter_types! {
 }
 
 impl pallet_democracy::Config for Runtime {
-	type Proposal = RuntimeCall;
 	type RuntimeEvent = RuntimeEvent;
 	type Currency = Balances;
 	type EnactmentPeriod = EnactmentPeriod;
@@ -442,14 +438,15 @@ impl pallet_democracy::Config for Runtime {
 	// only do it once and it lasts only for the cooloff period.
 	type VetoOrigin = pallet_collective::EnsureMember<AccountId, TechnicalCollective>;
 	type CooloffPeriod = CooloffPeriod;
-	type PreimageByteDeposit = PreimageByteDeposit;
-	type OperationalPreimageOrigin = pallet_collective::EnsureMember<AccountId, CouncilCollective>;
 	type Slash = Treasury;
 	type Scheduler = Scheduler;
 	type PalletsOrigin = OriginCaller;
 	type MaxVotes = MaxVotes;
 	type WeightInfo = weights::pallet_democracy::WeightInfo<Runtime>;
 	type MaxProposals = MaxProposals;
+	type Preimages = Preimage;
+	type MaxDeposits = ConstU32<100>;
+	type MaxBlacklisted = ConstU32<100>;
 }
 
 parameter_types! {
@@ -888,6 +885,8 @@ impl pallet_society::Config for Runtime {
 
 parameter_types! {
 	pub const MinVestedTransfer: Balance = 100 * CENTS;
+	pub UnvestedFundsAllowedWithdrawReasons: WithdrawReasons =
+		WithdrawReasons::except(WithdrawReasons::TRANSFER | WithdrawReasons::RESERVE);
 }
 
 impl pallet_vesting::Config for Runtime {
@@ -896,6 +895,7 @@ impl pallet_vesting::Config for Runtime {
 	type BlockNumberToBalance = ConvertInto;
 	type MinVestedTransfer = MinVestedTransfer;
 	type WeightInfo = weights::pallet_vesting::WeightInfo<Runtime>;
+	type UnvestedFundsAllowedWithdrawReasons = UnvestedFundsAllowedWithdrawReasons;
 	const MAX_VESTING_SCHEDULES: u32 = 28;
 }
 
@@ -1285,7 +1285,7 @@ impl BeefyDataProvider<H256> for ParasProvider {
 			.filter_map(|id| Paras::para_head(&id).map(|head| (id.into(), head.0)))
 			.collect();
 		para_heads.sort();
-		beefy_merkle_tree::merkle_root::<pallet_beefy_mmr::Pallet<Runtime>, _, _>(
+		beefy_merkle_tree::merkle_root::<<Runtime as pallet_mmr::Config>::Hashing, _>(
 			para_heads.into_iter().map(|pair| pair.encode()),
 		)
 		.into()
@@ -1413,7 +1413,7 @@ construct_runtime! {
 		ParaInclusion: parachains_inclusion::{Pallet, Call, Storage, Event<T>} = 53,
 		ParaInherent: parachains_paras_inherent::{Pallet, Call, Storage, Inherent} = 54,
 		ParaScheduler: parachains_scheduler::{Pallet, Storage} = 55,
-		Paras: parachains_paras::{Pallet, Call, Storage, Event, Config} = 56,
+		Paras: parachains_paras::{Pallet, Call, Storage, Event, Config, ValidateUnsigned} = 56,
 		Initializer: parachains_initializer::{Pallet, Call, Storage} = 57,
 		Dmp: parachains_dmp::{Pallet, Call, Storage} = 58,
 		Ump: parachains_ump::{Pallet, Call, Storage, Event} = 59,
@@ -1483,6 +1483,15 @@ pub type Executive = frame_executive::Executive<
 	frame_system::ChainContext<Runtime>,
 	Runtime,
 	AllPalletsWithSystem,
+	(
+		// "Bound uses of call" <https://github.com/paritytech/polkadot/pull/5729>
+		pallet_preimage::migration::v1::Migration<Runtime>,
+		pallet_scheduler::migration::v3::MigrateToV4<Runtime>,
+		pallet_democracy::migrations::v1::Migration<Runtime>,
+		pallet_multisig::migrations::v1::MigrateToV1<Runtime>,
+		// "Properly migrate weights to v2" <https://github.com/paritytech/polkadot/pull/6091>
+		parachains_configuration::migration::v3::MigrateToV3<Runtime>,
+	),
 >;
 /// The payload being signed in transactions.
 pub type SignedPayload = generic::SignedPayload<RuntimeCall, SignedExtra>;
@@ -1711,11 +1720,11 @@ sp_api::impl_runtime_apis! {
 		}
 	}
 
-	impl mmr::MmrApi<Block, Hash> for Runtime {
-		fn generate_proof(leaf_index: u64)
+	impl mmr::MmrApi<Block, Hash, BlockNumber> for Runtime {
+		fn generate_proof(block_number: BlockNumber)
 			-> Result<(mmr::EncodableOpaqueLeaf, mmr::Proof<Hash>), mmr::Error>
 		{
-			Mmr::generate_batch_proof(vec![leaf_index])
+			Mmr::generate_batch_proof(vec![block_number])
 				.and_then(|(leaves, proof)| Ok((
 					mmr::EncodableOpaqueLeaf::from_leaf(&leaves[0]),
 					mmr::BatchProof::into_single_leaf_proof(proof)?
@@ -1746,11 +1755,28 @@ sp_api::impl_runtime_apis! {
 			Ok(Mmr::mmr_root())
 		}
 
-		fn generate_batch_proof(leaf_indices: Vec<mmr::LeafIndex>)
+		fn generate_batch_proof(block_numbers: Vec<BlockNumber>)
 			-> Result<(Vec<mmr::EncodableOpaqueLeaf>, mmr::BatchProof<Hash>), mmr::Error>
 		{
-			Mmr::generate_batch_proof(leaf_indices)
+			Mmr::generate_batch_proof(block_numbers)
 				.map(|(leaves, proof)| (leaves.into_iter().map(|leaf| mmr::EncodableOpaqueLeaf::from_leaf(&leaf)).collect(), proof))
+		}
+
+		fn generate_historical_batch_proof(
+			block_numbers: Vec<BlockNumber>,
+			best_known_block_number: BlockNumber,
+		) -> Result<(Vec<mmr::EncodableOpaqueLeaf>, mmr::BatchProof<Hash>), mmr::Error> {
+			Mmr::generate_historical_batch_proof(block_numbers, best_known_block_number).map(
+				|(leaves, proof)| {
+					(
+						leaves
+							.into_iter()
+							.map(|leaf| mmr::EncodableOpaqueLeaf::from_leaf(&leaf))
+							.collect(),
+						proof,
+					)
+				},
+			)
 		}
 
 		fn verify_batch_proof(leaves: Vec<mmr::EncodableOpaqueLeaf>, proof: mmr::BatchProof<Hash>)

@@ -44,7 +44,6 @@ pallet-bounties = { git = "https://github.com/CherryNetwork/substrate", default-
 pallet-child-bounties = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-ipfs = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-ipfs-rpc-runtime-api = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-pallet-council = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-transaction-payment = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-transaction-payment-rpc-runtime-api = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-collective = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
@@ -134,7 +133,6 @@ std = [
 	"pallet-balances/std",
 	"pallet-bounties/std",
 	"pallet-child-bounties/std",
-	"pallet-council/std",
 	"pallet-ipfs/std",
 	"pallet-ipfs-rpc-runtime-api/std",
 	"pallet-transaction-payment/std",
