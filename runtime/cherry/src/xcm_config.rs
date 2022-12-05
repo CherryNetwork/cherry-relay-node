@@ -33,6 +33,7 @@ use xcm_builder::{
 	IsConcrete, LocationInverter, SignedAccountId32AsNative, SignedToAccountId32,
 	SovereignSignedViaLocation, TakeWeightCredit, UsingComponents,
 };
+use crate::TechnicalCollective;
 
 parameter_types! {
 	/// The location of the DOT token, from the context of this chain. Since this token is native to this
@@ -40,7 +41,7 @@ parameter_types! {
 	/// the context".
 	pub const DotLocation: MultiLocation = Here.into();
 	/// The Polkadot network ID. This is named.
-	pub const PolkadotNetwork: NetworkId = NetworkId::Cherry;
+	pub const CherryNetwork: NetworkId = NetworkId::Cherry;
 	/// Our XCM location ancestry - i.e. what, if anything, `Parent` means evaluated in our context. Since
 	/// Polkadot is a top-level relay-chain, there is no ancestry.
 	pub const Ancestry: MultiLocation = Here.into();
@@ -54,7 +55,7 @@ pub type SovereignAccountOf = (
 	// We can convert a child parachain using the standard `AccountId` conversion.
 	ChildParachainConvertsVia<ParaId, AccountId>,
 	// We can directly alias an `AccountId32` into a local account.
-	AccountId32Aliases<PolkadotNetwork, AccountId>,
+	AccountId32Aliases<CherryNetwork, AccountId>,
 );
 
 /// Our asset transactor. This is what allows us to interact with the runtime assets from the point of
@@ -86,7 +87,7 @@ type LocalOriginConverter = (
 	ChildParachainAsNative<parachains_origin::Origin, RuntimeOrigin>,
 	// If the origin kind is `Native` and the XCM origin is the `AccountId32` location, then it can
 	// be expressed using the `Signed` origin variant.
-	SignedAccountId32AsNative<PolkadotNetwork, RuntimeOrigin>,
+	SignedAccountId32AsNative<CherryNetwork, RuntimeOrigin>,
 );
 
 parameter_types! {
@@ -157,8 +158,11 @@ parameter_types! {
 }
 
 /// Type to convert a council origin to a Plurality `MultiLocation` value.
-pub type CouncilToPlurality =
-	BackingToPlurality<RuntimeOrigin, pallet_council::Origin<Runtime, ()>, CouncilBodyId>;
+pub type CouncilToPlurality = BackingToPlurality<
+	RuntimeOrigin,
+	pallet_collective::Origin<Runtime, TechnicalCollective>,
+	CouncilBodyId,
+>;
 
 /// Type to convert an `Origin` type value into a `MultiLocation` value which represents an interior location
 /// of this chain.
@@ -167,7 +171,7 @@ pub type LocalOriginToLocation = (
 	// `Unit` body.
 	CouncilToPlurality,
 	// And a usual Signed origin to be used in XCM as a corresponding AccountId32
-	SignedToAccountId32<RuntimeOrigin, AccountId, PolkadotNetwork>,
+	SignedToAccountId32<RuntimeOrigin, AccountId, CherryNetwork>,
 );
 
 impl pallet_xcm::Config for Runtime {

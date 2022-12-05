@@ -138,6 +138,7 @@ KYC/M
 lib
 libp2p
 lifecycle/MS
+liveness
 lookahead/MS
 lookup/MS
 LRU
@@ -203,6 +204,7 @@ PoV/MS
 PoW/MS
 PR
 precheck
+prechecking
 preconfigured
 preimage/MS
 preopen
@@ -222,6 +224,7 @@ redhat/M
 register/CD
 relayer
 repo/MS
+requesters
 reservable
 responder/SM
 retriability

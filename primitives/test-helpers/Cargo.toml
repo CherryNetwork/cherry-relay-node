@@ -1,12 +1,12 @@
 [package]
 name = "polkadot-primitives-test-helpers"
-version = "0.9.30"
+version = "0.9.31"
 authors = ["Parity Technologies <admin@parity.io>"]
 edition = "2021"
 
 [dependencies]
-sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
-sp-application-crypto = { package = "sp-application-crypto", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-sp-runtime = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.31" }
+sp-application-crypto = { package = "sp-application-crypto", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-v0.9.31" }
+sp-runtime = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.31" }
 polkadot-primitives = { path = "../" }
 rand = "0.8.5"

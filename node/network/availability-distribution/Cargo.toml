@@ -1,6 +1,6 @@
 [package]
 name = "polkadot-availability-distribution"
-version = "0.9.30"
+version = "0.9.31"
 authors = ["Parity Technologies <admin@parity.io>"]
 edition = "2021"
 
@@ -14,20 +14,20 @@ polkadot-node-network-protocol = { path = "../../network/protocol" }
 polkadot-node-subsystem = { path = "../../subsystem" }
 polkadot-node-subsystem-util = { path = "../../subsystem-util" }
 polkadot-node-primitives = { path = "../../primitives" }
-sp-core = { git = "https://github.com/CherryNetwork/substrate", features = ["std"] , branch = "cherry" }
-sp-keystore = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", features = ["std"] , branch = "cherry-v0.9.31" }
+sp-keystore = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.31" }
 thiserror = "1.0.31"
 rand = "0.8.5"
 derive_more = "0.99.17"
-lru = "0.7.7"
+lru = "0.8.0"
 fatality = "0.0.6"
 
 [dev-dependencies]
 polkadot-node-subsystem-test-helpers = { path = "../../subsystem-test-helpers" }
-sp-core = { git = "https://github.com/CherryNetwork/substrate", features = ["std"] , branch = "cherry" }
-sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
-sp-tracing = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
-sc-network = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", features = ["std"] , branch = "cherry-v0.9.31" }
+sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.31" }
+sp-tracing = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.31" }
+sc-network = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.31" }
 futures-timer = "3.0.2"
 assert_matches = "1.4.0"
 polkadot-primitives-test-helpers = { path = "../../../primitives/test-helpers" }

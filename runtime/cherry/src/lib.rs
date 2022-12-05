@@ -23,7 +23,7 @@
 use pallet_transaction_payment::CurrencyAdapter;
 use runtime_common::{
 	auctions, claims, crowdloan, impl_runtime_weights, impls::DealWithFees, paras_registrar,
-	paras_sudo_wrapper, prod_or_fast, slots, BlockLength, CurrencyToVote,
+	paras_sudo_wrapper, prod_or_fast, slots, BlockLength, CurrencyToVote, SlowAdjustingFeeUpdate
 };
 
 use runtime_parachains::{
@@ -41,8 +41,8 @@ use frame_election_provider_support::{generate_solution_type, onchain, Sequentia
 use frame_support::{
 	construct_runtime, parameter_types,
 	traits::{
-		ConstU128, Contains, EitherOfDiverse, InstanceFilter, KeyOwnerProofSystem, LockIdentifier,
-		PrivilegeCmp,
+		ConstU32, ConstU128, EitherOfDiverse, InstanceFilter, KeyOwnerProofSystem, LockIdentifier,
+		PrivilegeCmp, WithdrawReasons
 	},
 	weights::ConstantMultiplier,
 	PalletId, RuntimeDebug,
@@ -64,7 +64,7 @@ use sp_mmr_primitives as mmr;
 use sp_runtime::{
 	create_runtime_str, generic, impl_opaque_keys,
 	traits::{
-		AccountIdLookup, BlakeTwo256, Block as BlockT, ConstU32, ConvertInto,
+		AccountIdLookup, BlakeTwo256, Block as BlockT, ConvertInto,
 		Extrinsic as ExtrinsicT, OpaqueKeys, SaturatedConversion, Verify,
 	},
 	transaction_validity::{TransactionPriority, TransactionSource, TransactionValidity},
@@ -119,13 +119,13 @@ pub const VERSION: RuntimeVersion = RuntimeVersion {
 	spec_name: create_runtime_str!("cherry"),
 	impl_name: create_runtime_str!("cherry"),
 	authoring_version: 0,
-	spec_version: 11,
+	spec_version: 12,
 	impl_version: 0,
 	#[cfg(not(feature = "disable-runtime-api"))]
 	apis: RUNTIME_API_VERSIONS,
 	#[cfg(feature = "disable-runtime-api")]
 	apis: sp_version::create_apis_vec![[]],
-	transaction_version: 14,
+	transaction_version: 16,
 	state_version: 0,
 };
 
@@ -144,7 +144,7 @@ pub fn native_version() -> NativeVersion {
 
 type MoreThanHalfCouncil = EitherOfDiverse<
 	EnsureRoot<AccountId>,
-	pallet_council::EnsureProportionMoreThan<1, 2, AccountId, ()>,
+	pallet_collective::EnsureProportionMoreThan<AccountId, TechnicalCollective, 1, 2>,
 >;
 
 parameter_types! {
@@ -189,7 +189,7 @@ parameter_types! {
 
 type ScheduleOrigin = EitherOfDiverse<
 	EnsureRoot<AccountId>,
-	pallet_council::EnsureProportionAtLeast<1, 2, AccountId, ()>,
+	pallet_collective::EnsureProportionAtLeast<AccountId, TechnicalCollective, 1, 2>,
 >;
 
 /// Used the compare the privilege of an origin inside the scheduler.
@@ -206,8 +206,8 @@ impl PrivilegeCmp<OriginCaller> for OriginPrivilegeCmp {
 			(OriginCaller::system(frame_system::RawOrigin::Root), _) => Some(Ordering::Greater),
 			// Check which one has more yes votes.
 			(
-				OriginCaller::Council(pallet_council::RawOrigin::Members(l_yes_votes, l_count)),
-				OriginCaller::Council(pallet_council::RawOrigin::Members(r_yes_votes, r_count)),
+				OriginCaller::TechnicalCommittee(pallet_collective::RawOrigin::Members(l_yes_votes, l_count)),
+				OriginCaller::TechnicalCommittee(pallet_collective::RawOrigin::Members(r_yes_votes, r_count)),
 			) => Some((l_yes_votes * r_count).cmp(&(r_yes_votes * l_count))),
 			// For every other origin we don't care, as they are not used for `ScheduleOrigin`.
 			_ => None,
@@ -225,8 +225,7 @@ impl pallet_scheduler::Config for Runtime {
 	type MaxScheduledPerBlock = MaxScheduledPerBlock;
 	type WeightInfo = weights::pallet_scheduler::WeightInfo<Runtime>;
 	type OriginPrivilegeCmp = OriginPrivilegeCmp;
-	type PreimageProvider = Preimage;
-	type NoPreimagePostponement = NoPreimagePostponement;
+	type Preimages = Preimage;
 }
 
 parameter_types! {
@@ -240,7 +239,6 @@ impl pallet_preimage::Config for Runtime {
 	type RuntimeEvent = RuntimeEvent;
 	type Currency = Balances;
 	type ManagerOrigin = EnsureRoot<AccountId>;
-	type MaxSize = PreimageMaxSize;
 	type BaseDeposit = PreimageBaseDeposit;
 	type ByteDeposit = PreimageByteDeposit;
 }
@@ -327,8 +325,7 @@ impl pallet_transaction_payment::Config for Runtime {
 	type OperationalFeeMultiplier = OperationalFeeMultiplier;
 	type WeightToFee = WeightToFee;
 	type LengthToFee = ConstantMultiplier<Balance, TransactionByteFee>;
-	type FeeMultiplierUpdate =
-		TargetedFeeAdjustment<Self, TargetBlockFullness, AdjustmentVariable, MinimumMultiplier>;
+	type FeeMultiplierUpdate = SlowAdjustingFeeUpdate<Self>;
 }
 
 parameter_types! {
@@ -493,7 +490,7 @@ impl pallet_election_provider_multi_phase::Config for Runtime {
 	type BenchmarkingConfig = runtime_common::elections::BenchmarkConfig;
 	type ForceOrigin = EitherOfDiverse<
 		EnsureRoot<AccountId>,
-		pallet_council::EnsureProportionAtLeast<2, 3, AccountId, ()>,
+		pallet_collective::EnsureProportionAtLeast<AccountId, TechnicalCollective, 2, 3>,
 	>;
 	type WeightInfo = weights::pallet_election_provider_multi_phase::WeightInfo<Self>;
 	type MaxElectingVoters = MaxElectingVoters;
@@ -583,7 +580,7 @@ parameter_types! {
 
 type SlashCancelOrigin = EitherOfDiverse<
 	EnsureRoot<AccountId>,
-	pallet_council::EnsureProportionAtLeast<3, 4, AccountId, ()>,
+	pallet_collective::EnsureProportionAtLeast<AccountId, TechnicalCollective, 3, 4>,
 >;
 
 impl pallet_staking::Config for Runtime {
@@ -760,6 +757,7 @@ parameter_types! {
 	pub const MaxVoters: u32 = 10 * 1000;
 	pub const MaxCandidates: u32 = 1000;
 	pub const PhragmenElectionPalletId: LockIdentifier = *b"phrelect";
+	pub const CouncilMaxMembers: u32 = 100;
 }
 // Make sure that there are no more than `MaxMembers` members elected via phragmen.
 const_assert!(DesiredMembers::get() <= CouncilMaxMembers::get());
@@ -768,8 +766,8 @@ impl pallet_elections_phragmen::Config for Runtime {
 	type RuntimeEvent = RuntimeEvent;
 	type PalletId = PhragmenElectionPalletId;
 	type Currency = Balances;
-	type ChangeMembers = Council;
-	type InitializeMembers = Council;
+	type ChangeMembers = ();
+	type InitializeMembers = ();
 	type CurrencyToVote = frame_support::traits::U128CurrencyToVote;
 	type CandidacyBond = CandidacyBond;
 	type VotingBondBase = VotingBondBase;
@@ -782,23 +780,6 @@ impl pallet_elections_phragmen::Config for Runtime {
 	type MaxVoters = MaxVoters;
 	type MaxCandidates = MaxCandidates;
 	type WeightInfo = weights::pallet_elections_phragmen::WeightInfo<Runtime>;
-}
-
-parameter_types! {
-	pub const CouncilMotionDuration: BlockNumber = COUNCIL_MOTION_DURATION;
-	pub const CouncilMaxProposals: u32 = 100;
-	pub const CouncilMaxMembers: u32 = 100;
-}
-
-impl pallet_council::Config for Runtime {
-	type RuntimeOrigin = RuntimeOrigin;
-	type Proposal = RuntimeCall;
-	type RuntimeEvent = RuntimeEvent;
-	type MotionDuration = CouncilMotionDuration;
-	type MaxProposals = CouncilMaxProposals;
-	type MaxMembers = CouncilMaxMembers;
-	type DefaultVote = pallet_council::PrimeDefaultVote;
-	type WeightInfo = pallet_council::weights::SubstrateWeight<Runtime>;
 }
 
 parameter_types! {
@@ -910,7 +891,7 @@ impl pallet_treasury::Config for Runtime {
 	type Currency = Balances;
 	type ApproveOrigin = EitherOfDiverse<
 		EnsureRoot<AccountId>,
-		pallet_council::EnsureProportionAtLeast<3, 5, AccountId, ()>,
+		pallet_collective::EnsureProportionAtLeast<AccountId, TechnicalCollective, 3, 5>,
 	>;
 	type RejectOrigin = MoreThanHalfCouncil;
 	type RuntimeEvent = RuntimeEvent;
@@ -1118,12 +1099,14 @@ impl claims::Config for Runtime {
 	type VestingSchedule = Vesting;
 	type Prefix = Prefix;
 	/// At least 3/4 of the council must agree to a claim move before it can happen.
-	type MoveClaimOrigin = pallet_council::EnsureProportionAtLeast<3, 4, AccountId, ()>;
+	type MoveClaimOrigin = pallet_collective::EnsureProportionAtLeast<AccountId, TechnicalCollective, 3, 4>;
 	type WeightInfo = weights::runtime_common_claims::WeightInfo<Runtime>;
 }
 
 parameter_types! {
 	pub const MinVestedTransfer: Balance = 1 * DOLLARS;
+	pub UnvestedFundsAllowedWithdrawReasons: WithdrawReasons =
+		WithdrawReasons::except(WithdrawReasons::TRANSFER | WithdrawReasons::RESERVE);
 }
 
 impl pallet_vesting::Config for Runtime {
@@ -1132,6 +1115,7 @@ impl pallet_vesting::Config for Runtime {
 	type BlockNumberToBalance = ConvertInto;
 	type MinVestedTransfer = MinVestedTransfer;
 	type WeightInfo = weights::pallet_vesting::WeightInfo<Runtime>;
+	type UnvestedFundsAllowedWithdrawReasons = UnvestedFundsAllowedWithdrawReasons;
 	const MAX_VESTING_SCHEDULES: u32 = 28;
 }
 
@@ -1253,7 +1237,7 @@ impl InstanceFilter<RuntimeCall> for ProxyType {
 				RuntimeCall::Grandpa(..) |
 				RuntimeCall::ImOnline(..) |
 				// RuntimeCall::Democracy(..) |
-				RuntimeCall::Council(..) |
+				// RuntimeCall::Council(..) |
 				RuntimeCall::TechnicalCommittee(..) |
 				RuntimeCall::PhragmenElection(..) |
 				RuntimeCall::TechnicalMembership(..) |
@@ -1284,8 +1268,8 @@ impl InstanceFilter<RuntimeCall> for ProxyType {
 				matches!(
 					c,
 					// RuntimeCall::Democracy(..) |
-					RuntimeCall::Council(..) |
-						RuntimeCall::TechnicalCommittee(..) |
+					// RuntimeCall::Council(..) |
+					RuntimeCall::TechnicalCommittee(..) |
 						RuntimeCall::PhragmenElection(..) |
 						RuntimeCall::Treasury(..) |
 						RuntimeCall::Bounties(..) |
@@ -1487,7 +1471,7 @@ parameter_types! {
 
 type AuctionInitiate = EitherOfDiverse<
 	EnsureRoot<AccountId>,
-	pallet_council::EnsureProportionAtLeast<2, 3, AccountId, ()>,
+	pallet_collective::EnsureProportionAtLeast<AccountId, TechnicalCollective, 2, 3>,
 >;
 
 impl auctions::Config for Runtime {
@@ -1587,7 +1571,6 @@ construct_runtime! {
 		PhragmenElection: pallet_elections_phragmen::{Pallet, Call, Storage, Event<T>, Config<T>} = 17,
 		TechnicalMembership: pallet_membership::<Instance1>::{Pallet, Call, Storage, Event<T>, Config<T>} = 18,
 		Treasury: pallet_treasury::{Pallet, Call, Storage, Config, Event<T>} = 19,
-		Council: pallet_council::{Pallet, Call, Storage, Origin<T>, Event<T>, Config<T>} = 102,
 		Ipfs: pallet_ipfs::{Pallet, Call, Storage, Event<T> } = 104,
 
 		// Claims. Usable initially.
@@ -1632,7 +1615,7 @@ construct_runtime! {
 		ParaInclusion: parachains_inclusion::{Pallet, Call, Storage, Event<T>} = 53,
 		ParaInherent: parachains_paras_inherent::{Pallet, Call, Storage, Inherent} = 54,
 		ParaScheduler: parachains_scheduler::{Pallet, Storage} = 55,
-		Paras: parachains_paras::{Pallet, Call, Storage, Event, Config} = 56,
+		Paras: parachains_paras::{Pallet, Call, Storage, Event, Config, ValidateUnsigned} = 56,
 		Initializer: parachains_initializer::{Pallet, Call, Storage} = 57,
 		Dmp: parachains_dmp::{Pallet, Call, Storage} = 58,
 		Ump: parachains_ump::{Pallet, Call, Storage, Event} = 59,
@@ -1694,7 +1677,14 @@ pub type Executive = frame_executive::Executive<
 	frame_system::ChainContext<Runtime>,
 	Runtime,
 	AllPalletsWithSystem,
-	pallet_staking::migrations::v10::MigrateToV10<Runtime>,
+	(
+		// "Bound uses of call" <https://github.com/paritytech/polkadot/pull/5729>
+		pallet_staking::migrations::v10::MigrateToV10<Runtime>,
+		pallet_scheduler::migration::v3::MigrateToV4<Runtime>,
+		pallet_multisig::migrations::v1::MigrateToV1<Runtime>,
+		// "Properly migrate weights to v2" <https://github.com/paritytech/polkadot/pull/6091>
+		parachains_configuration::migration::v3::MigrateToV3<Runtime>,
+	),
 >;
 
 /// The payload being signed in transactions.
@@ -1717,6 +1707,7 @@ mod benches {
 		[runtime_common::paras_registrar, Registrar]
 		[runtime_parachains::configuration, Configuration]
 		[runtime_parachains::disputes, ParasDisputes]
+		[runtime_parachains::hrmp, Hrmp]
 		[runtime_parachains::initializer, Initializer]
 		[runtime_parachains::paras, Paras]
 		[runtime_parachains::paras_inherent, ParaInherent]
@@ -1930,8 +1921,8 @@ sp_api::impl_runtime_apis! {
 		}
 	}
 
-	impl mmr::MmrApi<Block, Hash> for Runtime {
-		fn generate_proof(_leaf_index: u64)
+	impl mmr::MmrApi<Block, Hash, BlockNumber> for Runtime {
+		fn generate_proof(_block_number: BlockNumber)
 			-> Result<(mmr::EncodableOpaqueLeaf, mmr::Proof<Hash>), mmr::Error>
 		{
 			Err(mmr::Error::PalletNotIncluded)
@@ -1955,9 +1946,16 @@ sp_api::impl_runtime_apis! {
 			Err(mmr::Error::PalletNotIncluded)
 		}
 
-		fn generate_batch_proof(_leaf_indices: Vec<u64>)
+		fn generate_batch_proof(_block_numbers: Vec<BlockNumber>)
 			-> Result<(Vec<mmr::EncodableOpaqueLeaf>, mmr::BatchProof<Hash>), mmr::Error>
 		{
+			Err(mmr::Error::PalletNotIncluded)
+		}
+
+		fn generate_historical_batch_proof(
+			_block_numbers: Vec<BlockNumber>,
+			_best_known_block_number: BlockNumber,
+		) -> Result<(Vec<mmr::EncodableOpaqueLeaf>, mmr::BatchProof<Hash>), mmr::Error> {
 			Err(mmr::Error::PalletNotIncluded)
 		}
 
@@ -2428,7 +2426,7 @@ mod multiplier_tests {
 			BlockWeights::get().get(DispatchClass::Normal).max_total.unwrap();
 		// if the min is too small, then this will not change, and we are doomed forever.
 		// the weight is 1/100th bigger than target.
-		run_with_system_weight(target * 101 / 100, || {
+		run_with_system_weight(target.saturating_mul(101) / 100, || {
 			let next = SlowAdjustingFeeUpdate::<Runtime>::convert(minimum_multiplier);
 			assert!(next > minimum_multiplier, "{:?} !>= {:?}", next, minimum_multiplier);
 		})

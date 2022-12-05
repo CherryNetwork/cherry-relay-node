@@ -151,7 +151,8 @@ fn default_parachains_host_configuration(
 		max_upward_queue_count: 8,
 		max_upward_queue_size: 1024 * 1024,
 		max_downward_message_size: 1024 * 1024,
-		ump_service_total_weight: Weight::from_ref_time(100_000_000_000),
+		ump_service_total_weight: Weight::from_ref_time(100_000_000_000)
+			.set_proof_size(MAX_POV_SIZE as u64),
 		max_upward_message_size: 50 * 1024,
 		max_upward_message_num_per_candidate: 5,
 		hrmp_sender_deposit: 0,
@@ -340,7 +341,6 @@ fn cherry_staging_testnet_config_genesis(wasm_binary: &[u8]) -> cherry::GenesisC
 		},
 		phragmen_election: Default::default(),
 		// democracy: Default::default(),
-		council: cherry::CouncilConfig { members: vec![], phantom: Default::default() },
 		technical_committee: cherry::TechnicalCommitteeConfig {
 			members: vec![],
 			phantom: Default::default(),
@@ -908,15 +908,6 @@ pub fn cherry_testnet_genesis(
 		},
 		phragmen_election: Default::default(),
 		// democracy: polkadot::DemocracyConfig::default(),
-		council: cherry::CouncilConfig {
-			members: endowed_accounts
-				.iter()
-				.take((num_endowed_accounts + 1) / 2)
-				.cloned()
-				.map(|member| (member))
-				.collect(),
-			phantom: Default::default(),
-		},
 		technical_committee: cherry::TechnicalCommitteeConfig {
 			members: endowed_accounts
 				.iter()
