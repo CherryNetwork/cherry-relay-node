@@ -307,14 +307,6 @@ impl<T: frame_system::Config> pallet_staking::WeightInfo for WeightInfo<T> {
 	// Storage: Staking ErasTotalStake (r:0 w:1)
 	// Storage: Staking ErasStartSessionIndex (r:0 w:1)
 	/// The range of component `e` is `[1, 100]`.
-	fn set_history_depth(e: u32, ) -> Weight {
-		Weight::from_ref_time(0 as u64)
-			// Standard Error: 87_000
-			.saturating_add(Weight::from_ref_time(21_687_000 as u64).saturating_mul(e as u64))
-			.saturating_add(T::DbWeight::get().reads(2 as u64))
-			.saturating_add(T::DbWeight::get().writes(4 as u64))
-			.saturating_add(T::DbWeight::get().writes((7 as u64).saturating_mul(e as u64)))
-	}
 	// Storage: System Account (r:1 w:1)
 	// Storage: Staking Bonded (r:1 w:1)
 	// Storage: Staking Ledger (r:1 w:1)
