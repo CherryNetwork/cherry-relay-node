@@ -26,15 +26,15 @@ polkadot-parachain = { path = "../../../parachain" }
 polkadot-node-metrics = { path = "../../metrics" }
 polkadot-core-primitives = { path = "../../../core-primitives" }
 polkadot-node-subsystem-util = { path = "../../subsystem-util"}
-sc-executor = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.30" }
-sc-executor-wasmtime = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.30" }
-sc-executor-common = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.30" }
-sp-externalities = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.30" }
-sp-io = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.30" }
-sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.30" }
-sp-wasm-interface = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.30" }
-sp-maybe-compressed-blob = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.30" }
-sp-tracing = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.30" }
+sc-executor = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sc-executor-wasmtime = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sc-executor-common = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-externalities = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-io = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-wasm-interface = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-maybe-compressed-blob = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-tracing = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 
 [dev-dependencies]
 adder = { package = "test-parachain-adder", path = "../../../parachain/test-parachains/adder" }
