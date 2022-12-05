@@ -1,6 +1,6 @@
 [package]
 name = "remote-ext-tests-bags-list"
-version = "0.9.29"
+version = "0.9.30"
 authors = ["Parity Technologies <admin@parity.io>"]
 edition = "2021"
 
@@ -8,10 +8,10 @@ edition = "2021"
 cherry-runtime = { path = "../../../runtime/cherry" }
 cherry-runtime-constants = { path = "../../../runtime/cherry/constants" }
 
-pallet-bags-list-remote-tests = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
-sp-tracing = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
-frame-system = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
-sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+pallet-bags-list-remote-tests = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.30" }
+sp-tracing = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.30" }
+frame-system = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.30" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.30" }
 
 clap = { version = "3.1", features = ["derive"] }
 log = "0.4.17"
