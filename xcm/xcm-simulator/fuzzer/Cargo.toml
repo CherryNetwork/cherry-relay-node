@@ -1,6 +1,6 @@
 [package]
 name = "xcm-simulator-fuzzer"
-version = "0.9.32"
+version = "0.9.33"
 authors = ["Parity Technologies <admin@parity.io>"]
 description = "Examples of xcm-simulator usage."
 edition = "2021"
@@ -10,13 +10,13 @@ codec = { package = "parity-scale-codec", version = "3.0.0" }
 honggfuzz = "0.5.54" 
 scale-info = { version = "2.1.2", features = ["derive"] }
 
-frame-system = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
-frame-support = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
-pallet-balances = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
-sp-std = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
-sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
-sp-runtime = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
-sp-io = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+frame-system = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.33" }
+frame-support = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.33" }
+pallet-balances = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.33" }
+sp-std = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.33" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.33" }
+sp-runtime = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.33" }
+sp-io = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.33" }
 
 xcm = { path = "../../" }
 xcm-simulator = { path = "../" }

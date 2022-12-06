@@ -41,13 +41,13 @@ use frame_election_provider_support::{generate_solution_type, onchain, Sequentia
 use frame_support::{
 	construct_runtime, parameter_types,
 	traits::{
-		ConstU32, ConstU128, EitherOfDiverse, InstanceFilter, KeyOwnerProofSystem, LockIdentifier,
+		AsEnsureOriginWithArg, ConstU128, EitherOfDiverse, InstanceFilter, KeyOwnerProofSystem, LockIdentifier,
 		PrivilegeCmp, WithdrawReasons
 	},
 	weights::ConstantMultiplier,
 	PalletId, RuntimeDebug,
 };
-use frame_system::EnsureRoot;
+use frame_system::{EnsureRoot, EnsureSigned};
 use pallet_grandpa::{fg_primitives, AuthorityId as GrandpaId};
 use pallet_im_online::sr25519::AuthorityId as ImOnlineId;
 use pallet_session::historical as session_historical;
@@ -119,7 +119,7 @@ pub const VERSION: RuntimeVersion = RuntimeVersion {
 	spec_name: create_runtime_str!("cherry"),
 	impl_name: create_runtime_str!("cherry"),
 	authoring_version: 0,
-	spec_version: 13,
+	spec_version: 14,
 	impl_version: 0,
 	#[cfg(not(feature = "disable-runtime-api"))]
 	apis: RUNTIME_API_VERSIONS,
@@ -411,6 +411,9 @@ parameter_types! {
 	/// ... and all of the validators as electable targets. Whilst this is the case, we cannot and
 	/// shall not increase the size of the validator intentions.
 	pub const MaxElectableTargets: u16 = u16::MAX;
+	/// Setup election pallet to support maximum winners upto 1200. This will mean Staking Pallet
+	/// cannot have active validators higher than this count.
+	pub const MaxActiveValidators: u32 = 1200;
 }
 
 generate_solution_type!(
@@ -429,11 +432,9 @@ impl onchain::Config for OnChainSeqPhragmen {
 	type Solver = SequentialPhragmen<AccountId, runtime_common::elections::OnChainAccuracy>;
 	type DataProvider = Staking;
 	type WeightInfo = weights::frame_election_provider_support::WeightInfo<Runtime>;
-}
-
-impl onchain::BoundedConfig for OnChainSeqPhragmen {
+	type MaxWinners = MaxActiveValidators;
 	type VotersBound = MaxElectingVoters;
-	type TargetsBound = ConstU32<2_000>;
+	type TargetsBound = MaxElectableTargets;
 }
 
 impl pallet_election_provider_multi_phase::MinerConfig for Runtime {
@@ -480,8 +481,8 @@ impl pallet_election_provider_multi_phase::Config for Runtime {
 	type OffchainRepeat = OffchainRepeat;
 	type MinerTxPriority = NposSolutionPriority;
 	type DataProvider = Staking;
-	type Fallback = onchain::BoundedExecution<OnChainSeqPhragmen>;
-	type GovernanceFallback = onchain::BoundedExecution<OnChainSeqPhragmen>;
+	type Fallback = onchain::OnChainExecution<OnChainSeqPhragmen>;
+	type GovernanceFallback = onchain::OnChainExecution<OnChainSeqPhragmen>;
 	type Solver = SequentialPhragmen<
 		AccountId,
 		pallet_election_provider_multi_phase::SolutionAccuracyOf<Self>,
@@ -495,6 +496,7 @@ impl pallet_election_provider_multi_phase::Config for Runtime {
 	type WeightInfo = weights::pallet_election_provider_multi_phase::WeightInfo<Self>;
 	type MaxElectingVoters = MaxElectingVoters;
 	type MaxElectableTargets = MaxElectableTargets;
+	type MaxWinners = MaxActiveValidators;
 }
 
 parameter_types! {
@@ -583,6 +585,35 @@ type SlashCancelOrigin = EitherOfDiverse<
 	pallet_collective::EnsureProportionAtLeast<AccountId, TechnicalCollective, 3, 4>,
 >;
 
+// pub struct EraPayout;
+// impl pallet_staking::EraPayout<Balance> for EraPayout {
+// 	fn era_payout(
+// 		total_staked: Balance,
+// 		total_issuance: Balance,
+// 		era_duration_millis: u64,
+// 	) -> (Balance, Balance) {
+// 		// all para-ids that are not active.
+// 		let auctioned_slots = Paras::parachains()
+// 			.into_iter()
+// 			// all active para-ids that do not belong to a system or common good chain is the number
+// 			// of parachains that we should take into account for inflation.
+// 			.filter(|i| *i >= LOWEST_PUBLIC_ID)
+// 			.count() as u64;
+
+// 		const MAX_ANNUAL_INFLATION: Perquintill = Perquintill::from_percent(10);
+// 		const MILLISECONDS_PER_YEAR: u64 = 1000 * 3600 * 24 * 36525 / 100;
+
+// 		runtime_common::impls::era_payout(
+// 			total_staked,
+// 			// Polkadot has no notion of gilts, the entire issuance is non-guilt.
+// 			total_issuance,
+// 			MAX_ANNUAL_INFLATION,
+// 			Perquintill::from_rational(era_duration_millis, MILLISECONDS_PER_YEAR),
+// 			auctioned_slots,
+// 		)
+// 	}
+// }
+
 impl pallet_staking::Config for Runtime {
 	type MaxNominations = MaxNominations;
 	type Currency = Balances;
@@ -604,7 +635,7 @@ impl pallet_staking::Config for Runtime {
 	type OffendingValidatorsThreshold = OffendingValidatorsThreshold;
 	type NextNewSession = Session;
 	type ElectionProvider = ElectionProviderMultiPhase;
-	type GenesisElectionProvider = onchain::UnboundedExecution<OnChainSeqPhragmen>;
+	type GenesisElectionProvider = onchain::OnChainExecution<OnChainSeqPhragmen>;
 	type VoterList = VoterList;
 	type TargetList = UseValidatorsMap<Self>;
 	type MaxUnlockingChunks = frame_support::traits::ConstU32<32>;
@@ -616,13 +647,15 @@ impl pallet_staking::Config for Runtime {
 
 // impl pallet_fast_unstake::Config for Runtime {
 // 	type RuntimeEvent = RuntimeEvent;
-// 	type DepositCurrency = Balances;
+// 	type Currency = Balances;
+// 	type BatchSize = frame_support::traits::ConstU32<64>;
 // 	type Deposit = frame_support::traits::ConstU128<{ UNITS }>;
 // 	type ControlOrigin = EitherOfDiverse<
 // 		EnsureRoot<AccountId>,
 // 		pallet_collective::EnsureProportionAtLeast<AccountId, CouncilCollective, 1, 2>,
 // 	>;
 // 	type WeightInfo = weights::pallet_fast_unstake::WeightInfo<Runtime>;
+// 	type Staking = Staking;
 // }
 
 parameter_types! {
@@ -836,6 +869,7 @@ impl pallet_assets::Config for Runtime {
 	type Extra = ();
 	type WeightInfo = pallet_assets::weights::SubstrateWeight<Runtime>;
 	type AssetAccountDeposit = ConstU128<DOLLARS>;
+	type CreateOrigin = AsEnsureOriginWithArg<EnsureSigned<AccountId>>;
 }
 
 parameter_types! {
@@ -1131,7 +1165,7 @@ parameter_types! {
 	pub const DepositBase: Balance = deposit(1, 88);
 	// Additional storage item size of 32 bytes.
 	pub const DepositFactor: Balance = deposit(0, 32);
-	pub const MaxSignatories: u16 = 100;
+	pub const MaxSignatories: u32 = 100;
 }
 
 impl pallet_multisig::Config for Runtime {
@@ -1492,13 +1526,12 @@ impl auctions::Config for Runtime {
 // }
 
 // impl pallet_nomination_pools::Config for Runtime {
-// 	type Event = Event;
+// 	type RuntimeEvent = RuntimeEvent;
 // 	type Currency = Balances;
-// 	type CurrencyBalance = Balance;
 // 	type RewardCounter = FixedU128;
 // 	type BalanceToU256 = runtime_common::BalanceToU256;
 // 	type U256ToBalance = runtime_common::U256ToBalance;
-// 	type StakingInterface = Staking;
+// 	type Staking = Staking;
 // 	type PostUnbondingPoolsWindow = frame_support::traits::ConstU32<4>;
 // 	type MaxMetadataLen = frame_support::traits::ConstU32<256>;
 // 	// we use the same number of allowed unlocking chunks as with staking.
@@ -1678,12 +1711,8 @@ pub type Executive = frame_executive::Executive<
 	Runtime,
 	AllPalletsWithSystem,
 	(
-		// "Bound uses of call" <https://github.com/paritytech/polkadot/pull/5729>
-		pallet_staking::migrations::v10::MigrateToV10<Runtime>,
-		pallet_scheduler::migration::v3::MigrateToV4<Runtime>,
-		pallet_multisig::migrations::v1::MigrateToV1<Runtime>,
-		// "Properly migrate weights to v2" <https://github.com/paritytech/polkadot/pull/6091>
-		parachains_configuration::migration::v3::MigrateToV3<Runtime>,
+		pallet_election_provider_multi_phase::migrations::v1::MigrateToV1<Runtime>,
+		// pallet_fast_unstake::migrations::v1::MigrateToV1<Runtime>,
 	),
 >;
 
@@ -1922,13 +1951,18 @@ sp_api::impl_runtime_apis! {
 	}
 
 	impl mmr::MmrApi<Block, Hash, BlockNumber> for Runtime {
-		fn generate_proof(_block_number: BlockNumber)
-			-> Result<(mmr::EncodableOpaqueLeaf, mmr::Proof<Hash>), mmr::Error>
-		{
+		fn mmr_root() -> Result<Hash, mmr::Error> {
 			Err(mmr::Error::PalletNotIncluded)
 		}
 
-		fn verify_proof(_leaf: mmr::EncodableOpaqueLeaf, _proof: mmr::Proof<Hash>)
+		fn generate_proof(
+			_block_numbers: Vec<BlockNumber>,
+			_best_known_block_number: Option<BlockNumber>,
+		) -> Result<(Vec<mmr::EncodableOpaqueLeaf>, mmr::Proof<Hash>), mmr::Error> {
+			Err(mmr::Error::PalletNotIncluded)
+		}
+
+		fn verify_proof(_leaves: Vec<mmr::EncodableOpaqueLeaf>, _proof: mmr::Proof<Hash>)
 			-> Result<(), mmr::Error>
 		{
 			Err(mmr::Error::PalletNotIncluded)
@@ -1936,39 +1970,8 @@ sp_api::impl_runtime_apis! {
 
 		fn verify_proof_stateless(
 			_root: Hash,
-			_leaf: mmr::EncodableOpaqueLeaf,
-			_proof: mmr::Proof<Hash>
-		) -> Result<(), mmr::Error> {
-			Err(mmr::Error::PalletNotIncluded)
-		}
-
-		fn mmr_root() -> Result<Hash, mmr::Error> {
-			Err(mmr::Error::PalletNotIncluded)
-		}
-
-		fn generate_batch_proof(_block_numbers: Vec<BlockNumber>)
-			-> Result<(Vec<mmr::EncodableOpaqueLeaf>, mmr::BatchProof<Hash>), mmr::Error>
-		{
-			Err(mmr::Error::PalletNotIncluded)
-		}
-
-		fn generate_historical_batch_proof(
-			_block_numbers: Vec<BlockNumber>,
-			_best_known_block_number: BlockNumber,
-		) -> Result<(Vec<mmr::EncodableOpaqueLeaf>, mmr::BatchProof<Hash>), mmr::Error> {
-			Err(mmr::Error::PalletNotIncluded)
-		}
-
-		fn verify_batch_proof(_leaves: Vec<mmr::EncodableOpaqueLeaf>, _proof: mmr::BatchProof<Hash>)
-			-> Result<(), mmr::Error>
-		{
-			Err(mmr::Error::PalletNotIncluded)
-		}
-
-		fn verify_batch_proof_stateless(
-			_root: Hash,
 			_leaves: Vec<mmr::EncodableOpaqueLeaf>,
-			_proof: mmr::BatchProof<Hash>
+			_proof: mmr::Proof<Hash>
 		) -> Result<(), mmr::Error> {
 			Err(mmr::Error::PalletNotIncluded)
 		}
