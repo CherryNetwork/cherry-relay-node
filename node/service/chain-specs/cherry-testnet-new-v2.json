@@ -3,9 +3,7 @@
   "id": "cherry_testnet",
   "chainType": "Local",
   "bootNodes": [],
-  "badBlocks": [
-	  "0xb78b9bdc9979f266c26bc6daf49b9f2a76ca3467fa0e3ab69dc5d3237561b6f7"
-  ],
+  "badBlocks": null,
   "telemetryEndpoints": null,
   "protocolId": "cher",
   "properties": {
