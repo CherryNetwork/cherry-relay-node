@@ -118,7 +118,7 @@ pub fn cherry_config() -> Result<CherryChainSpec, String> {
 }
 
 pub fn cherry_testnet_config() -> Result<CherryChainSpec, String> {
-	CherryChainSpec::from_json_bytes(&include_bytes!("../chain-specs/cherry-testnet.json")[..])
+	CherryChainSpec::from_json_bytes(&include_bytes!("../chain-specs/cherry-testnet-2.json")[..])
 }
 
 pub fn rococo_config() -> Result<RococoChainSpec, String> {
