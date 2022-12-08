@@ -63,6 +63,7 @@ pallet-preimage = { git = "https://github.com/CherryNetwork/substrate", default-
 pallet-proxy = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-scheduler = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-session = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
+pallet-sudo = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 frame-support = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-staking = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-staking-reward-fn = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry", default-features = false }
@@ -155,6 +156,7 @@ std = [
 	"pallet-scheduler/std",
 	"pallet-session/std",
 	"pallet-staking/std",
+	"pallet-sudo/std",
 	"pallet-timestamp/std",
 	"pallet-treasury/std",
 	"pallet-tips/std",
@@ -253,6 +255,7 @@ try-runtime = [
 	"pallet-scheduler/try-runtime",
 	"pallet-session/try-runtime",
 	"pallet-staking/try-runtime",
+	"pallet-sudo/try-runtime",
 	"pallet-timestamp/try-runtime",
 	"pallet-treasury/try-runtime",
 	"pallet-tips/try-runtime",

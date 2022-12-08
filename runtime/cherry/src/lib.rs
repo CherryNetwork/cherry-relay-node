@@ -901,6 +901,11 @@ impl pallet_gilt::Config for Runtime {
 	type WeightInfo = pallet_gilt::weights::SubstrateWeight<Runtime>;
 }
 
+impl pallet_sudo::Config for Runtime {
+	type RuntimeEvent = RuntimeEvent;
+	type RuntimeCall = RuntimeCall;
+}
+
 parameter_types! {
 	pub const ProposalBond: Permill = Permill::from_percent(5);
 	pub const ProposalBondMinimum: Balance = 1000 * DOLLARS;
@@ -1664,8 +1669,11 @@ construct_runtime! {
 		ParasSudoWrapper: paras_sudo_wrapper::{Pallet, Call} = 74,
 
 		// Pallet for sending XCM.
-
 		XcmPallet: pallet_xcm::{Pallet, Call, Storage, Event<T>, Origin, Config} = 99,
+		
+		// Sudo pallet
+		Sudo: pallet_sudo::{Pallet, Call, Storage, Event<T>, Config<T>} = 102,
+
 		Assets: pallet_assets::{Pallet, Call, Storage, Event<T>, Config<T>} = 101,
 	}
 }
