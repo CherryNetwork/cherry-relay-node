@@ -13,7 +13,7 @@ adder = { package = "test-parachain-adder", path = "adder" }
 halt = { package = "test-parachain-halt", path = "halt" }
 
 [dev-dependencies]
-sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.33" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 
 [features]
 default = ["std"]

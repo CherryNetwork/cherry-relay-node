@@ -7,7 +7,7 @@ edition = "2021"
 [dependencies]
 clap = { version = "4.0.9", features = ["derive"] }
 
-generate-bags = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.33" }
-sp-io = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-v0.9.33" }
+generate-bags = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-io = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 
 cherry-runtime = { path = "../../runtime/cherry" }
