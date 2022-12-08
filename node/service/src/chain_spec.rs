@@ -118,7 +118,7 @@ pub fn cherry_config() -> Result<CherryChainSpec, String> {
 }
 
 pub fn cherry_testnet_config() -> Result<CherryChainSpec, String> {
-	CherryChainSpec::from_json_bytes(&include_bytes!("../chain-specs/cherry-testnet-3.json")[..])
+	CherryChainSpec::from_json_bytes(&include_bytes!("../chain-specs/testnet-regenesis.json")[..])
 }
 
 pub fn rococo_config() -> Result<RococoChainSpec, String> {
@@ -364,6 +364,7 @@ fn cherry_staging_testnet_config_genesis(wasm_binary: &[u8]) -> cherry::GenesisC
 		xcm_pallet: Default::default(),
 		assets: cherry::AssetsConfig { assets: vec![], metadata: vec![], accounts: vec![] },
 		gilt: Default::default(),
+		sudo: cherry_runtime::SudoConfig { key: Some(endowed_accounts[0].clone()) },
 	}
 }
 
@@ -940,6 +941,7 @@ pub fn cherry_testnet_genesis(
 			accounts: vec![(999, root_key.clone(), 10)],
 		},
 		gilt: Default::default(),
+		sudo: cherry_runtime::SudoConfig { key: Some(root_key.clone()) },
 	}
 }
 
