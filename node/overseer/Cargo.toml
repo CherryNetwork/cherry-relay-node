@@ -1,6 +1,6 @@
 [package]
 name = "polkadot-overseer"
-version = "0.9.32"
+version = "0.9.33"
 authors = ["Parity Technologies <admin@parity.io>"]
 edition = "2021"
 
@@ -24,6 +24,7 @@ async-trait = "0.1.57"
 
 [dev-dependencies]
 metered = { package = "prioritized-metered-channel", version = "0.2.0" }
+
 sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 futures = { version = "0.3.21", features = ["thread-pool"] }
 femme = "2.2.1"

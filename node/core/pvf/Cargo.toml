@@ -1,6 +1,6 @@
 [package]
 name = "polkadot-node-core-pvf"
-version = "0.9.32"
+version = "0.9.33"
 authors = ["Parity Technologies <admin@parity.io>"]
 edition = "2021"
 
@@ -23,9 +23,8 @@ tempfile = "3.3.0"
 rayon = "1.5.1"
 parity-scale-codec = { version = "3.1.5", default-features = false, features = ["derive"] }
 polkadot-parachain = { path = "../../../parachain" }
-polkadot-node-metrics = { path = "../../metrics" }
 polkadot-core-primitives = { path = "../../../core-primitives" }
-polkadot-node-subsystem-util = { path = "../../subsystem-util"}
+polkadot-node-metrics = { path = "../../metrics"}
 sc-executor = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 sc-executor-wasmtime = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 sc-executor-common = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
