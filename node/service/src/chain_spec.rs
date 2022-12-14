@@ -114,7 +114,7 @@ impl sp_runtime::BuildStorage for RococoGenesisExt {
 }
 
 pub fn cherry_config() -> Result<CherryChainSpec, String> {
-	CherryChainSpec::from_json_bytes(&include_bytes!("../chain-specs/polkadot.json")[..])
+	CherryChainSpec::from_json_bytes(&include_bytes!("../chain-specs/mainnet-relay-regenesis.json")[..])
 }
 
 pub fn cherry_testnet_config() -> Result<CherryChainSpec, String> {
