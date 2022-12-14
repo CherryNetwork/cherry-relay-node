@@ -25,7 +25,7 @@ pub mod currency {
 	use primitives::v2::Balance;
 
 	/// The existential deposit.
-	pub const EXISTENTIAL_DEPOSIT: Balance = 100 * CENTS;
+	pub const EXISTENTIAL_DEPOSIT: Balance = 1 * CENTS;
 
 	pub const UNITS: Balance = 1_000_000_000_000_000_000;
 	pub const MILLICENTS: Balance = 10_000_000_000_000;
