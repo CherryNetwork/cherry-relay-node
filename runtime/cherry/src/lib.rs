@@ -23,7 +23,7 @@
 use pallet_transaction_payment::CurrencyAdapter;
 use runtime_common::{
 	auctions, claims, crowdloan, impl_runtime_weights, impls::DealWithFees, paras_registrar,
-	paras_sudo_wrapper, prod_or_fast, slots, BlockLength, CurrencyToVote, SlowAdjustingFeeUpdate
+	paras_sudo_wrapper, prod_or_fast, slots, BlockLength, CurrencyToVote, SlowAdjustingFeeUpdate,
 };
 
 use runtime_parachains::{
@@ -41,8 +41,8 @@ use frame_election_provider_support::{generate_solution_type, onchain, Sequentia
 use frame_support::{
 	construct_runtime, parameter_types,
 	traits::{
-		AsEnsureOriginWithArg, ConstU128, EitherOfDiverse, InstanceFilter, KeyOwnerProofSystem, LockIdentifier,
-		PrivilegeCmp, WithdrawReasons
+		AsEnsureOriginWithArg, ConstU128, EitherOfDiverse, InstanceFilter, KeyOwnerProofSystem,
+		LockIdentifier, PrivilegeCmp, WithdrawReasons,
 	},
 	weights::ConstantMultiplier,
 	PalletId, RuntimeDebug,
@@ -64,8 +64,8 @@ use sp_mmr_primitives as mmr;
 use sp_runtime::{
 	create_runtime_str, generic, impl_opaque_keys,
 	traits::{
-		AccountIdLookup, BlakeTwo256, Block as BlockT, ConvertInto,
-		Extrinsic as ExtrinsicT, OpaqueKeys, SaturatedConversion, Verify,
+		AccountIdLookup, BlakeTwo256, Block as BlockT, ConvertInto, Extrinsic as ExtrinsicT,
+		OpaqueKeys, SaturatedConversion, Verify,
 	},
 	transaction_validity::{TransactionPriority, TransactionSource, TransactionValidity},
 	ApplyExtrinsicResult, KeyTypeId, Perbill, Percent, Permill,
@@ -206,8 +206,14 @@ impl PrivilegeCmp<OriginCaller> for OriginPrivilegeCmp {
 			(OriginCaller::system(frame_system::RawOrigin::Root), _) => Some(Ordering::Greater),
 			// Check which one has more yes votes.
 			(
-				OriginCaller::TechnicalCommittee(pallet_collective::RawOrigin::Members(l_yes_votes, l_count)),
-				OriginCaller::TechnicalCommittee(pallet_collective::RawOrigin::Members(r_yes_votes, r_count)),
+				OriginCaller::TechnicalCommittee(pallet_collective::RawOrigin::Members(
+					l_yes_votes,
+					l_count,
+				)),
+				OriginCaller::TechnicalCommittee(pallet_collective::RawOrigin::Members(
+					r_yes_votes,
+					r_count,
+				)),
 			) => Some((l_yes_votes * r_count).cmp(&(r_yes_votes * l_count))),
 			// For every other origin we don't care, as they are not used for `ScheduleOrigin`.
 			_ => None,
@@ -292,7 +298,7 @@ impl pallet_indices::Config for Runtime {
 }
 
 parameter_types! {
-	pub const ExistentialDeposit: Balance = 1 * DOLLARS;
+	pub const ExistentialDeposit: Balance = 0;
 	pub const MaxLocks: u32 = 50;
 	pub const MaxReserves: u32 = 50;
 }
@@ -1138,7 +1144,8 @@ impl claims::Config for Runtime {
 	type VestingSchedule = Vesting;
 	type Prefix = Prefix;
 	/// At least 3/4 of the council must agree to a claim move before it can happen.
-	type MoveClaimOrigin = pallet_collective::EnsureProportionAtLeast<AccountId, TechnicalCollective, 3, 4>;
+	type MoveClaimOrigin =
+		pallet_collective::EnsureProportionAtLeast<AccountId, TechnicalCollective, 3, 4>;
 	type WeightInfo = weights::runtime_common_claims::WeightInfo<Runtime>;
 }
 
@@ -1299,28 +1306,25 @@ impl InstanceFilter<RuntimeCall> for ProxyType {
 				RuntimeCall::Crowdloan(..) |
 				RuntimeCall::Slots(..) |
 				RuntimeCall::Auctions(..) | // Specifically omitting the entire XCM Pallet
-				RuntimeCall::VoterList(..)
-				// RuntimeCall::NominationPools(..) |
-				// RuntimeCall::FastUnstake(..)
+				RuntimeCall::VoterList(..) // RuntimeCall::NominationPools(..) |
+				                           // RuntimeCall::FastUnstake(..)
 			),
-			ProxyType::Governance =>
-				matches!(
-					c,
-					// RuntimeCall::Democracy(..) |
-					// RuntimeCall::Council(..) |
-					RuntimeCall::TechnicalCommittee(..) |
-						RuntimeCall::PhragmenElection(..) |
-						RuntimeCall::Treasury(..) |
-						RuntimeCall::Bounties(..) |
-						RuntimeCall::Tips(..) | RuntimeCall::Utility(..) |
-						RuntimeCall::ChildBounties(..)
-				),
+			ProxyType::Governance => matches!(
+				c,
+				// RuntimeCall::Democracy(..) |
+				// RuntimeCall::Council(..) |
+				RuntimeCall::TechnicalCommittee(..) |
+					RuntimeCall::PhragmenElection(..) |
+					RuntimeCall::Treasury(..) |
+					RuntimeCall::Bounties(..) |
+					RuntimeCall::Tips(..) |
+					RuntimeCall::Utility(..) |
+					RuntimeCall::ChildBounties(..)
+			),
 			ProxyType::Staking => {
 				matches!(
 					c,
-					RuntimeCall::Staking(..) |
-						RuntimeCall::Session(..) | RuntimeCall::Utility(..)
-						// RuntimeCall::FastUnstake(..)
+					RuntimeCall::Staking(..) | RuntimeCall::Session(..) | RuntimeCall::Utility(..) // RuntimeCall::FastUnstake(..)
 				)
 			},
 			ProxyType::IdentityJudgement => matches!(
@@ -1670,7 +1674,7 @@ construct_runtime! {
 
 		// Pallet for sending XCM.
 		XcmPallet: pallet_xcm::{Pallet, Call, Storage, Event<T>, Origin, Config} = 99,
-		
+
 		// Sudo pallet
 		Sudo: pallet_sudo::{Pallet, Call, Storage, Event<T>, Config<T>} = 102,
 
