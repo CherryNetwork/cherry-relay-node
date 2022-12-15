@@ -33,6 +33,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: ./scripts/ci/dockerfiles/polkadot/polkadot_builder.Dockerfile
+          file: ./scripts/ci/dockerfiles/polkadot/polkadot_builder.Dockerfile1
           push: true
           tags: cherrylabsorg/cherry-polkadot-node:dev

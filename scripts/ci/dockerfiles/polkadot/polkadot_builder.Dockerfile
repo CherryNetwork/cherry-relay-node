@@ -10,6 +10,9 @@ RUN cargo build --locked --release
 # This is the 2nd stage: a very small image where we copy the Cherry binary."
 FROM docker.io/library/ubuntu:20.04
 
+RUN apt-get  update && apt-get install -y ca-certificates
+RUN update-ca-certificates
+
 LABEL description="Multistage Docker image for Cherry: a platform for web3" \
 	io.parity.image.type="builder" \
 	io.parity.image.authors="liompis@cherrylabs.org" \
