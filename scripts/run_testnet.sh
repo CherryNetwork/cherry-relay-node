@@ -3,9 +3,7 @@
 set -e
 
 sudo apt update
-sudo apt install -y git clang curl libssl-dev llvm libudev-dev pkg-config
-sudo apt install -y protobuf-compiler
-sudo apt install cmake g++ make
+sudo apt install -y git clang curl libssl-dev llvm libudev-dev pkg-config && sudo apt install -y protobuf-compiler && sudo apt install cmake g++ make
 
 echo "*** Initializing WASM build environment"
 
