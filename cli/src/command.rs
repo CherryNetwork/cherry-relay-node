@@ -46,11 +46,11 @@ fn get_exec_name() -> Option<String> {
 
 impl SubstrateCli for Cli {
 	fn impl_name() -> String {
-		"Parity Polkadot".into()
+		"Cherry Mainnet".into()
 	}
 
 	fn impl_version() -> String {
-		env!("SUBSTRATE_CLI_IMPL_VERSION").into()
+		"v0.2.0-alpha".into()
 	}
 
 	fn description() -> String {
@@ -58,7 +58,7 @@ impl SubstrateCli for Cli {
 	}
 
 	fn author() -> String {
-		env!("CARGO_PKG_AUTHORS").into()
+		"Cherry Technologies Ltd <admin@cherry.network>, forked from Parity Technologies".into()
 	}
 
 	fn support_url() -> String {
@@ -66,7 +66,7 @@ impl SubstrateCli for Cli {
 	}
 
 	fn copyright_start_year() -> i32 {
-		2017
+		2021
 	}
 
 	fn executable_name() -> String {
