@@ -10,7 +10,6 @@ polkadot.*
 !polkadot.service
 !.rpm/*
 .DS_Store
-.cargo
 .env
 customSpec.json
 customSpecRaw.json

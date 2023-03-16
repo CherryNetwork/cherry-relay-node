@@ -1,15 +1,15 @@
 [package]
 name = "test-parachain-halt"
-version = "0.9.33"
-authors = ["Parity Technologies <admin@parity.io>"]
 description = "Test parachain which executes forever"
-edition = "2021"
 build = "build.rs"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
 
 [dependencies]
 
 [build-dependencies]
-substrate-wasm-builder = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+substrate-wasm-builder = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.34" }
 
 [features]
 default = [ "std" ]

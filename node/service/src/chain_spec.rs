@@ -363,7 +363,6 @@ fn cherry_staging_testnet_config_genesis(wasm_binary: &[u8]) -> cherry::GenesisC
 		paras: Default::default(),
 		xcm_pallet: Default::default(),
 		assets: cherry::AssetsConfig { assets: vec![], metadata: vec![], accounts: vec![] },
-		gilt: Default::default(),
 		sudo: cherry_runtime::SudoConfig { key: Some(endowed_accounts[0].clone()) },
 	}
 }
@@ -667,12 +666,12 @@ fn rococo_staging_testnet_config_genesis(wasm_binary: &[u8]) -> rococo_runtime::
 		configuration: rococo_runtime::ConfigurationConfig {
 			config: default_parachains_host_configuration(),
 		},
-		gilt: Default::default(),
 		registrar: rococo_runtime::RegistrarConfig {
 			next_free_para_id: polkadot_primitives::v2::LOWEST_PUBLIC_ID,
 		},
 		assets: rococo_runtime::AssetsConfig { assets: vec![], metadata: vec![], accounts: vec![] },
 		xcm_pallet: Default::default(),
+		nis_counterpart_balances: Default::default(),
 	}
 }
 
@@ -940,7 +939,6 @@ pub fn cherry_testnet_genesis(
 			metadata: vec![(999, "Governance Token".into(), "tGov".into(), 0)],
 			accounts: vec![(999, root_key.clone(), 10)],
 		},
-		gilt: Default::default(),
 		sudo: cherry_runtime::SudoConfig { key: Some(root_key.clone()) },
 	}
 }
@@ -1020,13 +1018,13 @@ pub fn rococo_testnet_genesis(
 				..default_parachains_host_configuration()
 			},
 		},
-		gilt: Default::default(),
 		paras: rococo_runtime::ParasConfig { paras: vec![] },
 		assets: rococo_runtime::AssetsConfig { assets: vec![], metadata: vec![], accounts: vec![] },
 		registrar: rococo_runtime::RegistrarConfig {
 			next_free_para_id: polkadot_primitives::v2::LOWEST_PUBLIC_ID,
 		},
 		xcm_pallet: Default::default(),
+		nis_counterpart_balances: Default::default(),
 	}
 }
 
