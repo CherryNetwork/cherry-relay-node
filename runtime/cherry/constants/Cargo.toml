@@ -11,6 +11,8 @@ primitives = { package = "polkadot-primitives", path = "../../../primitives", de
 runtime-common = { package = "polkadot-runtime-common", path = "../../common", default-features = false }
 sp-runtime = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
 sp-staking = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
+sp-weights = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
 
 [features]
 default = ["std"]
