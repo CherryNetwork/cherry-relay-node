@@ -1,13 +1,13 @@
 [package]
 name = "polkadot-voter-bags"
-version = "0.9.33"
-authors = ["Parity Technologies <admin@parity.io>"]
-edition = "2021"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
 
 [dependencies]
 clap = { version = "4.0.9", features = ["derive"] }
 
-generate-bags = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
-sp-io = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+generate-bags = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.34" }
+sp-io = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.34" }
 
 cherry-runtime = { path = "../../runtime/cherry" }
