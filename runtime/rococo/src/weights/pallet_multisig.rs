@@ -28,11 +28,11 @@
 // --steps=50
 // --repeat=20
 // --pallet=pallet_multisig
-// --extrinsic=
+// --extrinsic=*
 // --execution=wasm
 // --wasm-execution=compiled
 // --header=./file_header.txt
-// --output=runtime/rococo/src/weights/
+// --output=./runtime/rococo/src/weights/
 
 #![cfg_attr(rustfmt, rustfmt_skip)]
 #![allow(unused_parens)]

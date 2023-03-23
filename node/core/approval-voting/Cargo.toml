@@ -13,7 +13,7 @@ bitvec = { version = "1.0.0", default-features = false, features = ["alloc"] }
 lru = "0.8"
 merlin = "2.0"
 schnorrkel = "0.9.1"
-kvdb = "0.12.0"
+kvdb = "0.13.0"
 derive_more = "0.99.17"
 thiserror = "1.0.31"
 
@@ -24,21 +24,21 @@ polkadot-primitives = { path = "../../../primitives" }
 polkadot-node-primitives = { path = "../../primitives" }
 polkadot-node-jaeger = { path = "../../jaeger" }
 
-sc-keystore = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.34" }
-sp-consensus = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.34" }
-sp-consensus-slots = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.34" }
-sp-application-crypto = { git = "https://github.com/CherryNetwork/substrate", default-features = false, features = ["full_crypto"] , branch = "upgrade-to-v0.9.34" }
-sp-runtime = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.34" }
+sc-keystore = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.35" }
+sp-consensus = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.35" }
+sp-consensus-slots = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.35" }
+sp-application-crypto = { git = "https://github.com/CherryNetwork/substrate", default-features = false, features = ["full_crypto"] , branch = "upgrade-to-v0.9.35" }
+sp-runtime = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.35" }
 
 [dev-dependencies]
 async-trait = "0.1.57"
 parking_lot = "0.12.0"
 rand_core = "0.5.1" #                                                                       should match schnorrkel
-sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.34" }
-sp-keystore = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.34" }
-sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.34" }
-sp-consensus-babe = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.34" }
+sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.35" }
+sp-keystore = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.35" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.35" }
+sp-consensus-babe = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.35" }
 polkadot-node-subsystem-test-helpers = { path = "../../subsystem-test-helpers" }
 assert_matches = "1.4.0"
-kvdb-memorydb = "0.12.0"
+kvdb-memorydb = "0.13.0"
 test-helpers = { package = "polkadot-primitives-test-helpers", path = "../../../primitives/test-helpers" }

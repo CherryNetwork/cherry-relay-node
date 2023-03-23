@@ -5,12 +5,11 @@ authors.workspace = true
 edition.workspace = true
 
 [dependencies]
-sp-core = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.34" }
-sp-std = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.34" }
-sp-runtime = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.34" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.35" }
+sp-std = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.35" }
+sp-runtime = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.35" }
 scale-info = { version = "2.1.2", default-features = false, features = ["derive"] }
 parity-scale-codec = { version = "3.1.5", default-features = false, features = [ "derive" ] }
-parity-util-mem = { version = "0.12.0", default-features = false, optional = true }
 
 [features]
 default = [ "std" ]
@@ -21,5 +20,4 @@ std = [
 	"sp-std/std",
 	"scale-info/std",
 	"parity-scale-codec/std",
-	"parity-util-mem",
 ]
