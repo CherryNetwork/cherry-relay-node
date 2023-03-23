@@ -41,13 +41,13 @@ use frame_election_provider_support::{generate_solution_type, onchain, Sequentia
 use frame_support::{
 	construct_runtime, parameter_types,
 	traits::{
-		AsEnsureOriginWithArg, ConstU128, EitherOfDiverse, InstanceFilter, KeyOwnerProofSystem,
+		EitherOfDiverse, InstanceFilter, KeyOwnerProofSystem,
 		LockIdentifier, PrivilegeCmp, WithdrawReasons,
 	},
 	weights::ConstantMultiplier,
 	PalletId, RuntimeDebug,
 };
-use frame_system::{EnsureRoot, EnsureSigned};
+use frame_system::EnsureRoot;
 use pallet_grandpa::{fg_primitives, AuthorityId as GrandpaId};
 use pallet_im_online::sr25519::AuthorityId as ImOnlineId;
 use pallet_session::historical as session_historical;
@@ -557,10 +557,10 @@ impl pallet_staking::EraPayout<Balance> for EraPayout {
 
 parameter_types! {
 	// Six sessions in an era (24 hours).
-	pub const SessionsPerEra: SessionIndex = prod_or_fast!(6, 3);
+	pub const SessionsPerEra: SessionIndex = SESSIONS_PER_ERA;
 	// 28 eras for unbonding (28 days).
-	pub const BondingDuration: sp_staking::EraIndex = prod_or_fast!(28, 24, "CHER_BONDING_DURATION");
-	pub const SlashDeferDuration: sp_staking::EraIndex = prod_or_fast!(27, 24, "CHER_SLASH_DEFER_DURATION");
+	pub const BondingDuration: sp_staking::EraIndex = BONDING_DURATION;
+	pub const SlashDeferDuration: sp_staking::EraIndex = SLASH_DEFER_DURATION;
 	pub const MaxNominatorRewardedPerValidator: u32 = 256;
 	pub const OffendingValidatorsThreshold: Perbill = Perbill::from_percent(17);
 	// 16
@@ -709,7 +709,7 @@ impl pallet_elections_phragmen::Config for Runtime {
 }
 
 parameter_types! {
-	pub const TechnicalMotionDuration: BlockNumber = prod_or_fast!(7 * DAYS, 10 * MINUTES);
+	pub const TechnicalMotionDuration: BlockNumber = TECHNICAL_MOTION_DURATION;
 	pub const TechnicalMaxProposals: u32 = 100;
 	pub const TechnicalMaxMembers: u32 = 100;
 }
@@ -1444,7 +1444,7 @@ construct_runtime! {
 		PhragmenElection: pallet_elections_phragmen::{Pallet, Call, Storage, Event<T>, Config<T>} = 17,
 		TechnicalMembership: pallet_membership::<Instance1>::{Pallet, Call, Storage, Event<T>, Config<T>} = 18,
 		Treasury: pallet_treasury::{Pallet, Call, Storage, Config, Event<T>} = 19,
-
+		Ipfs: pallet_ipfs::{Pallet, Call, Storage, Event<T>} = 104,
 
 		// Claims. Usable initially.
 		Claims: claims::{Pallet, Call, Storage, Event<T>, Config<T>, ValidateUnsigned} = 24,
@@ -1542,7 +1542,7 @@ pub type Migrations = (
 	// "Bound uses of call" <https://github.com/paritytech/polkadot/pull/5729>
 	// pallet_preimage::migration::v1::Migration<Runtime>,
 	pallet_scheduler::migration::v3::MigrateToV4<Runtime>,
-	pallet_democracy::migrations::v1::Migration<Runtime>,
+	// pallet_democracy::migrations::v1::Migration<Runtime>,
 	pallet_multisig::migrations::v1::MigrateToV1<Runtime>,
 	// "Properly migrate weights to v2" <https://github.com/paritytech/polkadot/pull/6091>
 	parachains_configuration::migration::v3::MigrateToV3<Runtime>,
