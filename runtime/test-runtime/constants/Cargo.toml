@@ -15,5 +15,7 @@ sp-runtime = { git = "https://github.com/CherryNetwork/substrate", default-featu
 [features]
 default = ["std"]
 std = [
+	"sp-core/std",
 	"sp-runtime/std",
+	"sp-weights/std"
 ]

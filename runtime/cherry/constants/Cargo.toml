@@ -17,4 +17,6 @@ default = ["std"]
 std = [
 	"sp-runtime/std",
 	"sp-staking/std",
+	"sp-weights/std",
+	"sp-core/std",
 ]
