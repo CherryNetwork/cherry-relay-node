@@ -25,22 +25,22 @@ polkadot-client = { path = "../node/client", optional = true }
 polkadot-node-core-pvf = { path = "../node/core/pvf", optional = true }
 polkadot-performance-test = { path = "../node/test/performance-test", optional = true }
 
-sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.34" }
-sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.34" }
-frame-benchmarking-cli = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "upgrade-to-v0.9.34" }
-try-runtime-cli = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "upgrade-to-v0.9.34" }
-sc-cli = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "upgrade-to-v0.9.34" }
-sc-service = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "upgrade-to-v0.9.34" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+frame-benchmarking-cli = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "cherry-testnet" }
+try-runtime-cli = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "cherry-testnet" }
+sc-cli = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "cherry-testnet" }
+sc-service = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "cherry-testnet" }
 polkadot-node-metrics = { path = "../node/metrics" }
-sc-tracing = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "upgrade-to-v0.9.34" }
-sc-sysinfo = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.34" }
+sc-tracing = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "cherry-testnet" }
+sc-sysinfo = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
 
 # this crate is used only to enable `trie-memory-tracker` feature
 # see https://github.com/CherryNetwork/substrate/pull/6745
-sp-trie = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.34" }
+sp-trie = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
 
 [build-dependencies]
-substrate-build-script-utils = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.34" }
+substrate-build-script-utils = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
 
 [features]
 default = ["db", "cli", "hostperfcheck", "full-node", "trie-memory-tracker", "cherry-native"]
