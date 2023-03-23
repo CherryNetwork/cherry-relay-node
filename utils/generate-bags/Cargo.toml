@@ -7,7 +7,7 @@ edition.workspace = true
 [dependencies]
 clap = { version = "4.0.9", features = ["derive"] }
 
-generate-bags = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.35" }
-sp-io = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.35" }
+generate-bags = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.36" }
+sp-io = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.36" }
 
 cherry-runtime = { path = "../../runtime/cherry" }

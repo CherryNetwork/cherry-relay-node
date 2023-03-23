@@ -16,7 +16,7 @@ version.workspace = true
 authors = ["Parity Technologies <admin@parity.io>"]
 edition = "2021"
 repository = "https://github.com/paritytech/polkadot.git"
-version = "0.9.35"
+version = "0.9.36"
 
 [dependencies]
 polkadot-cli = { path = "cli", features = [ "rococo-native", "cherry-native" ]  }
@@ -28,7 +28,7 @@ assert_cmd = "2.0.4"
 nix = "0.24.1"
 tempfile = "3.2.0"
 tokio = "1.22.0"
-substrate-rpc-client = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.35" }
+substrate-rpc-client = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.36" }
 polkadot-core-primitives = { path = "core-primitives" }
  
 [workspace]
