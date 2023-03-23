@@ -8,22 +8,21 @@ edition.workspace = true
 bitvec = { version = "1.0.0", default-features = false, features = ["alloc"] }
 hex-literal = "0.3.4"
 parity-scale-codec = { version = "3.1.5", default-features = false, features = ["bit-vec", "derive"] }
-parity-util-mem = { version = "0.12.0", default-features = false, optional = true }
 scale-info = { version = "2.1.2", default-features = false, features = ["bit-vec", "derive"] }
 serde = { version = "1.0.137", optional = true, features = ["derive"] }
 
-application-crypto = { package = "sp-application-crypto", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.34" }
-inherents = { package = "sp-inherents", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.34" }
-primitives = { package = "sp-core", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.34" }
-runtime_primitives = { package = "sp-runtime", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.34" }
-sp-api = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.34" }
-sp-arithmetic = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.34" }
-sp-authority-discovery = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.34" }
-sp-consensus-slots = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.34" }
-sp-io = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.34" }
-sp-keystore = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "upgrade-to-v0.9.34" }
-sp-staking = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.34" }
-sp-std = { package = "sp-std", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.34" }
+application-crypto = { package = "sp-application-crypto", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.35" }
+inherents = { package = "sp-inherents", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.35" }
+primitives = { package = "sp-core", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.35" }
+runtime_primitives = { package = "sp-runtime", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.35" }
+sp-api = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.35" }
+sp-arithmetic = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.35" }
+sp-authority-discovery = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.35" }
+sp-consensus-slots = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.35" }
+sp-io = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.35" }
+sp-keystore = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "upgrade-to-v0.9.35" }
+sp-staking = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.35" }
+sp-std = { package = "sp-std", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.35" }
 
 polkadot-core-primitives = { path = "../core-primitives", default-features = false }
 polkadot-parachain = { path = "../parachain", default-features = false }
@@ -46,7 +45,6 @@ std = [
 	"sp-arithmetic/std",
 	"runtime_primitives/std",
 	"serde",
-	"parity-util-mem",
 	"polkadot-parachain/std",
 	"polkadot-core-primitives/std",
 	"bitvec/std",

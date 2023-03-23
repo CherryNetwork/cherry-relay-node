@@ -10,21 +10,21 @@ targets = ["x86_64-unknown-linux-gnu"]
 [dependencies]
 codec = { package = "parity-scale-codec", version = "3.0.0", default-features = false }
 scale-info = { version = "2.1.2", default-features = false, features = ["derive"] }
-frame-support = { default-features = false, git = "https://github.com/CherryNetwork/substrate" , branch = "upgrade-to-v0.9.34" }
-frame-system = { default-features = false, git = "https://github.com/CherryNetwork/substrate" , branch = "upgrade-to-v0.9.34" }
-sp-runtime = { default-features = false, git = "https://github.com/CherryNetwork/substrate" , branch = "upgrade-to-v0.9.34" }
-sp-std = { default-features = false, git = "https://github.com/CherryNetwork/substrate" , branch = "upgrade-to-v0.9.34" }
+frame-support = { default-features = false, git = "https://github.com/CherryNetwork/substrate" , branch = "upgrade-to-v0.9.35" }
+frame-system = { default-features = false, git = "https://github.com/CherryNetwork/substrate" , branch = "upgrade-to-v0.9.35" }
+sp-runtime = { default-features = false, git = "https://github.com/CherryNetwork/substrate" , branch = "upgrade-to-v0.9.35" }
+sp-std = { default-features = false, git = "https://github.com/CherryNetwork/substrate" , branch = "upgrade-to-v0.9.35" }
 xcm-executor = { path = "../xcm-executor", default-features = false }
-frame-benchmarking = { default-features = false, git = "https://github.com/CherryNetwork/substrate" , branch = "upgrade-to-v0.9.34" }
+frame-benchmarking = { default-features = false, git = "https://github.com/CherryNetwork/substrate" , branch = "upgrade-to-v0.9.35" }
 xcm = { path = "..", default-features = false }
 log = "0.4.17"
 
 [dev-dependencies]
-pallet-balances = { git = "https://github.com/CherryNetwork/substrate" , branch = "upgrade-to-v0.9.34" }
-pallet-assets = { git = "https://github.com/CherryNetwork/substrate" , branch = "upgrade-to-v0.9.34" }
-sp-core = { git = "https://github.com/CherryNetwork/substrate" , branch = "upgrade-to-v0.9.34" }
-sp-io = { git = "https://github.com/CherryNetwork/substrate" , branch = "upgrade-to-v0.9.34" }
-sp-tracing = { git = "https://github.com/CherryNetwork/substrate" , branch = "upgrade-to-v0.9.34" }
+pallet-balances = { git = "https://github.com/CherryNetwork/substrate" , branch = "upgrade-to-v0.9.35" }
+pallet-assets = { git = "https://github.com/CherryNetwork/substrate" , branch = "upgrade-to-v0.9.35" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate" , branch = "upgrade-to-v0.9.35" }
+sp-io = { git = "https://github.com/CherryNetwork/substrate" , branch = "upgrade-to-v0.9.35" }
+sp-tracing = { git = "https://github.com/CherryNetwork/substrate" , branch = "upgrade-to-v0.9.35" }
 xcm-builder = { path = "../xcm-builder" }
 xcm = { path = ".." }
 # temp

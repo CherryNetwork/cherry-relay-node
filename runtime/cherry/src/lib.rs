@@ -120,13 +120,13 @@ pub const VERSION: RuntimeVersion = RuntimeVersion {
 	spec_name: create_runtime_str!("cherry"),
 	impl_name: create_runtime_str!("cherry"),
 	authoring_version: 0,
-	spec_version: 19,
+	spec_version: 20,
 	impl_version: 0,
 	#[cfg(not(feature = "disable-runtime-api"))]
 	apis: RUNTIME_API_VERSIONS,
 	#[cfg(feature = "disable-runtime-api")]
 	apis: sp_version::create_apis_vec![[]],
-	transaction_version: 18,
+	transaction_version: 19,
 	state_version: 0,
 };
 
@@ -1538,22 +1538,7 @@ impl Get<&'static str> for StakingMigrationV11OldPallet {
 	}
 }
 
-pub type Migrations = (
-	//9320
-	// "Bound uses of call" <https://github.com/paritytech/polkadot/pull/5729>
-	// pallet_preimage::migration::v1::Migration<Runtime>,
-	pallet_scheduler::migration::v3::MigrateToV4<Runtime>,
-	// pallet_democracy::migrations::v1::Migration<Runtime>,
-	pallet_multisig::migrations::v1::MigrateToV1<Runtime>,
-	// "Properly migrate weights to v2" <https://github.com/paritytech/polkadot/pull/6091>
-	parachains_configuration::migration::v3::MigrateToV3<Runtime>,
-	//9330
-	pallet_election_provider_multi_phase::migrations::v1::MigrateToV1<Runtime>,
-	pallet_fast_unstake::migrations::v1::MigrateToV1<Runtime>,
-	//9340
-	pallet_balances::migration::MigrateToTrackInactive<Runtime, xcm_config::CheckAccount>,
-	crowdloan::migration::MigrateToTrackInactive<Runtime>,
-);
+pub type Migrations = ();
 
 /// Unchecked extrinsic type as expected by this runtime.
 pub type UncheckedExtrinsic =
