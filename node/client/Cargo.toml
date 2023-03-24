@@ -7,37 +7,37 @@ edition.workspace = true
 [dependencies]
 async-trait = "0.1.57"
 futures = "0.3.21"
-frame-benchmarking = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.36" }
-frame-benchmarking-cli = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.36" }
-pallet-transaction-payment = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.36" }
-pallet-transaction-payment-rpc-runtime-api = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.36" }
-frame-system = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.36" }
-frame-system-rpc-runtime-api = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.36" }
+frame-benchmarking = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+frame-benchmarking-cli = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+pallet-transaction-payment = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+pallet-transaction-payment-rpc-runtime-api = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+frame-system = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+frame-system-rpc-runtime-api = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
 
-sp-consensus = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.36" }
-sp-storage = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.36" }
-sp-runtime = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.36" }
-sp-blockchain = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.36" }
-sp-api = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.36" }
-sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.36" }
-sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.36" }
-sp-inherents = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.36" }
-sp-timestamp = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.36" }
-sp-session = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.36" }
-sp-authority-discovery = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.36" }
-sp-finality-grandpa = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.36" }
-sp-consensus-babe = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.36" }
-sp-transaction-pool = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.36" }
-sp-offchain = { package = "sp-offchain", git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.36" }
-sp-block-builder = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.36" }
-sp-mmr-primitives = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.36" }
+sp-consensus = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-storage = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-runtime = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-blockchain = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-api = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-inherents = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-timestamp = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-session = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-authority-discovery = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-finality-grandpa = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-consensus-babe = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-transaction-pool = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-offchain = { package = "sp-offchain", git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-block-builder = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-mmr-primitives = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
 
-sc-consensus = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.36" }
-sc-executor = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.36" }
-sc-client-api = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.36" }
-sc-service = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.36" }
+sc-consensus = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sc-executor = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sc-client-api = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sc-service = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
 
-beefy-primitives = { git = "https://github.com/CherryNetwork/substrate", package = "sp-beefy" , branch = "upgrade-to-v0.9.36" }
+beefy-primitives = { git = "https://github.com/CherryNetwork/substrate", package = "sp-beefy" , branch = "cherry-testnet" }
 
 # Polkadot Runtimes
 cherry-runtime = { path = "../../runtime/cherry", optional = true }
