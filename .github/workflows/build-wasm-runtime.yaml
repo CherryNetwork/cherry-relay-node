@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - cherry
+      - cherry-testnet
 
 jobs:
   build_wasm:
