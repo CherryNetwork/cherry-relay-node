@@ -117,10 +117,10 @@ include!(concat!(env!("OUT_DIR"), "/wasm_binary.rs"));
 /// Runtime version (Cherry).
 #[sp_version::runtime_version]
 pub const VERSION: RuntimeVersion = RuntimeVersion {
-	spec_name: create_runtime_str!("cherry"),
-	impl_name: create_runtime_str!("cherry"),
+	spec_name: create_runtime_str!("cherry-testnet"),
+	impl_name: create_runtime_str!("cherry-testnet"),
 	authoring_version: 0,
-	spec_version: 22,
+	spec_version: 23,
 	impl_version: 0,
 	#[cfg(not(feature = "disable-runtime-api"))]
 	apis: RUNTIME_API_VERSIONS,
