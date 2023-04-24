@@ -46,11 +46,11 @@ fn get_exec_name() -> Option<String> {
 
 impl SubstrateCli for Cli {
 	fn impl_name() -> String {
-		"Cherry Mainnet".into()
+		"Cherry Relay Testnet".into()
 	}
 
 	fn impl_version() -> String {
-		"v0.2.0-alpha".into()
+		"0.2.0-alpha".into()
 	}
 
 	fn description() -> String {
