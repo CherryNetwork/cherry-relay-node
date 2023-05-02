@@ -14,3 +14,4 @@ polkadot.*
 .env
 customSpec.json
 customSpecRaw.json
+rust-toolchain.toml
