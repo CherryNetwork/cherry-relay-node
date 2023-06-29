@@ -15,9 +15,7 @@
     "tokenSymbol": "CHER"
   },
   "forkBlocks": null,
-  "badBlocks": [
-    "0x0407374e1fe0cfc3a56c3265852c32c0c1193d21fb2e7863d6fff8fb1ba34989"
-  ],
+  "badBlocks": null,
   "lightSyncState": null,
   "codeSubstitutes": {},
   "genesis": {
