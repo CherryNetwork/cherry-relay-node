@@ -15,4 +15,4 @@ fi
 rustup target add wasm32-unknown-unknown --toolchain nightly
 
 
-cargo b --release && ./target/release/cherry purge-chain --chain node/service/chain-specs/mainnet-relay-regenesis.json -y && ./target/release/cherry --chain node/service/chain-specs/mainnet-relay-regenesis.json --bootnodes /ip4/15.236.154.200/tcp/30333/p2p/12D3KooWQTgHfboF9q1Ni8q3vG3MVJL5RMxYxYJvLnw3z7P2Mejp --telemetry-url "wss://telemetry.polkadot.io/submit/ 0"
+cargo b --release && ./target/release/cherry purge-chain --chain node/service/chain-specs/mainnet-relay-regenesis.json -y && ./target/release/cherry --chain node/service/chain-specs/mainnet-relay-regenesis.json --bootnodes /ip4/13.39.104.56/tcp/30333/p2p/12D3KooWJmNgQE6hftytjeXnwNRNrkxFLoChSa5FSuU7F4DnBUEZ --telemetry-url "wss://telemetry.polkadot.io/submit/ 0"
