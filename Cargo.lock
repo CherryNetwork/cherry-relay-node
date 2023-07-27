@@ -906,6 +906,7 @@ dependencies = [
  "pallet-ipfs-rpc-runtime-api",
  "pallet-membership",
  "pallet-multisig",
+ "pallet-nis",
  "pallet-offences",
  "pallet-offences-benchmarking",
  "pallet-preimage",

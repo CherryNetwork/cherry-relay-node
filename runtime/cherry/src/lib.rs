@@ -20,6 +20,7 @@
 // `construct_runtime!` does a lot of recursion and requires us to increase the limit to 256.
 #![recursion_limit = "256"]
 
+use pallet_nis::WithMaximumOf;
 use pallet_transaction_payment::CurrencyAdapter;
 use runtime_common::{
 	auctions, claims, crowdloan, impl_runtime_weights, impls::DealWithFees, paras_registrar,
@@ -42,8 +43,8 @@ use frame_election_provider_support::{generate_solution_type, onchain, Sequentia
 use frame_support::{
 	construct_runtime, parameter_types,
 	traits::{
-		EitherOfDiverse, InstanceFilter, KeyOwnerProofSystem, LockIdentifier, PrivilegeCmp,
-		WithdrawReasons,
+		ConstU32, EitherOfDiverse, InstanceFilter, KeyOwnerProofSystem, LockIdentifier, PrivilegeCmp,
+		WithdrawReasons, StorageMapShim,
 	},
 	weights::ConstantMultiplier,
 	PalletId, RuntimeDebug,
@@ -60,7 +61,7 @@ use primitives::v2::{
 	Moment, Nonce, OccupiedCoreAssumption, PersistedValidationData, ScrapedOnChainVotes,
 	SessionInfo, Signature, ValidationCode, ValidationCodeHash, ValidatorId, ValidatorIndex,
 };
-use sp_core::OpaqueMetadata;
+use sp_core::{ConstU128, OpaqueMetadata};
 use sp_mmr_primitives as mmr;
 use sp_runtime::{
 	create_runtime_str, generic, impl_opaque_keys,
@@ -539,17 +540,20 @@ pub struct EraPayout;
 impl pallet_staking::EraPayout<Balance> for EraPayout {
 	fn era_payout(
 		total_staked: Balance,
-		total_issuance: Balance,
+		_total_issuance: Balance,
 		era_duration_millis: u64,
 	) -> (Balance, Balance) {
-		// TODO: #2999 Update with Auctions logic when auctions pallet added.
+		// let auctioned_slots = Paras::parachains()
+		// 	.into_iter()
+		// 	.filter(|i| *i >= LOWEST_PUBLIC_ID)
+		// 	.count() as u64;
 
 		const MAX_ANNUAL_INFLATION: Perquintill = Perquintill::from_percent(3);
 		const MILLISECONDS_PER_YEAR: u64 = 1000 * 3600 * 24 * 36525 / 100;
 
 		era_payout(
 			total_staked,
-			total_issuance,
+			Nis::issuance().other,
 			MAX_ANNUAL_INFLATION,
 			Perquintill::from_rational(era_duration_millis, MILLISECONDS_PER_YEAR),
 		)
@@ -572,34 +576,6 @@ type SlashCancelOrigin = EitherOfDiverse<
 	EnsureRoot<AccountId>,
 	pallet_collective::EnsureProportionAtLeast<AccountId, TechnicalCollective, 3, 4>,
 >;
-
-// pub struct EraPayout;
-// impl pallet_staking::EraPayout<Balance> for EraPayout {
-// 	fn era_payout(
-// 		total_staked: Balance,
-// 		total_issuance: Balance,
-// 		era_duration_millis: u64,
-// 	) -> (Balance, Balance) {
-// 		// all para-ids that are not active.
-// 		let auctioned_slots = Paras::parachains()
-// 			.into_iter()
-// 			// all active para-ids that do not belong to a system or common good chain is the number
-// 			// of parachains that we should take into account for inflation.
-// 			.filter(|i| *i >= LOWEST_PUBLIC_ID)
-// 			.count() as u64;
-
-// 		const MAX_ANNUAL_INFLATION: Perquintill = Perquintill::from_percent(10);
-// 		const MILLISECONDS_PER_YEAR: u64 = 1000 * 3600 * 24 * 36525 / 100;
-
-// 		runtime_common::impls::era_payout(
-// 			total_staked,
-// 			total_issuance,
-// 			MAX_ANNUAL_INFLATION,
-// 			Perquintill::from_rational(era_duration_millis, MILLISECONDS_PER_YEAR),
-// 			auctioned_slots,
-// 		)
-// 	}
-// }
 
 impl pallet_staking::Config for Runtime {
 	type MaxNominations = MaxNominations;
@@ -1132,6 +1108,7 @@ impl InstanceFilter<RuntimeCall> for ProxyType {
 				RuntimeCall::Identity(..) |
 				RuntimeCall::Proxy(..) |
 				RuntimeCall::Multisig(..) |
+				RuntimeCall::Nis(..) |
 				RuntimeCall::Registrar(paras_registrar::Call::register {..}) |
 				RuntimeCall::Registrar(paras_registrar::Call::deregister {..}) |
 				// Specifically omitting Registrar `swap`
@@ -1364,6 +1341,60 @@ impl auctions::Config for Runtime {
 	type WeightInfo = weights::runtime_common_auctions::WeightInfo<Runtime>;
 }
 
+type NisCounterpartInstance = pallet_balances::Instance2;
+impl pallet_balances::Config<NisCounterpartInstance> for Runtime {
+	type Balance = Balance;
+	type DustRemoval = ();
+	type RuntimeEvent = RuntimeEvent;
+	type ExistentialDeposit = ConstU128<1_000_000_000_000_000_000>;
+	type AccountStore = StorageMapShim<
+		pallet_balances::Account<Runtime, NisCounterpartInstance>,
+		frame_system::Provider<Runtime>,
+		AccountId,
+		pallet_balances::AccountData<u128>,
+	>;
+	type MaxLocks = ConstU32<4>;
+	type MaxReserves = ConstU32<4>;
+	type ReserveIdentifier = [u8; 8];
+	type WeightInfo = weights::pallet_balances_nis_counterpart_balances::WeightInfo<Runtime>;
+}
+
+parameter_types! {
+	pub IgnoredIssuance: Balance = Treasury::pot();
+	pub const NisBasePeriod: BlockNumber = 7 * DAYS;
+	pub const MinBid: Balance = 1 * UNITS;
+	pub MinReceipt: Perquintill = Perquintill::from_rational(1u64, 10_000_000u64);
+	pub const IntakePeriod: BlockNumber = 5 * MINUTES;
+	pub MaxIntakeWeight: Weight = MAXIMUM_BLOCK_WEIGHT / 10;
+	pub const ThawThrottle: (Perquintill, BlockNumber) = (Perquintill::from_percent(25), 5);
+	pub storage NisTarget: Perquintill = Perquintill::zero();
+	pub const NisPalletId: PalletId = PalletId(*b"py/nis  ");
+}
+
+
+	impl pallet_nis::Config for Runtime {
+		type WeightInfo = weights::pallet_nis::WeightInfo<Runtime>;
+		type RuntimeEvent = RuntimeEvent;
+		type Currency = Balances;
+		type CurrencyBalance = Balance;
+		type FundOrigin = frame_system::EnsureSigned<AccountId>;
+		type Counterpart = NisCounterpartBalances;
+		type CounterpartAmount = WithMaximumOf<ConstU128<21_000_000_000_000_000_000u128>>;
+		type Deficit = (); // Mint
+		type IgnoredIssuance = IgnoredIssuance;
+		type Target = NisTarget;
+		type PalletId = NisPalletId;
+		type QueueCount = ConstU32<500>;
+		type MaxQueueLen = ConstU32<1000>;
+		type FifoQueueLen = ConstU32<250>;
+		type BasePeriod = NisBasePeriod;
+		type MinBid = MinBid;
+		type MinReceipt = MinReceipt;
+		type IntakePeriod = IntakePeriod;
+		type MaxIntakeWeight = MaxIntakeWeight;
+		type ThawThrottle = ThawThrottle;
+	}
+
 // parameter_types! {
 // 	pub const PoolsPalletId: PalletId = PalletId(*b"py/nopls");
 // 	// Allow pools that got slashed up to 90% to remain operational.
@@ -1446,6 +1477,10 @@ construct_runtime! {
 		TechnicalMembership: pallet_membership::<Instance1>::{Pallet, Call, Storage, Event<T>, Config<T>} = 18,
 		Treasury: pallet_treasury::{Pallet, Call, Storage, Config, Event<T>} = 19,
 		Ipfs: pallet_ipfs::{Pallet, Call, Storage, Event<T>} = 104,
+
+		// Nis pallet.
+		Nis: pallet_nis::{Pallet, Call, Storage, Event<T>} = 39,
+		NisCounterpartBalances: pallet_balances::<Instance2> = 41,
 
 		// Claims. Usable initially.
 		Claims: claims::{Pallet, Call, Storage, Event<T>, Config<T>, ValidateUnsigned} = 24,
@@ -1582,6 +1617,7 @@ mod benches {
 		// Substrate
 		[pallet_bags_list, VoterList]
 		[pallet_balances, Balances]
+		[pallet_balances, NisCounterpartBalances]
 		[frame_benchmarking::baseline, Baseline::<Runtime>]
 		[pallet_bounties, Bounties]
 		[pallet_child_bounties, ChildBounties]
@@ -1592,6 +1628,7 @@ mod benches {
 		[pallet_election_provider_multi_phase, ElectionProviderMultiPhase]
 		[frame_election_provider_support, ElectionProviderBench::<Runtime>]
 		[pallet_fast_unstake, FastUnstake]
+		[pallet_nis, Nis]
 		[pallet_identity, Identity]
 		[pallet_im_online, ImOnline]
 		[pallet_indices, Indices]

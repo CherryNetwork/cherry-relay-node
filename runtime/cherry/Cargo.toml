@@ -56,6 +56,7 @@ pallet-im-online = { git = "https://github.com/CherryNetwork/substrate", default
 pallet-indices = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
 pallet-membership = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
 pallet-multisig = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
+pallet-nis = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
 pallet-offences = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
 pallet-preimage = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
 pallet-proxy = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
@@ -147,6 +148,7 @@ std = [
 	"pallet-indices/std",
 	"pallet-membership/std",
 	"pallet-multisig/std",
+	"pallet-nis/std",
 	"pallet-offences/std",
 	"pallet-preimage/std",
 	"pallet-proxy/std",
@@ -202,6 +204,7 @@ runtime-benchmarks = [
 	"pallet-indices/runtime-benchmarks",
 	"pallet-membership/runtime-benchmarks",
 	"pallet-multisig/runtime-benchmarks",
+	"pallet-nis/runtime-benchmarks",
 	"pallet-preimage/runtime-benchmarks",
 	"pallet-proxy/runtime-benchmarks",
 	"pallet-scheduler/runtime-benchmarks",
@@ -243,6 +246,7 @@ try-runtime = [
 	"pallet-indices/try-runtime",
 	"pallet-membership/try-runtime",
 	"pallet-multisig/try-runtime",
+	"pallet-nis/try-runtime",
 	"pallet-offences/try-runtime",
 	"pallet-preimage/try-runtime",
 	"pallet-proxy/try-runtime",

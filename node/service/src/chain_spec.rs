@@ -365,6 +365,7 @@ fn cherry_staging_testnet_config_genesis(wasm_binary: &[u8]) -> cherry::GenesisC
 		paras: Default::default(),
 		xcm_pallet: Default::default(),
 		sudo: cherry_runtime::SudoConfig { key: Some(endowed_accounts[0].clone()) },
+		nis_counterpart_balances: Default::default(),
 	}
 }
 
@@ -935,6 +936,7 @@ pub fn cherry_testnet_genesis(
 		paras: Default::default(),
 		xcm_pallet: Default::default(),
 		sudo: cherry_runtime::SudoConfig { key: Some(root_key.clone()) },
+		nis_counterpart_balances: Default::default(),
 	}
 }
 
