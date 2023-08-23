@@ -5,9 +5,9 @@ authors.workspace = true
 edition.workspace = true
 
 [dependencies]
-sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.37" }
-sp-application-crypto = { package = "sp-application-crypto", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.37" }
-sp-runtime = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.37" }
-sp-core = { git = "https://github.com/CherryNetwork/substrate", features = ["std"] , branch = "upgrade-to-v0.9.37" }
+sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-application-crypto = { package = "sp-application-crypto", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
+sp-runtime = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", features = ["std"] , branch = "cherry-testnet" }
 polkadot-primitives = { path = "../" }
 rand = "0.8.5"

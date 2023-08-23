@@ -14,20 +14,20 @@ polkadot-primitives = { path = "../../../primitives" }
 polkadot-node-subsystem = { path = "../../subsystem" }
 
 # Substrate dependencies
-substrate-test-client = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.37" }
-sc-service = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.37" }
-sc-block-builder = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.37" }
-sc-consensus = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.37" }
-sp-blockchain = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.37" }
-sp-runtime = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.37" }
-sp-inherents = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.37" }
-sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.37" }
-sp-api = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.37" }
-sp-timestamp = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.37" }
-sp-consensus = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.37" }
-sp-consensus-babe = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.37" }
-sp-state-machine = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.37" }
+substrate-test-client = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sc-service = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sc-block-builder = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sc-consensus = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-blockchain = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-runtime = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-inherents = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-api = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-timestamp = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-consensus = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-consensus-babe = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-state-machine = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
 
 [dev-dependencies]
-sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.37" }
+sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
 futures = "0.3.21"
