@@ -120,7 +120,7 @@ pub const VERSION: RuntimeVersion = RuntimeVersion {
 	spec_name: create_runtime_str!("cherry-testnet"),
 	impl_name: create_runtime_str!("cherry-testnet"),
 	authoring_version: 0,
-	spec_version: 23,
+	spec_version: 24,
 	impl_version: 0,
 	#[cfg(not(feature = "disable-runtime-api"))]
 	apis: RUNTIME_API_VERSIONS,
@@ -535,6 +535,33 @@ fn era_payout(
 	(staking_payout, rest)
 }
 
+// parameter_types! {
+// 	// Six sessions in an era (24 hours).
+// 	pub const SessionsPerEra: SessionIndex = prod_or_fast!(6, 1);
+
+// 	// 28 eras for unbonding (28 days).
+// 	pub BondingDuration: sp_staking::EraIndex = prod_or_fast!(
+// 		28,
+// 		28,
+// 		"DOT_BONDING_DURATION"
+// 	);
+// 	pub SlashDeferDuration: sp_staking::EraIndex = prod_or_fast!(
+// 		27,
+// 		27,
+// 		"DOT_SLASH_DEFER_DURATION"
+// 	);
+// 	pub const RewardCurve: &'static PiecewiseLinear<'static> = &REWARD_CURVE;
+// 	pub const MaxNominatorRewardedPerValidator: u32 = 512;
+// 	pub const OffendingValidatorsThreshold: Perbill = Perbill::from_percent(17);
+// 	// 16
+// 	pub const MaxNominations: u32 = <NposCompactSolution16 as frame_election_provider_support::NposSolution>::LIMIT as u32;
+// }
+
+type StakingAdminOrigin = EitherOfDiverse<
+	EnsureRoot<AccountId>,
+	pallet_collective::EnsureProportionAtLeast<AccountId, TechnicalCollective, 3, 4>,
+>;
+
 pub struct EraPayout;
 impl pallet_staking::EraPayout<Balance> for EraPayout {
 	fn era_payout(
@@ -614,8 +641,7 @@ impl pallet_staking::Config for Runtime {
 	type SessionsPerEra = SessionsPerEra;
 	type BondingDuration = BondingDuration;
 	type SlashDeferDuration = SlashDeferDuration;
-	// A super-majority of the council can cancel the slash.
-	type SlashCancelOrigin = SlashCancelOrigin;
+	type AdminOrigin = StakingAdminOrigin;
 	type SessionInterface = Self;
 	type EraPayout = EraPayout;
 	type MaxNominatorRewardedPerValidator = MaxNominatorRewardedPerValidator;
@@ -1539,7 +1565,19 @@ impl Get<&'static str> for StakingMigrationV11OldPallet {
 	}
 }
 
-pub type Migrations = ();
+/// All migrations that will run on the next runtime upgrade.
+///
+/// Should be cleared after every release.
+pub type Migrations = (
+	pallet_balances::migration::ResetInactive<Runtime>,
+	// We need to apply this migration again, because `ResetInactive` resets the state again.
+	pallet_balances::migration::MigrateToTrackInactive<Runtime, xcm_config::CheckAccount>,
+	crowdloan::migration::MigrateToTrackInactiveV2<Runtime>,
+	pallet_scheduler::migration::v4::CleanupAgendas<Runtime>,
+	pallet_staking::migrations::v13::MigrateToV13<Runtime>,
+	parachains_disputes::migration::v1::MigrateToV1<Runtime>,
+	parachains_configuration::migration::v4::MigrateToV4<Runtime>,
+);
 
 /// Unchecked extrinsic type as expected by this runtime.
 pub type UncheckedExtrinsic =
@@ -1953,7 +1991,7 @@ sp_api::impl_runtime_apis! {
 
 	#[cfg(feature = "try-runtime")]
 	impl frame_try_runtime::TryRuntime<Block> for Runtime {
-		fn on_runtime_upgrade(checks: bool) -> (Weight, Weight) {
+		fn on_runtime_upgrade(checks: frame_try_runtime::UpgradeCheckSelect) -> (Weight, Weight) {
 			log::info!("try-runtime::on_runtime_upgrade polkadot.");
 			let weight = Executive::try_runtime_upgrade(checks).unwrap();
 			(weight, BlockWeights::get().max_block)

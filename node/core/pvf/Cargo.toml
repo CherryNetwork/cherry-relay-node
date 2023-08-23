@@ -10,8 +10,6 @@ path = "bin/puppet_worker.rs"
 
 [dependencies]
 always-assert = "0.1"
-async-std = { version = "1.11.0", features = ["attributes"] }
-async-process = "1.3.0"
 assert_matches = "1.4.0"
 cpu-time = "1.0.0"
 futures = "0.3.21"
@@ -21,6 +19,7 @@ gum = { package = "tracing-gum", path = "../../gum" }
 pin-project = "1.0.9"
 rand = "0.8.5"
 tempfile = "3.3.0"
+tokio = { version = "1.22.0", features = ["fs", "process"] }
 rayon = "1.5.1"
 
 parity-scale-codec = { version = "3.1.5", default-features = false, features = ["derive"] }
@@ -29,15 +28,15 @@ polkadot-parachain = { path = "../../../parachain" }
 polkadot-core-primitives = { path = "../../../core-primitives" }
 polkadot-node-metrics = { path = "../../metrics"}
 
-sc-executor = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-sc-executor-wasmtime = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-sc-executor-common = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-sp-externalities = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-sp-io = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-sp-wasm-interface = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-sp-maybe-compressed-blob = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-sp-tracing = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sc-executor = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.37" }
+sc-executor-wasmtime = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.37" }
+sc-executor-common = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.37" }
+sp-externalities = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.37" }
+sp-io = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.37" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.37" }
+sp-wasm-interface = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.37" }
+sp-maybe-compressed-blob = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.37" }
+sp-tracing = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.37" }
 
 [dev-dependencies]
 adder = { package = "test-parachain-adder", path = "../../../parachain/test-parachains/adder" }
