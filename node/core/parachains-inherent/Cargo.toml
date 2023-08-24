@@ -13,5 +13,5 @@ async-trait = "0.1.57"
 polkadot-node-subsystem = { path = "../../subsystem" }
 polkadot-overseer = { path = "../../overseer" }
 polkadot-primitives = { path = "../../../primitives" }
-sp-blockchain = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-sp-inherents = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-blockchain = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.40" }
+sp-inherents = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.40" }

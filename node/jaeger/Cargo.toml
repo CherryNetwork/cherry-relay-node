@@ -11,9 +11,9 @@ lazy_static = "1.4"
 parking_lot = "0.12.0"
 polkadot-primitives = { path = "../../primitives" }
 polkadot-node-primitives = { path = "../primitives" }
-sc-network = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sc-network = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.40" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.40" }
 thiserror = "1.0.31"
-tokio = "1.24.1"
+tokio = "1.24.2"
 log = "0.4.17"
-parity-scale-codec = { version = "3.1.5", default-features = false }
+parity-scale-codec = { version = "3.3.0", default-features = false }

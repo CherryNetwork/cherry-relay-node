@@ -11,10 +11,9 @@ hex = "0.4.3"
 polkadot-primitives = { path = "../../../primitives" }
 polkadot-node-primitives = { path = "../../primitives" }
 polkadot-node-jaeger = { path = "../../jaeger" }
-parity-scale-codec = { version = "3.1.5", default-features = false, features = ["derive"] }
-sc-network = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-sc-network-common = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-sc-authority-discovery = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+parity-scale-codec = { version = "3.3.0", default-features = false, features = ["derive"] }
+sc-network = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.40" }
+sc-authority-discovery = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.40" }
 strum = { version = "0.24", features = ["derive"] }
 futures = "0.3.21"
 thiserror = "1.0.31"
