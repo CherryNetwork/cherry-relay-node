@@ -25,8 +25,9 @@ sp-inherents = { git = "https://github.com/CherryNetwork/substrate", branch = "c
 sp-timestamp = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
 sp-session = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
 sp-authority-discovery = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-sp-finality-grandpa = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
 sp-consensus-babe = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-consensus-beefy = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-consensus-grandpa = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
 sp-transaction-pool = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
 sp-offchain = { package = "sp-offchain", git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
 sp-block-builder = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
@@ -36,8 +37,6 @@ sc-consensus = { git = "https://github.com/CherryNetwork/substrate", branch = "c
 sc-executor = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
 sc-client-api = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
 sc-service = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-
-beefy-primitives = { git = "https://github.com/CherryNetwork/substrate", package = "sp-beefy" , branch = "cherry-testnet" }
 
 # Polkadot Runtimes
 cherry-runtime = { path = "../../runtime/cherry", optional = true }

@@ -10,7 +10,7 @@ hex = "0.4.3"
 gum = { package = "tracing-gum", path = "../../gum" }
 rand = "0.8.5"
 tempfile = "3.2.0"
-tokio = "1.24.1"
+tokio = "1.24.2"
 
 # Polkadot dependencies
 polkadot-overseer = { path = "../../overseer" }
@@ -33,8 +33,8 @@ babe-primitives = { package = "sp-consensus-babe", git = "https://github.com/Che
 consensus_common = { package = "sp-consensus", git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
 frame-benchmarking = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
 frame-system = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-grandpa = { package = "sc-finality-grandpa", git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-grandpa_primitives = { package = "sp-finality-grandpa", git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+grandpa = { package = "sc-consensus-grandpa", git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+grandpa_primitives = { package = "sp-consensus-grandpa", git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
 inherents = { package = "sp-inherents", git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
 pallet-staking = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
 pallet-balances = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
@@ -45,7 +45,6 @@ sc-client-api = { git = "https://github.com/CherryNetwork/substrate", branch = "
 sc-consensus = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
 sc-executor = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
 sc-network = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-sc-network-common = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
 sc-tracing = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
 sc-transaction-pool = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
 sc-service = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
@@ -61,7 +60,7 @@ substrate-test-client = { git = "https://github.com/CherryNetwork/substrate", br
 pallet-balances = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
 serde_json = "1.0.81"
 substrate-test-utils = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-tokio = { version = "1.24.1", features = ["macros"] }
+tokio = { version = "1.24.2", features = ["macros"] }
 
 [features]
 runtime-metrics=["polkadot-test-runtime/runtime-metrics"]

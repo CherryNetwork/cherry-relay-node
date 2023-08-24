@@ -6,19 +6,18 @@ authors.workspace = true
 edition.workspace = true
 
 [dependencies]
-parity-scale-codec = { version = "3.1.5", default-features = false, features = ["derive", "max-encoded-len"] }
+parity-scale-codec = { version = "3.3.0", default-features = false, features = ["derive", "max-encoded-len"] }
 scale-info = { version = "2.1.2", default-features = false, features = ["derive"] }
 log = { version = "0.4.17", default-features = false }
 serde = { version = "1.0.139", default-features = false }
 serde_derive = { version = "1.0.117", optional = true }
 static_assertions = "1.1.0"
 smallvec = "1.8.0"
-hex-literal = "0.3.4"
 
 authority-discovery-primitives = { package = "sp-authority-discovery", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
 babe-primitives = { package = "sp-consensus-babe", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-beefy-primitives = { git = "https://github.com/CherryNetwork/substrate", default-features = false, package = "sp-beefy" , branch = "cherry-testnet" }
-beefy-merkle-tree = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
+beefy-primitives = { package = "sp-consensus-beefy", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
+binary-merkle-tree = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
 rococo-runtime-constants = { package = "rococo-runtime-constants", path = "./constants", default-features = false }
 sp-api = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
 inherents = { package = "sp-inherents", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
@@ -80,6 +79,7 @@ pallet-xcm-benchmarks = { path = "../../xcm/pallet-xcm-benchmarks", default-feat
 frame-benchmarking = { git = "https://github.com/CherryNetwork/substrate", default-features = false, optional = true , branch = "cherry-testnet" }
 frame-try-runtime = { git = "https://github.com/CherryNetwork/substrate", default-features = false, optional = true , branch = "cherry-testnet" }
 frame-system-benchmarking = { git = "https://github.com/CherryNetwork/substrate", default-features = false, optional = true , branch = "cherry-testnet" }
+hex-literal = { version = "0.3.4" }
 
 runtime-common = { package = "polkadot-runtime-common", path = "../common", default-features = false }
 runtime-parachains = { package = "polkadot-runtime-parachains", path = "../parachains", default-features = false }
@@ -98,7 +98,7 @@ sp-trie = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry
 separator = "0.4.1"
 serde_json = "1.0.81"
 sp-tracing = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-tokio = { version = "1.24.1", features = ["macros"] }
+tokio = { version = "1.24.2", features = ["macros"] }
 
 [build-dependencies]
 substrate-wasm-builder = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }

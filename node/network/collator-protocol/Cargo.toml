@@ -31,7 +31,7 @@ assert_matches = "1.4.0"
 sp-core = { git = "https://github.com/CherryNetwork/substrate", features = ["std"] , branch = "cherry-testnet" }
 sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
 sc-network = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-parity-scale-codec = { version = "3.1.5", features = ["std"] }
+parity-scale-codec = { version = "3.3.0", features = ["std"] }
 
 polkadot-node-subsystem-test-helpers = { path = "../../subsystem-test-helpers" }
 polkadot-primitives-test-helpers = { path = "../../../primitives/test-helpers" }

@@ -17,7 +17,7 @@ smallvec = "1.8.0"
 
 authority-discovery-primitives = { package = "sp-authority-discovery", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
 babe-primitives = { package = "sp-consensus-babe", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-beefy-primitives = { git = "https://github.com/CherryNetwork/substrate", package = "sp-beefy", default-features = false , branch = "cherry-testnet" }
+beefy-primitives = { git = "https://github.com/CherryNetwork/substrate", package = "sp-consensus-beefy", default-features = false , branch = "cherry-testnet" }
 block-builder-api = { package = "sp-block-builder", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
 inherents = { package = "sp-inherents", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
 offchain-primitives = { package = "sp-offchain", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
