@@ -36,6 +36,7 @@ polkadot-node-metrics = { path = "../node/metrics" }
 sc-tracing = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "cherry-testnet" }
 sc-sysinfo = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
 sc-executor = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sc-storage-monitor = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
 
 [build-dependencies]
 substrate-build-script-utils = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
