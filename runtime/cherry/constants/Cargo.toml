@@ -6,13 +6,13 @@ edition = "2021"
 [dependencies]
 smallvec = "1.8.0"
 
-frame-support = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
+frame-support = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
 primitives = { package = "polkadot-primitives", path = "../../../primitives", default-features = false }
 runtime-common = { package = "polkadot-runtime-common", path = "../../common", default-features = false }
-sp-runtime = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-sp-weights = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-sp-staking = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-sp-core = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
+sp-runtime = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+sp-weights = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+sp-staking = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
 
 [features]
 default = ["std"]

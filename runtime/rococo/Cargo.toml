@@ -15,71 +15,71 @@ static_assertions = "1.1.0"
 smallvec = "1.8.0"
 hex-literal = "0.3.4"
 
-authority-discovery-primitives = { package = "sp-authority-discovery", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-babe-primitives = { package = "sp-consensus-babe", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-beefy-primitives = { git = "https://github.com/CherryNetwork/substrate", default-features = false, package = "sp-beefy" , branch = "cherry-testnet" }
-beefy-merkle-tree = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
+authority-discovery-primitives = { package = "sp-authority-discovery", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+babe-primitives = { package = "sp-consensus-babe", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+beefy-primitives = { git = "https://github.com/CherryNetwork/substrate", default-features = false, package = "sp-beefy" , branch = "upgrade-to-v0.9.38" }
+beefy-merkle-tree = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
 rococo-runtime-constants = { package = "rococo-runtime-constants", path = "./constants", default-features = false }
-sp-api = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-inherents = { package = "sp-inherents", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-offchain-primitives = { package = "sp-offchain", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-sp-std = { package = "sp-std", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-sp-io = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-sp-mmr-primitives = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-sp-runtime = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-sp-staking = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-sp-core = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-sp-session = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-sp-version = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-tx-pool-api = { package = "sp-transaction-pool", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-block-builder-api = { package = "sp-block-builder", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
+sp-api = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+inherents = { package = "sp-inherents", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+offchain-primitives = { package = "sp-offchain", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+sp-std = { package = "sp-std", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+sp-io = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+sp-mmr-primitives = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+sp-runtime = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+sp-staking = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+sp-session = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+sp-version = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+tx-pool-api = { package = "sp-transaction-pool", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+block-builder-api = { package = "sp-block-builder", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
 
-pallet-authority-discovery = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-authorship = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-babe = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-balances = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-beefy = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-beefy-mmr = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-bounties = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-child-bounties = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-state-trie-migration = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-transaction-payment = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-transaction-payment-rpc-runtime-api = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-collective = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-democracy = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-elections-phragmen = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-frame-executive = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-grandpa = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-identity = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-im-online = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-indices = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-membership = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-mmr = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-multisig = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-nis = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-offences = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-preimage = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-proxy = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-recovery = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-scheduler = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-session = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-society = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-sudo = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-frame-support = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-staking = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-frame-system = {git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-frame-system-rpc-runtime-api = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-timestamp = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-tips = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-treasury = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-utility = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-pallet-vesting = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
+pallet-authority-discovery = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-authorship = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-babe = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-balances = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-beefy = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-beefy-mmr = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-bounties = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-child-bounties = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-state-trie-migration = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-transaction-payment = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-transaction-payment-rpc-runtime-api = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-collective = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-democracy = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-elections-phragmen = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+frame-executive = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-grandpa = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-identity = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-im-online = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-indices = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-membership = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-mmr = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-multisig = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-nis = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-offences = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-preimage = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-proxy = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-recovery = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-scheduler = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-session = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-society = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-sudo = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+frame-support = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-staking = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+frame-system = {git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+frame-system-rpc-runtime-api = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-timestamp = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-tips = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-treasury = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-utility = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
+pallet-vesting = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
 pallet-xcm = { path = "../../xcm/pallet-xcm", default-features = false }
 pallet-xcm-benchmarks = { path = "../../xcm/pallet-xcm-benchmarks", default-features = false, optional = true }
 
-frame-benchmarking = { git = "https://github.com/CherryNetwork/substrate", default-features = false, optional = true , branch = "cherry-testnet" }
-frame-try-runtime = { git = "https://github.com/CherryNetwork/substrate", default-features = false, optional = true , branch = "cherry-testnet" }
-frame-system-benchmarking = { git = "https://github.com/CherryNetwork/substrate", default-features = false, optional = true , branch = "cherry-testnet" }
+frame-benchmarking = { git = "https://github.com/CherryNetwork/substrate", default-features = false, optional = true , branch = "upgrade-to-v0.9.38" }
+frame-try-runtime = { git = "https://github.com/CherryNetwork/substrate", default-features = false, optional = true , branch = "upgrade-to-v0.9.38" }
+frame-system-benchmarking = { git = "https://github.com/CherryNetwork/substrate", default-features = false, optional = true , branch = "upgrade-to-v0.9.38" }
 
 runtime-common = { package = "polkadot-runtime-common", path = "../common", default-features = false }
 runtime-parachains = { package = "polkadot-runtime-parachains", path = "../parachains", default-features = false }
@@ -92,16 +92,16 @@ xcm-builder = { package = "xcm-builder", path = "../../xcm/xcm-builder", default
 
 [dev-dependencies]
 tiny-keccak = { version = "2.0.2", features = ["keccak"] }
-keyring = { package = "sp-keyring", git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-remote-externalities = { git = "https://github.com/CherryNetwork/substrate", package = "frame-remote-externalities" , branch = "cherry-testnet" }
-sp-trie = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+keyring = { package = "sp-keyring", git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.38" }
+remote-externalities = { git = "https://github.com/CherryNetwork/substrate", package = "frame-remote-externalities" , branch = "upgrade-to-v0.9.38" }
+sp-trie = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.38" }
 separator = "0.4.1"
 serde_json = "1.0.81"
-sp-tracing = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
+sp-tracing = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.38" }
 tokio = { version = "1.24.1", features = ["macros"] }
 
 [build-dependencies]
-substrate-wasm-builder = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+substrate-wasm-builder = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.38" }
 
 [features]
 default = ["std"]

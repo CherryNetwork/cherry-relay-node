@@ -22,7 +22,7 @@ pub mod weights;
 
 /// Money matters.
 pub mod currency {
-	use primitives::v2::Balance;
+	use primitives::Balance;
 
 	/// The existential deposit.
 	pub const EXISTENTIAL_DEPOSIT: Balance = 1 * CENTS;
@@ -40,7 +40,7 @@ pub mod currency {
 #[allow(dead_code)]
 /// Time and blocks.
 pub mod time_dev {
-	use primitives::v2::{BlockNumber, Moment};
+	use primitives::{BlockNumber, Moment};
 
 	pub const MILLISECS_PER_BLOCK: Moment = 6000;
 	pub const SECS_PER_BLOCK: Moment = MILLISECS_PER_BLOCK / 1000;
@@ -85,7 +85,7 @@ pub mod time_dev {
 #[allow(dead_code)]
 /// Time and blocks.
 pub mod time_prod {
-	use primitives::v2::{BlockNumber, Moment};
+	use primitives::{BlockNumber, Moment};
 
 	pub const MILLISECS_PER_BLOCK: Moment = 6000;
 	pub const SECS_PER_BLOCK: Moment = MILLISECS_PER_BLOCK / 1000;
@@ -133,7 +133,7 @@ pub mod fee {
 	use frame_support::weights::{
 		WeightToFeeCoefficient, WeightToFeeCoefficients, WeightToFeePolynomial,
 	};
-	use primitives::v2::Balance;
+	use primitives::Balance;
 	use smallvec::smallvec;
 	pub use sp_runtime::Perbill;
 
