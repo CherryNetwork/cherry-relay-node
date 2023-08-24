@@ -10,15 +10,15 @@ codec = { package = "parity-scale-codec", version = "3.3.0" }
 scale-info = { version = "2.1.2", features = ["derive"] }
 log = { version = "0.4.14", default-features = false }
 
-frame-system = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.40" }
-frame-support = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.40" }
-pallet-balances = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.40" }
-pallet-uniques = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.40" }
-sp-std = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.40" }
-sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.40" }
-sp-runtime = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.40" }
-sp-io = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.40" }
-sp-tracing = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.40" }
+frame-system = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+frame-support = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+pallet-balances = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+pallet-uniques = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-std = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-runtime = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-io = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-tracing = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
 
 xcm = { path = "../../" }
 xcm-simulator = { path = "../" }

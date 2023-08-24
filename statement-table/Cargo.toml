@@ -6,5 +6,5 @@ edition.workspace = true
 
 [dependencies]
 parity-scale-codec = { version = "3.3.0", default-features = false, features = ["derive"] }
-sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.40" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
 primitives = { package = "polkadot-primitives", path = "../primitives" }
