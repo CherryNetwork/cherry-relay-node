@@ -11,13 +11,13 @@ honggfuzz = "0.5.55"
 arbitrary = "1.2.0"
 scale-info = { version = "2.1.2", features = ["derive"] }
 
-frame-system = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-frame-support = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-pallet-balances = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-sp-std = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-sp-runtime = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-sp-io = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+frame-system = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.41" }
+frame-support = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.41" }
+pallet-balances = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.41" }
+sp-std = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.41" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.41" }
+sp-runtime = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.41" }
+sp-io = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.41" }
 
 xcm = { path = "../../" }
 xcm-simulator = { path = "../" }
