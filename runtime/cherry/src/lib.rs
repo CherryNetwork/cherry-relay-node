@@ -120,7 +120,7 @@ pub const VERSION: RuntimeVersion = RuntimeVersion {
 	spec_name: create_runtime_str!("cherry-testnet"),
 	impl_name: create_runtime_str!("cherry-testnet"),
 	authoring_version: 0,
-	spec_version: 27,
+	spec_version: 28,
 	impl_version: 0,
 	#[cfg(not(feature = "disable-runtime-api"))]
 	apis: RUNTIME_API_VERSIONS,
