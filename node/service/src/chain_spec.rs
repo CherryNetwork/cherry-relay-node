@@ -26,14 +26,14 @@ use grandpa::AuthorityId as GrandpaId;
 use pallet_im_online::sr25519::AuthorityId as ImOnlineId;
 use pallet_staking::Forcing;
 use polkadot_primitives::{AccountId, AccountPublic, AssignmentId, ValidatorId};
-use sp_authority_discovery::AuthorityId as AuthorityDiscoveryId;
-use sp_consensus_babe::AuthorityId as BabeId;
 #[cfg(feature = "rococo-native")]
 use rococo_runtime as rococo;
 #[cfg(feature = "rococo-native")]
 use rococo_runtime_constants::currency::UNITS as ROC;
 use sc_chain_spec::{ChainSpecExtension, ChainType};
 use serde::{Deserialize, Serialize};
+use sp_authority_discovery::AuthorityId as AuthorityDiscoveryId;
+use sp_consensus_babe::AuthorityId as BabeId;
 use sp_core::{sr25519, Pair, Public};
 use sp_runtime::{traits::IdentifyAccount, Perbill};
 use telemetry::TelemetryEndpoints;
@@ -117,7 +117,9 @@ pub fn cherry_config() -> Result<CherryChainSpec, String> {
 }
 
 pub fn cherry_testnet_config() -> Result<CherryChainSpec, String> {
-	CherryChainSpec::from_json_bytes(&include_bytes!("../chain-specs/cherry-relay-testnet.json")[..])
+	CherryChainSpec::from_json_bytes(
+		&include_bytes!("../chain-specs/cherry-relay-testnet.json")[..],
+	)
 }
 
 pub fn rococo_config() -> Result<RococoChainSpec, String> {

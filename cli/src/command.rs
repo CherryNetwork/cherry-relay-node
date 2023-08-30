@@ -120,9 +120,7 @@ impl SubstrateCli for Cli {
 
 				// When `force_*` is given or the file name starts with the name of one of the known chains,
 				// we use the chain spec for the specific chain.
-				if self.run.force_rococo ||
-					chain_spec.is_rococo()
-				{
+				if self.run.force_rococo || chain_spec.is_rococo() {
 					Box::new(service::RococoChainSpec::from_json_file(path)?)
 				} else {
 					chain_spec
