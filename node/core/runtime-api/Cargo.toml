@@ -9,7 +9,7 @@ futures = "0.3.21"
 gum = { package = "tracing-gum", path = "../../gum" }
 lru = "0.8"
 
-sp-consensus-babe = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-consensus-babe = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 
 polkadot-primitives = { path = "../../../primitives" }
 polkadot-node-subsystem = { path = "../../subsystem" }
@@ -17,10 +17,10 @@ polkadot-node-subsystem-types = { path = "../../subsystem-types" }
 polkadot-node-subsystem-util = { path = "../../subsystem-util" }
 
 [dev-dependencies]
-sp-api = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-sp-authority-discovery = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sp-api = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-authority-discovery = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 futures = { version = "0.3.21", features = ["thread-pool"] }
 polkadot-node-subsystem-test-helpers = { path = "../../subsystem-test-helpers" }
 polkadot-node-primitives = { path = "../../primitives" }

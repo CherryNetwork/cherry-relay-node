@@ -19,7 +19,7 @@ cargo b --release && ./target/release/cherry purge-chain --chain cherry-testnet 
 
 ./target/release/cherry --chain cherry-testnet \
 --name testnet_validator \
---bootnodes /ip4/13.39.49.17/tcp/30333/p2p/12D3KooWRx5Uv8V3AcKiDHc1eKKhFBenmg7rJHnrFTpaiCtUomX9 \
+--bootnodes /ip4/13.39.82.222/tcp/30333/p2p/12D3KooWChBa8Kk37fZuJJSqkkbYSzstXYXENnanCqDB5eMfA34A \
 --telemetry-url "wss://telemetry.polkadot.io/submit/ 0" \
 --validator \
 --rpc-methods=unsafe \

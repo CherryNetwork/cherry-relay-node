@@ -29,15 +29,15 @@ polkadot-parachain = { path = "../../../parachain" }
 polkadot-core-primitives = { path = "../../../core-primitives" }
 polkadot-node-metrics = { path = "../../metrics"}
 
-sc-executor = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-sc-executor-wasmtime = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-sc-executor-common = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-sp-externalities = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-sp-io = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-sp-wasm-interface = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-sp-maybe-compressed-blob = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-sp-tracing = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sc-executor = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sc-executor-wasmtime = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sc-executor-common = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-externalities = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-io = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-wasm-interface = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-maybe-compressed-blob = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-tracing = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 
 [dev-dependencies]
 adder = { package = "test-parachain-adder", path = "../../../parachain/test-parachains/adder" }
