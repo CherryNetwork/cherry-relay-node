@@ -12,11 +12,11 @@ parking_lot = "0.12.0"
 polkadot-node-subsystem = { path = "../subsystem" }
 polkadot-node-subsystem-util = { path = "../subsystem-util" }
 polkadot-primitives = { path = "../../primitives" }
-sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.35" }
-sp-keystore = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.35" }
-sc-keystore = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.35" }
-sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.35" }
-sp-application-crypto = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.35" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-keystore = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sc-keystore = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-application-crypto = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 
 [dev-dependencies]
 polkadot-overseer = { path = "../overseer" }

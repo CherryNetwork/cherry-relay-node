@@ -7,17 +7,13 @@ edition.workspace = true
 [dependencies]
 smallvec = "1.8.0"
 
-frame-support = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.35" }
+frame-support = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 primitives = { package = "polkadot-primitives", path = "../../../primitives", default-features = false }
 runtime-common = { package = "polkadot-runtime-common", path = "../../common", default-features = false }
-sp-runtime = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.35" }
-sp-weights = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.35" }
-sp-core = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "upgrade-to-v0.9.35" }
+sp-runtime = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 
 [features]
 default = ["std"]
 std = [
-	"sp-core/std",
 	"sp-runtime/std",
-	"sp-weights/std"
 ]

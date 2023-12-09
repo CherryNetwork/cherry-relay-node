@@ -18,19 +18,19 @@ polkadot-node-primitives = { path = "../../primitives" }
 polkadot-node-subsystem = { path = "../../subsystem" }
 polkadot-node-subsystem-util = { path = "../../subsystem-util" }
 
-sc-keystore = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.35" }
+sc-keystore = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 
 
 [dev-dependencies]
 kvdb-memorydb = "0.13.0"
 polkadot-node-subsystem-test-helpers = { path = "../../subsystem-test-helpers" }
-sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.35" }
-sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.35" }
-sp-keystore = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.35" }
+sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-keystore = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 assert_matches = "1.4.0"
 test-helpers = { package = "polkadot-primitives-test-helpers", path = "../../../primitives/test-helpers" }
 futures-timer = "3.0.2"
-sp-application-crypto = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.35" }
+sp-application-crypto = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 
 [features]
 # If not enabled, the dispute coordinator will do nothing.
