@@ -8,10 +8,10 @@ edition.workspace = true
 cherry-runtime = { path = "../../../runtime/cherry" }
 cherry-runtime-constants = { path = "../../../runtime/cherry/constants" }
 
-pallet-bags-list-remote-tests = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.34" }
-sp-tracing = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.34" }
-frame-system = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.34" }
-sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.34" }
+pallet-bags-list-remote-tests = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-tracing = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+frame-system = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 
 clap = { version = "4.0.9", features = ["derive"] }
 log = "0.4.17"
