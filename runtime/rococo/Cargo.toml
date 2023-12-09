@@ -1,9 +1,9 @@
 [package]
 name = "rococo-runtime"
-version = "0.9.33"
-authors = ["Parity Technologies <admin@parity.io>"]
-edition = "2021"
 build = "build.rs"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
 
 [dependencies]
 parity-scale-codec = { version = "3.1.5", default-features = false, features = ["derive", "max-encoded-len"] }
@@ -17,7 +17,7 @@ hex-literal = "0.3.4"
 
 authority-discovery-primitives = { package = "sp-authority-discovery", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 babe-primitives = { package = "sp-consensus-babe", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-beefy-primitives = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
+beefy-primitives = { git = "https://github.com/CherryNetwork/substrate", default-features = false, package = "sp-beefy" , branch = "cherry" }
 beefy-merkle-tree = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 rococo-runtime-constants = { package = "rococo-runtime-constants", path = "./constants", default-features = false }
 sp-api = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
@@ -42,7 +42,7 @@ pallet-beefy = { git = "https://github.com/CherryNetwork/substrate", default-fea
 pallet-beefy-mmr = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-bounties = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-child-bounties = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-pallet-state-trie-migration = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry", default-features = false }
+pallet-state-trie-migration = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-transaction-payment = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-transaction-payment-rpc-runtime-api = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-collective = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
@@ -50,13 +50,13 @@ pallet-democracy = { git = "https://github.com/CherryNetwork/substrate", default
 pallet-elections-phragmen = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 frame-executive = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-grandpa = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-pallet-gilt = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-identity = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-im-online = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-indices = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-membership = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-mmr = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-multisig = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
+pallet-nis = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-offences = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-preimage = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-proxy = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
@@ -76,7 +76,6 @@ pallet-utility = { git = "https://github.com/CherryNetwork/substrate", default-f
 pallet-vesting = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-xcm = { path = "../../xcm/pallet-xcm", default-features = false }
 pallet-xcm-benchmarks = { path = "../../xcm/pallet-xcm-benchmarks", default-features = false, optional = true }
-pallet-assets = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 
 runtime-common = { package = "polkadot-runtime-common", path = "../common", default-features = false }
 runtime-parachains = { package = "polkadot-runtime-parachains", path = "../parachains", default-features = false }
@@ -125,7 +124,6 @@ std = [
 	"pallet-beefy/std",
 	"pallet-beefy-mmr/std",
 	"pallet-bounties/std",
-	"pallet-assets/std",
 	"pallet-child-bounties/std",
 	"pallet-state-trie-migration/std",
 	"pallet-transaction-payment/std",
@@ -133,7 +131,7 @@ std = [
 	"pallet-collective/std",
 	"pallet-elections-phragmen/std",
 	"pallet-democracy/std",
-	"pallet-gilt/std",
+	"pallet-nis/std",
 	"pallet-grandpa/std",
 	"pallet-identity/std",
 	"pallet-im-online/std",
@@ -187,12 +185,11 @@ runtime-benchmarks = [
 	"pallet-babe/runtime-benchmarks",
 	"pallet-balances/runtime-benchmarks",
 	"pallet-bounties/runtime-benchmarks",
-	"pallet-assets/runtime-benchmarks",
 	"pallet-child-bounties/runtime-benchmarks",
 	"pallet-collective/runtime-benchmarks",
 	"pallet-democracy/runtime-benchmarks",
 	"pallet-elections-phragmen/runtime-benchmarks",
-	"pallet-gilt/runtime-benchmarks",
+	"pallet-nis/runtime-benchmarks",
 	"pallet-grandpa/runtime-benchmarks",
 	"pallet-identity/runtime-benchmarks",
 	"pallet-im-online/runtime-benchmarks",
@@ -223,7 +220,6 @@ try-runtime = [
 	"pallet-authorship/try-runtime",
 	"pallet-balances/try-runtime",
 	"pallet-bounties/try-runtime",
-	"pallet-assets/try-runtime",
 	"pallet-child-bounties/try-runtime",
 	"pallet-transaction-payment/try-runtime",
 	"pallet-collective/try-runtime",

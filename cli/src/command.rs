@@ -533,10 +533,10 @@ pub fn run() -> Result<()> {
 					// else we assume it is polkadot.
 					#[cfg(feature = "cherry-native")]
 					{
-						return Ok(runner.sync_run(|config| {
+						return runner.sync_run(|config| {
 							cmd.run::<service::cherry_runtime::Block, service::CherryExecutorDispatch>(config)
 								.map_err(|e| Error::SubstrateCli(e))
-						})?)
+						})
 					}
 
 					#[cfg(not(feature = "cherry-native"))]

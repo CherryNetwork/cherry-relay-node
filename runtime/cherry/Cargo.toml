@@ -17,13 +17,13 @@ smallvec = "1.8.0"
 
 authority-discovery-primitives = { package = "sp-authority-discovery", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 babe-primitives = { package = "sp-consensus-babe", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-beefy-primitives = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
+beefy-primitives = { git = "https://github.com/CherryNetwork/substrate", package = "sp-beefy", default-features = false , branch = "cherry" }
 block-builder-api = { package = "sp-block-builder", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 inherents = { package = "sp-inherents", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 offchain-primitives = { package = "sp-offchain", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 tx-pool-api = { package = "sp-transaction-pool", git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 sp-api = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-sp-arithmetic = { package = "sp-arithmetic", git = "https://github.com/CherryNetwork/substrate", branch = "cherry", default-features = false }
+sp-arithmetic = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry", default-features = false }
 sp-std = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 sp-io = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 sp-mmr-primitives = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
@@ -36,7 +36,6 @@ sp-npos-elections = { git = "https://github.com/CherryNetwork/substrate", defaul
 
 pallet-authority-discovery = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-authorship = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-pallet-assets = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-babe = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-bags-list = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-balances = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
@@ -47,11 +46,10 @@ pallet-ipfs-rpc-runtime-api = { git = "https://github.com/CherryNetwork/substrat
 pallet-transaction-payment = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-transaction-payment-rpc-runtime-api = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-collective = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-pallet-democracy = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-elections-phragmen = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-election-provider-multi-phase = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
+pallet-fast-unstake = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 frame-executive = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-pallet-gilt = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-grandpa = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-identity = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 pallet-im-online = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
@@ -102,6 +100,8 @@ sp-trie = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry
 trie-db = "0.23.1"
 serde_json = "1.0.81"
 separator = "0.4.1"
+tokio = { version = "1.22.0", features = ["macros"] }
+sp-tracing = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 
 [build-dependencies]
 substrate-wasm-builder = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
@@ -112,7 +112,6 @@ no_std = []
 only-staking = []
 std = [
 	"authority-discovery-primitives/std",
-	"pallet-assets/std",
 	"bitvec/std",
 	"primitives/std",
 	"rustc-hex/std",
@@ -141,8 +140,7 @@ std = [
 	"pallet-collective/std",
 	"pallet-elections-phragmen/std",
 	"pallet-election-provider-multi-phase/std",
-	"pallet-gilt/std",
-	"pallet-democracy/std",
+	"pallet-fast-unstake/std",
 	"pallet-grandpa/std",
 	"pallet-identity/std",
 	"pallet-im-online/std",
@@ -190,16 +188,14 @@ runtime-benchmarks = [
 	"frame-support/runtime-benchmarks",
 	"frame-system/runtime-benchmarks",
 	"sp-runtime/runtime-benchmarks",
-	"pallet-assets/runtime-benchmarks",
 	"pallet-babe/runtime-benchmarks",
 	"pallet-bags-list/runtime-benchmarks",
 	"pallet-balances/runtime-benchmarks",
 	"pallet-collective/runtime-benchmarks",
-	"pallet-democracy/runtime-benchmarks",
 	"pallet-elections-phragmen/runtime-benchmarks",
 	"pallet-election-provider-multi-phase/runtime-benchmarks",
 	"pallet-election-provider-support-benchmarking/runtime-benchmarks",
-	"pallet-gilt/runtime-benchmarks",
+	"pallet-fast-unstake/runtime-benchmarks",
 	"pallet-grandpa/runtime-benchmarks",
 	"pallet-identity/runtime-benchmarks",
 	"pallet-im-online/runtime-benchmarks",
@@ -232,7 +228,6 @@ try-runtime = [
 	"frame-system/try-runtime",
 	"pallet-authority-discovery/try-runtime",
 	"pallet-authorship/try-runtime",
-	"pallet-assets/try-runtime",
 	"pallet-balances/try-runtime",
 	"pallet-bags-list/try-runtime",
 	"pallet-bounties/try-runtime",
@@ -241,8 +236,7 @@ try-runtime = [
 	"pallet-collective/try-runtime",
 	"pallet-elections-phragmen/try-runtime",
 	"pallet-election-provider-multi-phase/try-runtime",
-	"pallet-democracy/try-runtime",
-	"pallet-gilt/try-runtime",
+	"pallet-fast-unstake/try-runtime",
 	"pallet-grandpa/try-runtime",
 	"pallet-identity/try-runtime",
 	"pallet-im-online/try-runtime",

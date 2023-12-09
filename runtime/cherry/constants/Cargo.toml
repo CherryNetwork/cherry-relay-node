@@ -11,11 +11,10 @@ primitives = { package = "polkadot-primitives", path = "../../../primitives", de
 runtime-common = { package = "polkadot-runtime-common", path = "../../common", default-features = false }
 sp-runtime = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 sp-staking = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
-sp-weights = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry", default-features = false }
-sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry", default-features = false }
 
 [features]
 default = ["std"]
 std = [
-	"sp-runtime/std"
+	"sp-runtime/std",
+	"sp-staking/std",
 ]
