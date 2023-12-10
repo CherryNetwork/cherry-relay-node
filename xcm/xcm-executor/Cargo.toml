@@ -10,15 +10,15 @@ impl-trait-for-tuples = "0.2.2"
 environmental = { version = "1.1.4", default-features = false }
 parity-scale-codec = { version = "3.1.5", default-features = false, features = ["derive"] }
 xcm = { path = "..", default-features = false }
-sp-std = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-sp-io = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-sp-arithmetic = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-sp-core = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-sp-runtime = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-sp-weights = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-frame-support = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
+sp-std = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
+sp-io = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
+sp-arithmetic = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
+sp-runtime = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
+sp-weights = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
+frame-support = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 log = { version = "0.4.17", default-features = false }
-frame-benchmarking = { git = "https://github.com/CherryNetwork/substrate", default-features = false, optional = true , branch = "cherry-testnet" }
+frame-benchmarking = { git = "https://github.com/CherryNetwork/substrate", default-features = false, optional = true , branch = "cherry" }
 
 [features]
 default = ["std"]
