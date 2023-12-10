@@ -1,5 +1,5 @@
 {
-  "name": "Cherry Testnet",
+  "name": "Cherry Relay Testnet",
   "id": "cherry_testnet",
   "chainType": "Live",
   "bootNodes": [],

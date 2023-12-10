@@ -11,6 +11,8 @@ frame-support = { git = "https://github.com/CherryNetwork/substrate", default-fe
 primitives = { package = "polkadot-primitives", path = "../../../primitives", default-features = false }
 runtime-common = { package = "polkadot-runtime-common", path = "../../common", default-features = false }
 sp-runtime = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
+sp-weights = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 
 [features]
 default = ["std"]
