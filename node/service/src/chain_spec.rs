@@ -26,13 +26,8 @@ use grandpa::AuthorityId as GrandpaId;
 use pallet_im_online::sr25519::AuthorityId as ImOnlineId;
 use pallet_staking::Forcing;
 use polkadot_primitives::{AccountId, AccountPublic, AssignmentId, ValidatorId};
-#[cfg(feature = "polkadot-native")]
-use polkadot_runtime as polkadot;
-#[cfg(feature = "polkadot-native")]
-use polkadot_runtime_constants::currency::UNITS as DOT;
 use sp_authority_discovery::AuthorityId as AuthorityDiscoveryId;
 use sp_consensus_babe::AuthorityId as BabeId;
-
 #[cfg(feature = "rococo-native")]
 use rococo_runtime as rococo;
 #[cfg(feature = "rococo-native")]
@@ -47,8 +42,6 @@ use telemetry::TelemetryEndpoints;
 const POLKADOT_STAGING_TELEMETRY_URL: &str = "wss://telemetry.polkadot.io/submit/";
 #[cfg(feature = "rococo-native")]
 const ROCOCO_STAGING_TELEMETRY_URL: &str = "wss://telemetry.polkadot.io/submit/";
-#[cfg(feature = "rococo-native")]
-const VERSI_STAGING_TELEMETRY_URL: &str = "wss://telemetry.polkadot.io/submit/";
 const DEFAULT_PROTOCOL_ID: &str = "dot";
 
 /// Node `ChainSpec` extensions.
@@ -366,7 +359,7 @@ fn cherry_staging_testnet_config_genesis(wasm_binary: &[u8]) -> cherry::GenesisC
 		},
 		paras: Default::default(),
 		xcm_pallet: Default::default(),
-		sudo: Default::default(),
+		sudo: cherry_runtime::SudoConfig { key: Some(endowed_accounts[0].clone()) },
 		// nomination_pools: Default::default(),
 	}
 }
@@ -1130,32 +1123,6 @@ pub fn versi_chain_spec_properties() -> serde_json::map::Map<String, serde_json:
 	.clone()
 }
 
-/// Versi staging testnet config.
-#[cfg(feature = "rococo-native")]
-pub fn versi_staging_testnet_config() -> Result<RococoChainSpec, String> {
-	let wasm_binary = rococo::WASM_BINARY.ok_or("Versi development wasm not available")?;
-	let boot_nodes = vec![];
-
-	Ok(RococoChainSpec::from_genesis(
-		"Versi Staging Testnet",
-		"versi_staging_testnet",
-		ChainType::Live,
-		move || RococoGenesisExt {
-			runtime_genesis_config: rococo_staging_testnet_config_genesis(wasm_binary),
-			session_length_in_blocks: Some(100),
-		},
-		boot_nodes,
-		Some(
-			TelemetryEndpoints::new(vec![(VERSI_STAGING_TELEMETRY_URL.to_string(), 0)])
-				.expect("Versi Staging telemetry url is valid; qed"),
-		),
-		Some("versi"),
-		None,
-		Some(versi_chain_spec_properties()),
-		Default::default(),
-	))
-}
-
 /// Helper function to generate a crypto pair from seed
 pub fn get_from_seed<TPublic: Public>(seed: &str) -> <TPublic::Pair as Pair>::Public {
 	TPublic::Pair::from_string(&format!("//{}", seed), None)
@@ -1319,7 +1286,7 @@ pub fn cherry_testnet_genesis(
 		},
 		paras: Default::default(),
 		xcm_pallet: Default::default(),
-		sudo: Default::default(),
+		sudo: cherry_runtime::SudoConfig { key: Some(root_key.clone()) },
 		// nomination_pools: Default::default(),
 	}
 }
