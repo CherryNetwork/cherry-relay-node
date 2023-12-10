@@ -9,7 +9,7 @@ edition.workspace = true
 [dependencies]
 
 [build-dependencies]
-substrate-wasm-builder = { git = "https://github.com/CherryNetwork/substrate", branch = "upgrade-to-v0.9.37" }
+substrate-wasm-builder = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 
 [features]
 default = [ "std" ]
