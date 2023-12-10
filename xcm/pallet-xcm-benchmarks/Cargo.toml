@@ -14,18 +14,18 @@ frame-support = { default-features = false, git = "https://github.com/CherryNetw
 frame-system = { default-features = false, git = "https://github.com/CherryNetwork/substrate" , branch = "cherry" }
 sp-runtime = { default-features = false, git = "https://github.com/CherryNetwork/substrate" , branch = "cherry" }
 sp-std = { default-features = false, git = "https://github.com/CherryNetwork/substrate" , branch = "cherry" }
+sp-io = { default-features = false, git = "https://github.com/CherryNetwork/substrate" , branch = "cherry" }
 xcm-executor = { path = "../xcm-executor", default-features = false }
 frame-benchmarking = { default-features = false, git = "https://github.com/CherryNetwork/substrate" , branch = "cherry" }
 xcm = { path = "..", default-features = false }
+xcm-builder = { path = "../xcm-builder", default-features = false }
 log = "0.4.17"
 
 [dev-dependencies]
 pallet-balances = { git = "https://github.com/CherryNetwork/substrate" , branch = "cherry" }
 pallet-assets = { git = "https://github.com/CherryNetwork/substrate" , branch = "cherry" }
 sp-core = { git = "https://github.com/CherryNetwork/substrate" , branch = "cherry" }
-sp-io = { git = "https://github.com/CherryNetwork/substrate" , branch = "cherry" }
 sp-tracing = { git = "https://github.com/CherryNetwork/substrate" , branch = "cherry" }
-xcm-builder = { path = "../xcm-builder" }
 xcm = { path = ".." }
 # temp
 pallet-xcm = { path = "../pallet-xcm" }
@@ -39,11 +39,14 @@ std = [
 	"frame-benchmarking/std",
 	"frame-support/std",
 	"frame-system/std",
+	"sp-io/std",
 	"sp-runtime/std",
-	"sp-std/std"
+	"sp-std/std",
+	"xcm-builder/std",
+	"xcm-executor/std"
 ]
 runtime-benchmarks = [
-	"xcm/runtime-benchmarks",
+	"xcm-builder/runtime-benchmarks",
 	"xcm-executor/runtime-benchmarks",
 	"frame-benchmarking/runtime-benchmarks",
 	"frame-support/runtime-benchmarks",

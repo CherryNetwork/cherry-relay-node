@@ -8,7 +8,6 @@ runtime/wasm/target/
 .vscode
 polkadot.*
 !polkadot.service
-!.rpm/*
 .DS_Store
 .env
 customSpec.json

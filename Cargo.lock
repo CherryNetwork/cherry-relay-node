@@ -159,6 +159,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "ahash"
+version = "0.8.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "91429305e9f0a25f6205c5b8e0d2db09e0708a7a6df0f42212bb56c32c8ac97a"
+dependencies = [
+ "cfg-if",
+ "getrandom 0.2.11",
+ "once_cell",
+ "version_check",
+ "zerocopy",
+]
+
+[[package]]
 name = "aho-corasick"
 version = "1.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -189,6 +202,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "anes"
+version = "0.1.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4b46cbb362ab8752921c97e041f5e366ee6297bd428a31275b9fcf1e380f7299"
+
+[[package]]
 name = "ansi_term"
 version = "0.12.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -214,9 +233,9 @@ dependencies = [
 
 [[package]]
 name = "anstyle"
-version = "1.0.1"
+version = "1.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3a30da5c5f2d5e72842e00bcb57657162cdabef0931f40e2deb9b4140440cecd"
+checksum = "15c4c2c83f81532e5845a733998b6971faca23490340a418e9b72a3ec9de12ea"
 
 [[package]]
 name = "anstyle-parse"
@@ -549,7 +568,7 @@ dependencies = [
 [[package]]
 name = "beefy-gadget"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "array-bytes",
  "async-trait",
@@ -583,7 +602,7 @@ dependencies = [
 [[package]]
 name = "beefy-gadget-rpc"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "beefy-gadget",
  "futures",
@@ -602,7 +621,7 @@ dependencies = [
 [[package]]
 name = "beefy-merkle-tree"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "sp-api",
  "sp-beefy",
@@ -881,6 +900,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "cast"
+version = "0.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "37b2a672a2cb129a2e41c10b1224bb368f9f37a2b16b612598138befd7b37eb5"
+
+[[package]]
 name = "cc"
 version = "1.0.83"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1080,6 +1105,33 @@ dependencies = [
 ]
 
 [[package]]
+name = "ciborium"
+version = "0.2.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "effd91f6c78e5a4ace8a5d3c0b6bfaec9e2baaef55f3efc00e45fb2e477ee926"
+dependencies = [
+ "ciborium-io",
+ "ciborium-ll",
+ "serde",
+]
+
+[[package]]
+name = "ciborium-io"
+version = "0.2.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "cdf919175532b369853f5d5e20b26b43112613fd6fe7aee757e35f7a44642656"
+
+[[package]]
+name = "ciborium-ll"
+version = "0.2.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "defaa24ecc093c77630e6c15e17c51f5e187bf35ee514f4e2d67baaa96dae22b"
+dependencies = [
+ "ciborium-io",
+ "half",
+]
+
+[[package]]
 name = "cid"
 version = "0.8.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1143,9 +1195,21 @@ dependencies = [
 
 [[package]]
 name = "clap"
-version = "4.3.23"
+version = "3.2.25"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "03aef18ddf7d879c15ce20f04826ef8418101c7e528014c3eeea13321047dca3"
+checksum = "4ea181bf566f71cb9a5d17a59e1871af638180a18fb0035c92ae62b705207123"
+dependencies = [
+ "bitflags 1.3.2",
+ "clap_lex 0.2.4",
+ "indexmap 1.9.3",
+ "textwrap",
+]
+
+[[package]]
+name = "clap"
+version = "4.3.24"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "fb690e81c7840c0d7aade59f242ea3b41b9bc27bcd5997890e7702ae4b32e487"
 dependencies = [
  "clap_builder",
  "clap_derive",
@@ -1154,13 +1218,13 @@ dependencies = [
 
 [[package]]
 name = "clap_builder"
-version = "4.3.23"
+version = "4.3.24"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f8ce6fffb678c9b80a70b6b6de0aad31df727623a70fd9a842c30cd573e2fa98"
+checksum = "5ed2e96bc16d8d740f6f48d663eddf4b8a0983e79210fd55479b7bcd0a69860e"
 dependencies = [
  "anstream",
  "anstyle",
- "clap_lex",
+ "clap_lex 0.5.0",
  "strsim",
 ]
 
@@ -1174,6 +1238,15 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn 2.0.39",
+]
+
+[[package]]
+name = "clap_lex"
+version = "0.2.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2850f2f5a82cbf437dd5af4d49848fbdfc27c157c3d010345776f952765261c5"
+dependencies = [
+ "os_str_bytes",
 ]
 
 [[package]]
@@ -1434,6 +1507,40 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b540bd8bc810d3885c6ea91e2018302f68baba2129ab3e88f32389ee9370880d"
 dependencies = [
  "cfg-if",
+]
+
+[[package]]
+name = "criterion"
+version = "0.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e7c76e09c1aae2bc52b3d2f29e13c6572553b30c4aa1b8a49fd70de6412654cb"
+dependencies = [
+ "anes",
+ "atty",
+ "cast",
+ "ciborium",
+ "clap 3.2.25",
+ "criterion-plot",
+ "itertools 0.10.5",
+ "lazy_static",
+ "num-traits",
+ "oorandom",
+ "regex",
+ "serde",
+ "serde_derive",
+ "serde_json",
+ "tinytemplate",
+ "walkdir",
+]
+
+[[package]]
+name = "criterion-plot"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6b50826342786a51a89e2da3a28f1c32b06e387201bc2d19791f622c673706b1"
+dependencies = [
+ "cast",
+ "itertools 0.10.5",
 ]
 
 [[package]]
@@ -1777,6 +1884,17 @@ name = "derivative"
 version = "2.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "fcc3dd5e9e9c0b295d6e1e4d811fb6f157d5ffd784b8d202fc62eac8035a770b"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn 1.0.109",
+]
+
+[[package]]
+name = "derive-syn-parse"
+version = "0.1.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e79116f119dd1dba1abf1f3405f03b9b0e79a27a3883864bfebded8a3dc768cd"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -2491,7 +2609,7 @@ checksum = "00b0228411908ca8685dba7fc2cdd70ec9990a6e753e89b6ac91a84c40fbaf4b"
 [[package]]
 name = "fork-tree"
 version = "3.0.0"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "parity-scale-codec 3.6.9",
 ]
@@ -2514,9 +2632,10 @@ checksum = "6c2141d6d6c8512188a7891b4b01590a45f6dac67afb4f255c4124dbb86d4eaa"
 [[package]]
 name = "frame-benchmarking"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-support",
+ "frame-support-procedural",
  "frame-system",
  "linregress",
  "log",
@@ -2532,17 +2651,18 @@ dependencies = [
  "sp-runtime-interface",
  "sp-std",
  "sp-storage",
+ "static_assertions",
 ]
 
 [[package]]
 name = "frame-benchmarking-cli"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "Inflector",
  "array-bytes",
  "chrono",
- "clap",
+ "clap 4.3.24",
  "comfy-table",
  "frame-benchmarking",
  "frame-support",
@@ -2584,7 +2704,7 @@ dependencies = [
 [[package]]
 name = "frame-election-provider-solution-type"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "proc-macro-crate 1.1.3",
  "proc-macro2",
@@ -2595,7 +2715,7 @@ dependencies = [
 [[package]]
 name = "frame-election-provider-support"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-election-provider-solution-type",
  "frame-support",
@@ -2612,7 +2732,7 @@ dependencies = [
 [[package]]
 name = "frame-executive"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-support",
  "frame-system",
@@ -2641,7 +2761,7 @@ dependencies = [
 [[package]]
 name = "frame-remote-externalities"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "futures",
  "log",
@@ -2657,7 +2777,7 @@ dependencies = [
 [[package]]
 name = "frame-support"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "bitflags 1.3.2",
  "frame-metadata",
@@ -2689,10 +2809,11 @@ dependencies = [
 [[package]]
 name = "frame-support-procedural"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "Inflector",
  "cfg-expr",
+ "derive-syn-parse",
  "frame-support-procedural-tools",
  "itertools 0.10.5",
  "proc-macro2",
@@ -2703,7 +2824,7 @@ dependencies = [
 [[package]]
 name = "frame-support-procedural-tools"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-support-procedural-tools-derive",
  "proc-macro-crate 1.1.3",
@@ -2715,7 +2836,7 @@ dependencies = [
 [[package]]
 name = "frame-support-procedural-tools-derive"
 version = "3.0.0"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -2725,8 +2846,9 @@ dependencies = [
 [[package]]
 name = "frame-support-test"
 version = "3.0.0"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
+ "frame-benchmarking",
  "frame-support",
  "frame-support-test-pallet",
  "frame-system",
@@ -2748,7 +2870,7 @@ dependencies = [
 [[package]]
 name = "frame-support-test-pallet"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-support",
  "frame-system",
@@ -2759,7 +2881,7 @@ dependencies = [
 [[package]]
 name = "frame-system"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-support",
  "log",
@@ -2777,7 +2899,7 @@ dependencies = [
 [[package]]
 name = "frame-system-benchmarking"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -2792,7 +2914,7 @@ dependencies = [
 [[package]]
 name = "frame-system-rpc-runtime-api"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "parity-scale-codec 3.6.9",
  "sp-api",
@@ -2801,7 +2923,7 @@ dependencies = [
 [[package]]
 name = "frame-try-runtime"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-support",
  "parity-scale-codec 3.6.9",
@@ -2970,7 +3092,7 @@ dependencies = [
 [[package]]
 name = "generate-bags"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "chrono",
  "frame-election-provider-support",
@@ -3071,9 +3193,9 @@ checksum = "4271d37baee1b8c7e4b708028c57d816cf9d2434acb33a549475f78c181f6253"
 
 [[package]]
 name = "git2"
-version = "0.14.4"
+version = "0.16.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d0155506aab710a86160ddb504a480d2964d7ab5b9e62419be69e0032bc5931c"
+checksum = "ccf7f68c2995f392c49fffb4f95ae2c873297830eb25c6bc4c114ce8f4562acc"
 dependencies = [
  "bitflags 1.3.2",
  "libc",
@@ -3132,6 +3254,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "half"
+version = "1.8.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "eabb4a44450da02c90444cf74558da904edde8fb4e9035a9a6a4e15445af0bd7"
+
+[[package]]
 name = "handlebars"
 version = "4.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3166,7 +3294,16 @@ version = "0.12.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8a9ee70c43aaf417c914396645a0fa852624801b24ebb7ae78fe8272889ac888"
 dependencies = [
- "ahash",
+ "ahash 0.7.7",
+]
+
+[[package]]
+name = "hashbrown"
+version = "0.13.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "43a3c133739dddd0d2990f9a4bdf8eb4b21ef50e4851ca85ab661199821d510e"
+dependencies = [
+ "ahash 0.8.6",
 ]
 
 [[package]]
@@ -3873,9 +4010,9 @@ checksum = "89d92a4743f9a61002fae18374ed11e7973f530cb3a3255fb354818118b2203c"
 
 [[package]]
 name = "libgit2-sys"
-version = "0.13.5+1.4.5"
+version = "0.14.2+1.5.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "51e5ea06c26926f1002dd553fded6cfcdc9784c1f60feeb58368b4d9b07b6dba"
+checksum = "7f3d95f6b51075fe9810a7ae22c7095f12b98005ab364d8544797a825ce946a4"
 dependencies = [
  "cc",
  "libc",
@@ -4021,7 +4158,7 @@ dependencies = [
  "libp2p-core 0.38.0",
  "libp2p-swarm",
  "log",
- "lru",
+ "lru 0.8.1",
  "prost",
  "prost-build",
  "prost-codec",
@@ -4514,6 +4651,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "lru"
+version = "0.9.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "71e7d46de488603ffdd5f30afbc64fbba2378214a2c3a2fb83abf3d33126df17"
+dependencies = [
+ "hashbrown 0.13.2",
+]
+
+[[package]]
 name = "lru-cache"
 version = "0.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4642,6 +4788,15 @@ dependencies = [
 
 [[package]]
 name = "memoffset"
+version = "0.7.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5de893c32cde5f383baa4c04c5d6dbdd735cfd4a794b0debdb2bb1b421da5ff4"
+dependencies = [
+ "autocfg",
+]
+
+[[package]]
+name = "memoffset"
 version = "0.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5a634b1c61a95585bd15607c6ab0c4e5b226e695ff2800ba0cdccddf208c406c"
@@ -4723,7 +4878,7 @@ dependencies = [
 [[package]]
 name = "mmr-gadget"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "futures",
  "log",
@@ -4742,7 +4897,7 @@ dependencies = [
 [[package]]
 name = "mmr-rpc"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "anyhow",
  "jsonrpsee",
@@ -5046,6 +5201,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "nix"
+version = "0.26.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "598beaf3cc6fdd9a5dfb1630c2800c7acd31df7aaf0f565796fba2b53ca1af1b"
+dependencies = [
+ "bitflags 1.3.2",
+ "cfg-if",
+ "libc",
+ "memoffset 0.7.1",
+ "pin-utils",
+]
+
+[[package]]
 name = "nohash-hasher"
 version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -5195,6 +5363,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3fdb12b2476b595f9358c5161aa467c2438859caa136dec86c26fdd2efe17b92"
 
 [[package]]
+name = "oorandom"
+version = "11.1.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0ab1bc2a289d34bd04a330323ac98a1b4bc82c9d9fcb1e66b63caa84da26b575"
+
+[[package]]
 name = "opaque-debug"
 version = "0.2.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -5292,6 +5466,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "os_str_bytes"
+version = "6.6.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e2355d85b9a3786f481747ced0e0ff2ba35213a1f9bd406ed906554d7af805a1"
+
+[[package]]
 name = "overload"
 version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -5328,7 +5508,7 @@ dependencies = [
 [[package]]
 name = "pallet-assets"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -5343,7 +5523,7 @@ dependencies = [
 [[package]]
 name = "pallet-authority-discovery"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-support",
  "frame-system",
@@ -5359,14 +5539,13 @@ dependencies = [
 [[package]]
 name = "pallet-authorship"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-support",
  "frame-system",
  "impl-trait-for-tuples",
  "parity-scale-codec 3.6.9",
  "scale-info",
- "sp-authorship",
  "sp-runtime",
  "sp-std",
 ]
@@ -5374,7 +5553,7 @@ dependencies = [
 [[package]]
 name = "pallet-babe"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -5398,7 +5577,7 @@ dependencies = [
 [[package]]
 name = "pallet-bags-list"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-election-provider-support",
@@ -5418,7 +5597,7 @@ dependencies = [
 [[package]]
 name = "pallet-bags-list-remote-tests"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-election-provider-support",
  "frame-remote-externalities",
@@ -5437,7 +5616,7 @@ dependencies = [
 [[package]]
 name = "pallet-balances"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -5452,7 +5631,7 @@ dependencies = [
 [[package]]
 name = "pallet-beefy"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-support",
  "frame-system",
@@ -5468,7 +5647,7 @@ dependencies = [
 [[package]]
 name = "pallet-beefy-mmr"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "array-bytes",
  "beefy-merkle-tree",
@@ -5491,7 +5670,7 @@ dependencies = [
 [[package]]
 name = "pallet-bounties"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -5509,7 +5688,7 @@ dependencies = [
 [[package]]
 name = "pallet-child-bounties"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -5528,7 +5707,7 @@ dependencies = [
 [[package]]
 name = "pallet-collective"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -5545,7 +5724,7 @@ dependencies = [
 [[package]]
 name = "pallet-democracy"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -5563,7 +5742,7 @@ dependencies = [
 [[package]]
 name = "pallet-election-provider-multi-phase"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-election-provider-support",
@@ -5586,7 +5765,7 @@ dependencies = [
 [[package]]
 name = "pallet-election-provider-support-benchmarking"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-election-provider-support",
@@ -5599,7 +5778,7 @@ dependencies = [
 [[package]]
 name = "pallet-elections-phragmen"
 version = "5.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -5619,7 +5798,7 @@ dependencies = [
 [[package]]
 name = "pallet-fast-unstake"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-election-provider-support",
@@ -5637,7 +5816,7 @@ dependencies = [
 [[package]]
 name = "pallet-grandpa"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -5660,7 +5839,7 @@ dependencies = [
 [[package]]
 name = "pallet-identity"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "enumflags2",
  "frame-benchmarking",
@@ -5676,7 +5855,7 @@ dependencies = [
 [[package]]
 name = "pallet-im-online"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -5696,7 +5875,7 @@ dependencies = [
 [[package]]
 name = "pallet-indices"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -5713,7 +5892,7 @@ dependencies = [
 [[package]]
 name = "pallet-ipfs"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -5737,7 +5916,7 @@ dependencies = [
 [[package]]
 name = "pallet-ipfs-rpc-runtime-api"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "pallet-ipfs",
  "parity-scale-codec 2.3.1",
@@ -5749,7 +5928,7 @@ dependencies = [
 [[package]]
 name = "pallet-membership"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -5766,7 +5945,7 @@ dependencies = [
 [[package]]
 name = "pallet-mmr"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -5783,7 +5962,7 @@ dependencies = [
 [[package]]
 name = "pallet-multisig"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -5799,7 +5978,7 @@ dependencies = [
 [[package]]
 name = "pallet-nis"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -5816,7 +5995,7 @@ dependencies = [
 [[package]]
 name = "pallet-offences"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-support",
  "frame-system",
@@ -5833,12 +6012,13 @@ dependencies = [
 [[package]]
 name = "pallet-offences-benchmarking"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-election-provider-support",
  "frame-support",
  "frame-system",
+ "log",
  "pallet-babe",
  "pallet-balances",
  "pallet-grandpa",
@@ -5856,7 +6036,7 @@ dependencies = [
 [[package]]
 name = "pallet-preimage"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -5873,7 +6053,7 @@ dependencies = [
 [[package]]
 name = "pallet-proxy"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -5888,7 +6068,7 @@ dependencies = [
 [[package]]
 name = "pallet-recovery"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -5903,7 +6083,7 @@ dependencies = [
 [[package]]
 name = "pallet-scheduler"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -5920,7 +6100,7 @@ dependencies = [
 [[package]]
 name = "pallet-session"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-support",
  "frame-system",
@@ -5941,7 +6121,7 @@ dependencies = [
 [[package]]
 name = "pallet-session-benchmarking"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -5957,7 +6137,7 @@ dependencies = [
 [[package]]
 name = "pallet-society"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-support",
  "frame-system",
@@ -5971,7 +6151,7 @@ dependencies = [
 [[package]]
 name = "pallet-staking"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-election-provider-support",
@@ -5994,7 +6174,7 @@ dependencies = [
 [[package]]
 name = "pallet-staking-reward-curve"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "proc-macro-crate 1.1.3",
  "proc-macro2",
@@ -6005,7 +6185,7 @@ dependencies = [
 [[package]]
 name = "pallet-staking-reward-fn"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "log",
  "sp-arithmetic",
@@ -6014,7 +6194,7 @@ dependencies = [
 [[package]]
 name = "pallet-state-trie-migration"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -6031,7 +6211,7 @@ dependencies = [
 [[package]]
 name = "pallet-sudo"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-support",
  "frame-system",
@@ -6045,7 +6225,7 @@ dependencies = [
 [[package]]
 name = "pallet-timestamp"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -6063,7 +6243,7 @@ dependencies = [
 [[package]]
 name = "pallet-tips"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -6082,7 +6262,7 @@ dependencies = [
 [[package]]
 name = "pallet-transaction-payment"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-support",
  "frame-system",
@@ -6098,7 +6278,7 @@ dependencies = [
 [[package]]
 name = "pallet-transaction-payment-rpc"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "jsonrpsee",
  "pallet-transaction-payment-rpc-runtime-api",
@@ -6114,7 +6294,7 @@ dependencies = [
 [[package]]
 name = "pallet-transaction-payment-rpc-runtime-api"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "pallet-transaction-payment",
  "parity-scale-codec 3.6.9",
@@ -6126,7 +6306,7 @@ dependencies = [
 [[package]]
 name = "pallet-treasury"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -6142,9 +6322,24 @@ dependencies = [
 ]
 
 [[package]]
+name = "pallet-uniques"
+version = "4.0.0-dev"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
+dependencies = [
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
+ "log",
+ "parity-scale-codec 3.6.9",
+ "scale-info",
+ "sp-runtime",
+ "sp-std",
+]
+
+[[package]]
 name = "pallet-utility"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -6160,7 +6355,7 @@ dependencies = [
 [[package]]
 name = "pallet-vesting"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -6174,8 +6369,9 @@ dependencies = [
 
 [[package]]
 name = "pallet-xcm"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
+ "frame-benchmarking",
  "frame-support",
  "frame-system",
  "log",
@@ -6196,7 +6392,7 @@ dependencies = [
 
 [[package]]
 name = "pallet-xcm-benchmarks"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -6545,11 +6741,11 @@ checksum = "14e6ab3f592e6fb464fc9712d8d6e6912de6473954635fd76a589d832cffcbb0"
 
 [[package]]
 name = "polkadot"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "assert_cmd",
  "color-eyre",
- "nix 0.24.3",
+ "nix 0.26.4",
  "polkadot-cli",
  "polkadot-core-primitives",
  "substrate-rpc-client",
@@ -6560,7 +6756,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-approval-distribution"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "assert_matches",
  "env_logger 0.9.3",
@@ -6585,7 +6781,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-availability-bitfield-distribution"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "assert_matches",
  "bitvec 1.0.1",
@@ -6610,14 +6806,14 @@ dependencies = [
 
 [[package]]
 name = "polkadot-availability-distribution"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "assert_matches",
  "derive_more",
  "fatality",
  "futures",
  "futures-timer",
- "lru",
+ "lru 0.9.0",
  "parity-scale-codec 3.6.9",
  "polkadot-erasure-coding",
  "polkadot-node-network-protocol",
@@ -6639,7 +6835,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-availability-recovery"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "assert_matches",
  "env_logger 0.9.3",
@@ -6647,7 +6843,7 @@ dependencies = [
  "futures",
  "futures-timer",
  "log",
- "lru",
+ "lru 0.9.0",
  "parity-scale-codec 3.6.9",
  "polkadot-erasure-coding",
  "polkadot-node-network-protocol",
@@ -6668,9 +6864,9 @@ dependencies = [
 
 [[package]]
 name = "polkadot-cli"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
- "clap",
+ "clap 4.3.24",
  "frame-benchmarking-cli",
  "futures",
  "log",
@@ -6683,6 +6879,7 @@ dependencies = [
  "sc-cli",
  "sc-executor",
  "sc-service",
+ "sc-storage-monitor",
  "sc-sysinfo",
  "sc-tracing",
  "sp-core",
@@ -6695,7 +6892,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-client"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "async-trait",
  "cherry-runtime",
@@ -6737,7 +6934,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-collator-protocol"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "always-assert",
  "assert_matches",
@@ -6766,7 +6963,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-core-primitives"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "parity-scale-codec 3.6.9",
  "scale-info",
@@ -6777,7 +6974,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-dispute-distribution"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "assert_matches",
  "async-trait",
@@ -6787,7 +6984,7 @@ dependencies = [
  "futures-timer",
  "indexmap 1.9.3",
  "lazy_static",
- "lru",
+ "lru 0.9.0",
  "parity-scale-codec 3.6.9",
  "polkadot-erasure-coding",
  "polkadot-node-network-protocol",
@@ -6809,8 +7006,9 @@ dependencies = [
 
 [[package]]
 name = "polkadot-erasure-coding"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
+ "criterion",
  "parity-scale-codec 3.6.9",
  "polkadot-node-primitives",
  "polkadot-primitives",
@@ -6822,7 +7020,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-gossip-support"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "assert_matches",
  "async-trait",
@@ -6849,7 +7047,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-network-bridge"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "always-assert",
  "assert_matches",
@@ -6879,7 +7077,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-node-collation-generation"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "futures",
  "parity-scale-codec 3.6.9",
@@ -6898,7 +7096,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-node-core-approval-voting"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "assert_matches",
  "async-trait",
@@ -6908,7 +7106,7 @@ dependencies = [
  "futures-timer",
  "kvdb",
  "kvdb-memorydb",
- "lru",
+ "lru 0.9.0",
  "merlin",
  "parity-scale-codec 3.6.9",
  "parking_lot 0.12.1",
@@ -6937,7 +7135,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-node-core-av-store"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "assert_matches",
  "bitvec 1.0.1",
@@ -6965,7 +7163,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-node-core-backing"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "assert_matches",
  "bitvec 1.0.1",
@@ -6991,7 +7189,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-node-core-bitfield-signing"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "futures",
  "polkadot-node-subsystem",
@@ -7007,7 +7205,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-node-core-candidate-validation"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "assert_matches",
  "async-trait",
@@ -7031,7 +7229,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-node-core-chain-api"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "futures",
  "maplit",
@@ -7050,7 +7248,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-node-core-chain-selection"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "assert_matches",
  "futures",
@@ -7071,7 +7269,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-node-core-dispute-coordinator"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "assert_matches",
  "fatality",
@@ -7079,7 +7277,7 @@ dependencies = [
  "futures-timer",
  "kvdb",
  "kvdb-memorydb",
- "lru",
+ "lru 0.9.0",
  "parity-scale-codec 3.6.9",
  "polkadot-node-primitives",
  "polkadot-node-subsystem",
@@ -7099,7 +7297,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-node-core-parachains-inherent"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "async-trait",
  "futures",
@@ -7115,7 +7313,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-node-core-provisioner"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "bitvec 1.0.1",
  "fatality",
@@ -7136,7 +7334,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-node-core-pvf"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "always-assert",
  "assert_matches",
@@ -7170,7 +7368,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-node-core-pvf-checker"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "futures",
  "futures-timer",
@@ -7193,10 +7391,10 @@ dependencies = [
 
 [[package]]
 name = "polkadot-node-core-runtime-api"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "futures",
- "lru",
+ "lru 0.9.0",
  "polkadot-node-metrics",
  "polkadot-node-primitives",
  "polkadot-node-subsystem",
@@ -7214,7 +7412,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-node-jaeger"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "lazy_static",
  "log",
@@ -7231,7 +7429,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-node-metrics"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "assert_cmd",
  "bs58",
@@ -7239,7 +7437,6 @@ dependencies = [
  "futures-timer",
  "hyper",
  "log",
- "nix 0.24.3",
  "parity-scale-codec 3.6.9",
  "polkadot-primitives",
  "polkadot-test-service",
@@ -7259,7 +7456,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-node-network-protocol"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "async-trait",
  "derive_more",
@@ -7282,7 +7479,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-node-primitives"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "bounded-vec",
  "futures",
@@ -7304,7 +7501,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-node-subsystem"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "polkadot-node-jaeger",
  "polkadot-node-subsystem-types",
@@ -7313,7 +7510,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-node-subsystem-test-helpers"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "async-trait",
  "futures",
@@ -7331,7 +7528,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-node-subsystem-types"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "async-trait",
  "derive_more",
@@ -7353,7 +7550,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-node-subsystem-util"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "assert_matches",
  "async-trait",
@@ -7368,7 +7565,7 @@ dependencies = [
  "kvdb-shared-tests",
  "lazy_static",
  "log",
- "lru",
+ "lru 0.9.0",
  "parity-db",
  "parity-scale-codec 3.6.9",
  "parking_lot 0.11.2",
@@ -7394,14 +7591,14 @@ dependencies = [
 
 [[package]]
 name = "polkadot-overseer"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "assert_matches",
  "async-trait",
  "femme",
  "futures",
  "futures-timer",
- "lru",
+ "lru 0.9.0",
  "orchestra",
  "parking_lot 0.12.1",
  "polkadot-node-metrics",
@@ -7420,7 +7617,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-parachain"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "derive_more",
  "frame-support",
@@ -7435,7 +7632,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-performance-test"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "cherry-runtime",
  "env_logger 0.9.3",
@@ -7449,7 +7646,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-primitives"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "bitvec 1.0.1",
  "hex-literal",
@@ -7474,7 +7671,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-primitives-test-helpers"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "polkadot-primitives",
  "rand 0.8.5",
@@ -7486,7 +7683,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-rpc"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "beefy-gadget",
  "beefy-gadget-rpc",
@@ -7517,7 +7714,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-runtime-common"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "bitvec 1.0.1",
  "frame-benchmarking",
@@ -7535,6 +7732,7 @@ dependencies = [
  "pallet-balances",
  "pallet-beefy-mmr",
  "pallet-election-provider-multi-phase",
+ "pallet-fast-unstake",
  "pallet-session",
  "pallet-staking",
  "pallet-staking-reward-fn",
@@ -7569,7 +7767,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-runtime-metrics"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "bs58",
  "parity-scale-codec 3.6.9",
@@ -7580,7 +7778,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-runtime-parachains"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "assert_matches",
  "bitflags 1.3.2",
@@ -7632,7 +7830,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-service"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "assert_matches",
  "async-trait",
@@ -7640,6 +7838,7 @@ dependencies = [
  "cherry-runtime",
  "cherry-runtime-constants",
  "env_logger 0.9.3",
+ "frame-benchmarking-cli",
  "frame-support",
  "frame-system-rpc-runtime-api",
  "futures",
@@ -7647,7 +7846,7 @@ dependencies = [
  "kvdb",
  "kvdb-rocksdb",
  "log",
- "lru",
+ "lru 0.9.0",
  "mmr-gadget",
  "pallet-babe",
  "pallet-im-online",
@@ -7742,7 +7941,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-statement-distribution"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "arrayvec 0.5.2",
  "assert_matches",
@@ -7773,7 +7972,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-statement-table"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "parity-scale-codec 3.6.9",
  "polkadot-primitives",
@@ -7782,7 +7981,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-test-client"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "futures",
  "parity-scale-codec 3.6.9",
@@ -7808,11 +8007,11 @@ dependencies = [
 
 [[package]]
 name = "polkadot-test-malus"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "assert_matches",
  "async-trait",
- "clap",
+ "clap 4.3.24",
  "color-eyre",
  "futures",
  "futures-timer",
@@ -7836,7 +8035,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-test-runtime"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "bitvec 1.0.1",
  "frame-election-provider-support",
@@ -7901,7 +8100,7 @@ dependencies = [
 
 [[package]]
 name = "polkadot-test-service"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "frame-benchmarking",
  "frame-system",
@@ -7956,10 +8155,10 @@ dependencies = [
 
 [[package]]
 name = "polkadot-voter-bags"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "cherry-runtime",
- "clap",
+ "clap 4.3.24",
  "generate-bags",
  "sp-io",
 ]
@@ -8653,11 +8852,11 @@ checksum = "c08c74e62047bb2de4ff487b251e4a92e24f48745648451635cec7d591162d9f"
 
 [[package]]
 name = "remote-ext-tests-bags-list"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "cherry-runtime",
  "cherry-runtime-constants",
- "clap",
+ "clap 4.3.24",
  "frame-system",
  "log",
  "pallet-bags-list-remote-tests",
@@ -8766,7 +8965,7 @@ dependencies = [
 
 [[package]]
 name = "rococo-runtime"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "beefy-merkle-tree",
  "frame-benchmarking",
@@ -8859,7 +9058,7 @@ dependencies = [
 
 [[package]]
 name = "rococo-runtime-constants"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "frame-support",
  "polkadot-primitives",
@@ -9097,7 +9296,7 @@ dependencies = [
 [[package]]
 name = "sc-allocator"
 version = "4.1.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "log",
  "sp-core",
@@ -9108,7 +9307,7 @@ dependencies = [
 [[package]]
 name = "sc-authority-discovery"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "async-trait",
  "futures",
@@ -9135,7 +9334,7 @@ dependencies = [
 [[package]]
 name = "sc-basic-authorship"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "futures",
  "futures-timer",
@@ -9158,7 +9357,7 @@ dependencies = [
 [[package]]
 name = "sc-block-builder"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "parity-scale-codec 3.6.9",
  "sc-client-api",
@@ -9174,7 +9373,7 @@ dependencies = [
 [[package]]
 name = "sc-chain-spec"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "memmap2",
  "sc-chain-spec-derive",
@@ -9189,7 +9388,7 @@ dependencies = [
 [[package]]
 name = "sc-chain-spec-derive"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "proc-macro-crate 1.1.3",
  "proc-macro2",
@@ -9200,11 +9399,11 @@ dependencies = [
 [[package]]
 name = "sc-cli"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "array-bytes",
  "chrono",
- "clap",
+ "clap 4.3.24",
  "fdlimit",
  "futures",
  "libp2p",
@@ -9240,7 +9439,7 @@ dependencies = [
 [[package]]
 name = "sc-client-api"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "fnv",
  "futures",
@@ -9266,7 +9465,7 @@ dependencies = [
 [[package]]
 name = "sc-client-db"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "hash-db",
  "kvdb",
@@ -9279,6 +9478,7 @@ dependencies = [
  "parking_lot 0.12.1",
  "sc-client-api",
  "sc-state-db",
+ "schnellru",
  "sp-arithmetic",
  "sp-blockchain",
  "sp-core",
@@ -9291,7 +9491,7 @@ dependencies = [
 [[package]]
 name = "sc-consensus"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "async-trait",
  "futures",
@@ -9316,7 +9516,7 @@ dependencies = [
 [[package]]
 name = "sc-consensus-babe"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "async-trait",
  "fork-tree",
@@ -9354,7 +9554,7 @@ dependencies = [
 [[package]]
 name = "sc-consensus-babe-rpc"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "futures",
  "jsonrpsee",
@@ -9376,7 +9576,7 @@ dependencies = [
 [[package]]
 name = "sc-consensus-epochs"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "fork-tree",
  "parity-scale-codec 3.6.9",
@@ -9389,7 +9589,7 @@ dependencies = [
 [[package]]
 name = "sc-consensus-slots"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "async-trait",
  "futures",
@@ -9412,9 +9612,9 @@ dependencies = [
 [[package]]
 name = "sc-executor"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
- "lru",
+ "lru 0.8.1",
  "parity-scale-codec 3.6.9",
  "parking_lot 0.12.1",
  "sc-executor-common",
@@ -9436,7 +9636,7 @@ dependencies = [
 [[package]]
 name = "sc-executor-common"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "sc-allocator",
  "sp-maybe-compressed-blob",
@@ -9449,7 +9649,7 @@ dependencies = [
 [[package]]
 name = "sc-executor-wasmi"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "log",
  "sc-allocator",
@@ -9462,7 +9662,7 @@ dependencies = [
 [[package]]
 name = "sc-executor-wasmtime"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "cfg-if",
  "libc",
@@ -9479,9 +9679,9 @@ dependencies = [
 [[package]]
 name = "sc-finality-grandpa"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
- "ahash",
+ "ahash 0.8.6",
  "array-bytes",
  "async-trait",
  "dyn-clone",
@@ -9519,7 +9719,7 @@ dependencies = [
 [[package]]
 name = "sc-finality-grandpa-rpc"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "finality-grandpa",
  "futures",
@@ -9539,7 +9739,7 @@ dependencies = [
 [[package]]
 name = "sc-informant"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "ansi_term",
  "futures",
@@ -9554,7 +9754,7 @@ dependencies = [
 [[package]]
 name = "sc-keystore"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "array-bytes",
  "async-trait",
@@ -9569,7 +9769,7 @@ dependencies = [
 [[package]]
 name = "sc-network"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "array-bytes",
  "async-trait",
@@ -9583,7 +9783,7 @@ dependencies = [
  "ip_network",
  "libp2p",
  "log",
- "lru",
+ "lru 0.8.1",
  "parity-scale-codec 3.6.9",
  "parking_lot 0.12.1",
  "pin-project",
@@ -9611,7 +9811,7 @@ dependencies = [
 [[package]]
 name = "sc-network-bitswap"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "cid",
  "futures",
@@ -9630,7 +9830,7 @@ dependencies = [
 [[package]]
 name = "sc-network-common"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "async-trait",
  "bitflags 1.3.2",
@@ -9656,14 +9856,14 @@ dependencies = [
 [[package]]
 name = "sc-network-gossip"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
- "ahash",
+ "ahash 0.8.6",
  "futures",
  "futures-timer",
  "libp2p",
  "log",
- "lru",
+ "lru 0.8.1",
  "sc-network-common",
  "sc-peerset",
  "sp-runtime",
@@ -9674,7 +9874,7 @@ dependencies = [
 [[package]]
 name = "sc-network-light"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "array-bytes",
  "futures",
@@ -9695,7 +9895,7 @@ dependencies = [
 [[package]]
 name = "sc-network-sync"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "array-bytes",
  "async-trait",
@@ -9703,7 +9903,7 @@ dependencies = [
  "futures",
  "libp2p",
  "log",
- "lru",
+ "lru 0.8.1",
  "mockall",
  "parity-scale-codec 3.6.9",
  "prost",
@@ -9727,7 +9927,7 @@ dependencies = [
 [[package]]
 name = "sc-network-transactions"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "array-bytes",
  "futures",
@@ -9746,7 +9946,7 @@ dependencies = [
 [[package]]
 name = "sc-offchain"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "array-bytes",
  "bytes",
@@ -9776,7 +9976,7 @@ dependencies = [
 [[package]]
 name = "sc-peerset"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "futures",
  "libp2p",
@@ -9789,7 +9989,7 @@ dependencies = [
 [[package]]
 name = "sc-proposer-metrics"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "log",
  "substrate-prometheus-endpoint",
@@ -9798,7 +9998,7 @@ dependencies = [
 [[package]]
 name = "sc-rpc"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "futures",
  "jsonrpsee",
@@ -9822,12 +10022,13 @@ dependencies = [
  "sp-runtime",
  "sp-session",
  "sp-version",
+ "tokio",
 ]
 
 [[package]]
 name = "sc-rpc-api"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "jsonrpsee",
  "parity-scale-codec 3.6.9",
@@ -9846,7 +10047,7 @@ dependencies = [
 [[package]]
 name = "sc-rpc-server"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "http",
  "jsonrpsee",
@@ -9861,7 +10062,7 @@ dependencies = [
 [[package]]
 name = "sc-rpc-spec-v2"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "array-bytes",
  "futures",
@@ -9887,7 +10088,7 @@ dependencies = [
 [[package]]
 name = "sc-service"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "async-trait",
  "directories",
@@ -9918,6 +10119,7 @@ dependencies = [
  "sc-rpc",
  "sc-rpc-server",
  "sc-rpc-spec-v2",
+ "sc-storage-monitor",
  "sc-sysinfo",
  "sc-telemetry",
  "sc-tracing",
@@ -9952,7 +10154,7 @@ dependencies = [
 [[package]]
 name = "sc-state-db"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "log",
  "parity-scale-codec 3.6.9",
@@ -9961,9 +10163,25 @@ dependencies = [
 ]
 
 [[package]]
+name = "sc-storage-monitor"
+version = "0.1.0"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
+dependencies = [
+ "clap 4.3.24",
+ "futures",
+ "log",
+ "nix 0.26.4",
+ "sc-client-db",
+ "sc-utils",
+ "sp-core",
+ "thiserror",
+ "tokio",
+]
+
+[[package]]
 name = "sc-sync-state-rpc"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "jsonrpsee",
  "parity-scale-codec 3.6.9",
@@ -9982,7 +10200,7 @@ dependencies = [
 [[package]]
 name = "sc-sysinfo"
 version = "6.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "futures",
  "libc",
@@ -10001,7 +10219,7 @@ dependencies = [
 [[package]]
 name = "sc-telemetry"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "chrono",
  "futures",
@@ -10020,7 +10238,7 @@ dependencies = [
 [[package]]
 name = "sc-tracing"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "ansi_term",
  "atty",
@@ -10051,7 +10269,7 @@ dependencies = [
 [[package]]
 name = "sc-tracing-proc-macro"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "proc-macro-crate 1.1.3",
  "proc-macro2",
@@ -10062,13 +10280,14 @@ dependencies = [
 [[package]]
 name = "sc-transaction-pool"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "async-trait",
  "futures",
  "futures-timer",
  "linked-hash-map",
  "log",
+ "num-traits",
  "parity-scale-codec 3.6.9",
  "parking_lot 0.12.1",
  "sc-client-api",
@@ -10088,7 +10307,7 @@ dependencies = [
 [[package]]
 name = "sc-transaction-pool-api"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "async-trait",
  "futures",
@@ -10102,7 +10321,7 @@ dependencies = [
 [[package]]
 name = "sc-utils"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "backtrace",
  "futures",
@@ -10146,6 +10365,17 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0c3733bf4cf7ea0880754e19cb5a462007c4a8c1914bff372ccc95b464f1df88"
 dependencies = [
  "windows-sys 0.48.0",
+]
+
+[[package]]
+name = "schnellru"
+version = "0.2.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "772575a524feeb803e5b0fcbc6dd9f367e579488197c94c6e4023aad2305774d"
+dependencies = [
+ "ahash 0.8.6",
+ "cfg-if",
+ "hashbrown 0.13.2",
 ]
 
 [[package]]
@@ -10546,7 +10776,7 @@ checksum = "826167069c09b99d56f31e9ae5c99049e932a98c9dc2dac47645b08dbbf76ba7"
 
 [[package]]
 name = "slot-range-helper"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "enumn",
  "parity-scale-codec 3.6.9",
@@ -10633,7 +10863,7 @@ dependencies = [
 [[package]]
 name = "sp-api"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "hash-db",
  "log",
@@ -10651,7 +10881,7 @@ dependencies = [
 [[package]]
 name = "sp-api-proc-macro"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "blake2",
  "proc-macro-crate 1.1.3",
@@ -10663,7 +10893,7 @@ dependencies = [
 [[package]]
 name = "sp-application-crypto"
 version = "7.0.0"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "parity-scale-codec 3.6.9",
  "scale-info",
@@ -10676,7 +10906,7 @@ dependencies = [
 [[package]]
 name = "sp-arithmetic"
 version = "6.0.0"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "integer-sqrt",
  "num-traits",
@@ -10690,7 +10920,7 @@ dependencies = [
 [[package]]
 name = "sp-authority-discovery"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "parity-scale-codec 3.6.9",
  "scale-info",
@@ -10701,21 +10931,9 @@ dependencies = [
 ]
 
 [[package]]
-name = "sp-authorship"
-version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
-dependencies = [
- "async-trait",
- "parity-scale-codec 3.6.9",
- "sp-inherents",
- "sp-runtime",
- "sp-std",
-]
-
-[[package]]
 name = "sp-beefy"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "parity-scale-codec 3.6.9",
  "scale-info",
@@ -10732,7 +10950,7 @@ dependencies = [
 [[package]]
 name = "sp-block-builder"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "parity-scale-codec 3.6.9",
  "sp-api",
@@ -10744,11 +10962,11 @@ dependencies = [
 [[package]]
 name = "sp-blockchain"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "futures",
  "log",
- "lru",
+ "lru 0.8.1",
  "parity-scale-codec 3.6.9",
  "parking_lot 0.12.1",
  "sp-api",
@@ -10762,7 +10980,7 @@ dependencies = [
 [[package]]
 name = "sp-consensus"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "async-trait",
  "futures",
@@ -10780,7 +10998,7 @@ dependencies = [
 [[package]]
 name = "sp-consensus-babe"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "async-trait",
  "merlin",
@@ -10803,7 +11021,7 @@ dependencies = [
 [[package]]
 name = "sp-consensus-slots"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "parity-scale-codec 3.6.9",
  "scale-info",
@@ -10815,7 +11033,7 @@ dependencies = [
 [[package]]
 name = "sp-consensus-vrf"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "parity-scale-codec 3.6.9",
  "scale-info",
@@ -10828,7 +11046,7 @@ dependencies = [
 [[package]]
 name = "sp-core"
 version = "7.0.0"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "array-bytes",
  "base58",
@@ -10870,7 +11088,7 @@ dependencies = [
 [[package]]
 name = "sp-core-hashing"
 version = "5.0.0"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "blake2",
  "byteorder",
@@ -10884,7 +11102,7 @@ dependencies = [
 [[package]]
 name = "sp-core-hashing-proc-macro"
 version = "5.0.0"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -10895,7 +11113,7 @@ dependencies = [
 [[package]]
 name = "sp-database"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "kvdb",
  "parking_lot 0.12.1",
@@ -10904,7 +11122,7 @@ dependencies = [
 [[package]]
 name = "sp-debug-derive"
 version = "5.0.0"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -10914,7 +11132,7 @@ dependencies = [
 [[package]]
 name = "sp-externalities"
 version = "0.13.0"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "environmental",
  "parity-scale-codec 3.6.9",
@@ -10925,7 +11143,7 @@ dependencies = [
 [[package]]
 name = "sp-finality-grandpa"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "finality-grandpa",
  "log",
@@ -10943,7 +11161,7 @@ dependencies = [
 [[package]]
 name = "sp-inherents"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "async-trait",
  "impl-trait-for-tuples",
@@ -10957,7 +11175,7 @@ dependencies = [
 [[package]]
 name = "sp-io"
 version = "7.0.0"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "bytes",
  "ed25519 1.5.3",
@@ -10982,7 +11200,7 @@ dependencies = [
 [[package]]
 name = "sp-keyring"
 version = "7.0.0"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "lazy_static",
  "sp-core",
@@ -10993,7 +11211,7 @@ dependencies = [
 [[package]]
 name = "sp-keystore"
 version = "0.13.0"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "async-trait",
  "futures",
@@ -11010,7 +11228,7 @@ dependencies = [
 [[package]]
 name = "sp-maybe-compressed-blob"
 version = "4.1.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "thiserror",
  "zstd",
@@ -11019,7 +11237,7 @@ dependencies = [
 [[package]]
 name = "sp-mmr-primitives"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "ckb-merkle-mountain-range",
  "log",
@@ -11037,7 +11255,7 @@ dependencies = [
 [[package]]
 name = "sp-npos-elections"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "parity-scale-codec 3.6.9",
  "scale-info",
@@ -11051,7 +11269,7 @@ dependencies = [
 [[package]]
 name = "sp-offchain"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "sp-api",
  "sp-core",
@@ -11061,7 +11279,7 @@ dependencies = [
 [[package]]
 name = "sp-panic-handler"
 version = "5.0.0"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "backtrace",
  "lazy_static",
@@ -11071,7 +11289,7 @@ dependencies = [
 [[package]]
 name = "sp-rpc"
 version = "6.0.0"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "rustc-hash",
  "serde",
@@ -11081,7 +11299,7 @@ dependencies = [
 [[package]]
 name = "sp-runtime"
 version = "7.0.0"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "either",
  "hash256-std-hasher",
@@ -11105,7 +11323,7 @@ dependencies = [
 [[package]]
 name = "sp-runtime-interface"
 version = "7.0.0"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "bytes",
  "impl-trait-for-tuples",
@@ -11123,7 +11341,7 @@ dependencies = [
 [[package]]
 name = "sp-runtime-interface-proc-macro"
 version = "6.0.0"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "Inflector",
  "proc-macro-crate 1.1.3",
@@ -11135,7 +11353,7 @@ dependencies = [
 [[package]]
 name = "sp-session"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "parity-scale-codec 3.6.9",
  "scale-info",
@@ -11149,7 +11367,7 @@ dependencies = [
 [[package]]
 name = "sp-staking"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "parity-scale-codec 3.6.9",
  "scale-info",
@@ -11161,7 +11379,7 @@ dependencies = [
 [[package]]
 name = "sp-state-machine"
 version = "0.13.0"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "hash-db",
  "log",
@@ -11181,12 +11399,12 @@ dependencies = [
 [[package]]
 name = "sp-std"
 version = "5.0.0"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 
 [[package]]
 name = "sp-storage"
 version = "7.0.0"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "impl-serde",
  "parity-scale-codec 3.6.9",
@@ -11199,7 +11417,7 @@ dependencies = [
 [[package]]
 name = "sp-timestamp"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "async-trait",
  "futures-timer",
@@ -11214,7 +11432,7 @@ dependencies = [
 [[package]]
 name = "sp-tracing"
 version = "6.0.0"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "parity-scale-codec 3.6.9",
  "sp-std",
@@ -11226,7 +11444,7 @@ dependencies = [
 [[package]]
 name = "sp-transaction-pool"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "sp-api",
  "sp-runtime",
@@ -11235,7 +11453,7 @@ dependencies = [
 [[package]]
 name = "sp-transaction-storage-proof"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "async-trait",
  "log",
@@ -11251,18 +11469,18 @@ dependencies = [
 [[package]]
 name = "sp-trie"
 version = "7.0.0"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
- "ahash",
+ "ahash 0.8.6",
  "hash-db",
  "hashbrown 0.12.3",
  "lazy_static",
- "lru",
  "memory-db",
  "nohash-hasher",
  "parity-scale-codec 3.6.9",
  "parking_lot 0.12.1",
  "scale-info",
+ "schnellru",
  "sp-core",
  "sp-std",
  "thiserror",
@@ -11274,7 +11492,7 @@ dependencies = [
 [[package]]
 name = "sp-version"
 version = "5.0.0"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "impl-serde",
  "parity-scale-codec 3.6.9",
@@ -11291,7 +11509,7 @@ dependencies = [
 [[package]]
 name = "sp-version-proc-macro"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "parity-scale-codec 3.6.9",
  "proc-macro2",
@@ -11302,7 +11520,7 @@ dependencies = [
 [[package]]
 name = "sp-wasm-interface"
 version = "7.0.0"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "impl-trait-for-tuples",
  "log",
@@ -11315,7 +11533,7 @@ dependencies = [
 [[package]]
 name = "sp-weights"
 version = "4.0.0"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "parity-scale-codec 3.6.9",
  "scale-info",
@@ -11382,11 +11600,11 @@ checksum = "a8f112729512f8e442d81f95a8a7ddf2b7c6b8a1a6f509a95864142b30cab2d3"
 
 [[package]]
 name = "staking-miner"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "assert_cmd",
  "cherry-runtime",
- "clap",
+ "clap 4.3.24",
  "exitcode",
  "frame-election-provider-support",
  "frame-remote-externalities",
@@ -11537,7 +11755,7 @@ dependencies = [
 [[package]]
 name = "substrate-build-script-utils"
 version = "3.0.0"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "platforms 2.0.0",
 ]
@@ -11545,7 +11763,7 @@ dependencies = [
 [[package]]
 name = "substrate-frame-rpc-system"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "frame-system-rpc-runtime-api",
  "futures",
@@ -11564,7 +11782,7 @@ dependencies = [
 [[package]]
 name = "substrate-prometheus-endpoint"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "hyper",
  "log",
@@ -11576,7 +11794,7 @@ dependencies = [
 [[package]]
 name = "substrate-rpc-client"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "async-trait",
  "jsonrpsee",
@@ -11589,7 +11807,7 @@ dependencies = [
 [[package]]
 name = "substrate-state-trie-migration-rpc"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "jsonrpsee",
  "log",
@@ -11608,7 +11826,7 @@ dependencies = [
 [[package]]
 name = "substrate-test-client"
 version = "2.0.1"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "array-bytes",
  "async-trait",
@@ -11634,7 +11852,7 @@ dependencies = [
 [[package]]
 name = "substrate-test-utils"
 version = "4.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "futures",
  "substrate-test-utils-derive",
@@ -11644,7 +11862,7 @@ dependencies = [
 [[package]]
 name = "substrate-test-utils-derive"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "proc-macro-crate 1.1.3",
  "proc-macro2",
@@ -11655,7 +11873,7 @@ dependencies = [
 [[package]]
 name = "substrate-wasm-builder"
 version = "5.0.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
  "ansi_term",
  "build-helper",
@@ -11872,7 +12090,7 @@ checksum = "3369f5ac52d5eb6ab48c6b4ffdc8efbcad6b89c765749064ba298f2c68a16a76"
 
 [[package]]
 name = "test-parachain-adder"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "dlmalloc",
  "parity-scale-codec 3.6.9",
@@ -11885,9 +12103,9 @@ dependencies = [
 
 [[package]]
 name = "test-parachain-adder-collator"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
- "clap",
+ "clap 4.3.24",
  "futures",
  "futures-timer",
  "log",
@@ -11911,14 +12129,14 @@ dependencies = [
 
 [[package]]
 name = "test-parachain-halt"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "substrate-wasm-builder",
 ]
 
 [[package]]
 name = "test-parachain-undying"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "dlmalloc",
  "log",
@@ -11932,9 +12150,9 @@ dependencies = [
 
 [[package]]
 name = "test-parachain-undying-collator"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
- "clap",
+ "clap 4.3.24",
  "futures",
  "futures-timer",
  "log",
@@ -11958,7 +12176,7 @@ dependencies = [
 
 [[package]]
 name = "test-parachains"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "parity-scale-codec 3.6.9",
  "sp-core",
@@ -11969,7 +12187,7 @@ dependencies = [
 
 [[package]]
 name = "test-runtime-constants"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "frame-support",
  "polkadot-primitives",
@@ -11979,6 +12197,12 @@ dependencies = [
  "sp-runtime",
  "sp-weights",
 ]
+
+[[package]]
+name = "textwrap"
+version = "0.16.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "222a222a5bfe1bba4a77b45ec488a741b3cb8872e5e499451fd7d0129c9c7c3d"
 
 [[package]]
 name = "thiserror"
@@ -12363,7 +12587,7 @@ dependencies = [
 
 [[package]]
 name = "tracing-gum"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "polkadot-node-jaeger",
  "polkadot-primitives",
@@ -12373,7 +12597,7 @@ dependencies = [
 
 [[package]]
 name = "tracing-gum-proc-macro"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "assert_matches",
  "expander 0.0.6",
@@ -12546,9 +12770,9 @@ checksum = "e421abadd41a4225275504ea4d6566923418b7f05506fbc9c0fe86ba7396114b"
 [[package]]
 name = "try-runtime-cli"
 version = "0.10.0-dev"
-source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#3668112743a13c517d8fe023f031b963716b0fc6"
+source = "git+https://github.com/CherryNetwork/substrate?branch=cherry#a362d04eddbb3449cffb108a1d8120c6e2893735"
 dependencies = [
- "clap",
+ "clap 4.3.24",
  "frame-remote-externalities",
  "frame-try-runtime",
  "hex",
@@ -12973,9 +13197,9 @@ dependencies = [
 
 [[package]]
 name = "wasm-opt"
-version = "0.110.2"
+version = "0.111.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b68e8037b4daf711393f4be2056246d12d975651b14d581520ad5d1f19219cec"
+checksum = "84a303793cbc01fb96551badfc7367db6007396bba6bac97936b3c8b6f7fdb41"
 dependencies = [
  "anyhow",
  "libc",
@@ -12989,9 +13213,9 @@ dependencies = [
 
 [[package]]
 name = "wasm-opt-cxx-sys"
-version = "0.110.2"
+version = "0.111.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "91adbad477e97bba3fbd21dd7bfb594e7ad5ceb9169ab1c93ab9cb0ada636b6f"
+checksum = "d9c9deb56f8a9f2ec177b3bd642a8205621835944ed5da55f2388ef216aca5a4"
 dependencies = [
  "anyhow",
  "cxx",
@@ -13001,9 +13225,9 @@ dependencies = [
 
 [[package]]
 name = "wasm-opt-sys"
-version = "0.110.2"
+version = "0.111.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ec4fa5a322a4e6ac22fd141f498d56afbdbf9df5debeac32380d2dcaa3e06941"
+checksum = "4432e28b542738a9776cedf92e8a99d8991c7b4667ee2c7ccddfb479dd2856a7"
 dependencies = [
  "anyhow",
  "cc",
@@ -13888,23 +14112,30 @@ dependencies = [
 
 [[package]]
 name = "xcm"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "derivative",
+ "hex",
+ "hex-literal",
  "impl-trait-for-tuples",
  "log",
  "parity-scale-codec 3.6.9",
  "scale-info",
- "sp-runtime",
+ "serde",
+ "sp-core",
+ "sp-io",
+ "sp-weights",
  "xcm-procedural",
 ]
 
 [[package]]
 name = "xcm-builder"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
+ "assert_matches",
  "frame-support",
  "frame-system",
+ "impl-trait-for-tuples",
  "log",
  "pallet-balances",
  "pallet-transaction-payment",
@@ -13924,8 +14155,9 @@ dependencies = [
 
 [[package]]
 name = "xcm-executor"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
+ "environmental",
  "frame-benchmarking",
  "frame-support",
  "impl-trait-for-tuples",
@@ -13936,12 +14168,13 @@ dependencies = [
  "sp-io",
  "sp-runtime",
  "sp-std",
+ "sp-weights",
  "xcm",
 ]
 
 [[package]]
 name = "xcm-executor-integration-tests"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "frame-support",
  "frame-system",
@@ -13961,7 +14194,7 @@ dependencies = [
 
 [[package]]
 name = "xcm-procedural"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "Inflector",
  "proc-macro2",
@@ -13971,7 +14204,7 @@ dependencies = [
 
 [[package]]
 name = "xcm-simulator"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "frame-support",
  "parity-scale-codec 3.6.9",
@@ -13987,11 +14220,13 @@ dependencies = [
 
 [[package]]
 name = "xcm-simulator-example"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "frame-support",
  "frame-system",
+ "log",
  "pallet-balances",
+ "pallet-uniques",
  "pallet-xcm",
  "parity-scale-codec 3.6.9",
  "polkadot-core-primitives",
@@ -14002,6 +14237,7 @@ dependencies = [
  "sp-io",
  "sp-runtime",
  "sp-std",
+ "sp-tracing",
  "xcm",
  "xcm-builder",
  "xcm-executor",
@@ -14010,7 +14246,7 @@ dependencies = [
 
 [[package]]
 name = "xcm-simulator-fuzzer"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "frame-support",
  "frame-system",
@@ -14062,6 +14298,26 @@ dependencies = [
 ]
 
 [[package]]
+name = "zerocopy"
+version = "0.7.30"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "306dca4455518f1f31635ec308b6b3e4eb1b11758cefafc782827d0aa7acb5c7"
+dependencies = [
+ "zerocopy-derive",
+]
+
+[[package]]
+name = "zerocopy-derive"
+version = "0.7.30"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "be912bf68235a88fbefd1b73415cb218405958d1655b2ece9035a19920bdf6ba"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn 2.0.39",
+]
+
+[[package]]
 name = "zeroize"
 version = "1.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -14083,7 +14339,7 @@ dependencies = [
 
 [[package]]
 name = "zombienet-backchannel"
-version = "0.9.37"
+version = "0.9.38"
 dependencies = [
  "futures-util",
  "lazy_static",
