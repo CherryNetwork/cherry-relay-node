@@ -10,9 +10,8 @@ async-trait = "0.1.57"
 futures = "0.3.21"
 gum = { package = "tracing-gum", path = "../../gum" }
 polkadot-primitives = { path = "../../../primitives" }
-parity-scale-codec = { version = "3.1.5", default-features = false, features = ["derive"] }
+parity-scale-codec = { version = "3.3.0", default-features = false, features = ["derive"] }
 sc-network = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
-sc-network-common = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 sp-consensus = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 polkadot-node-metrics = { path = "../../metrics"}
 polkadot-node-network-protocol = { path = "../protocol" }

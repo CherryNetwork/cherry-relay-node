@@ -42,7 +42,7 @@ sc-storage-monitor = { git = "https://github.com/CherryNetwork/substrate", branc
 substrate-build-script-utils = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 
 [features]
-default = ["db", "cli", "hostperfcheck", "full-node", "cherry-native"]
+default = ["db", "cli", "full-node", "cherry-native"]
 db = ["service/db"]
 cli = [
 	"clap",
