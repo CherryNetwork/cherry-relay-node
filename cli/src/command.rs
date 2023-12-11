@@ -47,7 +47,7 @@ fn get_exec_name() -> Option<String> {
 
 impl SubstrateCli for Cli {
 	fn impl_name() -> String {
-		"Cherry Relay Testnet".into()
+		"Cherry Relay Mainnet".into()
 	}
 
 	fn impl_version() -> String {

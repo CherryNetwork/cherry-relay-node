@@ -10,22 +10,22 @@ targets = ["x86_64-unknown-linux-gnu"]
 [dependencies]
 codec = { package = "parity-scale-codec", version = "3.3.0", default-features = false }
 scale-info = { version = "2.1.2", default-features = false, features = ["derive"] }
-frame-support = { default-features = false, git = "https://github.com/CherryNetwork/substrate" , branch = "cherry-testnet" }
-frame-system = { default-features = false, git = "https://github.com/CherryNetwork/substrate" , branch = "cherry-testnet" }
-sp-runtime = { default-features = false, git = "https://github.com/CherryNetwork/substrate" , branch = "cherry-testnet" }
-sp-std = { default-features = false, git = "https://github.com/CherryNetwork/substrate" , branch = "cherry-testnet" }
-sp-io = { default-features = false, git = "https://github.com/CherryNetwork/substrate" , branch = "cherry-testnet" }
+frame-support = { default-features = false, git = "https://github.com/CherryNetwork/substrate" , branch = "cherry" }
+frame-system = { default-features = false, git = "https://github.com/CherryNetwork/substrate" , branch = "cherry" }
+sp-runtime = { default-features = false, git = "https://github.com/CherryNetwork/substrate" , branch = "cherry" }
+sp-std = { default-features = false, git = "https://github.com/CherryNetwork/substrate" , branch = "cherry" }
+sp-io = { default-features = false, git = "https://github.com/CherryNetwork/substrate" , branch = "cherry" }
 xcm-executor = { path = "../xcm-executor", default-features = false }
-frame-benchmarking = { default-features = false, git = "https://github.com/CherryNetwork/substrate" , branch = "cherry-testnet" }
+frame-benchmarking = { default-features = false, git = "https://github.com/CherryNetwork/substrate" , branch = "cherry" }
 xcm = { path = "..", default-features = false }
 xcm-builder = { path = "../xcm-builder", default-features = false }
 log = "0.4.17"
 
 [dev-dependencies]
-pallet-balances = { git = "https://github.com/CherryNetwork/substrate" , branch = "cherry-testnet" }
-pallet-assets = { git = "https://github.com/CherryNetwork/substrate" , branch = "cherry-testnet" }
-sp-core = { git = "https://github.com/CherryNetwork/substrate" , branch = "cherry-testnet" }
-sp-tracing = { git = "https://github.com/CherryNetwork/substrate" , branch = "cherry-testnet" }
+pallet-balances = { git = "https://github.com/CherryNetwork/substrate" , branch = "cherry" }
+pallet-assets = { git = "https://github.com/CherryNetwork/substrate" , branch = "cherry" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate" , branch = "cherry" }
+sp-tracing = { git = "https://github.com/CherryNetwork/substrate" , branch = "cherry" }
 xcm = { path = ".." }
 # temp
 pallet-xcm = { path = "../pallet-xcm" }

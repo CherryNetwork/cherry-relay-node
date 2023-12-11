@@ -6,19 +6,19 @@ edition = "2021"
 [dependencies]
 smallvec = "1.8.0"
 
-frame-support = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
+frame-support = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 primitives = { package = "polkadot-primitives", path = "../../../primitives", default-features = false }
 runtime-common = { package = "polkadot-runtime-common", path = "../../common", default-features = false }
-sp-runtime = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-sp-weights = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-sp-staking = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
-sp-core = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry-testnet" }
+sp-runtime = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
+sp-weights = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
+sp-staking = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", default-features = false , branch = "cherry" }
 
 [features]
 default = ["std"]
 std = [
 	"sp-runtime/std",
 	"sp-staking/std",
-	"sp-weights/std",
 	"sp-core/std",
+	"sp-weights/std",
 ]

@@ -25,21 +25,21 @@ polkadot-client = { path = "../node/client", optional = true }
 polkadot-node-core-pvf = { path = "../node/core/pvf", optional = true }
 polkadot-performance-test = { path = "../node/test/performance-test", optional = true }
 
-sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-sp-io = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-frame-benchmarking-cli = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "cherry-testnet" }
-try-runtime-cli = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "cherry-testnet" }
-sc-cli = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "cherry-testnet" }
-sc-service = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "cherry-testnet" }
+sp-core = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-io = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sp-keyring = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+frame-benchmarking-cli = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "cherry" }
+try-runtime-cli = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "cherry" }
+sc-cli = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "cherry" }
+sc-service = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "cherry" }
 polkadot-node-metrics = { path = "../node/metrics" }
-sc-tracing = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "cherry-testnet" }
-sc-sysinfo = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-sc-executor = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
-sc-storage-monitor = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+sc-tracing = { git = "https://github.com/CherryNetwork/substrate", optional = true , branch = "cherry" }
+sc-sysinfo = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sc-executor = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
+sc-storage-monitor = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 
 [build-dependencies]
-substrate-build-script-utils = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry-testnet" }
+substrate-build-script-utils = { git = "https://github.com/CherryNetwork/substrate", branch = "cherry" }
 
 [features]
 default = ["db", "cli", "full-node", "cherry-native"]
